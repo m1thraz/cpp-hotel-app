@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 
     QSqlQuery query1(db);
 
-    query.prepare(sqlEmployee);
+    query1.prepare(sqlEmployee);
 
     bool executeNote1 = query1.exec();
     qDebug()<<"SQL employee statement status: " << executeNote1;
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     bool executeNote2 = query2.exec();
     qDebug()<<"SQL costumer statement status: " << executeNote2;
 
-    SqlQuery query3(db);
+    QSqlQuery query3(db);
 
     query3.prepare(sqlRooms);
 
