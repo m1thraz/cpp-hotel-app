@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>256</width>
-    <height>170</height>
+    <width>879</width>
+    <height>454</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Hotel Managment Office System</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
+      <x>320</x>
+      <y>170</y>
       <width>215</width>
       <height>95</height>
      </rect>
@@ -27,28 +27,28 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="labelID">
          <property name="text">
           <string>ID</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit"/>
+        <widget class="QLineEdit" name="lineEditID"/>
        </item>
       </layout>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="labelPassword">
          <property name="text">
           <string>Passwort</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_2">
+        <widget class="QLineEdit" name="lineEditPassword">
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
          </property>
@@ -59,14 +59,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="loginButton">
          <property name="text">
           <string>Einloggen</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="closeWindowButton">
          <property name="styleSheet">
           <string notr="true"/>
          </property>
@@ -80,22 +80,11 @@
     </layout>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>256</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>closeWindowButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>close()</slot>
