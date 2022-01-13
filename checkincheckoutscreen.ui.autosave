@@ -88,20 +88,7 @@ background-color: white;
 }
 </string>
    </property>
-   <widget class="QPushButton" name="logoutBtn">
-    <property name="geometry">
-     <rect>
-      <x>770</x>
-      <y>330</y>
-      <width>89</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Logout</string>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="groupBox">
+   <widget class="QGroupBox" name="checkInGroupBox">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -119,7 +106,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>321</width>
-       <height>307</height>
+       <height>291</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkInLayout">
@@ -218,7 +205,7 @@ background-color: white;
      </layout>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="checkOutLayout">
+   <widget class="QGroupBox" name="checkOutGroupBox">
     <property name="geometry">
      <rect>
       <x>410</x>
@@ -239,7 +226,7 @@ background-color: white;
        <height>291</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="checkOutLayout">
       <item>
        <layout class="QVBoxLayout" name="costumerIDCheckOutLayout">
         <item>
@@ -360,6 +347,39 @@ background-color: white;
       </item>
      </layout>
     </widget>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>260</y>
+      <width>91</width>
+      <height>89</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>Hauptmenü</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Zurück</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="logoutBtn">
+       <property name="text">
+        <string>Logout</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
