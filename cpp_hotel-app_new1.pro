@@ -17,6 +17,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     checkincheckoutscreen.cpp \
+    costumerdatabaseview.cpp \
+    hoteldatabaseview.cpp \
     invoicecreation.cpp \
     loggedinscreen.cpp \
     main.cpp \
@@ -24,12 +26,16 @@ SOURCES += \
 
 HEADERS += \
     checkincheckoutscreen.h \
+    costumerdatabaseview.h \
+    hoteldatabaseview.h \
     invoicecreation.h \
     loggedinscreen.h \
     mainwindow.h
 
 FORMS += \
     checkincheckoutscreen.ui \
+    costumerdatabaseview.ui \
+    hoteldatabaseview.ui \
     invoicecreation.ui \
     loggedinscreen.ui \
     mainwindow.ui
