@@ -16,10 +16,53 @@ MainWindow::~MainWindow()
 void MainWindow::on_loginButton_clicked()
 {
     //This is mysql should be checked if this is correct with our database that we need to use!
+    //Connecting to Database
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QMYSQL", "MyConnect");
+    db.setHosteName("localhost");
+    db.setUserName("root");
+    db.setPasword("");
+    db.setDatabaseName("qt5register");
 
-    database = QSqlDatabase::addDatabase("QMYSQL", "MyConnect");
-    database.setHosteName("localhost");
-    database.setUserName("root");
-    database.setPasword("");
-    database.setDatabaseName("qt5register");
+    QString username = ui->usernameLogin->text();
+    QString password = ui->passwordLogin->text();
+
+    //Checking if the connection to database is already there
+    if(db.open()) {
+         //Creating My Queries
+        QMessageBox::information(this, "Database Success", "Database Connection Success");
+
+        QSqlQuery query(QSqlDatabase::database("MyConnect"));
+
+        //Checking if the input of user is same as the information in the database
+        query.prepare(QString("SELECT * FROM users WHERE username = :username AND password = :password"));
+
+        //Binding the values that has been given by the users to the varibles for the programm
+        query.bindValue(":username", username);
+        query.bindValue(":password", password);
+
+        //checking if the query can be executed
+        if(!query.exec()) {
+
+            QMessageBox::information(this, "Failed", "Query failed to execute");
+        } else {
+
+            while(query.next()) {
+
+                QString usernameFromDB = query.value(1).toString();
+                QString passwordFromDB = query.value(2).toString();
+
+                if(usernameFromDB == username && passwordFromDB == password) {
+
+                    QMessageBox::information(this, "Success", "Login Success");
+                }else {
+
+                    QMessageBox::information(this, "Failed", "Login Failed");
+                }
+            }
+        }
+
+    } else {
+        QMessageBox::information(this, "Database Failed", "Database Connection Failed");
+    }
 }
