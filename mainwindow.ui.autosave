@@ -17,10 +17,10 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>170</y>
-      <width>215</width>
-      <height>95</height>
+      <x>280</x>
+      <y>190</y>
+      <width>371</width>
+      <height>171</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -82,8 +82,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>110</y>
+      <x>380</x>
+      <y>120</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -97,6 +97,86 @@
      <string>Login Fenster</string>
     </property>
    </widget>
+   <widget class="QWidget" name="header" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>881</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#header {
+
+background-color: #18191A;
+
+}</string>
+    </property>
+    <widget class="QLabel" name="headerText">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>20</y>
+       <width>420</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yrsa</family>
+       <pointsize>24</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#headerText {
+
+color:white;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Hotel Managment Office System</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="logo" native="true">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>10</y>
+       <width>71</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#logo {
+
+border-image:url(:/images/logo_white.png);
+}</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="background" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>80</y>
+      <width>881</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#background {
+
+background-color: white;
+}
+</string>
+    </property>
+   </widget>
+   <zorder>background</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>label</zorder>
+   <zorder>header</zorder>
   </widget>
  </widget>
  <resources/>
