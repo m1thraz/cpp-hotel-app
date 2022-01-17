@@ -5,7 +5,7 @@
 #include <QtSql>
 //#include <QtSqlDatabase>
 #include <QMessageBox>
-#include "hoteldatabaseview.h"
+#include "loggedinscreen.h"
 #include<QTimer>
 
 QT_BEGIN_NAMESPACE
@@ -26,8 +26,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    hotelDatabaseView *second;
-    QTimer * timer;
+
+
     QSqlDatabase database;
 };
 #endif // MAINWINDOW_H

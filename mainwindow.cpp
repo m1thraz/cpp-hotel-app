@@ -33,7 +33,7 @@ void MainWindow::on_loginButton_clicked()
 {
   this -> hide();
 
-  hotelDatabaseView w2;
+  LoggedInScreen w2;
   w2.setModal(true);
   w2.exec();
 
