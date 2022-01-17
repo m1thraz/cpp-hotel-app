@@ -10,6 +10,18 @@
     <height>400</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>881</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>881</width>
+    <height>400</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
@@ -19,8 +31,14 @@
      <x>0</x>
      <y>0</y>
      <width>881</width>
-     <height>461</height>
+     <height>400</height>
     </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>881</width>
+     <height>400</height>
+    </size>
    </property>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
@@ -152,8 +170,20 @@ border-image:url(:/images/logo_white.png);
       <x>0</x>
       <y>80</y>
       <width>881</width>
-      <height>381</height>
+      <height>400</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>881</width>
+      <height>400</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>881</width>
+      <height>400</height>
+     </size>
     </property>
     <property name="styleSheet">
      <string notr="true">#background {
@@ -163,24 +193,10 @@ background-color: white;
 </string>
     </property>
    </widget>
-   <widget class="QPushButton" name="loginButton_2">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>440</y>
-      <width>181</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Einloggen</string>
-    </property>
-   </widget>
    <zorder>background</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>label</zorder>
    <zorder>header</zorder>
-   <zorder>loginButton_2</zorder>
   </widget>
  </widget>
  <resources/>
