@@ -31,6 +31,11 @@ private slots:
 
 private:
     Ui::LoggedInScreen *ui;
+
+    invoiceCreation *invoice;
+    costumerDatabaseView *costumer;
+    hotelDatabaseView *hotel;
+
 };
 
 #endif // LOGGEDINSCREEN_H

@@ -15,29 +15,38 @@ LoggedInScreen::~LoggedInScreen()
 
 void LoggedInScreen::on_hotelButton_clicked()
 {
-  this -> hide();
+//  this -> hide();
 
-  hotelDatabaseView w2;
-  w2.setModal(true);
-  w2.exec();
+//  hotelDatabaseView w2;
+//  w2.setModal(true);
+//  w2.exec();
+
+  hotel = new hotelDatabaseView(this);
+  hotel -> show();
 }
 
 void LoggedInScreen::on_dbButton_clicked()
 {
-  this -> hide();
+//  this -> hide();
 
-  costumerDatabaseView w2;
-  w2.setModal(true);
-  w2.exec();
+//  costumerDatabaseView w2;
+//  w2.setModal(true);
+//  w2.exec();
+
+  costumer = new costumerDatabaseView(this);
+  costumer -> show();
 }
 
 void LoggedInScreen::on_RechnungButton_clicked()
 {
-  this -> hide();
+//  this -> hide();
 
-  invoiceCreation w2;
-  w2.setModal(true);
-  w2.exec();
+//  invoiceCreation w2;
+//  w2.setModal(true);
+//  w2.exec();
+
+  invoice = new invoiceCreation(this);
+  invoice -> show();
 }
 
 void LoggedInScreen::on_logoutButto_clicked()
