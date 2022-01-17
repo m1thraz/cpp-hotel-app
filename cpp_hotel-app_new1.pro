@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -22,7 +22,8 @@ SOURCES += \
     invoicecreation.cpp \
     loggedinscreen.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    windowmanager.cpp
 
 HEADERS += \
     checkincheckoutscreen.h \
@@ -30,7 +31,8 @@ HEADERS += \
     hoteldatabaseview.h \
     invoicecreation.h \
     loggedinscreen.h \
-    mainwindow.h
+    mainwindow.h \
+    windowmanager.h
 
 FORMS += \
     checkincheckoutscreen.ui \

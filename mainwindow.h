@@ -3,8 +3,10 @@
 
 #include <QMainWindow>
 #include <QtSql>
-#include <QtSqlDatabase>
+//#include <QtSqlDatabase>
 #include <QMessageBox>
+#include "hoteldatabaseview.h"
+#include<QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,10 +22,12 @@ public:
 
 private slots:
     void on_loginButton_clicked();
+    void changeToMainMenu();
 
 private:
     Ui::MainWindow *ui;
-
+    hotelDatabaseView *second;
+    QTimer * timer;
     QSqlDatabase database;
 };
 #endif // MAINWINDOW_H
