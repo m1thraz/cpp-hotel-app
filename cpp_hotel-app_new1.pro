@@ -22,8 +22,7 @@ SOURCES += \
     invoicecreation.cpp \
     loggedinscreen.cpp \
     main.cpp \
-    mainwindow.cpp \
-    windowmanager.cpp
+    mainwindow.cpp
 
 HEADERS += \
     checkincheckoutscreen.h \
@@ -31,8 +30,7 @@ HEADERS += \
     hoteldatabaseview.h \
     invoicecreation.h \
     loggedinscreen.h \
-    mainwindow.h \
-    windowmanager.h
+    mainwindow.h
 
 FORMS += \
     checkincheckoutscreen.ui \
