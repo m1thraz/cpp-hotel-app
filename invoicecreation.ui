@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Hotel Managment Office System  - Rechnung erstellen</string>
   </property>
   <widget class="QWidget" name="header" native="true">
    <property name="geometry">

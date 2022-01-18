@@ -2,9 +2,7 @@
 #include "ui_mainwindow.h"
 
 
-
-
-
+// [Hotel Managment Office System] Fenster
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -29,6 +27,11 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+/*
+ * Beim Klick auf den Button "Einloggen" wird das Fenster [Hotel Managment Office System] versteckt.
+ * Zusätzlich wird das Fenster [Hotel Managment Office System Fenster - Hauptmenü] geöffnet und angezeigt
+ */
 void MainWindow::on_loginButton_clicked()
 {
   this -> hide();

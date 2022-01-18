@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Hotel Managment Office System  - Rezeption</string>
   </property>
   <widget class="QWidget" name="header" native="true">
    <property name="geometry">
@@ -106,7 +106,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>321</width>
-       <height>291</height>
+       <height>309</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkOutLayout">
@@ -249,7 +249,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>321</width>
-       <height>291</height>
+       <height>307</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkInLayout">
