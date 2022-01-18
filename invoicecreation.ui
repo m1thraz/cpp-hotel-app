@@ -88,44 +88,11 @@ background-color: white;
 }
 </string>
    </property>
-   <widget class="QWidget" name="layoutWidget_6">
-    <property name="geometry">
-     <rect>
-      <x>770</x>
-      <y>260</y>
-      <width>91</width>
-      <height>89</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="text">
-        <string>Hauptmenü</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_4">
-       <property name="text">
-        <string>Zurück</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="logoutBtn_2">
-       <property name="text">
-        <string>Logout</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>60</y>
+      <x>110</x>
+      <y>50</y>
       <width>331</width>
       <height>291</height>
      </rect>
@@ -133,7 +100,7 @@ background-color: white;
     <property name="title">
      <string>Rechnung erstellen</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -239,8 +206,8 @@ background-color: white;
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>180</y>
+      <x>470</x>
+      <y>170</y>
       <width>331</width>
       <height>171</height>
      </rect>
@@ -248,7 +215,7 @@ background-color: white;
     <property name="title">
      <string>Rechnung erneut ausstellen</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>

@@ -88,43 +88,10 @@ background-color: white;
 }
 </string>
    </property>
-   <widget class="QWidget" name="layoutWidget_3">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>260</y>
-      <width>91</width>
-      <height>89</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="text">
-        <string>Hauptmenü</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>Zurück</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="logoutBtn">
-       <property name="text">
-        <string>Logout</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
+      <x>90</x>
       <y>20</y>
       <width>701</width>
       <height>331</height>
@@ -136,7 +103,7 @@ background-color: white;
        <property name="title">
         <string>Datenbank abfrage</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget_2">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -240,7 +207,7 @@ background-color: white;
        <property name="title">
         <string>Datenbank modifizieren</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget_4">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -333,7 +300,7 @@ background-color: white;
        <property name="title">
         <string>Neuer Datenbankeintrag</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget_5">
         <property name="geometry">
          <rect>
           <x>10</x>

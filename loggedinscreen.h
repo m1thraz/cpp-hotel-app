@@ -7,6 +7,7 @@
 #include "loggedinscreen.h"
 #include "mainwindow.h"
 #include "invoicecreation.h"
+#include "checkincheckoutscreen.h"
 
 namespace Ui {
 class LoggedInScreen;
@@ -29,12 +30,15 @@ private slots:
 
   void on_logoutButto_clicked();
 
+  void on_checkInBtn_clicked();
+
 private:
     Ui::LoggedInScreen *ui;
 
     invoiceCreation *invoice;
     costumerDatabaseView *costumer;
     hotelDatabaseView *hotel;
+    checkInCheckOutScreen *checkIn;
 
 };
 

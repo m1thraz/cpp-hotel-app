@@ -57,3 +57,9 @@ void LoggedInScreen::on_logoutButto_clicked()
 //  w.show();
 
 }
+
+void LoggedInScreen::on_checkInBtn_clicked()
+{
+    checkIn = new checkInCheckOutScreen(this);
+    checkIn -> show();
+}
