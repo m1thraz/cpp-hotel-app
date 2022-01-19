@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "database.h"
+#include <iostream>
 
 // [Hotel Managment Office System] Fenster
 MainWindow::MainWindow(QWidget *parent)
@@ -34,15 +35,18 @@ MainWindow::~MainWindow()
  */
 void MainWindow::on_loginButton_clicked()
 {
-  this -> hide();
+    Database db;
+    // QLineEdit Textfelder werden eingelesen
+    int id = std::stoi(ui->lineEditID->text().toStdString());
+    std::string password = ui->lineEditPassword->text().toStdString();
 
-  LoggedInScreen w2;
-  w2.setModal(true);
-  w2.exec();
-
-
-
-
+    // Hauptmenü wird nur geöffnet, wenn Logindaten mit Daten aus der Datenbank übereinstimmen
+    if(db.loginQuery(id, password)) {
+        this -> hide();
+        LoggedInScreen w2;
+        w2.setModal(true);
+        w2.exec();
+    }
 }
 
 void MainWindow::changeToMainMenu(){
@@ -101,3 +105,4 @@ void MainWindow::changeToMainMenu(){
 //        QMessageBox::information(this, "Database Failed", "Database Connection Failed");
 //  }
 //}
+

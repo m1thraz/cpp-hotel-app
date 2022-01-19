@@ -24,6 +24,10 @@ private slots:
     void on_loginButton_clicked();
     void changeToMainMenu();
 
+    void on_lineEditID_returnPressed();
+
+    void on_lineEditID_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
 

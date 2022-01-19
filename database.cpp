@@ -29,7 +29,7 @@ void Database::closeDatabaseConnection() {
 }
 
 // Überprüft, ob die Login-Daten stimmen
-void Database::loginQuery(const int id, const std::string passwort) {
+bool Database::loginQuery(const int id, const std::string passwort) {
     QSqlQuery query;
     query.prepare("SELECT Passwort FROM Mitarbeiter WHERE MitarbeiterID = :mitarbeiter_id;");
     query.bindValue(":mitarbeiter_id", id);
@@ -38,10 +38,16 @@ void Database::loginQuery(const int id, const std::string passwort) {
     while(query.next()) {
         if(query.value("Passwort").toString().toStdString() == passwort) {
 
-            //HIER NUN EIN NEUES WELCOME FENSTER STATTDESSEN ÖFFNEN!
+            //HIER NUN STATTDESSEN EIN NEUES WELCOME FENSTER ÖFFNEN!
             std::cout << "Welcome" << std::endl;
+            return true;
+        }else {
+            std::cout << "Falsches Passwort" << std::endl;
+            return false;
         }
     }
+     std::cout << "ID existiert nicht" << std::endl;
+    return false;
 }
 
 //Erstellt die Datenbanktabellen

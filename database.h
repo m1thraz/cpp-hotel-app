@@ -8,7 +8,7 @@ public:
     Database();
     void connectToDatabase();
     void closeDatabaseConnection();
-    void loginQuery(const int id, const std::string passwort);
+    bool loginQuery(const int id, const std::string passwort);
 
     void createDatabaseTables();
     void createDatabaseEntries();
