@@ -109,7 +109,7 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>211</width>
-          <height>313</height>
+          <height>291</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -162,21 +162,7 @@ background-color: white;
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_6">
-               <item>
-                <widget class="QLabel" name="label_5">
-                 <property name="text">
-                  <string>Wohnort</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="lineEdit_5"/>
-               </item>
-              </layout>
-             </item>
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_5">
                <item>
@@ -191,14 +177,68 @@ background-color: white;
                </item>
               </layout>
              </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <item>
+                <widget class="QLabel" name="label_22">
+                 <property name="text">
+                  <string>Hausnummer</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_22"/>
+               </item>
+              </layout>
+             </item>
             </layout>
            </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_10">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QLabel" name="label_5">
+                   <property name="text">
+                    <string>Wohnort</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_5"/>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_29">
+                 <item>
+                  <widget class="QLabel" name="label_23">
+                   <property name="text">
+                    <string>Postleitzahl</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_23"/>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_7">
              <item>
               <widget class="QLabel" name="label_6">
                <property name="text">
-                <string>Telefonnummer</string>
+                <string>Telefonnr.</string>
                </property>
               </widget>
              </item>
@@ -212,7 +252,7 @@ background-color: white;
              <item>
               <widget class="QLabel" name="label_7">
                <property name="text">
-                <string>E-Mail Adresse</string>
+                <string>E-Mail</string>
                </property>
               </widget>
              </item>
@@ -245,122 +285,162 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>211</width>
-          <height>313</height>
+          <height>291</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_11">
+        <layout class="QVBoxLayout" name="verticalLayout_32">
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_12">
+          <layout class="QVBoxLayout" name="verticalLayout_33">
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_13">
+            <layout class="QVBoxLayout" name="verticalLayout_34">
              <item>
-              <widget class="QLabel" name="label_8">
+              <widget class="QLabel" name="label_26">
                <property name="text">
                 <string>KundenID</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_8"/>
+              <widget class="QLineEdit" name="lineEdit_26"/>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <layout class="QHBoxLayout" name="horizontalLayout_14">
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_14">
+              <layout class="QVBoxLayout" name="verticalLayout_35">
                <item>
-                <widget class="QLabel" name="label_9">
+                <widget class="QLabel" name="label_27">
                  <property name="text">
                   <string>Nachname</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_9"/>
+                <widget class="QLineEdit" name="lineEdit_27"/>
                </item>
               </layout>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_15">
+              <layout class="QVBoxLayout" name="verticalLayout_36">
                <item>
-                <widget class="QLabel" name="label_10">
+                <widget class="QLabel" name="label_28">
                  <property name="text">
                   <string>Vorname</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_10"/>
+                <widget class="QLineEdit" name="lineEdit_28"/>
                </item>
               </layout>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <layout class="QHBoxLayout" name="horizontalLayout_15">
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_16">
+              <layout class="QVBoxLayout" name="verticalLayout_37">
                <item>
-                <widget class="QLabel" name="label_11">
-                 <property name="text">
-                  <string>Wohnort</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="lineEdit_11"/>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_17">
-               <item>
-                <widget class="QLabel" name="label_12">
+                <widget class="QLabel" name="label_29">
                  <property name="text">
                   <string>Straße</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_12"/>
+                <widget class="QLineEdit" name="lineEdit_29"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_38">
+               <item>
+                <widget class="QLabel" name="label_30">
+                 <property name="text">
+                  <string>Hausnummer</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_30"/>
                </item>
               </layout>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_18">
+            <layout class="QHBoxLayout" name="horizontalLayout_16">
              <item>
-              <widget class="QLabel" name="label_13">
-               <property name="text">
-                <string>Telefonnummer</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_13"/>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_19">
-             <item>
-              <widget class="QLabel" name="label_14">
-               <property name="text">
-                <string>E-Mail Adresse</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_14"/>
+              <layout class="QHBoxLayout" name="horizontalLayout_17">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_39">
+                 <item>
+                  <widget class="QLabel" name="label_31">
+                   <property name="text">
+                    <string>Wohnort</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_31"/>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_40">
+                 <item>
+                  <widget class="QLabel" name="label_32">
+                   <property name="text">
+                    <string>Postleitzahl</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_32"/>
+                 </item>
+                </layout>
+               </item>
+              </layout>
              </item>
             </layout>
            </item>
           </layout>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_4">
+          <layout class="QHBoxLayout" name="horizontalLayout_18">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_41">
+             <item>
+              <widget class="QLabel" name="label_33">
+               <property name="text">
+                <string>Telefonnr.</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_33"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_42">
+             <item>
+              <widget class="QLabel" name="label_34">
+               <property name="text">
+                <string>E-Mail</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_34"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_6">
            <property name="text">
             <string>Aktualisieren</string>
            </property>
@@ -375,13 +455,13 @@ background-color: white;
        <property name="title">
         <string>Neuer Datenbankeintrag</string>
        </property>
-       <widget class="QWidget" name="layoutWidget_4">
+       <widget class="QWidget" name="layoutWidget_3">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>30</y>
           <width>211</width>
-          <height>313</height>
+          <height>291</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_20">
@@ -434,13 +514,13 @@ background-color: white;
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <layout class="QHBoxLayout" name="horizontalLayout_19">
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_25">
                <item>
                 <widget class="QLabel" name="label_18">
                  <property name="text">
-                  <string>Wohnort</string>
+                  <string>Straße</string>
                  </property>
                 </widget>
                </item>
@@ -452,25 +532,65 @@ background-color: white;
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_26">
                <item>
-                <widget class="QLabel" name="label_19">
+                <widget class="QLabel" name="label_35">
                  <property name="text">
-                  <string>Straße</string>
+                  <string>Hausnummer</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_19"/>
+                <widget class="QLineEdit" name="lineEdit_35"/>
                </item>
               </layout>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_27">
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_20">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_27">
+                 <item>
+                  <widget class="QLabel" name="label_19">
+                   <property name="text">
+                    <string>Wohnort</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_19"/>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_43">
+                 <item>
+                  <widget class="QLabel" name="label_36">
+                   <property name="text">
+                    <string>Postleitzahl</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_36"/>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_21">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_28">
              <item>
               <widget class="QLabel" name="label_20">
                <property name="text">
-                <string>Telefonnummer</string>
+                <string>Telefonnr.</string>
                </property>
               </widget>
              </item>
@@ -480,11 +600,11 @@ background-color: white;
             </layout>
            </item>
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_28">
+            <layout class="QVBoxLayout" name="verticalLayout_44">
              <item>
               <widget class="QLabel" name="label_21">
                <property name="text">
-                <string>E-Mail Adresse</string>
+                <string>E-Mail</string>
                </property>
               </widget>
              </item>

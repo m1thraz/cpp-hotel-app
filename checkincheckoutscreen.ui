@@ -106,7 +106,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>321</width>
-       <height>309</height>
+       <height>291</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkOutLayout">
@@ -249,7 +249,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>321</width>
-       <height>307</height>
+       <height>291</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkInLayout">
