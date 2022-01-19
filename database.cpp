@@ -38,14 +38,16 @@ bool Database::loginQuery(const int id, const std::string passwort) {
     while(query.next()) {
         if(query.value("Passwort").toString().toStdString() == passwort) {
 
-            //HIER NUN STATTDESSEN EIN NEUES WELCOME FENSTER ÖFFNEN!
+            //HIER NUN STATTDESSEN EIN NEUES WELCOME FENSTER ÖFFNEN oder weglassen, da direkt hauptmenü aufgeht!
             std::cout << "Welcome" << std::endl;
             return true;
         }else {
+            //HIER EIN EXTRA FENSTER MIT FALSCHES PASSWORT TEXT - oK
             std::cout << "Falsches Passwort" << std::endl;
             return false;
         }
     }
+    //HIER EIN EXTRA FENSTER MIT ID EXISTIERT NICHT TEXT - OK
      std::cout << "ID existiert nicht" << std::endl;
     return false;
 }
@@ -57,7 +59,15 @@ void Database::createDatabaseTables() {
                     "Vorname VARCHAR(250) NOT NULL,"
                     "Nachname VARCHAR(250) NOT NULL,"
                     "Passwort VARCHAR(250) NOT NULL,"
-                    "PRIMARY KEY(MitarbeiterID));";
+                    "PRIMARY KEY(MitarbeiterID));"
+
+                    "CREATE TABLE Zimmer ("
+                    "ZimmerID INT NOT NULL AUTOINCREMENT,"
+                    "Zimmertyp VARCHAR(250) NOT NULL,"
+                    "Zimmerkosten INT NOT NULL"
+                    "PRIMARY KEY(ZimmerID));"
+
+                    ;
     QSqlQuery exequery;
     bool creationStatus = exequery.exec(query);
     // !Auch false wenn es die Tabellen bereits gibt! Dann bitte neuen Build, wenn nötig
@@ -68,7 +78,10 @@ void Database::createDatabaseTables() {
 
 void Database::createDatabaseEntries() {
     QString query = "INSERT INTO Mitarbeiter (MitarbeiterID, Vorname, Nachname, Passwort)"
-                    "VALUES (12345, 'Sandra', 'Müller', 'myPassword'), (67890, 'David', 'Tischler', 'asd');";
+                    "VALUES (12345, 'Sandra', 'Müller', 'myPassword'), (67890, 'David', 'Tischler', 'asd');"
+
+                    "INSERT INTO Zimmer (Zimmertyp, Zimmerkosten)"
+                    "VALUES ('Einzelzimmer', 25), ('Doppelzimmer, 30);";
     QSqlQuery exequery;
     bool creationStatus = exequery.exec(query);
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
