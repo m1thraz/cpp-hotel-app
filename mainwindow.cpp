@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "database.h"
 #include <iostream>
+#include "infologmessage.h"
+#include <QRegularExpressionMatch>
 
 // [Hotel Managment Office System] Fenster
 MainWindow::MainWindow(QWidget *parent)
@@ -37,15 +39,24 @@ void MainWindow::on_loginButton_clicked()
 {
     Database db;
     // QLineEdit Textfelder werden eingelesen
-    int id = std::stoi(ui->lineEditID->text().toStdString());
+    QString tempid = ui->lineEditID->text();
     std::string password = ui->lineEditPassword->text().toStdString();
-
-    // Hauptmenü wird nur geöffnet, wenn Logindaten mit Daten aus der Datenbank übereinstimmen
-    if(db.loginQuery(id, password)) {
-        this -> hide();
-        LoggedInScreen w2;
-        w2.setModal(true);
-        w2.exec();
+    // Überprüfung der Mitarbeiter-ID
+    QRegularExpression re("[0-9]+");
+    QRegularExpressionMatch match = re.match(tempid);
+    if(!match.hasMatch()) {
+        infologmessage error;
+        error.setModal(true);
+        error.exec();
+    } else {
+        int id = std::stoi(tempid.toStdString());
+        // Hauptmenü wird nur geöffnet, wenn Logindaten mit Daten aus der Datenbank übereinstimmen
+        if(db.loginQuery(id, password)) {
+            this -> hide();
+            LoggedInScreen w2;
+            w2.setModal(true);
+            w2.exec();
+        }
     }
 }
 
