@@ -20,6 +20,7 @@ SOURCES += \
     costumerdatabaseview.cpp \
     database.cpp \
     hoteldatabaseview.cpp \
+    infologmessage.cpp \
     invoicecreation.cpp \
     loggedinscreen.cpp \
     main.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     costumerdatabaseview.h \
     database.h \
     hoteldatabaseview.h \
+    infologmessage.h \
     invoicecreation.h \
     loggedinscreen.h \
     mainwindow.h
@@ -38,6 +40,7 @@ FORMS += \
     checkincheckoutscreen.ui \
     costumerdatabaseview.ui \
     hoteldatabaseview.ui \
+    infologmessage.ui \
     invoicecreation.ui \
     loggedinscreen.ui \
     mainwindow.ui

@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QSqlQuery>
 #include <iostream>
+#include "infologmessage.h"
 
 Database::Database() {
 }
@@ -37,18 +38,17 @@ bool Database::loginQuery(const int id, const std::string passwort) {
     qDebug() << "Abfrage erfolgreich: " << queryStatus;
     while(query.next()) {
         if(query.value("Passwort").toString().toStdString() == passwort) {
-
-            //HIER NUN STATTDESSEN EIN NEUES WELCOME FENSTER ÖFFNEN oder weglassen, da direkt hauptmenü aufgeht!
-            std::cout << "Welcome" << std::endl;
             return true;
         }else {
-            //HIER EIN EXTRA FENSTER MIT FALSCHES PASSWORT TEXT - oK
-            std::cout << "Falsches Passwort" << std::endl;
+            infologmessage error;
+            error.setModal(true);
+            error.exec();
             return false;
         }
     }
-    //HIER EIN EXTRA FENSTER MIT ID EXISTIERT NICHT TEXT - OK
-     std::cout << "ID existiert nicht" << std::endl;
+    infologmessage error;
+    error.setModal(true);
+    error.exec();
     return false;
 }
 
