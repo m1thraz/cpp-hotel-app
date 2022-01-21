@@ -129,7 +129,7 @@ background-color: white;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_29"/>
+                  <widget class="QLineEdit" name="lineEditAbfrZimmernummer"/>
                  </item>
                 </layout>
                </item>
@@ -143,7 +143,7 @@ background-color: white;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_30"/>
+                  <widget class="QLineEdit" name="lineEditAbfrPreis"/>
                  </item>
                 </layout>
                </item>
@@ -165,28 +165,28 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QCheckBox" name="checkBox">
+              <widget class="QCheckBox" name="checkBoxAbfrDoppelbett">
                <property name="text">
                 <string>Doppelbett</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QCheckBox" name="checkBox_15">
+              <widget class="QCheckBox" name="checkBoxAbfrEinzelbett">
                <property name="text">
                 <string>Einzelbett</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QCheckBox" name="checkBox_2">
+              <widget class="QCheckBox" name="checkBoxAbfrAussicht">
                <property name="text">
                 <string>gute Aussicht</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QCheckBox" name="checkBox_3">
+              <widget class="QCheckBox" name="checkBoxAbfrFahrstuhl">
                <property name="text">
                 <string>in der Nähe vom Fahrstuhl</string>
                </property>
@@ -211,7 +211,7 @@ background-color: white;
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="suchenButton">
            <property name="text">
             <string>Suchen</string>
            </property>
@@ -250,7 +250,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_27"/>
+                <widget class="QLineEdit" name="lineEditModZimmerID"/>
                </item>
               </layout>
              </item>
@@ -264,7 +264,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_28"/>
+                <widget class="QLineEdit" name="lineEditModPreis"/>
                </item>
               </layout>
              </item>
@@ -289,7 +289,7 @@ background-color: white;
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_5"/>
+            <widget class="QLineEdit" name="lineEditModZimmernummer"/>
            </item>
           </layout>
          </item>
@@ -303,35 +303,35 @@ background-color: white;
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_8">
+            <widget class="QCheckBox" name="checkBoxModDoppelbett">
              <property name="text">
               <string>Doppelbett</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_13">
+            <widget class="QCheckBox" name="checkBoxModEinzelbett">
              <property name="text">
               <string>Einzelbett</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_5">
+            <widget class="QCheckBox" name="checkBoxModAussicht">
              <property name="text">
               <string>gute Aussicht</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_7">
+            <widget class="QCheckBox" name="checkBoxModFahrstuhl">
              <property name="text">
               <string>in der Nähe vom Fahrstuhl</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_6">
+            <widget class="QCheckBox" name="checkBoxModSofa">
              <property name="text">
               <string>Schlafsofa</string>
              </property>
@@ -340,7 +340,7 @@ background-color: white;
           </layout>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="aktualisierenButton">
            <property name="text">
             <string>Aktualisieren</string>
            </property>
@@ -377,7 +377,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_6"/>
+              <widget class="QLineEdit" name="lineEdit_NeuZimmernummer"/>
              </item>
             </layout>
            </item>
@@ -393,35 +393,35 @@ background-color: white;
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_12">
+            <widget class="QCheckBox" name="checkBoxNeuDoppelbett">
              <property name="text">
               <string>Doppelbett</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_14">
+            <widget class="QCheckBox" name="checkBoxNeuEinzelbett">
              <property name="text">
               <string>Einzelbett</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_9">
+            <widget class="QCheckBox" name="checkBoxNeuAussicht">
              <property name="text">
               <string>gute Aussicht</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_10">
+            <widget class="QCheckBox" name="checkBoxNeuFahrstuhl">
              <property name="text">
               <string>in der Nähe vom Fahrstuhl</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_11">
+            <widget class="QCheckBox" name="checkBoxNeuSofa">
              <property name="text">
               <string>Schlafsofa</string>
              </property>
@@ -430,7 +430,7 @@ background-color: white;
           </layout>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_5">
+          <widget class="QPushButton" name="eintragenButton">
            <property name="text">
             <string>Eintragen</string>
            </property>

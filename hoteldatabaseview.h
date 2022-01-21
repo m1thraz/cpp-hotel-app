@@ -15,6 +15,10 @@ public:
     explicit hotelDatabaseView(QWidget *parent = nullptr);
     ~hotelDatabaseView();
 
+private slots:
+
+    void on_aktualisierenButton_clicked();
+
 private:
     Ui::hotelDatabaseView *ui;
 };
