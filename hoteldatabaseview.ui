@@ -377,7 +377,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_NeuZimmernummer"/>
+              <widget class="QLineEdit" name="lineEditNeuZimmernummer"/>
              </item>
             </layout>
            </item>

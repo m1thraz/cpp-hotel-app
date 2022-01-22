@@ -19,6 +19,8 @@ private slots:
 
     void on_aktualisierenButton_clicked();
 
+    void on_eintragenButton_clicked();
+
 private:
     Ui::hotelDatabaseView *ui;
 };
