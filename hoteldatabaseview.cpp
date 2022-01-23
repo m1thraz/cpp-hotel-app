@@ -28,7 +28,7 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
     // Zimmernummer angegeben
     if(!tempZimmernummer.isEmpty()) {
 
-        QRegularExpression re("[0-9]+$");
+        QRegularExpression re("^[0-9]+$");
         QRegularExpressionMatch match = re.match(tempZimmernummer);
         if(!match.hasMatch()) {
             //GUI ERROR MESSAGE - Ungültiges Zimmernummerformat. nur zahlen
@@ -120,7 +120,7 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
 
     // ZimmerID und Preis angegeben
     }else if(!tempZimmerID.isEmpty() && !tempPreis.isEmpty()) {
-        QRegularExpression re("[0-9]+$");
+        QRegularExpression re("^[0-9]+$");
         QRegularExpressionMatch matchZimmerID = re.match(tempZimmerID);
         QRegularExpressionMatch matchPreis = re.match(tempPreis);
 
@@ -167,7 +167,7 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
     // Zimmernummer angegeben
     if(!tempZimmernummer.isEmpty()) {
 
-        QRegularExpression re("[0-9]+$");
+        QRegularExpression re("^[0-9]+$");
         QRegularExpressionMatch match = re.match(tempZimmernummer);
         if(!match.hasMatch()) {
             //GUI ERROR MESSAGE - Ungültiges Zimmernummerformat. nur zahlen
@@ -346,7 +346,7 @@ void hotelDatabaseView::on_suchenButton_clicked() {
     // Zimmernummer angegeben
     if(!tempZimmernummer.isEmpty()) {
 
-        QRegularExpression re("[0-9]+$");
+        QRegularExpression re("^[0-9]+$");
         QRegularExpressionMatch match = re.match(tempZimmernummer);
         if(!match.hasMatch()) {
             //GUI ERROR MESSAGE - Ungültiges Zimmernummerformat. nur zahlen

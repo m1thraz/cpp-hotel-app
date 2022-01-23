@@ -43,7 +43,7 @@ void MainWindow::on_loginButton_clicked()
     QString tempid = ui->lineEditID->text();
     std::string password = ui->lineEditPassword->text().toStdString();
     // Überprüfung der Mitarbeiter-ID
-    QRegularExpression re("[0-9]+");
+    QRegularExpression re("^[0-9]+$");
     QRegularExpressionMatch match = re.match(tempid);
     if(!match.hasMatch()) {
         qDebug() << "Das eingegebene ID-Format ist fehlerhaft";
