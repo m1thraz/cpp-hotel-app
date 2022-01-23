@@ -16,6 +16,20 @@ public:
     ~errormessage();
     void changeTextIDWrong();
     void changeTextLoginError();
+    void changeTextZimmernummerWrong();
+    void changeTextZimmernummerExists();
+    void changeTextZimmerIDWrong();
+    void changeTextPreisWrong();
+    void changeTextMissingModifications();
+    void changeTextUpdateError();
+    void changeTextZimmernummerError();
+    void changeTextZimmertypError();
+    void changeTextZimmertypNotSelected();
+    void changeTextPreisError();
+    void changeTextZimmerIDError();
+    void changeTextMissingInputText();
+    void changeTextDataCreationError();
+    void changeTextDBRequestError();
 
 private slots:
     void on_closeWindowButton_clicked();

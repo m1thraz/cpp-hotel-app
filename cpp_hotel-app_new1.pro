@@ -21,6 +21,7 @@ SOURCES += \
     database.cpp \
     errormessage.cpp \
     hoteldatabaseview.cpp \
+    infomessage.cpp \
     invoicecreation.cpp \
     loggedinscreen.cpp \
     main.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     database.h \
     errormessage.h \
     hoteldatabaseview.h \
+    infomessage.h \
     invoicecreation.h \
     loggedinscreen.h \
     mainwindow.h
@@ -41,6 +43,7 @@ FORMS += \
     costumerdatabaseview.ui \
     errormessage.ui \
     hoteldatabaseview.ui \
+    infomessage.ui \
     invoicecreation.ui \
     loggedinscreen.ui \
     mainwindow.ui

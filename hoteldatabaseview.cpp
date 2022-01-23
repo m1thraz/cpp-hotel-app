@@ -5,6 +5,8 @@
 #include <iostream>
 #include <QSqlQuery>
 #include <QDebug>
+#include "errormessage.h"
+#include "infomessage.h"
 
 hotelDatabaseView::hotelDatabaseView(QWidget *parent) :
     QDialog(parent),
@@ -31,8 +33,11 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
         QRegularExpression re("^[0-9]+$");
         QRegularExpressionMatch match = re.match(tempZimmernummer);
         if(!match.hasMatch()) {
-            //GUI ERROR MESSAGE - Ungültiges Zimmernummerformat. nur zahlen
-            std::cout << "Ungültige Zimmernummer" << std::endl;
+            qDebug() << "Ungültiges Zimmernummerformat";
+            errormessage error;
+            error.changeTextZimmernummerWrong();
+            error.setModal(true);
+            error.exec();
 
         }else {
             int zimmernummer = std::stoi(tempZimmernummer.toStdString());
@@ -43,6 +48,7 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
             bool queryStatus = query.exec();
             qDebug() << "Abfrage erfolgreich: " << queryStatus;
             bool exists = false;
+
             //Wird nur ausgeführt, wenn es das Zimmer tatsächlich gibt, sonst Fehlermeldung
             while(query.next()) {
                 exists = true;
@@ -61,6 +67,7 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
                     query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
                     queryStatus = query.exec();
                     qDebug() << "Update Doppelbett erfolgreich: " << queryStatus;
+
                 }else if(einzelbett && !doppelbett) {
                     veraenderung = true;
                     query.prepare("UPDATE Zimmerbestand SET ZimmerID = 1 WHERE Zimmernummer = :zimmerbestand_zimmernummer;");
@@ -69,8 +76,11 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
                     qDebug() << "Update Einzelbett erfolgreich: " << queryStatus;
                 }
                 else if (doppelbett && einzelbett){
-                    veraenderung = true;
-                    std::cout << "Bett kann nicht Einzelbett und Doppelbett gleichzeitig sein!" << std::endl;
+                    qDebug() << "Bett kann nicht Einzelbett und Doppelbett gleichzeitig sein!";
+                    errormessage error;
+                    error.changeTextZimmertypError();
+                    error.setModal(true);
+                    error.exec();
                 }
                 if(aussicht) {
                     veraenderung = true;
@@ -99,12 +109,36 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
                     qDebug() << "Update Sofa erfolgreich: " << queryStatus;
                 }
 
-                if(!veraenderung) {
-                    std::cout << "Bitte geben Sie neben der Zimmernummer die Veränderungswünsche an!" << std::endl;
+                if(!veraenderung && !doppelbett && !einzelbett) {
+                    qDebug() << "Ausstattungswünsche fehlen";
+                    errormessage error;
+                    error.changeTextMissingModifications();
+                    error.setModal(true);
+                    error.exec();
+                }else if(veraenderung && queryStatus) {
+                    infomessage info;
+                    info.changeTextHotelModifiziert();
+                    info.setModal(true);
+                    info.exec();
+                }else if(veraenderung && !queryStatus) {
+                    errormessage error;
+                    error.changeTextUpdateError();
+                    error.setModal(true);
+                    error.exec();
                 }
             }
-            if(!exists) {
-                std::cout << "Zimmer existiert nicht!" << std::endl;
+            if(!queryStatus) {
+                errormessage error;
+                error.changeTextDBRequestError();
+                error.setModal(true);
+                error.exec();
+
+            }else if(queryStatus && !exists) {
+                qDebug() << "Zimmer existiert nicht";
+                errormessage error;
+                error.changeTextZimmernummerError();
+                error.setModal(true);
+                error.exec();
             }
         }
     }
@@ -112,11 +146,11 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
     // Entweder nur ZimmerID oder Preis angegeben - Führt zu Error
     if((tempZimmerID.isEmpty() && !tempPreis.isEmpty()) ||
              tempPreis.isEmpty() && !tempZimmerID.isEmpty()) {
-        /*
-         * GUI ERROR MESSAGE - Für das Anpassen eines Zimmerpreises, muss eine ZimmerID eingegeben werden.
-         * Das Anpassen einer ZimmerID ist nicht möglich!
-         */
-        std::cout << "test" << std::endl;
+        qDebug() << "ZimmerID oder Preis fehlt";
+        errormessage error;
+        error.changeTextPreisError();
+        error.setModal(true);
+        error.exec();
 
     // ZimmerID und Preis angegeben
     }else if(!tempZimmerID.isEmpty() && !tempPreis.isEmpty()) {
@@ -124,11 +158,20 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
         QRegularExpressionMatch matchZimmerID = re.match(tempZimmerID);
         QRegularExpressionMatch matchPreis = re.match(tempPreis);
 
-        if(!matchZimmerID.hasMatch() || !matchPreis.hasMatch()) {
-            //GUI ERROR MESSAGE - Ungültiges Format. nur zahlen
-            std::cout << "Ungültiges Format" << std::endl;
+        if(!matchPreis.hasMatch()) {
+            qDebug() << "Ungültiges Preisformat";
+            errormessage error;
+            error.changeTextPreisWrong();
+            error.setModal(true);
+            error.exec();
+        }else if(!matchZimmerID.hasMatch()) {
+            qDebug() << "Ungültiges ZimmerID-Format";
+            errormessage error;
+            error.changeTextZimmerIDWrong();
+            error.setModal(true);
+            error.exec();
+
         } else {
-            std::cout << "Preisanpassung" << std::endl;
             int zimmerID = std::stoi(tempZimmerID.toStdString());
             int preis = std::stoi(tempPreis.toStdString());
             //Überprüft, ob es die ZimmerID bereits gibt
@@ -147,15 +190,39 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
                 query.bindValue(":zimmer_zimmerID", zimmerID);
                 queryStatus = query.exec();
                 qDebug() << "Update Preis erfolgreich: " << queryStatus;
+                if(queryStatus) {
+                    infomessage info;
+                    info.changeTextHotelModifiziert();
+                    info.setModal(true);
+                    info.exec();
+                }else {
+                    errormessage error;
+                    error.changeTextUpdateError();
+                    error.setModal(true);
+                    error.exec();
+                }
             }
-            if(!exists) {
-                std::cout << "ZimmerID existiert nicht!" << std::endl;
+            if(!queryStatus) {
+                errormessage error;
+                error.changeTextDBRequestError();
+                error.setModal(true);
+                error.exec();
+            }else if(queryStatus && !exists) {
+                qDebug() << "ZimmerID existiert nicht!";
+                errormessage error;
+                error.changeTextZimmerIDError();
+                error.setModal(true);
+                error.exec();
             }
         }
     }
-    // Alle Eingabefelder (nicht Checkbox) sind leer
-    else {
-        std::cout << "nix ausgewählt" << std::endl;
+    // Alle Eingabefelder (nicht Checkbox) sind leer. Zimmernummer muss nochmal überprüft werden
+    else if(tempZimmernummer.isEmpty()){
+        qDebug() << "Textfelder sind leer";
+        errormessage error;
+        error.changeTextMissingInputText();
+        error.setModal(true);
+        error.exec();
     }
 }
 
@@ -170,8 +237,11 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
         QRegularExpression re("^[0-9]+$");
         QRegularExpressionMatch match = re.match(tempZimmernummer);
         if(!match.hasMatch()) {
-            //GUI ERROR MESSAGE - Ungültiges Zimmernummerformat. nur zahlen
-            std::cout << "Ungültige Zimmernummer" << std::endl;
+            qDebug() << "Ungültiges Zimmernummerformat";
+            errormessage error;
+            error.changeTextZimmernummerWrong();
+            error.setModal(true);
+            error.exec();
 
         }else {
             int zimmernummer = std::stoi(tempZimmernummer.toStdString());
@@ -182,12 +252,22 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
             bool queryStatus = query.exec();
             qDebug() << "Abfrage erfolgreich: " << queryStatus;
             bool exists = false;
+
             //Wird nur ausgeführt, wenn es das Zimmer tatsächlich gibt, sonst Fehlermeldung
             while(query.next()) {
-                 std::cout << "Zimmer existiert bereits!" << std::endl;
+                 qDebug() << "Zimmer existiert bereits!";
+                 errormessage error;
+                 error.changeTextZimmernummerExists();
+                 error.setModal(true);
+                 error.exec();
                  exists = true;
             }
-            if(!exists) {
+            if(!queryStatus) {
+                errormessage error;
+                error.changeTextDBRequestError();
+                error.setModal(true);
+                error.exec();
+            }else if(queryStatus && !exists) {
                 bool doppelbett = ui->checkBoxNeuDoppelbett->isChecked();
                 bool einzelbett = ui->checkBoxNeuEinzelbett->isChecked();
                 bool aussicht = ui->checkBoxNeuAussicht->isChecked();
@@ -198,10 +278,18 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
 
                 if (doppelbett && einzelbett){
                     ausstattung = true;
-                    std::cout << "Bett kann nicht Einzelbett und Doppelbett gleichzeitig sein!" << std::endl;
+                    qDebug() << "Bett kann nicht Einzelbett und Doppelbett gleichzeitig sein!";
+                    errormessage error;
+                    error.changeTextZimmertypError();
+                    error.setModal(true);
+                    error.exec();
                 }else if(!doppelbett && !einzelbett) {
                     ausstattung = true;
-                    std::cout << "Bett muss Einzelbett oder Doppelbett sein!" << std::endl;
+                    qDebug() << "Bett muss Einzelbett oder Doppelbett sein!";
+                    errormessage error;
+                    error.changeTextZimmertypNotSelected();
+                    error.setModal(true);
+                    error.exec();
                 }else {
                     if(doppelbett && !einzelbett) {
                         // Erstellen eines neuen Zimmers
@@ -211,14 +299,26 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
                         query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
                         queryStatus = query.exec();
                         qDebug() << "Erstellen eines Zimmers mit Doppelbett erfolgreich: " << queryStatus;
-
-                        //Abfrage der neuen BestandID
-                        query.prepare("SELECT BestandID FROM Zimmerbestand WHERE Zimmernummer = :zimmerbestand_zimmernummer;");
-                        query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
-                        bool queryStatus = query.exec();
-                        qDebug() << "Abfrage erfolgreich: " << queryStatus;
-                        while(query.next()) {
-                            bestandID = std::stoi(query.value("BestandID").toString().toStdString());
+                        if(!queryStatus) {
+                            errormessage error;
+                            error.changeTextDataCreationError();
+                            error.setModal(true);
+                            error.exec();
+                        }else {
+                            //Abfrage der neuen BestandID
+                            query.prepare("SELECT BestandID FROM Zimmerbestand WHERE Zimmernummer = :zimmerbestand_zimmernummer;");
+                            query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
+                            bool queryStatus = query.exec();
+                            qDebug() << "Abfrage erfolgreich: " << queryStatus;
+                            while(query.next()) {
+                                bestandID = std::stoi(query.value("BestandID").toString().toStdString());
+                            }
+                            if(!queryStatus) {
+                                errormessage error;
+                                error.changeTextDBRequestError();
+                                error.setModal(true);
+                                error.exec();
+                            }
                         }
                     }else if(einzelbett && !doppelbett) {
                         // Erstellen eines neuen Zimmers
@@ -228,14 +328,26 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
                         query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
                         queryStatus = query.exec();
                         qDebug() << "Erstellen eines Zimmers mit Einzelbett erfolgreich: " << queryStatus;
-
-                        //Abfrage der neuen BestandID
-                        query.prepare("SELECT BestandID FROM Zimmerbestand WHERE Zimmernummer = :zimmerbestand_zimmernummer;");
-                        query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
-                        bool queryStatus = query.exec();
-                        qDebug() << "Abfrage erfolgreich: " << queryStatus;
-                        while(query.next()) {
-                            bestandID = std::stoi(query.value("BestandID").toString().toStdString());
+                        if(!queryStatus) {
+                            errormessage error;
+                            error.changeTextDataCreationError();
+                            error.setModal(true);
+                            error.exec();
+                        }else {
+                            //Abfrage der neuen BestandID
+                            query.prepare("SELECT BestandID FROM Zimmerbestand WHERE Zimmernummer = :zimmerbestand_zimmernummer;");
+                            query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
+                            bool queryStatus = query.exec();
+                            qDebug() << "Abfrage erfolgreich: " << queryStatus;
+                            while(query.next()) {
+                                bestandID = std::stoi(query.value("BestandID").toString().toStdString());
+                            }
+                            if(!queryStatus) {
+                                errormessage error;
+                                error.changeTextDBRequestError();
+                                error.setModal(true);
+                                error.exec();
+                            }
                         }
                     }
 
@@ -267,14 +379,32 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
                     }
 
                     if(!ausstattung) {
-                        std::cout << "Bitte geben Sie neben der Zimmernummer die Ausstattungsswünsche an!" << std::endl;
+                        qDebug() << "Ausstattungswünsche fehlen";
+                        errormessage error;
+                        error.changeTextMissingModifications();
+                        error.setModal(true);
+                        error.exec();
+                    }else if(ausstattung && queryStatus) {
+                        infomessage info;
+                        info.changeTextHotelNeu();
+                        info.setModal(true);
+                        info.exec();
+                    }else if(ausstattung && !queryStatus) {
+                        errormessage error;
+                        error.changeTextDataCreationError();
+                        error.setModal(true);
+                        error.exec();
                     }
                 }
             }
         }
     // Eingabefeld für Zimmernummer (nicht Checkbox) ist leer
     }else {
-        std::cout << "Keine Zimmernummer angegeben" << std::endl;
+        qDebug() << "Textfeld ist leer";
+        errormessage error;
+        error.changeTextMissingInputText();
+        error.setModal(true);
+        error.exec();
     }
 }
 
@@ -349,8 +479,11 @@ void hotelDatabaseView::on_suchenButton_clicked() {
         QRegularExpression re("^[0-9]+$");
         QRegularExpressionMatch match = re.match(tempZimmernummer);
         if(!match.hasMatch()) {
-            //GUI ERROR MESSAGE - Ungültiges Zimmernummerformat. nur zahlen
-            std::cout << "Ungültige Zimmernummer" << std::endl;
+            qDebug() << "Ungültiges Zimmernummerformat";
+            errormessage error;
+            error.changeTextZimmernummerWrong();
+            error.setModal(true);
+            error.exec();
 
         }else {
             int zimmernummer = std::stoi(tempZimmernummer.toStdString());
@@ -365,8 +498,19 @@ void hotelDatabaseView::on_suchenButton_clicked() {
             while(query.next()) {
                 exists = true;
             }
-            if(!exists) {
-                std::cout << "Zimmer existiert nicht!" << std::endl;
+            if(!queryStatus) {
+                errormessage error;
+                error.changeTextDBRequestError();
+                error.setModal(true);
+                error.exec();
+            }
+            if(queryStatus && !exists) {
+                qDebug() << "Ausgewähltes Zimmer existiert nicht";
+                errormessage error;
+                error.changeTextZimmernummerError();
+                error.setModal(true);
+                error.exec();
+
             }else if(!ausstattung) {
                 query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, bu.Status, zu.Zimmerzusatz "
                               "FROM Zimmerbestand zi "
@@ -398,6 +542,14 @@ void hotelDatabaseView::on_suchenButton_clicked() {
                 query.bindValue(":sql", sql);
                 queryStatus = query.exec();
                 qDebug() << "Abfrage mit Zimmer und Ausstattung erfolgreich: " << queryStatus;
+            }
+            if(!queryStatus) {
+                errormessage error;
+                error.changeTextDBRequestError();
+                error.setModal(true);
+                error.exec();
+            }else{
+                //HIER EIN NEUES GUI FENSTER MIT DER ANZUZEIGENDEN ABFRAGE ÖFFNEN!!!
             }
         }
     }else {
@@ -436,7 +588,14 @@ void hotelDatabaseView::on_suchenButton_clicked() {
                 qDebug() << "Abfrage ohne Zimmertypen mit Ausstattung erfolgreich: " << queryStatus;
             }
         }
-
+        if(!queryStatus) {
+            errormessage error;
+            error.changeTextDBRequestError();
+            error.setModal(true);
+            error.exec();
+        }else{
+            //HIER EIN NEUES GUI FENSTER MIT DER ANZUZEIGENDEN ABFRAGE ÖFFNEN!!!
+        }
     }
 }
 
