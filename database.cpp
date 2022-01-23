@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <QSqlQuery>
 #include <iostream>
-#include "infologmessage.h"
+#include "errormessage.h"
 
 Database::Database() {
 }
@@ -35,7 +35,7 @@ bool Database::loginQuery(const int id, const std::string passwort) {
     query.prepare("SELECT Passwort FROM Mitarbeiter WHERE MitarbeiterID = :mitarbeiter_id;");
     query.bindValue(":mitarbeiter_id", id);
     bool queryStatus = query.exec();
-    qDebug() << "Abfrage erfolgreich: " << queryStatus;
+    qDebug() << "Abfrage des Passworts erfolgreich: " << queryStatus;
     // Die angegebene ID existiert. Sonst gibt es kein query
     while(query.next()) {
         // Passwörter stimmen überein
@@ -43,18 +43,20 @@ bool Database::loginQuery(const int id, const std::string passwort) {
             qDebug()<< "Passwörter stimmen überein";
             return true;
         }else {
-            infologmessage error;
+            qDebug()<< "Passwörter stimmen nicht überein";
+            errormessage error;
+            error.changeTextLoginError();
             error.setModal(true);
             error.exec();
-            qDebug()<< "Passwörter stimmen nicht überein";
             return false;
         }
     }
     // Die angegebene ID existiert nicht.
-    infologmessage error;
+    qDebug()<< "Die angegebene ID existiert nicht";
+    errormessage error;
+    error.changeTextLoginError();
     error.setModal(true);
     error.exec();
-    qDebug()<< "Die angegebene ID existiert nicht";
     return false;
 }
 

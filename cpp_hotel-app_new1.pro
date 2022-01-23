@@ -19,8 +19,8 @@ SOURCES += \
     checkincheckoutscreen.cpp \
     costumerdatabaseview.cpp \
     database.cpp \
+    errormessage.cpp \
     hoteldatabaseview.cpp \
-    infologmessage.cpp \
     invoicecreation.cpp \
     loggedinscreen.cpp \
     main.cpp \
@@ -30,8 +30,8 @@ HEADERS += \
     checkincheckoutscreen.h \
     costumerdatabaseview.h \
     database.h \
+    errormessage.h \
     hoteldatabaseview.h \
-    infologmessage.h \
     invoicecreation.h \
     loggedinscreen.h \
     mainwindow.h
@@ -39,8 +39,8 @@ HEADERS += \
 FORMS += \
     checkincheckoutscreen.ui \
     costumerdatabaseview.ui \
+    errormessage.ui \
     hoteldatabaseview.ui \
-    infologmessage.ui \
     invoicecreation.ui \
     loggedinscreen.ui \
     mainwindow.ui

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>infologmessage</class>
- <widget class="QDialog" name="infologmessage">
+ <class>errormessage</class>
+ <widget class="QDialog" name="errormessage">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -44,7 +44,7 @@ background-color: white;
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ihre Login-ID oder Ihr eingegebenes Passwort sind &lt;/p&gt;&lt;p&gt;falsch.&lt;/p&gt;&lt;p&gt;Bitte versuchen Sie es erneut.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="closeWindowButton">

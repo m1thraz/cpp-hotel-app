@@ -1,0 +1,27 @@
+#ifndef ERRORMESSAGE_H
+#define ERRORESSAGE_H
+
+#include <QDialog>
+
+namespace Ui {
+class errormessage;
+}
+
+class errormessage : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit errormessage(QWidget *parent = nullptr);
+    ~errormessage();
+    void changeTextIDWrong();
+    void changeTextLoginError();
+
+private slots:
+    void on_closeWindowButton_clicked();
+
+private:
+    Ui::errormessage *ui;
+};
+
+#endif // ERRORMESSAGE_H

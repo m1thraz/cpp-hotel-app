@@ -2,8 +2,9 @@
 #include "ui_mainwindow.h"
 #include "database.h"
 #include <iostream>
-#include "infologmessage.h"
+#include "errormessage.h"
 #include <QRegularExpressionMatch>
+#include <QDebug>
 
 // [Hotel Managment Office System] Fenster
 MainWindow::MainWindow(QWidget *parent)
@@ -45,7 +46,8 @@ void MainWindow::on_loginButton_clicked()
     QRegularExpression re("[0-9]+");
     QRegularExpressionMatch match = re.match(tempid);
     if(!match.hasMatch()) {
-        infologmessage error;
+        qDebug() << "Das eingegebene ID-Format ist fehlerhaft";
+        errormessage error;
         error.changeTextIDWrong();
         error.setModal(true);
         error.exec();
