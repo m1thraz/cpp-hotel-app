@@ -134,18 +134,7 @@ background-color: white;
                 </layout>
                </item>
                <item>
-                <layout class="QVBoxLayout" name="verticalLayout_38">
-                 <item>
-                  <widget class="QLabel" name="label_30">
-                   <property name="text">
-                    <string>Preis</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="lineEditAbfrPreis"/>
-                 </item>
-                </layout>
+                <layout class="QVBoxLayout" name="verticalLayout_38"/>
                </item>
               </layout>
              </item>
@@ -193,7 +182,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QCheckBox" name="checkBox_4">
+              <widget class="QCheckBox" name="checkBoxAbfrSofa">
                <property name="text">
                 <string>Schlafsofa</string>
                </property>
@@ -204,7 +193,7 @@ background-color: white;
           </layout>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton">
+          <widget class="QRadioButton" name="radioButtonAbfrVerfuegbar">
            <property name="text">
             <string>Nur Verfügbare anzeigen</string>
            </property>

@@ -277,3 +277,166 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
         std::cout << "Keine Zimmernummer angegeben" << std::endl;
     }
 }
+
+void hotelDatabaseView::on_suchenButton_clicked() {
+    Database db;
+     // QLineEdit Textfelder werden eingelesen
+    QString tempZimmernummer = ui->lineEditAbfrZimmernummer->text();
+
+    // QCheckBox Felder werden ausgewertet
+    bool doppelbett = ui->checkBoxAbfrDoppelbett->isChecked();
+    bool einzelbett = ui->checkBoxAbfrEinzelbett->isChecked();
+    bool aussicht = ui->checkBoxAbfrAussicht->isChecked();
+    bool fahrstuhl = ui->checkBoxAbfrFahrstuhl->isChecked();
+    bool sofa = ui->checkBoxAbfrSofa->isChecked();
+    bool verfuegbar = ui->radioButtonAbfrVerfuegbar->isChecked();
+
+    bool ausstattung = false;
+    QString sql;
+
+    if(doppelbett && !einzelbett) {
+        ausstattung = true;
+        sql = "zi.ZimmerID = 2";
+    }else if(einzelbett && !doppelbett) {
+        ausstattung = true;
+        sql = "zi.ZimmerID = 1";
+    }else if(doppelbett && einzelbett){
+        ausstattung = true;
+        // !Keine WHERE Bedingung bei allen Zimmertypen nötig!
+    }
+
+    if(aussicht || fahrstuhl || sofa) {
+        sql += " AND ";
+    }
+
+    if(aussicht && (fahrstuhl || sofa)) {
+        ausstattung = true;
+        sql += "(zu.ZimmerzusatzID = 1 OR ";
+    }else if(aussicht){
+        ausstattung = true;
+        sql += "zu.ZimmerzusatzID = 1";
+    }
+
+    if(fahrstuhl && sofa) {
+        ausstattung = true;
+        sql += "zu.ZimmerzusatzID = 2 OR ";
+    }
+    if(fahrstuhl) {
+        ausstattung = true;
+        sql += "zu.ZimmerzusatzID = 2";
+    }
+
+    if(sofa && (fahrstuhl || aussicht)) {
+        ausstattung = true;
+        sql += "zu.ZimmerzusatzID = 3)";
+    }
+    if(sofa) {
+        ausstattung = true;
+        sql += "zu.ZimmerzusatzID = 3";
+    }
+
+    if(verfuegbar) {
+        ausstattung = true;
+        sql += " AND bu.BuchungsstatusID = 1";
+    }
+
+    QSqlQuery query;
+    bool queryStatus;
+
+    // Zimmernummer angegeben
+    if(!tempZimmernummer.isEmpty()) {
+
+        QRegularExpression re("[0-9]+$");
+        QRegularExpressionMatch match = re.match(tempZimmernummer);
+        if(!match.hasMatch()) {
+            //GUI ERROR MESSAGE - Ungültiges Zimmernummerformat. nur zahlen
+            std::cout << "Ungültige Zimmernummer" << std::endl;
+
+        }else {
+            int zimmernummer = std::stoi(tempZimmernummer.toStdString());
+            //Überprüft, ob es das Zimmer mit der Zimmernummer X bereits gibt
+            query.prepare("SELECT Zimmernummer FROM Zimmerbestand WHERE Zimmernummer = :zimmerbestand_zimmernummer;");
+            query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
+            queryStatus = query.exec();
+            qDebug() << "Abfrage, ob es die Zimmernummer gibt, erfolgreich: " << queryStatus;
+            bool exists = false;
+
+            //Wird nur ausgeführt, wenn es das Zimmer tatsächlich gibt, sonst Fehlermeldung
+            while(query.next()) {
+                exists = true;
+            }
+            if(!exists) {
+                std::cout << "Zimmer existiert nicht!" << std::endl;
+            }else if(!ausstattung) {
+                query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, bu.Status, zu.Zimmerzusatz "
+                              "FROM Zimmerbestand zi "
+                              "LEFT JOIN BestandZusatzliste be "
+                              "ON zi.BestandID = be.BestandID "
+                              "LEFT JOIN Zimmer zim "
+                              "ON zi.ZimmerID = zim.ZimmerID "
+                              "LEFT JOIN Buchungsstatus bu "
+                              "ON zi.BuchungsstatusID = bu.BuchungsstatusID "
+                              "LEFT JOIN Zimmerzusatz zu "
+                              "ON be.ZimmerzusatzID = zu.ZimmerzusatzID "
+                              "WHERE zi.Zimmernummer = :zimmerbestand_zimmernummer;");
+                query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
+                queryStatus = query.exec();
+                qDebug() << "Abfrage mit Zimmer erfolgreich: " << queryStatus;
+            }else {
+                query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, bu.Status, zu.Zimmerzusatz "
+                              "FROM Zimmerbestand zi "
+                              "LEFT JOIN BestandZusatzliste be "
+                              "ON zi.BestandID = be.BestandID "
+                              "LEFT JOIN Zimmer zim "
+                              "ON zi.ZimmerID = zim.ZimmerID "
+                              "LEFT JOIN Buchungsstatus bu "
+                              "ON zi.BuchungsstatusID = bu.BuchungsstatusID "
+                              "LEFT JOIN Zimmerzusatz zu "
+                              "ON be.ZimmerzusatzID = zu.ZimmerzusatzID "
+                              "WHERE zi.Zimmernummer = :zimmerbestand_zimmernummer AND :sql;");
+                query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
+                query.bindValue(":sql", sql);
+                queryStatus = query.exec();
+                qDebug() << "Abfrage mit Zimmer und Ausstattung erfolgreich: " << queryStatus;
+            }
+        }
+    }else {
+        if(!ausstattung) {
+            query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, bu.Status, zu.Zimmerzusatz "
+                          "FROM Zimmerbestand zi "
+                          "LEFT JOIN BestandZusatzliste be "
+                          "ON zi.BestandID = be.BestandID "
+                          "LEFT JOIN Zimmer zim "
+                          "ON zi.ZimmerID = zim.ZimmerID "
+                          "LEFT JOIN Buchungsstatus bu "
+                          "ON zi.BuchungsstatusID = bu.BuchungsstatusID "
+                          "LEFT JOIN Zimmerzusatz zu "
+                          "ON be.ZimmerzusatzID = zu.ZimmerzusatzID;");
+            queryStatus = query.exec();
+            qDebug() << "Abfrage ohne Zimmer und ohne Ausstattung erfolgreich: " << queryStatus;
+        }else {
+            query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, bu.Status, zu.Zimmerzusatz "
+                          "FROM Zimmerbestand zi "
+                          "LEFT JOIN BestandZusatzliste be "
+                          "ON zi.BestandID = be.BestandID "
+                          "LEFT JOIN Zimmer zim "
+                          "ON zi.ZimmerID = zim.ZimmerID "
+                          "LEFT JOIN Buchungsstatus bu "
+                          "ON zi.BuchungsstatusID = bu.BuchungsstatusID "
+                          "LEFT JOIN Zimmerzusatz zu "
+                          "ON be.ZimmerzusatzID = zu.ZimmerzusatzID "
+                          "WHERE :sql;");
+            query.bindValue(":sql", sql);
+            queryStatus = query.exec();
+            if(einzelbett && doppelbett) {
+                 qDebug() << "Abfrage mit allen Zimmertypen und mit Ausstattung erfolgreich: " << queryStatus;
+            }else if((einzelbett && !doppelbett) || (!einzelbett && doppelbett)) {
+                qDebug() << "Abfrage mit Ausstattung erfolgreich: " << queryStatus;
+            }else {
+                qDebug() << "Abfrage ohne Zimmertypen mit Ausstattung erfolgreich: " << queryStatus;
+            }
+        }
+
+    }
+}
+
