@@ -14,6 +14,7 @@ class infologmessage : public QDialog
 public:
     explicit infologmessage(QWidget *parent = nullptr);
     ~infologmessage();
+    void changeTextIDWrong();
 
 private slots:
     void on_closeWindowButton_clicked();

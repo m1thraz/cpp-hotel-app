@@ -17,3 +17,7 @@ void infologmessage::on_closeWindowButton_clicked()
 {
     this->hide();
 }
+
+void infologmessage::changeTextIDWrong() {
+    ui->labelErrorMessage->setText("<p>Ihre Login-ID ist fehlerhaft.</p><p>Bitte geben Sie Ihre Anmeldedaten erneut ein.</p>");
+}

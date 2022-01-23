@@ -46,6 +46,7 @@ void MainWindow::on_loginButton_clicked()
     QRegularExpressionMatch match = re.match(tempid);
     if(!match.hasMatch()) {
         infologmessage error;
+        error.changeTextIDWrong();
         error.setModal(true);
         error.exec();
     } else {

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>450</width>
-    <height>220</height>
+    <width>451</width>
+    <height>281</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>0</x>
      <y>60</y>
      <width>451</width>
-     <height>161</height>
+     <height>221</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -29,47 +29,29 @@ background-color: white;
 }
 </string>
    </property>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="labelErrorMessage">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>30</y>
-      <width>251</width>
-      <height>41</height>
+      <x>40</x>
+      <y>20</y>
+      <width>371</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Ihre Login-Daten sind fehlerhaft.</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>70</y>
-      <width>221</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Bitte versuchen Sie es erneut.</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ihre Login-ID oder Ihr eingegebenes Passwort sind &lt;/p&gt;&lt;p&gt;falsch.&lt;/p&gt;&lt;p&gt;Bitte versuchen Sie es erneut.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="closeWindowButton">
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>120</y>
+      <y>180</y>
       <width>101</width>
       <height>25</height>
      </rect>

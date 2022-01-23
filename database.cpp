@@ -36,19 +36,25 @@ bool Database::loginQuery(const int id, const std::string passwort) {
     query.bindValue(":mitarbeiter_id", id);
     bool queryStatus = query.exec();
     qDebug() << "Abfrage erfolgreich: " << queryStatus;
+    // Die angegebene ID existiert. Sonst gibt es kein query
     while(query.next()) {
+        // Passwörter stimmen überein
         if(query.value("Passwort").toString().toStdString() == passwort) {
+            qDebug()<< "Passwörter stimmen überein";
             return true;
         }else {
             infologmessage error;
             error.setModal(true);
             error.exec();
+            qDebug()<< "Passwörter stimmen nicht überein";
             return false;
         }
     }
+    // Die angegebene ID existiert nicht.
     infologmessage error;
     error.setModal(true);
     error.exec();
+    qDebug()<< "Die angegebene ID existiert nicht";
     return false;
 }
 
