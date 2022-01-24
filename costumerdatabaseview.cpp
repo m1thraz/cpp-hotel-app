@@ -156,19 +156,19 @@ void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {
 
                 if(!this->getVorname().empty()) {
                     if(firstupdate) {
-                        sql += "Vorname = " + this->getVorname();
+                        sql += "Vorname = '" + this->getVorname() + "'";
                         firstupdate = false;
                     }else {
-                        sql += ", Vorname = " + this->getVorname();
+                        sql += ", Vorname = '" + this->getVorname() + "'";
                     }
                 }
 
                 if(!this->getStrasse().empty()) {
                     if(firstupdate) {
-                        sql += "Straße = " + this->getStrasse();
+                        sql += "Straße = '" + this->getStrasse() + "'";
                         firstupdate = false;
                     } else {
-                        sql += ", Straße = " + this->getStrasse();
+                        sql += ", Straße = '" + this->getStrasse() + "'";
                     }
                 }
 
@@ -183,10 +183,10 @@ void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {
 
                 if(!this->getWohnort().empty()) {
                     if(firstupdate) {
-                        sql += "Wohnort = " + this->getWohnort();
+                        sql += "Wohnort = '" + this->getWohnort() + "'";
                         firstupdate = false;
                     }else {
-                        sql += ", Wohnort = " + this->getWohnort();
+                        sql += ", Wohnort = '" + this->getWohnort() + "'";
                     }
                 }
 
@@ -210,10 +210,10 @@ void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {
 
                 if(!this->getEmail().empty()) {
                     if(firstupdate) {
-                        sql += "'E-Mail' = " + this->getEmail();
+                        sql += "'E-Mail' = '" + this->getEmail() + "'";
                         firstupdate = false;
                     }else {
-                        sql += ", 'E-Mail' = " + this->getEmail();
+                        sql += ", 'E-Mail' = '" + this->getEmail() + "'";
                     }
                 }
 
