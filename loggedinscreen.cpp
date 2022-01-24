@@ -13,53 +13,31 @@ LoggedInScreen::~LoggedInScreen()
     delete ui;
 }
 
-void LoggedInScreen::on_hotelButton_clicked()
-{
-//  this -> hide();
-
-//  hotelDatabaseView w2;
-//  w2.setModal(true);
-//  w2.exec();
-
+void LoggedInScreen::on_hotelButton_clicked() {
   hotel = new hotelDatabaseView(this);
   hotel -> show();
 }
 
-void LoggedInScreen::on_dbButton_clicked()
-{
-//  this -> hide();
-
-//  costumerDatabaseView w2;
-//  w2.setModal(true);
-//  w2.exec();
-
+void LoggedInScreen::on_dbButton_clicked() {
   costumer = new costumerDatabaseView(this);
   costumer -> show();
 }
 
-void LoggedInScreen::on_RechnungButton_clicked()
-{
-//  this -> hide();
-
-//  invoiceCreation w2;
-//  w2.setModal(true);
-//  w2.exec();
-
+void LoggedInScreen::on_RechnungButton_clicked() {
   invoice = new invoiceCreation(this);
   invoice -> show();
 }
 
-void LoggedInScreen::on_logoutButto_clicked()
-{
+void LoggedInScreen::on_logoutButto_clicked() {
   this -> hide();
-
-//  MainWindow w;
-//  w.show();
-
 }
 
-void LoggedInScreen::on_checkInBtn_clicked()
-{
+void LoggedInScreen::on_checkInBtn_clicked() {
     checkIn = new checkInCheckOutScreen(this);
     checkIn -> show();
+}
+
+void LoggedInScreen::on_buchenButton_clicked() {
+    book = new bookroomview(this);
+    book->show();
 }

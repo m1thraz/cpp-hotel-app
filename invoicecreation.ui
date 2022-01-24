@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Hotel Managment Office System  - Rechnung erstellen</string>
+   <string>Hotel Management Office System  - Rechnung erstellen</string>
   </property>
   <widget class="QWidget" name="header" native="true">
    <property name="geometry">
@@ -52,7 +52,7 @@ color:white;
 }</string>
     </property>
     <property name="text">
-     <string>Hotel Managment Office System</string>
+     <string>Hotel Management Office System</string>
     </property>
    </widget>
    <widget class="QWidget" name="logoHeader" native="true">

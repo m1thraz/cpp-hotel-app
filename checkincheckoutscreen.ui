@@ -52,7 +52,7 @@ color:white;
 }</string>
     </property>
     <property name="text">
-     <string>Hotel Managment Office System</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hotel Management Office System&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QWidget" name="logoHeader" native="true">
@@ -70,6 +70,283 @@ color:white;
 border-image:url(:/images/logo_white.png);
 }</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="background_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>90</y>
+      <width>881</width>
+      <height>380</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#background {
+
+background-color: white;
+}
+</string>
+    </property>
+    <widget class="QGroupBox" name="checkOutGroupBox_3">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>20</y>
+       <width>341</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Check Out</string>
+     </property>
+     <widget class="QWidget" name="layoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>321</width>
+        <height>309</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="checkOutLayout_3">
+       <item>
+        <layout class="QVBoxLayout" name="costumerIDCheckOutLayout_3">
+         <item>
+          <widget class="QLabel" name="costumerIDLabelCheckOut_3">
+           <property name="text">
+            <string>KundenID</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_7"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="roomIDCheckOutLayout_3">
+         <item>
+          <widget class="QLabel" name="roomIDLabelCheckOut_3">
+           <property name="text">
+            <string>ZimmerID</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_8"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="departureCheckOutLayout_3">
+         <item>
+          <widget class="QLabel" name="departureLabelCheckOut_3">
+           <property name="text">
+            <string>Abreise Datum</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_9"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="specialServiceCheckOutLayout_3">
+         <item>
+          <widget class="QLabel" name="specialServiceLabelCheckOut_3">
+           <property name="text">
+            <string>Sonderlesitungen</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QCheckBox" name="massageCheckBox_5">
+             <property name="text">
+              <string>Massagen</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="saunaCheckBox_5">
+             <property name="text">
+              <string>Sauna</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="furtherInformationLayout_3">
+         <item>
+          <widget class="QLabel" name="furhterInformationLabel_3">
+           <property name="text">
+            <string>Sonstige Anmerkungen</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QCheckBox" name="checkBox_5">
+             <property name="text">
+              <string>Beschädigte Gegenstände</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_6">
+             <property name="text">
+              <string>Reinigung</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="checkOutBtns_3">
+         <item>
+          <widget class="QPushButton" name="checkOutBtn_3">
+           <property name="text">
+            <string>Check Out</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="checkOutInvoiceBtn_3">
+           <property name="text">
+            <string>Check Out &amp; Rechnung</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="checkInGroupBox_3">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>20</y>
+       <width>341</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Check In </string>
+     </property>
+     <widget class="QWidget" name="layoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>321</width>
+        <height>307</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="checkInLayout_3">
+       <item>
+        <layout class="QVBoxLayout" name="costumerLayout_3">
+         <item>
+          <widget class="QLabel" name="costumerIDLabel_3">
+           <property name="text">
+            <string>KundenID</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="costumerIDLineEdit_3"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="roomIDLayout_3">
+         <item>
+          <widget class="QLabel" name="roomIDLabel_3">
+           <property name="text">
+            <string>ZimmerID</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="roomIDLineEdit_3"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="arrivalLayout_3">
+         <item>
+          <widget class="QLabel" name="arrivalDateLabel_3">
+           <property name="text">
+            <string>Anreise Datum</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="arrivalLineEdit_3"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="departureLayout_3">
+         <item>
+          <widget class="QLabel" name="departureDateLabel_3">
+           <property name="text">
+            <string>Abreise Datum</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="departureLineEdit_3"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="specialServiceLayout_3">
+         <item>
+          <widget class="QLabel" name="speciaServiceLabel_3">
+           <property name="text">
+            <string>Sonderleistungen</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="checkBoxLayout_3">
+           <item>
+            <widget class="QCheckBox" name="massageCheckBox_6">
+             <property name="text">
+              <string>Massagen</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="saunaCheckBox_6">
+             <property name="text">
+              <string>Sauna</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="checkInBtn_3">
+         <property name="text">
+          <string>Check In</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QWidget" name="background" native="true">
@@ -106,7 +383,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>321</width>
-       <height>291</height>
+       <height>301</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkOutLayout">
@@ -149,35 +426,6 @@ background-color: white;
         </item>
         <item>
          <widget class="QLineEdit" name="lineEdit_3"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="specialServiceCheckOutLayout">
-        <item>
-         <widget class="QLabel" name="specialServiceLabelCheckOut">
-          <property name="text">
-           <string>Sonderlesitungen</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QCheckBox" name="massageCheckBox_2">
-            <property name="text">
-             <string>Massagen</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="saunaCheckBox_2">
-            <property name="text">
-             <string>Sauna</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </item>
        </layout>
       </item>
@@ -272,7 +520,7 @@ background-color: white;
         <item>
          <widget class="QLabel" name="roomIDLabel">
           <property name="text">
-           <string>ZimmerID</string>
+           <string>BestandID</string>
           </property>
          </widget>
         </item>
@@ -306,35 +554,6 @@ background-color: white;
         </item>
         <item>
          <widget class="QLineEdit" name="departureLineEdit"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="specialServiceLayout">
-        <item>
-         <widget class="QLabel" name="speciaServiceLabel">
-          <property name="text">
-           <string>Sonderleistungen</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="checkBoxLayout">
-          <item>
-           <widget class="QCheckBox" name="massageCheckBox">
-            <property name="text">
-             <string>Massagen</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="saunaCheckBox">
-            <property name="text">
-             <string>Sauna</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </item>
        </layout>
       </item>

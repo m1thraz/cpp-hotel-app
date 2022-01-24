@@ -79,7 +79,7 @@ color:white;
 }</string>
      </property>
      <property name="text">
-      <string>Hotel Managment Office System</string>
+      <string>Hotel Management Office System</string>
      </property>
     </widget>
     <widget class="QWidget" name="logo" native="true">
@@ -150,8 +150,8 @@ background-color: white;
       <rect>
        <x>300</x>
        <y>130</y>
-       <width>294</width>
-       <height>93</height>
+       <width>301</width>
+       <height>124</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -173,17 +173,6 @@ background-color: white;
             </property>
            </widget>
           </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <widget class="QPushButton" name="checkInBtn">
-            <property name="text">
-             <string>Ein- und Auschecken</string>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QPushButton" name="RechnungButton">
             <property name="text">
@@ -193,17 +182,35 @@ background-color: white;
           </item>
          </layout>
         </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QPushButton" name="buchenButton">
+            <property name="text">
+             <string>Zimmer buchen</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="checkInBtn">
+            <property name="text">
+             <string>Ein- und Auschecken</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="logoutButto">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Logout</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
        </layout>
-      </item>
-      <item>
-       <widget class="QPushButton" name="logoutButto">
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Logout</string>
-        </property>
-       </widget>
       </item>
      </layout>
     </widget>

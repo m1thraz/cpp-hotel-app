@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Hotel Managment Office System  - Kundendatenbank</string>
+   <string>Hotel Management Office System  - Kundendatenbank</string>
   </property>
   <widget class="QWidget" name="header" native="true">
    <property name="geometry">
@@ -52,7 +52,7 @@ color:white;
 }</string>
     </property>
     <property name="text">
-     <string>Hotel Managment Office System</string>
+     <string>Hotel Management Office System</string>
     </property>
    </widget>
    <widget class="QWidget" name="logoHeader" native="true">
@@ -70,6 +70,22 @@ color:white;
 border-image:url(:/images/logo_white.png);
 }</string>
     </property>
+    <widget class="QWidget" name="logoHeader_2" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>71</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#logoHeader {
+
+border-image:url(:/images/logo_white.png);
+}</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QWidget" name="background" native="true">

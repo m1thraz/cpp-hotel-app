@@ -8,6 +8,7 @@
 #include "mainwindow.h"
 #include "invoicecreation.h"
 #include "checkincheckoutscreen.h"
+#include "bookroomview.h"
 
 namespace Ui {
 class LoggedInScreen;
@@ -32,6 +33,8 @@ private slots:
 
   void on_checkInBtn_clicked();
 
+  void on_buchenButton_clicked();
+
 private:
     Ui::LoggedInScreen *ui;
 
@@ -39,7 +42,9 @@ private:
     costumerDatabaseView *costumer;
     hotelDatabaseView *hotel;
     checkInCheckOutScreen *checkIn;
+    bookroomview *book;
 
 };
 
 #endif // LOGGEDINSCREEN_H
+
