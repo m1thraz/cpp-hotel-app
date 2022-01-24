@@ -82,3 +82,37 @@ void errormessage::changeTextDataCreationError() {
 void errormessage::changeTextDBRequestError() {
     ui->labelErrorMessage->setText("<p>Beim Abrufen der Datenbank ist ein Fehler aufgetreten.</p><p>Bitte versuchen Sie es erneut.</p>");
 }
+
+void errormessage::changeTextKundenIDWrong() {
+    ui->labelErrorMessage->setText("<p>Die eingegebene Kunden-ID ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
+}
+
+void errormessage::changeTextNachnameWrong() {
+    ui->labelErrorMessage->setText("<p>Der eingegebene Nachname ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
+}
+
+void errormessage::changeTextVornameWrong() {
+    ui->labelErrorMessage->setText("<p>Der eingegebene Vorname ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
+}
+
+void errormessage::changeTextStrasseWrong() {
+    ui->labelErrorMessage->setText("<p>Der eingegebene Straßenname ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
+}
+
+void errormessage::changeTextHausnummerWrong() {
+    ui->labelErrorMessage->setText("<p>Die eingegebene Hausnummer ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
+}
+
+void errormessage::changeTextWohnortWrong() {
+    ui->labelErrorMessage->setText("<p>Der eingegebene Wohnort ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
+}
+
+void errormessage::changeTextPlzWrong() {
+    ui->labelErrorMessage->setText("<p>Die eingegebene Postleitzahl ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
+}
+
+void errormessage::changeTextTelefonnummerWrong() {
+    ui->labelErrorMessage->setText("<p>Die eingegebene Telefonnummer ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
+}
+
+

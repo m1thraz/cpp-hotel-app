@@ -30,6 +30,14 @@ public:
     void changeTextMissingInputText();
     void changeTextDataCreationError();
     void changeTextDBRequestError();
+    void changeTextKundenIDWrong();
+    void changeTextNachnameWrong();
+    void changeTextVornameWrong();
+    void changeTextStrasseWrong();
+    void changeTextHausnummerWrong();
+    void changeTextWohnortWrong();
+    void changeTextPlzWrong();
+    void changeTextTelefonnummerWrong();
 
 private slots:
     void on_closeWindowButton_clicked();
