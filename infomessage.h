@@ -14,8 +14,8 @@ class infomessage : public QDialog
 public:
     explicit infomessage(QWidget *parent = nullptr);
     ~infomessage();
-    void changeTextHotelModifiziert();
-    void changeTextHotelNeu();
+    void changeTextModifiziert();
+    void changeTextNeu();
 
 private slots:
     void on_closeWindowButton_clicked();

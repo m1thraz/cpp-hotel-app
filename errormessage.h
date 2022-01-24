@@ -38,6 +38,9 @@ public:
     void changeTextWohnortWrong();
     void changeTextPlzWrong();
     void changeTextTelefonnummerWrong();
+    void changeTextKundenIDError();
+    void changeTextMissingCustomerArguments();
+    void changeTextKundenIDDoesntExist();
 
 private slots:
     void on_closeWindowButton_clicked();

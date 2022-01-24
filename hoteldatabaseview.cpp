@@ -117,7 +117,7 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
                     error.exec();
                 }else if(veraenderung && queryStatus) {
                     infomessage info;
-                    info.changeTextHotelModifiziert();
+                    info.changeTextModifiziert();
                     info.setModal(true);
                     info.exec();
                 }else if(veraenderung && !queryStatus) {
@@ -192,7 +192,7 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
                 qDebug() << "Update Preis erfolgreich: " << queryStatus;
                 if(queryStatus) {
                     infomessage info;
-                    info.changeTextHotelModifiziert();
+                    info.changeTextModifiziert();
                     info.setModal(true);
                     info.exec();
                 }else {
@@ -386,7 +386,7 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
                         error.exec();
                     }else if(ausstattung && queryStatus) {
                         infomessage info;
-                        info.changeTextHotelNeu();
+                        info.changeTextNeu();
                         info.setModal(true);
                         info.exec();
                     }else if(ausstattung && !queryStatus) {

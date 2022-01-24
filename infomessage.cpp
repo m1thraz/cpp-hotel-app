@@ -13,11 +13,11 @@ infomessage::~infomessage()
     delete ui;
 }
 
-void infomessage::changeTextHotelModifiziert() {
+void infomessage::changeTextModifiziert() {
     ui->labelInfoMessage->setText("<p>Datensatz wurde erfolgreich modifiziert.</p>");
 }
 
-void infomessage::changeTextHotelNeu() {
+void infomessage::changeTextNeu() {
     ui->labelInfoMessage->setText("<p>Neuer Eintrag wurde erstellt.</p>");
 }
 

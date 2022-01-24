@@ -1,4 +1,4 @@
-#include "costumerdatabaseview.h"
+﻿#include "costumerdatabaseview.h"
 #include "ui_costumerdatabaseview.h"
 #include "database.h"
 #include <QRegularExpressionMatch>
@@ -6,6 +6,7 @@
 #include <QDebug>
 #include "errormessage.h"
 #include "infomessage.h"
+
 
 costumerDatabaseView::costumerDatabaseView(QWidget *parent) :
     QDialog(parent),
@@ -20,20 +21,146 @@ costumerDatabaseView::~costumerDatabaseView()
 }
 
 void costumerDatabaseView::on_pushButtonSuchen_clicked() {
-    lineEditVerification(1);
+    if(lineEditVerification(1)) {
+
+    }
 }
 
 void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {
-    lineEditVerification(2);
-    Database db;
+    if(lineEditVerification(2)) {
+        errormessage error;
+        if(!this->getKundenID()) {
+            qDebug() << "Keine KundenID angegeben";
+            error.changeTextKundenIDError();
+            error.setModal(true);
+            error.exec();
+        }else if(this->getNachname().empty() && this->getVorname().empty() && this->getStrasse().empty() &&
+                 !this->getHausnummer() && this->getWohnort().empty() && !this->getPlz() &&
+                 !this->getTelefonnummer() && this->getEmail().empty()) {
+            qDebug() << "Keine Modifizierungswünsche angegeben";
+            error.changeTextMissingCustomerArguments();
+            error.setModal(true);
+            error.exec();
+        }else {
+            Database db;
 
+             //Überprüft, ob es die KundenID X bereits gibt
+             QSqlQuery query;
+             query.prepare("SELECT 1 FROM Kunde WHERE KundenID = :kundenID;");
+             query.bindValue(":kundenID", this->getKundenID());
+             bool queryStatus = query.exec();
+             qDebug() << "DB-Überprüfung der KundenID erfolgreich: " << queryStatus;
+             bool exists = false;
 
+             //Wird nur ausgeführt, wenn es die KundenID tatsächlich gibt, sonst Fehlermeldung
+             while(query.next()) {
+                exists = true;
+             }
+            if(!exists) {
+                error.changeTextKundenIDDoesntExist();
+                error.setModal(true);
+                error.exec();
 
+            }else {
+                std::string sql = "UPDATE Kunde SET ";
+                bool firstupdate = true;
 
+                if(!this->getNachname().empty()) {
+                    sql += "Nachname = '" + this->getNachname() + "'";
+                    firstupdate = false;
+                }
+
+                if(!this->getVorname().empty()) {
+                    if(firstupdate) {
+                        sql += "Vorname = " + this->getVorname();
+                        firstupdate = false;
+                    }else {
+                        sql += ", Vorname = " + this->getVorname();
+                    }
+                }
+
+                if(!this->getStrasse().empty()) {
+                    if(firstupdate) {
+                        sql += "Straße = " + this->getStrasse();
+                        firstupdate = false;
+                    } else {
+                        sql += ", Straße = " + this->getStrasse();
+                    }
+                }
+
+                if(this->getHausnummer()) {
+                    if(firstupdate) {
+                        sql += "Hausnummer = " + std::to_string(this->getHausnummer());
+                        firstupdate = false;
+                    }else {
+                        sql += ", Hausnummer = " + std::to_string(this->getHausnummer());
+                    }
+                }
+
+                if(!this->getWohnort().empty()) {
+                    if(firstupdate) {
+                        sql += "Wohnort = " + this->getWohnort();
+                        firstupdate = false;
+                    }else {
+                        sql += ", Wohnort = " + this->getWohnort();
+                    }
+                }
+
+                if(this->getPlz()) {
+                    if(firstupdate) {
+                        sql += "PLZ = " +std::to_string(this->getPlz());
+                        firstupdate = false;
+                    }else {
+                        sql += ", PLZ = " + std::to_string(this->getPlz());
+                    }
+                }
+
+                if(this->getTelefonnummer()) {
+                    if(firstupdate) {
+                        sql += "Telefonnummer = " + std::to_string(this->getTelefonnummer());
+                        firstupdate = false;
+                    }else {
+                        sql += ", Telefonnummer = " + std::to_string(this->getTelefonnummer());
+                    }
+                }
+
+                if(!this->getEmail().empty()) {
+                    if(firstupdate) {
+                        sql += "'E-Mail' = " + this->getEmail();
+                        firstupdate = false;
+                    }else {
+                        sql += ", 'E-Mail' = " + this->getEmail();
+                    }
+                }
+
+                sql += " WHERE KundenID = " + std::to_string(this->getKundenID()) + ";";
+
+                QString update = QString::fromStdString(sql);
+                qDebug() << "QString: " << update;
+                query.prepare(update);
+               // query.bindValue(":sql", update);
+                queryStatus = query.exec();
+                qDebug() << "Update der Kundendaten erfolgreich: " << queryStatus;
+
+                if(!queryStatus) {
+                    error.changeTextUpdateError();
+                    error.setModal(true);
+                    error.exec();
+                }else {
+                    infomessage info;
+                    info.changeTextModifiziert();
+                    info.setModal(true);
+                    info.exec();
+                }
+            }
+        }
+    }
 }
 
 void costumerDatabaseView::on_pushButtonNeuerEintrag_clicked() {
-    lineEditVerification(3);
+    if(lineEditVerification(3)) {
+
+    }
 }
 
 bool costumerDatabaseView::lineEditVerification(const int buttontyp) {
@@ -101,6 +228,8 @@ bool costumerDatabaseView::lineEditVerification(const int buttontyp) {
         error.setModal(true);
         error.exec();
         return false;
+    }else {
+        this->setKundenID(0);
     }
 
     match = letters.match(tempNachname);
@@ -145,6 +274,8 @@ bool costumerDatabaseView::lineEditVerification(const int buttontyp) {
         error.setModal(true);
         error.exec();
         return false;
+    }else {
+        this->setHausnummer(0);
     }
 
     match = letters.match(tempWohnort);
@@ -167,6 +298,8 @@ bool costumerDatabaseView::lineEditVerification(const int buttontyp) {
         error.setModal(true);
         error.exec();
         return false;
+    }else {
+        this->setPlz(0);
     }
 
     match = numbers.match(tempTelenummer);
@@ -178,6 +311,8 @@ bool costumerDatabaseView::lineEditVerification(const int buttontyp) {
         error.setModal(true);
         error.exec();
         return false;
+    }else {
+        this->setTelefonnummer(0);
     }
 
     //Kein Match für E-Mail. Hier werden alle Zeichen erlaubt

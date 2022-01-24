@@ -43,7 +43,7 @@ void errormessage::changeTextMissingModifications() {
 }
 
 void errormessage::changeTextUpdateError() {
-    ui->labelErrorMessage->setText("<p>Beim aktualisieren der Datenbank ist ein Fehler aufgetreten.</p><p>Bitte versuchen Sie es erneut.</p>");
+    ui->labelErrorMessage->setText("<p>Beim aktualisieren der Datenbank ist ein Fehler<br>aufgetreten.</p><p>Bitte versuchen Sie es erneut.</p>");
 }
 
 void errormessage::changeTextZimmernummerError() {
@@ -115,4 +115,14 @@ void errormessage::changeTextTelefonnummerWrong() {
     ui->labelErrorMessage->setText("<p>Die eingegebene Telefonnummer ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
 }
 
+void errormessage::changeTextKundenIDError() {
+    ui->labelErrorMessage->setText("<p>Bitte geben Sie für die Modifizierung eine Kunden-ID<br>ein.</p>");
+}
 
+void errormessage::changeTextMissingCustomerArguments() {
+     ui->labelErrorMessage->setText("<p>Bitte geben Sie neben der KundenID<br>mindestens einen Veränderungswunsch an.</p>");
+}
+
+void errormessage::changeTextKundenIDDoesntExist() {
+     ui->labelErrorMessage->setText("<p>Die angegebene KundenID existiert nicht.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p<>");
+}
