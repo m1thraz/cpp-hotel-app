@@ -459,27 +459,16 @@ background-color: white;
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>30</y>
+          <y>80</y>
           <width>211</width>
-          <height>291</height>
+          <height>241</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_20">
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_21">
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_22">
-             <item>
-              <widget class="QLabel" name="label_15">
-               <property name="text">
-                <string>KundenID</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEditNeuKundenID"/>
-             </item>
-            </layout>
+            <layout class="QVBoxLayout" name="verticalLayout_22"/>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_6">

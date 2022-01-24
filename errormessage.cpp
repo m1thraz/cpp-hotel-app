@@ -76,7 +76,7 @@ void errormessage::changeTextMissingInputText() {
 }
 
 void errormessage::changeTextDataCreationError() {
-    ui->labelErrorMessage->setText("<p>Beim Erstellen des neuen Datensatzes ist ein Fehler aufgetreten.</p><p>Bitte versuchen Sie es erneut.</p>");
+    ui->labelErrorMessage->setText("<p>Beim Erstellen des neuen Datensatzes ist ein Fehler<br>aufgetreten.</p><p>Bitte versuchen Sie es erneut.</p>");
 }
 
 void errormessage::changeTextDBRequestError() {

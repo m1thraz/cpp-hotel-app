@@ -136,9 +136,7 @@ void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {
                 sql += " WHERE KundenID = " + std::to_string(this->getKundenID()) + ";";
 
                 QString update = QString::fromStdString(sql);
-                qDebug() << "QString: " << update;
                 query.prepare(update);
-               // query.bindValue(":sql", update);
                 queryStatus = query.exec();
                 qDebug() << "Update der Kundendaten erfolgreich: " << queryStatus;
 
@@ -159,7 +157,40 @@ void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {
 
 void costumerDatabaseView::on_pushButtonNeuerEintrag_clicked() {
     if(lineEditVerification(3)) {
+        errormessage error;
+        if(this->getNachname().empty() || this->getVorname().empty() || this->getStrasse().empty() ||
+                  !this->getHausnummer() || this->getWohnort().empty() || !this->getPlz() ||
+                  !this->getTelefonnummer() || this->getEmail().empty()) {
+             qDebug() << "Mindestens ein LineEdit Textfeld ist leer";
+             error.changeTextMissingInputText();
+             error.setModal(true);
+             error.exec();
+         }else {
+             Database db;
+             std::string sql = "INSERT OR IGNORE INTO Kunde (Nachname, Vorname, Straße, Hausnummer, Wohnort, "
+                               "PLZ, Telefonnummer, 'E-Mail') "
+                               "VALUES ('" + this->getNachname() + "', '" + this->getVorname()
+                                + "', '"  + this->getStrasse() + "', " + std::to_string(this->getHausnummer())
+                                + ", '" + this->getWohnort() + "', " + std::to_string(this->getPlz()) + ", "
+                                + std::to_string(this->getTelefonnummer()) + ", '" + this->getEmail() + "');";
 
+             QString insert = QString::fromStdString(sql);
+             QSqlQuery query;
+             query.prepare(insert);
+             bool queryStatus = query.exec();
+             qDebug() << "Hinzufügen der Kundendaten erfolgreich: " << queryStatus;
+
+             if(!queryStatus) {
+                 error.changeTextDataCreationError();
+                 error.setModal(true);
+                 error.exec();
+             }else {
+                 infomessage info;
+                 info.changeTextNeu();
+                 info.setModal(true);
+                 info.exec();
+             }
+        }
     }
 }
 
@@ -198,7 +229,6 @@ bool costumerDatabaseView::lineEditVerification(const int buttontyp) {
         tempEmail = ui->lineEditModEmail->text();
         break;
     case 3:
-        tempKundenID = ui->lineEditNeuKundenID->text();
         tempNachname = ui->lineEditNeuNachname->text();
         tempVorname =  ui->lineEditNeuVorname->text();
         tempStrasse = ui->lineEditNeuStrasse->text();
