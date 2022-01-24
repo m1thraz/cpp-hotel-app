@@ -109,7 +109,7 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>211</width>
-          <height>291</height>
+          <height>319</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -125,7 +125,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit"/>
+              <widget class="QLineEdit" name="lineEditAbfrKundenID"/>
              </item>
             </layout>
            </item>
@@ -141,7 +141,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_2"/>
+                <widget class="QLineEdit" name="lineEditAbfrNachname"/>
                </item>
               </layout>
              </item>
@@ -155,7 +155,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_3"/>
+                <widget class="QLineEdit" name="lineEditAbfrVorname"/>
                </item>
               </layout>
              </item>
@@ -173,7 +173,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_4"/>
+                <widget class="QLineEdit" name="lineEditAbfrStrasse"/>
                </item>
               </layout>
              </item>
@@ -187,7 +187,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_22"/>
+                <widget class="QLineEdit" name="lineEditAbfrHausnummer"/>
                </item>
               </layout>
              </item>
@@ -207,7 +207,7 @@ background-color: white;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_5"/>
+                  <widget class="QLineEdit" name="lineEditAbfrWohnort"/>
                  </item>
                 </layout>
                </item>
@@ -221,7 +221,7 @@ background-color: white;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_23"/>
+                  <widget class="QLineEdit" name="lineEditAbfrPostleitzahl"/>
                  </item>
                 </layout>
                </item>
@@ -243,7 +243,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_6"/>
+              <widget class="QLineEdit" name="lineEditAbfrTelefonnummer"/>
              </item>
             </layout>
            </item>
@@ -257,14 +257,14 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_7"/>
+              <widget class="QLineEdit" name="lineEditAbfrEmail"/>
              </item>
             </layout>
            </item>
           </layout>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="pushButtonSuchen">
            <property name="text">
             <string>Suchen</string>
            </property>
@@ -285,7 +285,7 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>211</width>
-          <height>291</height>
+          <height>319</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_32">
@@ -301,7 +301,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_26"/>
+              <widget class="QLineEdit" name="lineEditModKundenID"/>
              </item>
             </layout>
            </item>
@@ -317,7 +317,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_27"/>
+                <widget class="QLineEdit" name="lineEditModNachname"/>
                </item>
               </layout>
              </item>
@@ -331,7 +331,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_28"/>
+                <widget class="QLineEdit" name="lineEditModVorname"/>
                </item>
               </layout>
              </item>
@@ -349,7 +349,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_29"/>
+                <widget class="QLineEdit" name="lineEditModStrasse"/>
                </item>
               </layout>
              </item>
@@ -363,7 +363,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_30"/>
+                <widget class="QLineEdit" name="lineEditModHausnummer"/>
                </item>
               </layout>
              </item>
@@ -383,7 +383,7 @@ background-color: white;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_31"/>
+                  <widget class="QLineEdit" name="lineEditModWohnort"/>
                  </item>
                 </layout>
                </item>
@@ -397,7 +397,7 @@ background-color: white;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_32"/>
+                  <widget class="QLineEdit" name="lineEditModPostleitzahl"/>
                  </item>
                 </layout>
                </item>
@@ -419,7 +419,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_33"/>
+              <widget class="QLineEdit" name="lineEditModTelefonnummer"/>
              </item>
             </layout>
            </item>
@@ -433,14 +433,14 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_34"/>
+              <widget class="QLineEdit" name="lineEditModEmail"/>
              </item>
             </layout>
            </item>
           </layout>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_6">
+          <widget class="QPushButton" name="pushButtonAktualisieren">
            <property name="text">
             <string>Aktualisieren</string>
            </property>
@@ -461,7 +461,7 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>211</width>
-          <height>291</height>
+          <height>319</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_20">
@@ -477,7 +477,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_15"/>
+              <widget class="QLineEdit" name="lineEditNeuKundenID"/>
              </item>
             </layout>
            </item>
@@ -493,7 +493,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_16"/>
+                <widget class="QLineEdit" name="lineEditNeuNachname"/>
                </item>
               </layout>
              </item>
@@ -507,7 +507,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_17"/>
+                <widget class="QLineEdit" name="lineEditNeuVorname"/>
                </item>
               </layout>
              </item>
@@ -525,7 +525,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_18"/>
+                <widget class="QLineEdit" name="lineEditNeuStrasse"/>
                </item>
               </layout>
              </item>
@@ -539,7 +539,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_35"/>
+                <widget class="QLineEdit" name="lineEditNeuHausnummer"/>
                </item>
               </layout>
              </item>
@@ -559,7 +559,7 @@ background-color: white;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_19"/>
+                  <widget class="QLineEdit" name="lineEditNeuWohnort"/>
                  </item>
                 </layout>
                </item>
@@ -573,7 +573,7 @@ background-color: white;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_36"/>
+                  <widget class="QLineEdit" name="lineEditNeuPostleitzahl"/>
                  </item>
                 </layout>
                </item>
@@ -595,7 +595,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_20"/>
+              <widget class="QLineEdit" name="lineEditNeuTelefonnummer"/>
              </item>
             </layout>
            </item>
@@ -609,14 +609,14 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_21"/>
+              <widget class="QLineEdit" name="lineEditNeuEmail"/>
              </item>
             </layout>
            </item>
           </layout>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_5">
+          <widget class="QPushButton" name="pushButtonNeuerEintrag">
            <property name="text">
             <string>Erstellen</string>
            </property>
