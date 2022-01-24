@@ -22,7 +22,91 @@ costumerDatabaseView::~costumerDatabaseView()
 
 void costumerDatabaseView::on_pushButtonSuchen_clicked() {
     if(lineEditVerification(1)) {
+        Database db;
+        std::string sql = "SELECT * FROM Kunde";
+        bool firstsearch = true;
 
+        if(!this->getNachname().empty()) {
+            sql += " WHERE Nachname = '" + this->getNachname() + "'";
+            firstsearch = false;
+        }
+
+        if(!this->getVorname().empty()) {
+            if(firstsearch) {
+                sql += " WHERE Vorname = '" + this->getVorname() + "'";
+                firstsearch = false;
+            }else {
+                sql += " AND Vorname = '" + this->getVorname()+ "'";
+            }
+        }
+
+        if(!this->getStrasse().empty()) {
+            if(firstsearch) {
+                sql += " WHERE Straße = '" + this->getStrasse() + "'";
+                firstsearch = false;
+            } else {
+                sql += " AND Straße = '" + this->getStrasse() + "'";
+            }
+        }
+
+        if(this->getHausnummer()) {
+            if(firstsearch) {
+                sql += " WHERE Hausnummer = " + std::to_string(this->getHausnummer());
+                firstsearch = false;
+            }else {
+                sql += " AND Hausnummer = " + std::to_string(this->getHausnummer());
+            }
+        }
+
+        if(!this->getWohnort().empty()) {
+            if(firstsearch) {
+                sql += " WHERE Wohnort = '" + this->getWohnort() + "'";
+                firstsearch = false;
+            }else {
+                sql += " AND Wohnort = '" + this->getWohnort() + "'";
+            }
+        }
+
+        if(this->getPlz()) {
+            if(firstsearch) {
+                sql += " WHERE PLZ = " +std::to_string(this->getPlz());
+                firstsearch = false;
+            }else {
+                sql += " AND PLZ = " + std::to_string(this->getPlz());
+            }
+        }
+
+        if(this->getTelefonnummer()) {
+            if(firstsearch) {
+                sql += " WHERE Telefonnummer = " + std::to_string(this->getTelefonnummer());
+                firstsearch = false;
+            }else {
+                sql += " AND Telefonnummer = " + std::to_string(this->getTelefonnummer());
+            }
+        }
+
+        if(!this->getEmail().empty()) {
+            if(firstsearch) {
+                sql += " WHERE 'E-Mail' = '" + this->getEmail() + "'";
+                firstsearch = false;
+            }else {
+                sql += " AND 'E-Mail' = '" + this->getEmail() + "'";
+            }
+        }
+
+        sql += ";";
+        QString search = QString::fromStdString(sql);
+        QSqlQuery query;
+        query.prepare(search);
+        bool queryStatus = query.exec();
+        qDebug() << "Durchsuchen der Kundendatenbank erfolgreich: " << queryStatus;
+
+        if(!queryStatus) {
+            errormessage error;
+            error.changeTextDBRequestError();
+            error.setModal(true);
+            error.exec();
+        }
     }
 }
 

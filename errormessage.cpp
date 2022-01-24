@@ -80,7 +80,7 @@ void errormessage::changeTextDataCreationError() {
 }
 
 void errormessage::changeTextDBRequestError() {
-    ui->labelErrorMessage->setText("<p>Beim Abrufen der Datenbank ist ein Fehler aufgetreten.</p><p>Bitte versuchen Sie es erneut.</p>");
+    ui->labelErrorMessage->setText("<p>Beim Abrufen der Datenbank ist ein Fehler<br>aufgetreten.</p><p>Bitte versuchen Sie es erneut.</p>");
 }
 
 void errormessage::changeTextKundenIDWrong() {
