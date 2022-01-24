@@ -41,6 +41,8 @@ public:
     void changeTextKundenIDError();
     void changeTextMissingCustomerArguments();
     void changeTextKundenIDDoesntExist();
+    void changeTextMitarbeiterIDWrong();
+    void changeTextBestandIDWrong();
 
 private slots:
     void on_closeWindowButton_clicked();

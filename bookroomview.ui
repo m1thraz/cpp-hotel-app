@@ -120,7 +120,7 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="lineEditSonderKundenID"/>
         </item>
        </layout>
       </item>
@@ -134,7 +134,7 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_2"/>
+         <widget class="QLineEdit" name="lineEditSonderMitarbeiterID"/>
         </item>
        </layout>
       </item>
@@ -150,7 +150,7 @@ background-color: white;
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QCheckBox" name="massageCheckBox_2">
+           <widget class="QCheckBox" name="checkBoxSonderMassage">
             <property name="text">
              <string>Massage</string>
             </property>
@@ -170,7 +170,7 @@ background-color: white;
       <item>
        <layout class="QHBoxLayout" name="checkOutBtns">
         <item>
-         <widget class="QPushButton" name="checkOutBtn">
+         <widget class="QPushButton" name="bookExtrasButton">
           <property name="text">
            <string>Sonderleistung buchen</string>
           </property>
@@ -199,7 +199,7 @@ background-color: white;
        <x>10</x>
        <y>40</y>
        <width>341</width>
-       <height>281</height>
+       <height>284</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkInLayout">
@@ -215,7 +215,7 @@ background-color: white;
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="costumerIDLineEdit_2"/>
+           <widget class="QLineEdit" name="LineEditNeuKundenID"/>
           </item>
          </layout>
         </item>
@@ -227,7 +227,7 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="costumerIDLineEdit"/>
+         <widget class="QLineEdit" name="LineEditNeuMitarbeiterID"/>
         </item>
         <item>
          <widget class="QLabel" name="roomIDLabel">
@@ -237,7 +237,7 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="roomIDLineEdit"/>
+         <widget class="QLineEdit" name="LineEditNeuZimmerID"/>
         </item>
        </layout>
       </item>
@@ -253,7 +253,7 @@ background-color: white;
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEditAbfrNachname"/>
+           <widget class="QDateEdit" name="dateEditNeuAnreiseDatum"/>
           </item>
          </layout>
         </item>
@@ -267,7 +267,7 @@ background-color: white;
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEditAbfrVorname"/>
+           <widget class="QDateEdit" name="dateEditNeuAbreiseDatum"/>
           </item>
          </layout>
         </item>
@@ -276,7 +276,7 @@ background-color: white;
       <item>
        <layout class="QHBoxLayout" name="checkOutBtns_2">
         <item>
-         <widget class="QPushButton" name="checkOutBtn_2">
+         <widget class="QPushButton" name="bookRoomButton">
           <property name="text">
            <string>Zimmer buchen</string>
           </property>

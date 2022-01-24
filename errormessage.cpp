@@ -126,3 +126,11 @@ void errormessage::changeTextMissingCustomerArguments() {
 void errormessage::changeTextKundenIDDoesntExist() {
      ui->labelErrorMessage->setText("<p>Die angegebene KundenID existiert nicht.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p<>");
 }
+
+void errormessage::changeTextMitarbeiterIDWrong() {
+     ui->labelErrorMessage->setText("<p>Die eingegebene Mitarbeiter-ID ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
+}
+
+void errormessage::changeTextBestandIDWrong() {
+    ui->labelErrorMessage->setText("<p>Die eingegebene Bestand-ID ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
+}
