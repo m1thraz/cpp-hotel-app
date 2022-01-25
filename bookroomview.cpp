@@ -21,7 +21,137 @@ bookroomview::~bookroomview()
 
 void bookroomview::on_bookRoomButton_clicked() {
     if(lineEditVerification(1)) {
-        qDebug() << QString::fromStdString(this->getAnreiseDatum());
+        errormessage error;
+        if(!this->getKundenID() || !this->getMitarbeiterID() || !this->getBestandID()) {
+            qDebug() << "Mindestens ein LineEdit Textfeld ist leer";
+            error.changeTextMissingInputText();
+            error.setModal(true);
+            error.exec();
+
+        }else {
+          Database db;
+          //Überprüft, ob es die KundenID X bereits gibt
+          QSqlQuery query;
+          query.prepare("SELECT 1 FROM Kunde WHERE KundenID = :kundenID;");
+          query.bindValue(":kundenID", this->getKundenID());
+          bool queryStatus = query.exec();
+          qDebug() << "DB-Überprüfung der KundenID erfolgreich: " << queryStatus;
+          bool exists = false;
+
+          //Wird nur ausgeführt, wenn es die KundenID tatsächlich gibt, sonst Fehlermeldung
+          while(query.next()) {
+             exists = true;
+          }
+
+          if(!queryStatus) {
+              error.changeTextDBRequestError();
+              error.setModal(true);
+              error.exec();
+         }else if(!exists) {
+             error.changeTextKundenIDDoesntExist();
+             error.setModal(true);
+             error.exec();
+
+          }else {
+             //Überprüft, ob es die MitarbeiterID X bereits gibt
+             QSqlQuery query;
+             query.prepare("SELECT 1 FROM Mitarbeiter WHERE MitarbeiterID = :mitarbeiterID;");
+             query.bindValue(":mitarbeiterID", this->getMitarbeiterID());
+             queryStatus = query.exec();
+             qDebug() << "DB-Überprüfung der MitarbeiterID erfolgreich: " << queryStatus;
+             bool exists = false;
+
+             //Wird nur ausgeführt, wenn es die MitarbeiterID tatsächlich gibt, sonst Fehlermeldung
+             while(query.next()) {
+                exists = true;
+             }
+
+             if(!queryStatus) {
+                 error.changeTextDBRequestError();
+                 error.setModal(true);
+                 error.exec();
+            }else if(!exists) {
+                error.changeTextMitarbeiterIDDoesntExist();
+                error.setModal(true);
+                error.exec();
+
+             }else {
+                 //Überprüft, ob es die BestandID X bereits gibt
+                 QSqlQuery query;
+                 query.prepare("SELECT 1 FROM Zimmerbestand WHERE BestandID = :bestandID;");
+                 query.bindValue(":bestandID", this->getBestandID());
+                 queryStatus = query.exec();
+                 qDebug() << "DB-Überprüfung der BestandID erfolgreich: " << queryStatus;
+                 bool exists = false;
+
+                 //Wird nur ausgeführt, wenn es die MitarbeiterID tatsächlich gibt, sonst Fehlermeldung
+                 while(query.next()) {
+                    exists = true;
+                 }
+
+                 if(!queryStatus) {
+                     error.changeTextDBRequestError();
+                     error.setModal(true);
+                     error.exec();
+                }else if(!exists) {
+                    error.changeTextBestandIDDoesntExist();
+                    error.setModal(true);
+                    error.exec();
+                }else {
+                     //HIER FEHLT NOCH ÜBERPRÜFUNG, OB DAS ZIMMER ÜBERHAUPT FREI IST!!!
+                     QSqlQuery query;
+                     std::string sql;
+                     sql = ("SELECT Anreisedatum, Abreisedatum FROM Zimmerbuchungsliste WHERE (Anreisedatum BETWEEN '" +
+                            this->getAnreiseDatum() + "' AND '" + this->getAbreiseDatum() + "' OR Abreisedatum BETWEEN '" +
+                            this->getAnreiseDatum() + "' AND '" + this->getAbreiseDatum() + "') OR (Anreisedatum < '" +
+                            this->getAnreiseDatum() + "' AND Abreisedatum > '" + this->getAbreiseDatum() + "') "
+                            "AND BestandID = " + std::to_string(this->getBestandID()) + ";");
+                    QString verify = QString::fromStdString(sql);
+                    query.prepare(verify);
+                    queryStatus = query.exec();
+                    qDebug() << "Abfrage der Zimmerbuchungsliste erfolgreich: " << queryStatus;
+                    bool exists = false;
+
+                    //Wird nur ausgeführt, wenn das Zimmer in dem Zeitraum bereits gebucht ist, sonst Fehlermeldung
+                    while(query.next()) {
+                       exists = true;
+                    }
+
+                   if(!queryStatus) {
+                       error.changeTextDBRequestError();
+                       error.setModal(true);
+                       error.exec();
+                   }else if(exists) {
+                       error.changeTextRoomIsBooked();
+                       error.setModal(true);
+                       error.exec();
+                    }else {
+                         sql = "INSERT OR IGNORE INTO Zimmerbuchungsliste (BestandID, MitarbeiterID, "
+                                 "KundenID, Anreisedatum, Abreisedatum) "
+                                 "VALUES (" + std::to_string(this->getBestandID()) + ", " + std::to_string(this->getMitarbeiterID()) + ", "
+                                 + std::to_string(this->getKundenID()) + ", '" + this->getAnreiseDatum() + "', '"
+                                 + this->getAbreiseDatum() + "');";
+
+                         QString insert = QString::fromStdString(sql);
+                         query.prepare(insert);
+                         queryStatus = query.exec();
+                         qDebug() << "Hinzufügen der Buchung erfolgreich: " << queryStatus;
+
+                         if(!queryStatus) {
+                             error.changeTextDataCreationError();
+                             error.setModal(true);
+                             error.exec();
+                         }else {
+                             infomessage info;
+                             info.changeTextNeu();
+                             info.setModal(true);
+                             info.exec();
+                         }
+                     }
+                 }
+             }
+          }
+       }
     }
 }
 
@@ -101,9 +231,11 @@ bool bookroomview::lineEditVerification(const int buttontyp) {
 
     // Kein Match für Anreise und Abreise, da Datumsfeld
     if(!tempAnreiseDatum.isEmpty()) {
+        tempAnreiseDatum.replace(".", "-");
         this->setAnreiseDatum(tempAnreiseDatum.toStdString());
     }
     if(!tempAbreiseDatum.isEmpty()) {
+        tempAbreiseDatum.replace(".", "-");
         this->setAbreiseDatum(tempAbreiseDatum.toStdString());
     }
 

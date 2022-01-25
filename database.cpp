@@ -219,7 +219,7 @@ void Database::createDatabaseEntries() {
     qDebug()<< "Tabelleneinträge für Tabelle Kunde wurden erstellt: " << creationStatus;
 
     query = "INSERT OR IGNORE INTO Zimmerbuchungsliste (BestandID, MitarbeiterID, KundenID, Anreisedatum, Abreisedatum)"
-            "VALUES (1, 12345, 1, '2022-08-06', '2022-08-10'), (4, 67890, 2, '2022-08-07', '2022-08-30');";
+            "VALUES (1, 12345, 1, '06-08-22', '10-08-22'), (4, 67890, 2, '07-08-22', '30-08-22');";
     creationStatus = exequery.exec(query);
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
     qDebug()<< "Tabelleneinträge für Tabelle Zimmerbuchungsliste wurden erstellt: " << creationStatus;

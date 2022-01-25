@@ -232,7 +232,7 @@ background-color: white;
         <item>
          <widget class="QLabel" name="roomIDLabel">
           <property name="text">
-           <string>ZimmerID</string>
+           <string>BestandID</string>
           </property>
          </widget>
         </item>

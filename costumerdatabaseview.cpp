@@ -140,7 +140,12 @@ void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {
              while(query.next()) {
                 exists = true;
              }
-            if(!exists) {
+
+            if(!queryStatus) {
+                error.changeTextDBRequestError();
+                error.setModal(true);
+                error.exec();
+            }else if(!exists) {
                 error.changeTextKundenIDDoesntExist();
                 error.setModal(true);
                 error.exec();

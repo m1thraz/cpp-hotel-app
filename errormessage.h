@@ -43,6 +43,9 @@ public:
     void changeTextKundenIDDoesntExist();
     void changeTextMitarbeiterIDWrong();
     void changeTextBestandIDWrong();
+    void changeTextMitarbeiterIDDoesntExist();
+    void changeTextBestandIDDoesntExist();
+    void changeTextRoomIsBooked();
 
 private slots:
     void on_closeWindowButton_clicked();

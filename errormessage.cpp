@@ -134,3 +134,15 @@ void errormessage::changeTextMitarbeiterIDWrong() {
 void errormessage::changeTextBestandIDWrong() {
     ui->labelErrorMessage->setText("<p>Die eingegebene Bestand-ID ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
 }
+
+void errormessage::changeTextMitarbeiterIDDoesntExist() {
+    ui->labelErrorMessage->setText("<p>Die angegebene MitarbeiterID existiert nicht.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p<>");
+}
+
+void errormessage::changeTextBestandIDDoesntExist() {
+    ui->labelErrorMessage->setText("<p>Die angegebene BestandID existiert nicht.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p<>");
+}
+
+void errormessage::changeTextRoomIsBooked() {
+    ui->labelErrorMessage->setText("<p>Das ausgewählte Zimmer ist in diesem Zeitraum<br>bereits belegt.</p><p>Bitte wählen Sie ein anderes Zimmer.</p>");
+}
