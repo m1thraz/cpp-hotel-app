@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QtSql>
-//#include <QtSqlDatabase>
 #include <QMessageBox>
 #include "loggedinscreen.h"
 #include<QTimer>
