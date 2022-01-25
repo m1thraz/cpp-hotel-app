@@ -55,7 +55,7 @@ void MainWindow::on_loginButton_clicked()
         int id = std::stoi(tempid.toStdString());
         // Hauptmenü wird nur geöffnet, wenn Logindaten mit Daten aus der Datenbank übereinstimmen
         if(db.loginQuery(id, password)) {
-            this -> hide();
+            this -> close();
             LoggedInScreen w2;
             w2.setModal(true);
             w2.exec();

@@ -5,7 +5,7 @@
 #include "hoteldatabaseview.h"
 #include "costumerdatabaseview.h"
 #include "loggedinscreen.h"
-#include "mainwindow.h"
+//#include "mainwindow.h"
 #include "invoicecreation.h"
 #include "checkincheckoutscreen.h"
 #include "bookroomview.h"
@@ -43,7 +43,6 @@ private:
     hotelDatabaseView *hotel;
     checkInCheckOutScreen *checkIn;
     bookroomview *book;
-
 };
 
 #endif // LOGGEDINSCREEN_H

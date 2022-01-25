@@ -1,5 +1,6 @@
 #include "loggedinscreen.h"
 #include "ui_loggedinscreen.h"
+#include "mainwindow.h"
 
 LoggedInScreen::LoggedInScreen(QWidget *parent) :
     QDialog(parent),
@@ -29,7 +30,9 @@ void LoggedInScreen::on_RechnungButton_clicked() {
 }
 
 void LoggedInScreen::on_logoutButto_clicked() {
-  this -> hide();
+  this -> close();
+  //MainWindow window;
+
 }
 
 void LoggedInScreen::on_checkInBtn_clicked() {
