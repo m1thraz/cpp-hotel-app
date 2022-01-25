@@ -253,7 +253,17 @@ background-color: white;
            </widget>
           </item>
           <item>
-           <widget class="QDateEdit" name="dateEditNeuAnreiseDatum"/>
+           <widget class="QDateEdit" name="dateEditNeuAnreiseDatum">
+            <property name="minimumSize">
+             <size>
+              <width>164</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="displayFormat">
+             <string>yyyy.MM.dd</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -267,7 +277,11 @@ background-color: white;
            </widget>
           </item>
           <item>
-           <widget class="QDateEdit" name="dateEditNeuAbreiseDatum"/>
+           <widget class="QDateEdit" name="dateEditNeuAbreiseDatum">
+            <property name="displayFormat">
+             <string>yyyy.MM.dd</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>

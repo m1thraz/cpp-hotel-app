@@ -101,10 +101,12 @@ void bookroomview::on_bookRoomButton_clicked() {
                      //HIER FEHLT NOCH ÜBERPRÜFUNG, OB DAS ZIMMER ÜBERHAUPT FREI IST!!!
                      QSqlQuery query;
                      std::string sql;
-                     sql = ("SELECT Anreisedatum, Abreisedatum FROM Zimmerbuchungsliste WHERE (Anreisedatum BETWEEN '" +
+                     qDebug() << QString::fromStdString(this->getAnreiseDatum());
+                     qDebug() << QString::fromStdString(this->getAbreiseDatum());
+                     sql = ("SELECT * FROM Zimmerbuchungsliste WHERE ((Anreisedatum BETWEEN '" +
                             this->getAnreiseDatum() + "' AND '" + this->getAbreiseDatum() + "' OR Abreisedatum BETWEEN '" +
                             this->getAnreiseDatum() + "' AND '" + this->getAbreiseDatum() + "') OR (Anreisedatum < '" +
-                            this->getAnreiseDatum() + "' AND Abreisedatum > '" + this->getAbreiseDatum() + "') "
+                            this->getAnreiseDatum() + "' AND Abreisedatum > '" + this->getAbreiseDatum() + "')) "
                             "AND BestandID = " + std::to_string(this->getBestandID()) + ";");
                     QString verify = QString::fromStdString(sql);
                     query.prepare(verify);
@@ -112,9 +114,16 @@ void bookroomview::on_bookRoomButton_clicked() {
                     qDebug() << "Abfrage der Zimmerbuchungsliste erfolgreich: " << queryStatus;
                     bool exists = false;
 
-                    //Wird nur ausgeführt, wenn das Zimmer in dem Zeitraum bereits gebucht ist, sonst Fehlermeldung
+                    //Wird nur ausgeführt, wenn das Zimmer in dem Zeitraum bereits gebucht ist, da sonst kein query zurück kommt
                     while(query.next()) {
                        exists = true;
+                        std::string bestandID = query.value("BestandID").toString().toStdString();
+                        std::string anreise = query.value("Anreisedatum").toString().toStdString();
+                        std::string abreise = query.value("Abreisedatum").toString().toStdString();
+
+                        std::string text = "BestandID: " + bestandID + " Anreise: " + anreise + " Abreise: " + abreise;
+
+                        qDebug() << QString::fromStdString(text);
                     }
 
                    if(!queryStatus) {
@@ -125,8 +134,10 @@ void bookroomview::on_bookRoomButton_clicked() {
                        error.changeTextRoomIsBooked();
                        error.setModal(true);
                        error.exec();
+
+                    //Buchungsprozess wird eingeleitet
                     }else {
-                         sql = "INSERT OR IGNORE INTO Zimmerbuchungsliste (BestandID, MitarbeiterID, "
+                         sql = "INSERT INTO Zimmerbuchungsliste (BestandID, MitarbeiterID, "
                                  "KundenID, Anreisedatum, Abreisedatum) "
                                  "VALUES (" + std::to_string(this->getBestandID()) + ", " + std::to_string(this->getMitarbeiterID()) + ", "
                                  + std::to_string(this->getKundenID()) + ", '" + this->getAnreiseDatum() + "', '"
