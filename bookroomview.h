@@ -16,6 +16,10 @@ public:
     ~bookroomview();
 
     bool lineEditVerification(const int buttontyp);
+    bool verifyKundenIDExists();
+    bool verifyMitarbeiterIDExists();
+    bool verifyBestandIDExists();
+    bool verifyRoomBooked();
     void setKundenID(int kundenID);
     int getKundenID();
     void setMitarbeiterID(int mitarbeiterID);
