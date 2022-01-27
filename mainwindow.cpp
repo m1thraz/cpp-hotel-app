@@ -15,17 +15,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 
-//    second = new hotelDatabaseView();
-//    timer = new QTimer();
-//    connect(timer, &QTimer::timeout, this, &MainWindow::changeToMainMenu);
-//    timer->start(1000);
-
-
-//    machine = new QStateMachine(this);
-
-//    s1 = new QState();
-
-//    s1-> assignProperty(ui)
 }
 
 MainWindow::~MainWindow()
