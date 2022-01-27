@@ -53,10 +53,10 @@ void bookroomview::on_bookRoomButton_clicked() {
 
     //Buchungsprozess wird eingeleitet
     sql = "INSERT INTO Zimmerbuchungsliste (BestandID, MitarbeiterID, "
-          "KundenID, Anreisedatum, Abreisedatum) "
+          "KundenID, Anreisedatum, Abreisedatum, BuchungsstatusID) "
           "VALUES (" + std::to_string(this->getBestandID()) + ", " + std::to_string(this->getMitarbeiterID()) + ", "
             + std::to_string(this->getKundenID()) + ", '" + this->getAnreiseDatum() + "', '"
-            + this->getAbreiseDatum() + "');";
+            + this->getAbreiseDatum() + "', 1);";
 
     QString insert = QString::fromStdString(sql);
     query.prepare(insert);
@@ -76,7 +76,7 @@ void bookroomview::on_bookRoomButton_clicked() {
 }
 
 void bookroomview::on_bookExtrasButton_clicked() {
-    if(lineEditVerification(2)) {
+    if(!lineEditVerification(2)) {
         return;
     }
     errormessage error;

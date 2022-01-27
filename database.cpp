@@ -162,6 +162,7 @@ void Database::createDatabaseTables() {
              "Anreisedatum DATE,"
              "Abreisedatum DATE,"
              "BuchungsstatusID INT,"
+             "Anmerkungen VARCHAR(250),"
              "PRIMARY KEY (BestandID, KundenID, MitarbeiterID, Anreisedatum, Abreisedatum),"
              "FOREIGN KEY (BestandID) REFERENCES Zimmerbestand(BestandID),"
              "FOREIGN KEY (MitarbeiterID) REFERENCES Mitarbeiter(MitarbeiterID),"
@@ -220,8 +221,9 @@ void Database::createDatabaseEntries() {
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
     qDebug()<< "Tabelleneinträge für Tabelle Kunde wurden erstellt: " << creationStatus;
 
-    query = "INSERT OR IGNORE INTO Zimmerbuchungsliste (BestandID, MitarbeiterID, KundenID, Anreisedatum, Abreisedatum, BuchungsstatusID)"
-            "VALUES (1, 12345, 1, '2022-03-14', '2022-03-24', 1), (4, 67890, 2, '2022-01-25', '2022-03-01', 2);";
+    query = "INSERT OR IGNORE INTO Zimmerbuchungsliste (BestandID, MitarbeiterID, KundenID, Anreisedatum, Abreisedatum, "
+            "BuchungsstatusID, Anmerkungen)"
+            "VALUES (1, 12345, 1, '2022-03-14', '2022-03-24', 1, null), (4, 67890, 2, '2022-01-25', '2022-03-01', 2, 'benötigt Reinigung');";
     creationStatus = exequery.exec(query);
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
     qDebug()<< "Tabelleneinträge für Tabelle Zimmerbuchungsliste wurden erstellt: " << creationStatus;
