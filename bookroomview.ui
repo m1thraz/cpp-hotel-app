@@ -171,8 +171,17 @@ background-color: white;
        <layout class="QHBoxLayout" name="checkOutBtns">
         <item>
          <widget class="QPushButton" name="bookExtrasButton">
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="text">
            <string>Sonderleistung buchen</string>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -291,6 +300,9 @@ background-color: white;
        <layout class="QHBoxLayout" name="checkOutBtns_2">
         <item>
          <widget class="QPushButton" name="bookRoomButton">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="text">
            <string>Zimmer buchen</string>
           </property>
