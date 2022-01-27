@@ -146,3 +146,7 @@ void errormessage::changeTextBestandIDDoesntExist() {
 void errormessage::changeTextRoomIsBooked() {
     ui->labelErrorMessage->setText("<p>Das ausgewählte Zimmer ist in diesem Zeitraum<br>bereits belegt.</p><p>Bitte wählen Sie ein anderes Zimmer.</p>");
 }
+
+void errormessage::changeTextMissingSpecialService() {
+    ui->labelErrorMessage->setText("<p>Bitte wählen Sie mindestens eine Sonderleistung aus.</p>");
+}

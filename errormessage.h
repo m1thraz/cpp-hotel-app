@@ -46,6 +46,7 @@ public:
     void changeTextMitarbeiterIDDoesntExist();
     void changeTextBestandIDDoesntExist();
     void changeTextRoomIsBooked();
+    void changeTextMissingSpecialService();
 
 private slots:
     void on_closeWindowButton_clicked();

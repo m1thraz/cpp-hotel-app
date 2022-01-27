@@ -20,6 +20,7 @@ public:
     bool verifyMitarbeiterIDExists();
     bool verifyBestandIDExists();
     bool verifyRoomBooked();
+    bool bookMasageSauna(int sonderleistungsID);
     void setKundenID(int kundenID);
     int getKundenID();
     void setMitarbeiterID(int mitarbeiterID);

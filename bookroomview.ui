@@ -157,7 +157,7 @@ background-color: white;
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="saunaCheckBox_2">
+           <widget class="QCheckBox" name="checkBoxSonderSauna">
             <property name="text">
              <string>Sauna</string>
             </property>

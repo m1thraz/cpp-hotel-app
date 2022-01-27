@@ -148,6 +148,7 @@ void Database::createDatabaseTables() {
              "KundenID INT,"
              "MitarbeiterID INT,"
              "SonderleistungsID INT,"
+             "Buchungsanzahl INT,"
              "FOREIGN KEY (KundenID) REFERENCES Kunde(KundenID),"
              "FOREIGN KEY (MitarbeiterID) REFERENCES Mitarbeiter(MitarbeiterID),"
              "FOREIGN KEY (SonderleistungsID) REFERENCES Sonderleistung(SonderleistungsID),"
@@ -230,8 +231,8 @@ void Database::createDatabaseEntries() {
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
     qDebug()<< "Tabelleneinträge für Tabelle Sonderleistung wurden erstellt: " << creationStatus;
 
-    query = "INSERT OR IGNORE INTO GebuchteSonderleistungen (SonderleistungsID, MitarbeiterID, KundenID)"
-            "VALUES (1, 12345, 2), (2, 12345, 2);";
+    query = "INSERT OR IGNORE INTO GebuchteSonderleistungen (SonderleistungsID, MitarbeiterID, KundenID, Buchungsanzahl)"
+            "VALUES (1, 12345, 2, 1), (2, 12345, 2, 4);";
     creationStatus = exequery.exec(query);
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
     qDebug()<< "Tabelleneinträge für Tabelle GebuchteSonderleistungen wurden erstellt: " << creationStatus;

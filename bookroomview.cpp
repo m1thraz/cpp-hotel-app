@@ -77,15 +77,44 @@ void bookroomview::on_bookRoomButton_clicked() {
 
 void bookroomview::on_bookExtrasButton_clicked() {
     if(lineEditVerification(2)) {
-        errormessage error;
-        if(!this->getKundenID() || !this->getMitarbeiterID()) {
-            qDebug() << "Mindestens ein LineEdit Textfeld ist leer";
-            error.changeTextMissingInputText();
-            error.setModal(true);
-            error.exec();
-        }else {
+        return;
+    }
+    errormessage error;
+    if(!this->getKundenID() || !this->getMitarbeiterID()) {
+        qDebug() << "Mindestens ein LineEdit Textfeld ist leer";
+        error.changeTextMissingInputText();
+        error.setModal(true);
+        error.exec();
+        return;
+    }
 
+    if(!verifyKundenIDExists()) {
+        return;
+    }
+
+    if(!verifyMitarbeiterIDExists()) {
+        return;
+    }
+
+    bool massagen = ui->checkBoxSonderMassage->isChecked();
+    bool sauna = ui->checkBoxSonderSauna->isChecked();
+
+    if(!massagen && !sauna) {
+        error.changeTextMissingSpecialService();
+        error.setModal(true);
+        error.exec();
+    }
+
+    // Sonder-Buchungsprozess für Massagen wird eingeleitet
+    if(massagen) {
+        if(!bookMasageSauna(1)) {
+            return;
         }
+    }
+
+    // Sonder-Buchungsprozess für Sauna wird eingeleitet
+    if(sauna) {
+        bookMasageSauna(2);
     }
 }
 
@@ -251,8 +280,6 @@ bool bookroomview::verifyRoomBooked() {
     errormessage error;
     QSqlQuery query;
     std::string sql;
-    qDebug() << QString::fromStdString(this->getAnreiseDatum());
-    qDebug() << QString::fromStdString(this->getAbreiseDatum());
     sql = ("SELECT 1 FROM Zimmerbuchungsliste WHERE ((Anreisedatum BETWEEN '" +
            this->getAnreiseDatum() + "' AND '" + this->getAbreiseDatum() + "' OR Abreisedatum BETWEEN '" +
            this->getAnreiseDatum() + "' AND '" + this->getAbreiseDatum() + "') OR (Anreisedatum < '" +
@@ -276,6 +303,60 @@ bool bookroomview::verifyRoomBooked() {
         return true;
     }else {
         return false;
+    }
+}
+
+// Bucht Massagen und Sauna
+bool bookroomview::bookMasageSauna(int sonderleistungsID) {
+    errormessage error;
+    QSqlQuery query;
+    std::string sql;
+    sql = "SELECT 1 FROM GebuchteSonderleistungen WHERE KundenID = " + std::to_string(this->getKundenID())
+            + " AND SonderleistungsID = :sonderleistungsID;";
+    QString verify = QString::fromStdString(sql);
+    query.prepare(verify);
+    query.bindValue(":sonderleistungsID", sonderleistungsID);
+    bool queryStatus = query.exec();
+    qDebug() << "Abfrage der gebuchten Sonderleistungen erfolgreich: " << queryStatus;
+
+    if(!queryStatus) {
+        error.changeTextDBRequestError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }
+
+    // Kunde hat bereits Sonderleistung gebucht
+    if(query.next()) {
+        sql = "UPDATE GebuchteSonderleistungen SET Buchungsanzahl = Buchungsanzahl + 1 "
+              "WHERE KundenID = " + std::to_string(this->getKundenID()) + " AND "
+              "SonderleistungsID = :sonderleistungsID;";
+        QString update = QString::fromStdString(sql);
+        query.prepare(update);
+        query.bindValue(":sonderleistungsID", sonderleistungsID);
+        queryStatus = query.exec();
+        qDebug() << "Updaten der gebuchten Sonderleistungen erfolgreich: " << queryStatus;
+
+    // Bucht zum ersten mal Sonderleistungen - Neuer Eintrag muss erzeugt werden
+    }else {
+        sql = "INSERT INTO GebuchteSonderleistungen (KundenID, MitarbeiterID, "
+              "SonderleistungsID, Buchungsanzahl) "
+              "VALUES (" + std::to_string(this->getKundenID()) + ", " + std::to_string(this->getMitarbeiterID()) +
+                ", 1, :sonderleistungsID);";
+        QString insert = QString::fromStdString(sql);
+        query.prepare(insert);
+        query.bindValue(":sonderleistungsID", sonderleistungsID);
+        queryStatus = query.exec();
+        qDebug() << "Hinzufügen der gebuchten Sonderleistungen erfolgreich: " << queryStatus;
+    }
+
+    if(!queryStatus) {
+        error.changeTextDataCreationError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }else {
+        return true;
     }
 }
 
