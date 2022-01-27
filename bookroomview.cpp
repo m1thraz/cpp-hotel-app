@@ -119,7 +119,7 @@ void bookroomview::on_bookExtrasButton_clicked() {
 }
 
 void bookroomview::on_cancelBookedRoomButton_clicked() {
-    if(lineEditVerification(1)) {
+    if(!lineEditVerification(1)) {
         return;
     }
     errormessage error;
