@@ -104,9 +104,9 @@ background-color: white;
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>100</y>
+       <y>40</y>
        <width>341</width>
-       <height>221</height>
+       <height>281</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkOutLayout">
@@ -207,7 +207,7 @@ background-color: white;
       <rect>
        <x>10</x>
        <y>40</y>
-       <width>341</width>
+       <width>351</width>
        <height>284</height>
       </rect>
      </property>
@@ -300,6 +300,12 @@ background-color: white;
        <layout class="QHBoxLayout" name="checkOutBtns_2">
         <item>
          <widget class="QPushButton" name="bookRoomButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="focusPolicy">
            <enum>Qt::NoFocus</enum>
           </property>
@@ -309,6 +315,16 @@ background-color: white;
          </widget>
         </item>
        </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancelBookedRoomButton">
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>Buchung löschen</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
