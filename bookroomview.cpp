@@ -380,7 +380,7 @@ bool bookroomview::bookMasageSauna(int sonderleistungsID) {
         sql = "INSERT INTO GebuchteSonderleistungen (KundenID, MitarbeiterID, "
               "SonderleistungsID, Buchungsanzahl) "
               "VALUES (" + std::to_string(this->getKundenID()) + ", " + std::to_string(this->getMitarbeiterID()) +
-                ", 1, :sonderleistungsID);";
+                ", :sonderleistungsID, 1);";
         QString insert = QString::fromStdString(sql);
         query.prepare(insert);
         query.bindValue(":sonderleistungsID", sonderleistungsID);
