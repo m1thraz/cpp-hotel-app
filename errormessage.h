@@ -47,6 +47,7 @@ public:
     void changeTextBestandIDDoesntExist();
     void changeTextRoomIsBooked();
     void changeTextMissingSpecialService();
+    void changeTextDeleteDataError();
 
 private slots:
     void on_closeWindowButton_clicked();

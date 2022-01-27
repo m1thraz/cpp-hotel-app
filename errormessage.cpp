@@ -150,3 +150,7 @@ void errormessage::changeTextRoomIsBooked() {
 void errormessage::changeTextMissingSpecialService() {
     ui->labelErrorMessage->setText("<p>Bitte wählen Sie mindestens eine Sonderleistung aus.</p>");
 }
+
+void errormessage::changeTextDeleteDataError() {
+    ui->labelErrorMessage->setText("<p>Beim Löschen eines Datensatzes ist ein Fehler<br>aufgetreten.</p><p>Bitte versuchen Sie es erneut.</p>");
+}

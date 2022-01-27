@@ -21,6 +21,10 @@ void infomessage::changeTextNeu() {
     ui->labelInfoMessage->setText("<p>Neuer Eintrag wurde erstellt.</p>");
 }
 
+void infomessage::changeTextDelete() {
+    ui->labelInfoMessage->setText("<p>Eintrag wurde erfolgreich gelöscht.</p>");
+}
+
 void infomessage::on_closeWindowButton_clicked() {
     this->hide();
 }

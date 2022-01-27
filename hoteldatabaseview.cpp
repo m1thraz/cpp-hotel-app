@@ -294,8 +294,8 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
                     if(doppelbett && !einzelbett) {
                         // Erstellen eines neuen Zimmers
                        ausstattung = true;
-                        query.prepare("INSERT INTO Zimmerbestand (Zimmernummer, ZimmerID, BuchungsstatusID)"
-                                "VALUES (:zimmerbestand_zimmernummer, 2, 1);");
+                        query.prepare("INSERT INTO Zimmerbestand (Zimmernummer, ZimmerID)"
+                                "VALUES (:zimmerbestand_zimmernummer, 2);");
                         query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
                         queryStatus = query.exec();
                         qDebug() << "Erstellen eines Zimmers mit Doppelbett erfolgreich: " << queryStatus;
@@ -323,8 +323,8 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
                     }else if(einzelbett && !doppelbett) {
                         // Erstellen eines neuen Zimmers
                         ausstattung = true;
-                        query.prepare("INSERT INTO Zimmerbestand (Zimmernummer, ZimmerID, BuchungsstatusID)"
-                                "VALUES (:zimmerbestand_zimmernummer, 1, 1);");
+                        query.prepare("INSERT INTO Zimmerbestand (Zimmernummer, ZimmerID)"
+                                "VALUES (:zimmerbestand_zimmernummer, 1);");
                         query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
                         queryStatus = query.exec();
                         qDebug() << "Erstellen eines Zimmers mit Einzelbett erfolgreich: " << queryStatus;
@@ -465,10 +465,11 @@ void hotelDatabaseView::on_suchenButton_clicked() {
         sql += "zu.ZimmerzusatzID = 3";
     }
 
-    if(verfuegbar) {
-        ausstattung = true;
-        sql += " AND bu.BuchungsstatusID = 1";
-    }
+    // MUSS BEARBEITET WERDEN MIT DER NEUEN DATUMSLOGIK
+//    if(verfuegbar) {
+//        ausstattung = true;
+//        sql += " AND bu.BuchungsstatusID = 1";
+//    }
 
     QSqlQuery query;
     bool queryStatus;
@@ -512,14 +513,12 @@ void hotelDatabaseView::on_suchenButton_clicked() {
                 error.exec();
 
             }else if(!ausstattung) {
-                query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, bu.Status, zu.Zimmerzusatz "
+                query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, zu.Zimmerzusatz "
                               "FROM Zimmerbestand zi "
                               "LEFT JOIN BestandZusatzliste be "
                               "ON zi.BestandID = be.BestandID "
                               "LEFT JOIN Zimmer zim "
                               "ON zi.ZimmerID = zim.ZimmerID "
-                              "LEFT JOIN Buchungsstatus bu "
-                              "ON zi.BuchungsstatusID = bu.BuchungsstatusID "
                               "LEFT JOIN Zimmerzusatz zu "
                               "ON be.ZimmerzusatzID = zu.ZimmerzusatzID "
                               "WHERE zi.Zimmernummer = :zimmerbestand_zimmernummer;");
@@ -527,14 +526,12 @@ void hotelDatabaseView::on_suchenButton_clicked() {
                 queryStatus = query.exec();
                 qDebug() << "Abfrage mit Zimmer erfolgreich: " << queryStatus;
             }else {
-                query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, bu.Status, zu.Zimmerzusatz "
+                query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, zu.Zimmerzusatz "
                               "FROM Zimmerbestand zi "
                               "LEFT JOIN BestandZusatzliste be "
                               "ON zi.BestandID = be.BestandID "
                               "LEFT JOIN Zimmer zim "
                               "ON zi.ZimmerID = zim.ZimmerID "
-                              "LEFT JOIN Buchungsstatus bu "
-                              "ON zi.BuchungsstatusID = bu.BuchungsstatusID "
                               "LEFT JOIN Zimmerzusatz zu "
                               "ON be.ZimmerzusatzID = zu.ZimmerzusatzID "
                               "WHERE zi.Zimmernummer = :zimmerbestand_zimmernummer AND :sql;");
@@ -554,27 +551,23 @@ void hotelDatabaseView::on_suchenButton_clicked() {
         }
     }else {
         if(!ausstattung) {
-            query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, bu.Status, zu.Zimmerzusatz "
+            query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, zu.Zimmerzusatz "
                           "FROM Zimmerbestand zi "
                           "LEFT JOIN BestandZusatzliste be "
                           "ON zi.BestandID = be.BestandID "
                           "LEFT JOIN Zimmer zim "
                           "ON zi.ZimmerID = zim.ZimmerID "
-                          "LEFT JOIN Buchungsstatus bu "
-                          "ON zi.BuchungsstatusID = bu.BuchungsstatusID "
                           "LEFT JOIN Zimmerzusatz zu "
                           "ON be.ZimmerzusatzID = zu.ZimmerzusatzID;");
             queryStatus = query.exec();
             qDebug() << "Abfrage ohne Zimmer und ohne Ausstattung erfolgreich: " << queryStatus;
         }else {
-            query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, bu.Status, zu.Zimmerzusatz "
+            query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, zu.Zimmerzusatz "
                           "FROM Zimmerbestand zi "
                           "LEFT JOIN BestandZusatzliste be "
                           "ON zi.BestandID = be.BestandID "
                           "LEFT JOIN Zimmer zim "
                           "ON zi.ZimmerID = zim.ZimmerID "
-                          "LEFT JOIN Buchungsstatus bu "
-                          "ON zi.BuchungsstatusID = bu.BuchungsstatusID "
                           "LEFT JOIN Zimmerzusatz zu "
                           "ON be.ZimmerzusatzID = zu.ZimmerzusatzID "
                           "WHERE :sql;");

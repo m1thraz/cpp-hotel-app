@@ -16,6 +16,7 @@ public:
     ~infomessage();
     void changeTextModifiziert();
     void changeTextNeu();
+    void changeTextDelete();
 
 private slots:
     void on_closeWindowButton_clicked();

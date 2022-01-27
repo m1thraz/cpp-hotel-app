@@ -37,6 +37,8 @@ private slots:
 
     void on_bookExtrasButton_clicked();
 
+    void on_cancelBookedRoomButton_clicked();
+
 private:
     Ui::bookroomview *ui;
     int kundenID;

@@ -118,6 +118,44 @@ void bookroomview::on_bookExtrasButton_clicked() {
     }
 }
 
+void bookroomview::on_cancelBookedRoomButton_clicked() {
+    if(lineEditVerification(1)) {
+        return;
+    }
+    errormessage error;
+    if(!this->getKundenID() || !this->getBestandID()) {
+        qDebug() << "Mindestens ein LineEdit Textfeld ist leer";
+        error.changeTextMissingInputText();
+        error.setModal(true);
+        error.exec();
+        return;
+    }
+
+    QSqlQuery query;
+    std::string sql;
+
+    //Buchung wird storniert, wenn existent
+    sql = "DELETE FROM Zimmerbuchungsliste WHERE KundenID = " + std::to_string(this->getKundenID())
+            + " AND BestandID = " + std::to_string(this->getBestandID())
+            + " AND Anreisedatum = '" + this->getAnreiseDatum() + "' AND Abreisedatum = '"
+            + this->getAbreiseDatum() + "');";
+    QString deletes = QString::fromStdString(sql);
+    query.prepare(deletes);
+    bool queryStatus = query.exec();
+    qDebug() << "Stornieren der Buchung erfolgreich: " << queryStatus;
+
+    if(!queryStatus) {
+        error.changeTextDeleteDataError();
+        error.setModal(true);
+        error.exec();
+    }else {
+        infomessage info;
+        info.changeTextDelete();
+        info.setModal(true);
+        info.exec();
+    }
+}
+
 bool bookroomview::lineEditVerification(const int buttontyp) {
     QString tempKundenID;
     QString tempMitarbeiterID;
@@ -359,6 +397,7 @@ bool bookroomview::bookMasageSauna(int sonderleistungsID) {
         return true;
     }
 }
+
 
 void bookroomview::setKundenID(int kundenID) {
     this->kundenID = kundenID;
