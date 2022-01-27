@@ -15,24 +15,23 @@ LoggedInScreen::~LoggedInScreen()
 }
 
 void LoggedInScreen::on_hotelButton_clicked() {
-  hotel = new hotelDatabaseView(this);
-  hotel -> show();
+    hotel = new hotelDatabaseView(this);
+    hotel -> show();
 }
 
 void LoggedInScreen::on_dbButton_clicked() {
-  costumer = new costumerDatabaseView(this);
-  costumer -> show();
+    costumer = new costumerDatabaseView(this);
+    costumer -> show();
 }
 
 void LoggedInScreen::on_RechnungButton_clicked() {
-  invoice = new invoiceCreation(this);
-  invoice -> show();
+    invoice = new invoiceCreation(this);
+    invoice -> show();
 }
 
 void LoggedInScreen::on_logoutButto_clicked() {
-  this -> close();
-  //MainWindow window;
-
+    mwindow->show();
+    this->close();
 }
 
 void LoggedInScreen::on_checkInBtn_clicked() {
@@ -44,3 +43,9 @@ void LoggedInScreen::on_buchenButton_clicked() {
     book = new bookroomview(this);
     book->show();
 }
+
+void LoggedInScreen::setMainWindow(MainWindow *mwindow) {
+    this->mwindow = mwindow;
+}
+
+

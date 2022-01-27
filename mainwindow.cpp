@@ -5,6 +5,7 @@
 #include "errormessage.h"
 #include <QRegularExpressionMatch>
 #include <QDebug>
+#include "loggedinscreen.h"
 
 // [Hotel Managment Office System] Fenster
 MainWindow::MainWindow(QWidget *parent)
@@ -55,8 +56,11 @@ void MainWindow::on_loginButton_clicked()
         int id = std::stoi(tempid.toStdString());
         // Hauptmenü wird nur geöffnet, wenn Logindaten mit Daten aus der Datenbank übereinstimmen
         if(db.loginQuery(id, password)) {
-            this -> close();
+            ui->lineEditID->clear();
+            ui->lineEditPassword->clear();
+            this -> hide();
             LoggedInScreen w2;
+            w2.setMainWindow(this);
             w2.setModal(true);
             w2.exec();
         }

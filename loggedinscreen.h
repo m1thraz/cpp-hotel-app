@@ -5,7 +5,7 @@
 #include "hoteldatabaseview.h"
 #include "costumerdatabaseview.h"
 #include "loggedinscreen.h"
-//#include "mainwindow.h"
+#include "mainwindow.h"
 #include "invoicecreation.h"
 #include "checkincheckoutscreen.h"
 #include "bookroomview.h"
@@ -21,6 +21,10 @@ class LoggedInScreen : public QDialog
 public:
     explicit LoggedInScreen(QWidget *parent = nullptr);
     ~LoggedInScreen();
+
+    void setMainWindow(MainWindow *mwindow);
+
+    MainWindow getMainWindow();
 
 private slots:
   void on_hotelButton_clicked();
@@ -43,6 +47,8 @@ private:
     hotelDatabaseView *hotel;
     checkInCheckOutScreen *checkIn;
     bookroomview *book;
+    MainWindow *mwindow;
+
 };
 
 #endif // LOGGEDINSCREEN_H

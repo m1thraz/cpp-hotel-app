@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QtSql>
 #include <QMessageBox>
-#include "loggedinscreen.h"
+//#include "loggedinscreen.h"
 #include<QTimer>
 
 QT_BEGIN_NAMESPACE
