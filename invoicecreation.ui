@@ -106,7 +106,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>311</width>
-       <height>251</height>
+       <height>280</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -165,22 +165,42 @@ background-color: white;
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QRadioButton" name="radioButton_3">
+           <widget class="QRadioButton" name="rabattAnRadio">
             <property name="text">
              <string>ja</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_4">
+           <widget class="QRadioButton" name="rabattAusRadio">
             <property name="text">
              <string>nein</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
          </layout>
         </item>
        </layout>
+      </item>
+      <item>
+       <widget class="QSlider" name="rabattSlider">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="rabattBar">
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
       </item>
       <item>
        <layout class="QVBoxLayout" name="createInvoiceBtnLayout">
