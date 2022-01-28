@@ -154,3 +154,7 @@ void errormessage::changeTextMissingSpecialService() {
 void errormessage::changeTextDeleteDataError() {
     ui->labelErrorMessage->setText("<p>Beim Löschen eines Datensatzes ist ein Fehler<br>aufgetreten.</p><p>Bitte versuchen Sie es erneut.</p>");
 }
+
+void errormessage::changeTextCancelBookingError() {
+    ui->labelErrorMessage->setText("<p>Die zu stornierende Buchung existiert nicht.</p><p>Bitte versuchen Sie es erneut.</p>");
+}

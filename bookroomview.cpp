@@ -44,7 +44,7 @@ void bookroomview::on_bookRoomButton_clicked() {
         return;
     }
 
-    if(verifyRoomBooked()) {
+    if(verifyRoomShouldNotBeBooked()) {
         return;
     }
 
@@ -131,6 +131,18 @@ void bookroomview::on_cancelBookedRoomButton_clicked() {
         return;
     }
 
+    if(!verifyKundenIDExists()) {
+        return;
+    }
+
+    if(!verifyBestandIDExists()) {
+        return;
+    }
+
+    if(!verifyRoomShouldBeBooked()) {
+        return;
+    }
+
     QSqlQuery query;
     std::string sql;
 
@@ -138,7 +150,7 @@ void bookroomview::on_cancelBookedRoomButton_clicked() {
     sql = "DELETE FROM Zimmerbuchungsliste WHERE KundenID = " + std::to_string(this->getKundenID())
             + " AND BestandID = " + std::to_string(this->getBestandID())
             + " AND Anreisedatum = '" + this->getAnreiseDatum() + "' AND Abreisedatum = '"
-            + this->getAbreiseDatum() + "');";
+            + this->getAbreiseDatum() + "';";
     QString deletes = QString::fromStdString(sql);
     query.prepare(deletes);
     bool queryStatus = query.exec();
@@ -313,8 +325,8 @@ bool bookroomview::verifyBestandIDExists() {
     }
 }
 
-// Überprüft, ob das Zimmer in Zeitraum X bereits gebucht ist
-bool bookroomview::verifyRoomBooked() {
+// Überprüft, ob das Zimmer in Zeitraum X bereits gebucht ist - Für Zimmerbuchung
+bool bookroomview::verifyRoomShouldNotBeBooked() {
     errormessage error;
     QSqlQuery query;
     std::string sql;
@@ -328,7 +340,7 @@ bool bookroomview::verifyRoomBooked() {
     bool queryStatus = query.exec();
     qDebug() << "Abfrage der Zimmerbuchungsliste erfolgreich: " << queryStatus;
 
-    // Wird nur ausgeführt, wenn das Zimmer in dem Zeitraum bereits gebucht ist, da sonst kein query zurück kommt
+    // Es gibt eine Zimmerbuchung, aber es darf kein Zimmer gebucht sein
     if(query.next()) {
         error.changeTextRoomIsBooked();
         error.setModal(true);
@@ -340,6 +352,38 @@ bool bookroomview::verifyRoomBooked() {
         error.exec();
         return true;
     }else {
+        return false;
+    }
+}
+
+// Überprüft, ob die Buchung in Zeitraum X existiert - Für Stornierung
+bool bookroomview::verifyRoomShouldBeBooked() {
+    errormessage error;
+    QSqlQuery query;
+    std::string sql;
+    sql = ("SELECT 1 FROM Zimmerbuchungsliste WHERE ((Anreisedatum BETWEEN '" +
+           this->getAnreiseDatum() + "' AND '" + this->getAbreiseDatum() + "' OR Abreisedatum BETWEEN '" +
+           this->getAnreiseDatum() + "' AND '" + this->getAbreiseDatum() + "') OR (Anreisedatum < '" +
+           this->getAnreiseDatum() + "' AND Abreisedatum > '" + this->getAbreiseDatum() + "')) "
+           "AND BestandID = " + std::to_string(this->getBestandID()) + " AND KundenID = " +
+           std::to_string(this->getKundenID()) + ";");
+    QString verify = QString::fromStdString(sql);
+    query.prepare(verify);
+    bool queryStatus = query.exec();
+    qDebug() << "Abfrage der Zimmerbuchungsliste erfolgreich: " << queryStatus;
+
+    // Es gibt eine Zimmerbuchung und es muss ein Zimmer gebucht sein
+    if(query.next()) {
+        return true;
+    }else if(!queryStatus) {
+        error.changeTextDBRequestError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }else {
+        error.changeTextCancelBookingError();
+        error.setModal(true);
+        error.exec();
         return false;
     }
 }

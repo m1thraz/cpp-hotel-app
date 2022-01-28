@@ -48,6 +48,7 @@ public:
     void changeTextRoomIsBooked();
     void changeTextMissingSpecialService();
     void changeTextDeleteDataError();
+    void changeTextCancelBookingError();
 
 private slots:
     void on_closeWindowButton_clicked();

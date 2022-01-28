@@ -19,7 +19,8 @@ public:
     bool verifyKundenIDExists();
     bool verifyMitarbeiterIDExists();
     bool verifyBestandIDExists();
-    bool verifyRoomBooked();
+    bool verifyRoomShouldNotBeBooked();
+    bool verifyRoomShouldBeBooked();
     bool bookMasageSauna(int sonderleistungsID);
     void setKundenID(int kundenID);
     int getKundenID();
