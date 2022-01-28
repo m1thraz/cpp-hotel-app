@@ -394,7 +394,7 @@ bool bookroomview::bookMasageSauna(int sonderleistungsID) {
     QSqlQuery query;
     std::string sql;
     sql = "SELECT 1 FROM GebuchteSonderleistungen WHERE KundenID = " + std::to_string(this->getKundenID())
-            + " AND SonderleistungsID = :sonderleistungsID;";
+            + " AND SonderleistungsID = :sonderleistungsID AND MitarbeiterID = " + std::to_string(this->getMitarbeiterID()) + ";";
     QString verify = QString::fromStdString(sql);
     query.prepare(verify);
     query.bindValue(":sonderleistungsID", sonderleistungsID);
@@ -412,7 +412,7 @@ bool bookroomview::bookMasageSauna(int sonderleistungsID) {
     if(query.next()) {
         sql = "UPDATE GebuchteSonderleistungen SET Buchungsanzahl = Buchungsanzahl + 1 "
               "WHERE KundenID = " + std::to_string(this->getKundenID()) + " AND "
-              "SonderleistungsID = :sonderleistungsID;";
+              "SonderleistungsID = :sonderleistungsID AND MitarbeiterID = " + std::to_string(this->getMitarbeiterID()) + ";";
         QString update = QString::fromStdString(sql);
         query.prepare(update);
         query.bindValue(":sonderleistungsID", sonderleistungsID);
