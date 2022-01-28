@@ -91,9 +91,9 @@ background-color: white;
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>60</x>
       <y>20</y>
-      <width>701</width>
+      <width>761</width>
       <height>331</height>
      </rect>
     </property>
@@ -108,44 +108,29 @@ background-color: white;
          <rect>
           <x>10</x>
           <y>30</y>
-          <width>211</width>
+          <width>231</width>
           <height>291</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_6">
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_15">
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_15">
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_37">
-                 <item>
-                  <widget class="QLabel" name="label_29">
-                   <property name="text">
-                    <string>Zimmernummer</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="lineEditAbfrZimmernummer"/>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_38"/>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-         <item>
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_37">
+               <item>
+                <widget class="QLabel" name="label_29">
+                 <property name="text">
+                  <string>Zimmernummer</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditAbfrZimmernummer"/>
+               </item>
+              </layout>
+             </item>
              <item>
               <widget class="QLabel" name="label">
                <property name="text">
@@ -154,37 +139,64 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QCheckBox" name="checkBoxAbfrDoppelbett">
-               <property name="text">
-                <string>Doppelbett</string>
-               </property>
-              </widget>
+              <layout class="QHBoxLayout" name="horizontalLayout_16">
+               <item>
+                <widget class="QCheckBox" name="checkBoxAbfrDoppelbett">
+                 <property name="text">
+                  <string>Doppelbett</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="checkBoxAbfrEinzelbett">
+                 <property name="text">
+                  <string>Einzelbett</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
              <item>
-              <widget class="QCheckBox" name="checkBoxAbfrEinzelbett">
-               <property name="text">
-                <string>Einzelbett</string>
-               </property>
-              </widget>
+              <layout class="QHBoxLayout" name="horizontalLayout_17">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_41">
+                 <item>
+                  <widget class="QCheckBox" name="checkBoxAbfrAussicht">
+                   <property name="text">
+                    <string>gute Aussicht</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_42">
+                 <item>
+                  <widget class="QCheckBox" name="checkBoxAbfrSofa">
+                   <property name="text">
+                    <string>Schlafsofa</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
              </item>
              <item>
-              <widget class="QCheckBox" name="checkBoxAbfrAussicht">
-               <property name="text">
-                <string>gute Aussicht</string>
-               </property>
-              </widget>
+              <layout class="QHBoxLayout" name="horizontalLayout_18">
+               <item>
+                <widget class="QCheckBox" name="checkBoxAbfrFahrstuhl">
+                 <property name="text">
+                  <string>in der Nähe vom Fahrstuhl</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
              <item>
-              <widget class="QCheckBox" name="checkBoxAbfrFahrstuhl">
+              <widget class="QRadioButton" name="radioButtonAbfrVerfuegbar">
                <property name="text">
-                <string>in der Nähe vom Fahrstuhl</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="checkBoxAbfrSofa">
-               <property name="text">
-                <string>Schlafsofa</string>
+                <string>Nur verfügbare</string>
                </property>
               </widget>
              </item>
@@ -193,11 +205,44 @@ background-color: white;
           </layout>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButtonAbfrVerfuegbar">
-           <property name="text">
-            <string>Nur Verfügbare anzeigen</string>
-           </property>
-          </widget>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_16">
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anreise Datum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateEdit" name="dateEditAbfrAnreiseDatum">
+               <property name="displayFormat">
+                <string>yyyy.MM.dd</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_17">
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Abreise Datum&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateEdit" name="dateEditAbfrAbreiseDatum">
+               <property name="displayFormat">
+                <string>yyyy.MM.dd</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </item>
          <item>
           <widget class="QPushButton" name="suchenButton">
@@ -220,7 +265,7 @@ background-color: white;
          <rect>
           <x>10</x>
           <y>30</y>
-          <width>212</width>
+          <width>231</width>
           <height>291</height>
          </rect>
         </property>
@@ -349,7 +394,7 @@ background-color: white;
          <rect>
           <x>10</x>
           <y>100</y>
-          <width>207</width>
+          <width>231</width>
           <height>221</height>
          </rect>
         </property>
