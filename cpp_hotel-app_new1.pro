@@ -26,7 +26,8 @@ SOURCES += \
     invoicecreation.cpp \
     loggedinscreen.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    verifier.cpp
 
 HEADERS += \
     bookroomview.h \
@@ -38,7 +39,8 @@ HEADERS += \
     infomessage.h \
     invoicecreation.h \
     loggedinscreen.h \
-    mainwindow.h
+    mainwindow.h \
+    verifier.h
 
 FORMS += \
     bookroomview.ui \

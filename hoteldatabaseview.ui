@@ -109,7 +109,7 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>231</width>
-          <height>291</height>
+          <height>292</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -220,6 +220,13 @@ background-color: white;
                <property name="displayFormat">
                 <string>yyyy.MM.dd</string>
                </property>
+               <property name="date">
+                <date>
+                 <year>2022</year>
+                 <month>1</month>
+                 <day>1</day>
+                </date>
+               </property>
               </widget>
              </item>
             </layout>
@@ -237,6 +244,13 @@ background-color: white;
               <widget class="QDateEdit" name="dateEditAbfrAbreiseDatum">
                <property name="displayFormat">
                 <string>yyyy.MM.dd</string>
+               </property>
+               <property name="date">
+                <date>
+                 <year>2022</year>
+                 <month>1</month>
+                 <day>1</day>
+                </date>
                </property>
               </widget>
              </item>

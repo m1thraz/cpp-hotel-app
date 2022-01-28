@@ -272,6 +272,13 @@ background-color: white;
             <property name="displayFormat">
              <string>yyyy.MM.dd</string>
             </property>
+            <property name="date">
+             <date>
+              <year>2022</year>
+              <month>1</month>
+              <day>1</day>
+             </date>
+            </property>
            </widget>
           </item>
          </layout>
@@ -289,6 +296,13 @@ background-color: white;
            <widget class="QDateEdit" name="dateEditNeuAbreiseDatum">
             <property name="displayFormat">
              <string>yyyy.MM.dd</string>
+            </property>
+            <property name="date">
+             <date>
+              <year>2022</year>
+              <month>1</month>
+              <day>1</day>
+             </date>
             </property>
            </widget>
           </item>

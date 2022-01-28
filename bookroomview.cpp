@@ -6,6 +6,7 @@
 #include <QDebug>
 #include "errormessage.h"
 #include "infomessage.h"
+#include "verifier.h"
 
 bookroomview::bookroomview(QWidget *parent) :
     QDialog(parent),
@@ -32,15 +33,17 @@ void bookroomview::on_bookRoomButton_clicked() {
         return;
     }
 
-    if(!verifyKundenIDExists()) {
+    verifier verify;
+
+    if(!verify.verifyKundenIDExists(this->getKundenID())) {
         return;
     }
 
-    if(!verifyMitarbeiterIDExists()) {
+    if(!verify.verifyMitarbeiterIDExists(this->getMitarbeiterID())) {
         return;
     }
 
-    if(!verifyBestandIDExists()) {
+    if(!verify.verifyBestandIDExists(this->getBestandID())) {
         return;
     }
 
@@ -88,11 +91,13 @@ void bookroomview::on_bookExtrasButton_clicked() {
         return;
     }
 
-    if(!verifyKundenIDExists()) {
+    verifier verify;
+
+    if(!verify.verifyKundenIDExists(this->getKundenID())) {
         return;
     }
 
-    if(!verifyMitarbeiterIDExists()) {
+    if(!verify.verifyMitarbeiterIDExists(this->getMitarbeiterID())) {
         return;
     }
 
@@ -131,11 +136,13 @@ void bookroomview::on_cancelBookedRoomButton_clicked() {
         return;
     }
 
-    if(!verifyKundenIDExists()) {
+    verifier verify;
+
+    if(!verify.verifyKundenIDExists(this->getKundenID())) {
         return;
     }
 
-    if(!verifyBestandIDExists()) {
+    if(!verify.verifyBestandIDExists(this->getBestandID())) {
         return;
     }
 
@@ -248,81 +255,6 @@ bool bookroomview::lineEditVerification(const int buttontyp) {
 
     //Entweder alle Felder leer, oder Überprüfungen mit positivem Ergebnis
     return true;
-}
-
-// Überprüft, ob es die KundenID X bereits gibt
-bool bookroomview::verifyKundenIDExists() {
-    errormessage error;
-    QSqlQuery query;
-    query.prepare("SELECT 1 FROM Kunde WHERE KundenID = :kundenID;");
-    query.bindValue(":kundenID", this->getKundenID());
-    bool queryStatus = query.exec();
-    qDebug() << "DB-Überprüfung der KundenID erfolgreich: " << queryStatus;
-
-    //Wird nur ausgeführt, wenn es die KundenID tatsächlich gibt, sonst Fehlermeldung
-    if(query.next()) {
-        return true;
-    }else if(!queryStatus) {
-        error.changeTextDBRequestError();
-        error.setModal(true);
-        error.exec();
-        return false;
-    }else {
-        error.changeTextKundenIDDoesntExist();
-        error.setModal(true);
-        error.exec();
-        return false;
-    }
-}
-
-// Überprüft, ob es die MitarbeiterID X bereits gibt
-bool bookroomview::verifyMitarbeiterIDExists() {
-    errormessage error;
-    QSqlQuery query;
-    query.prepare("SELECT 1 FROM Mitarbeiter WHERE MitarbeiterID = :mitarbeiterID;");
-    query.bindValue(":mitarbeiterID", this->getMitarbeiterID());
-    bool queryStatus = query.exec();
-    qDebug() << "DB-Überprüfung der MitarbeiterID erfolgreich: " << queryStatus;
-
-    //Wird nur ausgeführt, wenn es die MitarbeiterID tatsächlich gibt, sonst Fehlermeldung
-    if(query.next()) {
-        return true;
-    }else if(!queryStatus) {
-        error.changeTextDBRequestError();
-        error.setModal(true);
-        error.exec();
-        return false;
-    }else {
-        error.changeTextMitarbeiterIDDoesntExist();
-        error.setModal(true);
-        error.exec();
-        return false;
-    }
-}
-
-// Überprüft, ob es die BestandID X bereits gibt
-bool bookroomview::verifyBestandIDExists() {
-    errormessage error;
-    QSqlQuery query;
-    query.prepare("SELECT 1 FROM Zimmerbestand WHERE BestandID = :bestandID;");
-    query.bindValue(":bestandID", this->getBestandID());
-    bool queryStatus = query.exec();
-    qDebug() << "DB-Überprüfung der BestandID erfolgreich: " << queryStatus;
-
-    //Wird nur ausgeführt, wenn es die MitarbeiterID tatsächlich gibt, sonst Fehlermeldung
-    if(query.next()) {
-        return true;
-    }else if(!queryStatus) {
-        error.changeTextDBRequestError();
-        error.setModal(true);
-        error.exec();
-        return false;
-    }else {
-        error.changeTextBestandIDDoesntExist();
-        error.setModal(true);
-        error.exec();
-        return false;
-    }
 }
 
 // Überprüft, ob das Zimmer in Zeitraum X bereits gebucht ist - Für Zimmerbuchung
