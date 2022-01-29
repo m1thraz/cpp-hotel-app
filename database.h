@@ -12,6 +12,8 @@ public:
 
     void createDatabaseTables();
     void createDatabaseEntries();
+
+    int getBestandID(int zimmernummer);
 };
 
 #endif // DATABASE_H

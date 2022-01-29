@@ -9,6 +9,9 @@ public:
     bool verifyKundenIDExists(int kundenID);
     bool verifyMitarbeiterIDExists(int mitarbeiterID);
     bool verifyBestandIDExists(int bestandID);
+    bool verifyZimmernummerExists(int zimmernummer);
+    bool verifyZimmernummerDoesntExist(int zimmernummer);
+    bool verifyZimmerIDExists(int zimmerID);
 };
 
 #endif // VERIFIER_H

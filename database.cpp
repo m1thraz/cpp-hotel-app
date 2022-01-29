@@ -242,3 +242,21 @@ void Database::createDatabaseEntries() {
 
 }
 
+int Database::getBestandID(int zimmernummer) {
+    errormessage error;
+    QSqlQuery query;
+    query.prepare("SELECT BestandID FROM Zimmerbestand WHERE Zimmernummer = :zimmerbestand_zimmernummer;");
+    query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
+    bool queryStatus = query.exec();
+    qDebug() << "DB-Abfrage der BestandID erfolgreich: " << queryStatus;
+
+    //Wird nur ausgeführt, wenn es die Zimmernummer tatsächlich gibt, sonst Fehlermeldung
+    if(query.next()) {
+        int bestandID = std::stoi(query.value("BestandID").toString().toStdString());
+        return bestandID;
+    }else if(!queryStatus) {
+        error.changeTextDBRequestError();
+        error.setModal(true);
+        error.exec();
+    }
+}

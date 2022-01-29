@@ -81,3 +81,78 @@ bool verifier::verifyBestandIDExists(int bestandID) {
         return false;
     }
 }
+
+// Überprüft, ob es das Zimmer mit der Zimmernummer X bereits gibt
+bool verifier::verifyZimmernummerExists(int zimmernummer) {
+    errormessage error;
+    QSqlQuery query;
+    query.prepare("SELECT 1 FROM Zimmerbestand WHERE Zimmernummer = :zimmerbestand_zimmernummer;");
+    query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
+    bool queryStatus = query.exec();
+    qDebug() << "DB-Überprüfung der Zimmernummer erfolgreich: " << queryStatus;
+
+    //Wird nur ausgeführt, wenn es die Zimmernummer tatsächlich gibt, sonst Fehlermeldung
+    if(query.next()) {
+        return true;
+    }else if(!queryStatus) {
+        error.changeTextDBRequestError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }else {
+        error.changeTextZimmernummerError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }
+}
+
+// Überprüft, ob es das Zimmer mit der Zimmernummer X noch nicht gibt
+bool verifier::verifyZimmernummerDoesntExist(int zimmernummer) {
+    errormessage error;
+    QSqlQuery query;
+    query.prepare("SELECT 1 FROM Zimmerbestand WHERE Zimmernummer = :zimmerbestand_zimmernummer;");
+    query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
+    bool queryStatus = query.exec();
+    qDebug() << "DB-Überprüfung der Zimmernummer erfolgreich: " << queryStatus;
+
+    //Zimmer existiert
+    if(query.next()) {
+        error.changeTextZimmernummerExists();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }else if(!queryStatus) {
+        error.changeTextDBRequestError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }else {
+        return true;
+    }
+}
+
+// Überprüft, ob es die ZimmerID X bereits gibt
+bool verifier::verifyZimmerIDExists(int zimmerID) {
+    errormessage error;
+    QSqlQuery query;
+    query.prepare("SELECT 1 FROM Zimmer WHERE ZimmerID = :zimmer_zimmerID;");
+    query.bindValue(":zimmer_zimmerID", zimmerID);
+    bool queryStatus = query.exec();
+    qDebug() << "DB-Überprüfung der ZimmerID erfolgreich: " << queryStatus;
+
+    //Wird nur ausgeführt, wenn es die ZimmerID tatsächlich gibt, sonst Fehlermeldung
+    if(query.next()) {
+        return true;
+    }else if(!queryStatus) {
+        error.changeTextDBRequestError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }else {
+        error.changeTextZimmerIDError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }
+}
