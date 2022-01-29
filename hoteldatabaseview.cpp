@@ -37,26 +37,41 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
     }
 
     // Entweder nur ZimmerID oder Preis angegeben
-    if(this->zimmerID == 0 || this->preis == 0) {
+    if((this->getZimmerID() == 0 || this->getPreis() == 0) && this->getZimmernummer() == 0) {
         error.changeTextPreisError();
         error.setModal(true);
         error.exec();
         return;
+
+    // ZimmerID und Preis angegeben
+    }else if(this->getZimmerID() != 0 && this->getPreis() != 0 && this->getZimmernummer() == 0) {
+        if(!verify.verifyZimmerIDExists(this->getZimmerID())) {
+            return;
+        }
+        // Preisanpassung wird eingeleitet
+        modPreis();
+
+    // Nur Zimmernummer angegeben
+    }else if(this->getZimmerID() == 0 && this->getPreis() == 0 && this->getZimmernummer() != 0) {
+        if(!verify.verifyZimmernummerExists(this->getZimmernummer())) {
+            return;
+        }
+        // Zimmer Modifizierung wird eingeleitet
+        modZimmer();
+
+    //Alles angegeben
     }else {
         if(!verify.verifyZimmerIDExists(this->getZimmerID())) {
             return;
-        }else {
-            // Preisanpassung wird eingeleitet
-            modPreis();
         }
+        if(!verify.verifyZimmernummerExists(this->getZimmernummer())) {
+            return;
+        }
+        // Preisanpassung wird eingeleitet
+        modPreis();
+        // Zimmer Modifizierung wird eingeleitet
+        modZimmer();
     }
-
-    if(!verify.verifyZimmernummerExists(this->getZimmernummer())) {
-        return;
-    }
-
-    // Zimmer Modifizierung wird eingeleitet
-    modZimmer();
 }
 
 // Modifizierung der Zimmerausstattung
@@ -74,98 +89,66 @@ void hotelDatabaseView::modZimmer() {
     bool sofa = ui->checkBoxModSofa->isChecked();
     bool veraenderung = false;
     bool queryStatus;
+    int zimmertyp;
 
-    if(doppelbett && !einzelbett) {
-        veraenderung = true;
-        query.prepare("UPDATE Zimmerbestand SET ZimmerID = 2 WHERE Zimmernummer = :zimmerbestand_bestandID;");
-        query.bindValue(":zimmerbestand_bestandID", bestandID);
-        queryStatus = query.exec();
-        qDebug() << "Update Doppelbett erfolgreich: " << queryStatus;
-
-    }else if(einzelbett && !doppelbett) {
-        veraenderung = true;
-        query.prepare("UPDATE Zimmerbestand SET ZimmerID = 1 WHERE Zimmernummer = :zimmerbestand_bestandID;");
-        query.bindValue(":zimmerbestand_bestandID", bestandID);
-        queryStatus = query.exec();
-        qDebug() << "Update Einzelbett erfolgreich: " << queryStatus;
-    }
-    else if (doppelbett && einzelbett){
+    if (doppelbett && einzelbett){
         qDebug() << "Bett kann nicht Einzelbett und Doppelbett gleichzeitig sein!";
-        errormessage error;
         error.changeTextZimmertypError();
         error.setModal(true);
         error.exec();
-    }
-
-    // Beim Updaten des Zimmertyps ist ein Fehler seitens der DB aufgetreten.
-    // Weitere Zimmeranpassungen bez. der Ausstattung werden abgebrochen
-    if(!queryStatus) {
-        error.changeTextDBRequestError();
-        error.setModal(true);
-        error.exec();
         return;
-    }
-
-    if(aussicht) {
+    }else if(doppelbett) {
         veraenderung = true;
-        query.prepare("INSERT OR IGNORE INTO BestandZusatzliste (BestandID, ZimmerzusatzID)"
-                      "VALUES (:zimmerbestand_bestandID, 1);");
-        query.bindValue(":zimmerbestand_bestandID", bestandID);
-        queryStatus = query.exec();
-        qDebug() << "Update Aussicht erfolgreich: " << queryStatus;
-    }
-
-    // Beim Updaten des Zimmertyps ist ein Fehler seitens der DB aufgetreten.
-    // Weitere Zimmeranpassungen bez. der Ausstattung werden abgebrochen
-    if(veraenderung && !queryStatus) {
-        error.changeTextDBRequestError();
-        error.setModal(true);
-        error.exec();
-        return;
-    }
-
-    if(fahrstuhl) {
+        zimmertyp = 2;
+    }else if(einzelbett) {
         veraenderung = true;
-        query.prepare("INSERT OR IGNORE INTO BestandZusatzliste (BestandID, ZimmerzusatzID)"
-                      "VALUES (:zimmerbestand_bestandID, 2);");
+        zimmertyp = 1;
+    }
+
+    if(veraenderung) {
+        query.prepare("UPDATE Zimmerbestand SET ZimmerID = :zimmerID WHERE BestandID = :zimmerbestand_bestandID;");
         query.bindValue(":zimmerbestand_bestandID", bestandID);
+        query.bindValue(":zimmerID", zimmertyp);
         queryStatus = query.exec();
-        qDebug() << "Update Fahrstuhl erfolgreich: " << queryStatus;
+        qDebug() << "Update ZimmerID erfolgreich: " << queryStatus;
+
+        // Beim Updaten des Zimmertyps ist ein Fehler seitens der DB aufgetreten.
+        if(!queryStatus) {
+            error.changeTextDBRequestError();
+            error.setModal(true);
+            error.exec();
+            return;
+        }
     }
 
-    // Beim Updaten des Zimmertyps ist ein Fehler seitens der DB aufgetreten.
-    // Weitere Zimmeranpassungen bez. der Ausstattung werden abgebrochen
-    if(veraenderung && !queryStatus) {
-        error.changeTextDBRequestError();
-        error.setModal(true);
-        error.exec();
-        return;
+    int zimmerzusatzID[3] = {1, 2, 3};
+    bool ausstattung[3] = {aussicht, fahrstuhl, sofa};
+
+    for(int i = 0; i < 3; i++) {
+        if(ausstattung[i]) {
+            veraenderung = true;
+            query.prepare("INSERT OR IGNORE INTO BestandZusatzliste (BestandID, ZimmerzusatzID)"
+                          "VALUES (:zimmerbestand_bestandID, :zimmerbestand_zimmerzusatzID);");
+            query.bindValue(":zimmerbestand_bestandID", bestandID);
+            query.bindValue(":zimmerbestand_zimmerzusatzID", zimmerzusatzID[i]);
+            queryStatus = query.exec();
+            qDebug() << "Hinzufügen der Ausstattung erfolgreich: " << queryStatus;
+
+            if(!queryStatus) {
+                    errormessage error;
+                    error.changeTextDataCreationError();
+                    error.setModal(true);
+                    error.exec();
+            }
+        }
     }
 
-    if(sofa) {
-        veraenderung = true;
-        query.prepare("INSERT OR IGNORE INTO BestandZusatzliste (BestandID, ZimmerzusatzID)"
-                      "VALUES (:zimmerbestand_bestandID, 3);");
-        query.bindValue(":zimmerbestand_bestandID", bestandID);
-        queryStatus = query.exec();
-        qDebug() << "Update Sofa erfolgreich: " << queryStatus;
-    }
-
-    // Beim Updaten des Zimmertyps ist ein Fehler seitens der DB aufgetreten.
-    // Weitere Zimmeranpassungen bez. der Ausstattung werden abgebrochen
-    if(veraenderung && !queryStatus) {
-        error.changeTextDBRequestError();
-        error.setModal(true);
-        error.exec();
-        return;
-    }
-
-    if(!veraenderung && !doppelbett && !einzelbett) {
+    if(!veraenderung) {
         qDebug() << "Ausstattungswünsche fehlen";
         error.changeTextMissingModifications();
         error.setModal(true);
         error.exec();
-    }else if(veraenderung && queryStatus) {
+    }else if(queryStatus) {
         infomessage info;
         info.changeTextModifiziert();
         info.setModal(true);
@@ -264,9 +247,6 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
 
     int zimmerzusatzID[3] = {1, 2, 3};
     bool ausstattung[3] = {aussicht, fahrstuhl, sofa};
-    qDebug() << aussicht;
-    qDebug() << fahrstuhl;
-    qDebug() << sofa;
 
     for(int i = 0; i < 3; i++) {
         if(ausstattung[i]) {
