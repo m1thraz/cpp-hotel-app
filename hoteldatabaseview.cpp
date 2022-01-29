@@ -301,7 +301,9 @@ void hotelDatabaseView::on_suchenButton_clicked() {
     bool nurVerfuegbare = ui->radioButtonAbfrVerfuegbar->isChecked();
 
     bool whereBedingungExtras = false;
+    bool whereBedingungVerfuegbar = false;
     QString whereSqlExtras;
+    QString whereSqlVerfuegbar;
 
     if(doppelbett && !einzelbett) {
         whereBedingungExtras = true;
@@ -345,42 +347,69 @@ void hotelDatabaseView::on_suchenButton_clicked() {
     }
 
     if(nurVerfuegbare) {
-        whereBedingungExtras = true;
-        whereSqlExtras += "";
-
+        whereBedingungVerfuegbar = true;
+        std::string tempwhereSqlVerfuegbar = " LEFT JOIN Zimmerbuchungsliste bu ON zi.BestandID = bu.BestandID "
+                             "WHERE (bu.Anreisedatum NOT BETWEEN '" + this->getAnreiseDatum() +
+                "' AND '" + this->getAbreiseDatum() +
+                "' OR bu.Abreisedatum NOT BETWEEN '" + this->getAnreiseDatum() +
+                "' AND '" + this->getAbreiseDatum() +
+                "') OR (bu.Anreisedatum < '" + this->getAnreiseDatum() +
+                "' AND bu.Abreisedatum > '" + this->getAbreiseDatum() +
+                "') OR ifnull(bu.Anreisedatum,'') = ''";
+        whereSqlVerfuegbar += QString::fromStdString(tempwhereSqlVerfuegbar);
     }
 
     QSqlQuery query;
     bool queryStatus;
     QString select = "SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, zu.Zimmerzusatz "
-                   "FROM Zimmerbestand zi "
-                   "LEFT JOIN BestandZusatzliste be "
-                   "ON zi.BestandID = be.BestandID "
-                   "LEFT JOIN Zimmer zim "
-                   "ON zi.ZimmerID = zim.ZimmerID "
-                   "LEFT JOIN Zimmerzusatz zu "
-                   "ON be.ZimmerzusatzID = zu.ZimmerzusatzID";
+                     "FROM Zimmerbestand zi "
+                     "LEFT JOIN BestandZusatzliste be "
+                     "ON zi.BestandID = be.BestandID "
+                     "LEFT JOIN Zimmer zim "
+                     "ON zi.ZimmerID = zim.ZimmerID "
+                     "LEFT JOIN Zimmerzusatz zu "
+                     "ON be.ZimmerzusatzID = zu.ZimmerzusatzID";
     //Alle Zimmer
-    if(!whereBedingungExtras && !zimmernummer) {
+    if(!whereBedingungExtras && !zimmernummer && !whereBedingungVerfuegbar) {
         query.prepare(select + ";");
         queryStatus = query.exec();
-        qDebug() << "Abfrage ohne Extras und ohne Zimmer erfolgreich: " << queryStatus;
+        qDebug() << "Zimmersuche erfolgreich: " << queryStatus;
 
-    }else if(!whereBedingungExtras && zimmernummer) {
+    }else if(!whereBedingungExtras && zimmernummer && !whereBedingungVerfuegbar) {
         query.prepare(select + " WHERE " + whereSqlZimmer + ";");
         queryStatus = query.exec();
-        qDebug() << "Abfrage ohne Extras mit Zimmer erfolgreich: " << queryStatus;
+        qDebug() << "Zimmersuche mit Zimmer erfolgreich: " << queryStatus;
 
-    }else if(whereBedingungExtras && zimmernummer) {
+    }else if(whereBedingungExtras && zimmernummer && !whereBedingungVerfuegbar) {
         query.prepare(select + " WHERE " + whereSqlZimmer + " AND " + whereSqlExtras + ";");
         qDebug() << select + " WHERE " + whereSqlZimmer + " AND " + whereSqlExtras + ";";
         queryStatus = query.exec();
-        qDebug() << "Abfrage mit Zimmer und Extras erfolgreich: " << queryStatus;
+        qDebug() << "Zimmersuche mit Zimmer und Extras erfolgreich: " << queryStatus;
 
-    }else if(whereBedingungExtras && !zimmernummer){
+    }else if(whereBedingungExtras && !zimmernummer && !whereBedingungVerfuegbar){
         query.prepare(select + " WHERE " + whereSqlExtras + ";");
         queryStatus = query.exec();
-        qDebug() << "Abfrage mit Extras erfolgreich: " << queryStatus;
+        qDebug() << "Zimmersuche mit Extras erfolgreich: " << queryStatus;
+
+    }else if(!whereBedingungExtras && !zimmernummer && whereBedingungVerfuegbar) {
+        query.prepare(select + whereSqlVerfuegbar + ";");
+        queryStatus = query.exec();
+        qDebug() << "Nur verfügbare Zimmersuche erfolgreich: " << queryStatus;
+
+    }else if(!whereBedingungExtras && zimmernummer && whereBedingungVerfuegbar) {
+        query.prepare(select + whereSqlVerfuegbar + " AND " + whereSqlZimmer + ";");
+        queryStatus = query.exec();
+        qDebug() << "Nur verfügbare Zimmersuche mit Zimmer erfolgreich: " << queryStatus;
+
+    }else if(whereBedingungExtras && !zimmernummer && whereBedingungVerfuegbar) {
+        query.prepare(select + whereSqlVerfuegbar + " AND " + whereSqlExtras + ";");
+        queryStatus = query.exec();
+        qDebug() << "Nur verfügbare Zimmersuche mit Extras erfolgreich: " << queryStatus;
+
+    }else if(whereBedingungExtras && zimmernummer && whereBedingungVerfuegbar) {
+        query.prepare(select + whereSqlVerfuegbar + " AND " + whereSqlZimmer + " AND " + whereSqlExtras + ";");
+        queryStatus = query.exec();
+        qDebug() << "Nur verfügbare Zimmersuche mit Zimmer und Extras erfolgreich: " << queryStatus;
     }
 
     if(!queryStatus) {
