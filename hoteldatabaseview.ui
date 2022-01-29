@@ -217,6 +217,9 @@ background-color: white;
              </item>
              <item>
               <widget class="QDateEdit" name="dateEditAbfrAnreiseDatum">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="displayFormat">
                 <string>yyyy.MM.dd</string>
                </property>
@@ -242,6 +245,9 @@ background-color: white;
              </item>
              <item>
               <widget class="QDateEdit" name="dateEditAbfrAbreiseDatum">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="displayFormat">
                 <string>yyyy.MM.dd</string>
                </property>
@@ -280,7 +286,7 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>231</width>
-          <height>291</height>
+          <height>322</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -409,7 +415,7 @@ background-color: white;
           <x>10</x>
           <y>100</y>
           <width>231</width>
-          <height>221</height>
+          <height>255</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_9">

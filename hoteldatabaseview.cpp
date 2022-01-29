@@ -344,11 +344,11 @@ void hotelDatabaseView::on_suchenButton_clicked() {
         whereSqlExtras += "(zu.ZimmerzusatzID = 1 OR zu.ZimmerzusatzID = 2 OR zu.ZimmerzusatzID = 3)";
     }
 
-//    if(nurVerfuegbare) {
-//        whereBedingungExtras = true;
-//        whereSqlExtras += "";
+    if(nurVerfuegbare) {
+        whereBedingungExtras = true;
+        whereSqlExtras += "";
 
-//    }
+    }
 
     QSqlQuery query;
     bool queryStatus;
@@ -516,4 +516,9 @@ void hotelDatabaseView::setAbreiseDatum(std::string abreisedatum) {
 
 std::string hotelDatabaseView::getAbreiseDatum() {
     return this->abreisedatum;
+}
+
+void hotelDatabaseView::on_radioButtonAbfrVerfuegbar_toggled(bool checked) {
+    ui->dateEditAbfrAnreiseDatum->setEnabled(checked);
+    ui->dateEditAbfrAbreiseDatum->setEnabled(checked);
 }

@@ -38,6 +38,8 @@ private slots:
 
     void on_suchenButton_clicked();
 
+    void on_radioButtonAbfrVerfuegbar_toggled(bool checked);
+
 private:
     Ui::hotelDatabaseView *ui;
 
