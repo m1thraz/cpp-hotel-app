@@ -266,7 +266,7 @@ bool bookroomview::verifyRoomShouldNotBeBooked() {
            this->getAnreiseDatum() + "' AND '" + this->getAbreiseDatum() + "' OR Abreisedatum BETWEEN '" +
            this->getAnreiseDatum() + "' AND '" + this->getAbreiseDatum() + "') OR (Anreisedatum < '" +
            this->getAnreiseDatum() + "' AND Abreisedatum > '" + this->getAbreiseDatum() + "')) "
-                                                                                          "AND BestandID = " + std::to_string(this->getBestandID()) + ";");
+           "AND BestandID = " + std::to_string(this->getBestandID()) + ";");
     QString verify = QString::fromStdString(sql);
     query.prepare(verify);
     bool queryStatus = query.exec();

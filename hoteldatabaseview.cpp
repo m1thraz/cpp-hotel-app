@@ -275,9 +275,22 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
 }
 
 void hotelDatabaseView::on_suchenButton_clicked() {
-    Database db;
-     // QLineEdit Textfelder werden eingelesen
-    QString tempZimmernummer = ui->lineEditAbfrZimmernummer->text();
+    if(!lineEditVerification(1)) {
+        return;
+    }
+
+    verifier verify;
+    bool zimmernummer;
+    QString whereSqlZimmer = "zi.Zimmernummer = ";
+
+    if(this->getZimmernummer() == 0) {
+        zimmernummer = false;
+    }else if(this->getZimmernummer() != 0 && !verify.verifyZimmernummerExists(this->getZimmernummer())) {
+        return;
+    }else{
+        zimmernummer = true;
+        whereSqlZimmer += QString::fromStdString(std::to_string(this->getZimmernummer()));
+    }
 
     // QCheckBox Felder werden ausgewertet
     bool doppelbett = ui->checkBoxAbfrDoppelbett->isChecked();
@@ -285,177 +298,100 @@ void hotelDatabaseView::on_suchenButton_clicked() {
     bool aussicht = ui->checkBoxAbfrAussicht->isChecked();
     bool fahrstuhl = ui->checkBoxAbfrFahrstuhl->isChecked();
     bool sofa = ui->checkBoxAbfrSofa->isChecked();
-    bool verfuegbar = ui->radioButtonAbfrVerfuegbar->isChecked();
+    bool nurVerfuegbare = ui->radioButtonAbfrVerfuegbar->isChecked();
 
-    bool ausstattung = false;
-    QString sql;
+    bool whereBedingungExtras = false;
+    QString whereSqlExtras;
 
     if(doppelbett && !einzelbett) {
-        ausstattung = true;
-        sql = "zi.ZimmerID = 2";
+        whereBedingungExtras = true;
+        whereSqlExtras = "zi.ZimmerID = 2";
     }else if(einzelbett && !doppelbett) {
-        ausstattung = true;
-        sql = "zi.ZimmerID = 1";
-    }else if(doppelbett && einzelbett){
-        ausstattung = true;
-        // !Keine WHERE Bedingung bei allen Zimmertypen nötig!
+        whereBedingungExtras = true;
+        whereSqlExtras = "zi.ZimmerID = 1";
     }
 
-    if(aussicht || fahrstuhl || sofa) {
-        sql += " AND ";
+    if(whereBedingungExtras && (aussicht || fahrstuhl || sofa)) {
+        whereSqlExtras += " AND ";
+    }else if(aussicht || fahrstuhl || sofa) {
+        whereBedingungExtras = true;
     }
 
-    if(aussicht && (fahrstuhl || sofa)) {
-        ausstattung = true;
-        sql += "(zu.ZimmerzusatzID = 1 OR ";
-    }else if(aussicht){
-        ausstattung = true;
-        sql += "zu.ZimmerzusatzID = 1";
+    if(!aussicht && !fahrstuhl && sofa) {
+        whereSqlExtras += "zu.ZimmerzusatzID = 3";
+
+    }else if(!aussicht && fahrstuhl && !sofa) {
+        whereSqlExtras += "zu.ZimmerzusatzID = 2";
     }
 
-    if(fahrstuhl && sofa) {
-        ausstattung = true;
-        sql += "zu.ZimmerzusatzID = 2 OR ";
-    }
-    if(fahrstuhl) {
-        ausstattung = true;
-        sql += "zu.ZimmerzusatzID = 2";
+    else if(!aussicht && fahrstuhl && sofa) {
+        whereSqlExtras += "(zu.ZimmerzusatzID = 2 OR zu.ZimmerzusatzID = 3)";
     }
 
-    if(sofa && (fahrstuhl || aussicht)) {
-        ausstattung = true;
-        sql += "zu.ZimmerzusatzID = 3)";
-    }
-    if(sofa) {
-        ausstattung = true;
-        sql += "zu.ZimmerzusatzID = 3";
+    else if(aussicht && !fahrstuhl && !sofa) {
+        whereSqlExtras += "zu.ZimmerzusatzID = 1";
     }
 
-    // MUSS BEARBEITET WERDEN MIT DER NEUEN DATUMSLOGIK
-//    if(verfuegbar) {
-//        ausstattung = true;
-//        sql += " AND bu.BuchungsstatusID = 1";
+    else if(aussicht && !fahrstuhl && sofa) {
+        whereSqlExtras += "(zu.ZimmerzusatzID = 1 OR zu.ZimmerzusatzID = 3)";
+    }
+
+    else if(aussicht && fahrstuhl && !sofa) {
+        whereSqlExtras += "(zu.ZimmerzusatzID = 1 OR zu.ZimmerzusatzID = 2)";
+    }
+
+    else if(aussicht && fahrstuhl && sofa) {
+        whereSqlExtras += "(zu.ZimmerzusatzID = 1 OR zu.ZimmerzusatzID = 2 OR zu.ZimmerzusatzID = 3)";
+    }
+
+//    if(nurVerfuegbare) {
+//        whereBedingungExtras = true;
+//        whereSqlExtras += "";
+
 //    }
 
     QSqlQuery query;
     bool queryStatus;
+    QString select = "SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, zu.Zimmerzusatz "
+                   "FROM Zimmerbestand zi "
+                   "LEFT JOIN BestandZusatzliste be "
+                   "ON zi.BestandID = be.BestandID "
+                   "LEFT JOIN Zimmer zim "
+                   "ON zi.ZimmerID = zim.ZimmerID "
+                   "LEFT JOIN Zimmerzusatz zu "
+                   "ON be.ZimmerzusatzID = zu.ZimmerzusatzID";
+    //Alle Zimmer
+    if(!whereBedingungExtras && !zimmernummer) {
+        query.prepare(select + ";");
+        queryStatus = query.exec();
+        qDebug() << "Abfrage ohne Extras und ohne Zimmer erfolgreich: " << queryStatus;
 
-    // Zimmernummer angegeben
-    if(!tempZimmernummer.isEmpty()) {
+    }else if(!whereBedingungExtras && zimmernummer) {
+        query.prepare(select + " WHERE " + whereSqlZimmer + ";");
+        queryStatus = query.exec();
+        qDebug() << "Abfrage ohne Extras mit Zimmer erfolgreich: " << queryStatus;
 
-        QRegularExpression re("^[0-9]+$");
-        QRegularExpressionMatch match = re.match(tempZimmernummer);
-        if(!match.hasMatch()) {
-            qDebug() << "Ungültiges Zimmernummerformat";
-            errormessage error;
-            error.changeTextZimmernummerWrong();
-            error.setModal(true);
-            error.exec();
+    }else if(whereBedingungExtras && zimmernummer) {
+        query.prepare(select + " WHERE " + whereSqlZimmer + " AND " + whereSqlExtras + ";");
+        qDebug() << select + " WHERE " + whereSqlZimmer + " AND " + whereSqlExtras + ";";
+        queryStatus = query.exec();
+        qDebug() << "Abfrage mit Zimmer und Extras erfolgreich: " << queryStatus;
 
-        }else {
-            int zimmernummer = std::stoi(tempZimmernummer.toStdString());
-            //Überprüft, ob es das Zimmer mit der Zimmernummer X bereits gibt
-            query.prepare("SELECT Zimmernummer FROM Zimmerbestand WHERE Zimmernummer = :zimmerbestand_zimmernummer;");
-            query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
-            queryStatus = query.exec();
-            qDebug() << "Abfrage, ob es die Zimmernummer gibt, erfolgreich: " << queryStatus;
-            bool exists = false;
-
-            //Wird nur ausgeführt, wenn es das Zimmer tatsächlich gibt, sonst Fehlermeldung
-            while(query.next()) {
-                exists = true;
-            }
-            if(!queryStatus) {
-                errormessage error;
-                error.changeTextDBRequestError();
-                error.setModal(true);
-                error.exec();
-            }
-            if(queryStatus && !exists) {
-                qDebug() << "Ausgewähltes Zimmer existiert nicht";
-                errormessage error;
-                error.changeTextZimmernummerError();
-                error.setModal(true);
-                error.exec();
-
-            }else if(!ausstattung) {
-                query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, zu.Zimmerzusatz "
-                              "FROM Zimmerbestand zi "
-                              "LEFT JOIN BestandZusatzliste be "
-                              "ON zi.BestandID = be.BestandID "
-                              "LEFT JOIN Zimmer zim "
-                              "ON zi.ZimmerID = zim.ZimmerID "
-                              "LEFT JOIN Zimmerzusatz zu "
-                              "ON be.ZimmerzusatzID = zu.ZimmerzusatzID "
-                              "WHERE zi.Zimmernummer = :zimmerbestand_zimmernummer;");
-                query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
-                queryStatus = query.exec();
-                qDebug() << "Abfrage mit Zimmer erfolgreich: " << queryStatus;
-            }else {
-                query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, zu.Zimmerzusatz "
-                              "FROM Zimmerbestand zi "
-                              "LEFT JOIN BestandZusatzliste be "
-                              "ON zi.BestandID = be.BestandID "
-                              "LEFT JOIN Zimmer zim "
-                              "ON zi.ZimmerID = zim.ZimmerID "
-                              "LEFT JOIN Zimmerzusatz zu "
-                              "ON be.ZimmerzusatzID = zu.ZimmerzusatzID "
-                              "WHERE zi.Zimmernummer = :zimmerbestand_zimmernummer AND :sql;");
-                query.bindValue(":zimmerbestand_zimmernummer", zimmernummer);
-                query.bindValue(":sql", sql);
-                queryStatus = query.exec();
-                qDebug() << "Abfrage mit Zimmer und Ausstattung erfolgreich: " << queryStatus;
-            }
-            if(!queryStatus) {
-                errormessage error;
-                error.changeTextDBRequestError();
-                error.setModal(true);
-                error.exec();
-            }else{
-                //HIER EIN NEUES GUI FENSTER MIT DER ANZUZEIGENDEN ABFRAGE ÖFFNEN!!!
-            }
-        }
-    }else {
-        if(!ausstattung) {
-            query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, zu.Zimmerzusatz "
-                          "FROM Zimmerbestand zi "
-                          "LEFT JOIN BestandZusatzliste be "
-                          "ON zi.BestandID = be.BestandID "
-                          "LEFT JOIN Zimmer zim "
-                          "ON zi.ZimmerID = zim.ZimmerID "
-                          "LEFT JOIN Zimmerzusatz zu "
-                          "ON be.ZimmerzusatzID = zu.ZimmerzusatzID;");
-            queryStatus = query.exec();
-            qDebug() << "Abfrage ohne Zimmer und ohne Ausstattung erfolgreich: " << queryStatus;
-        }else {
-            query.prepare("SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, zu.Zimmerzusatz "
-                          "FROM Zimmerbestand zi "
-                          "LEFT JOIN BestandZusatzliste be "
-                          "ON zi.BestandID = be.BestandID "
-                          "LEFT JOIN Zimmer zim "
-                          "ON zi.ZimmerID = zim.ZimmerID "
-                          "LEFT JOIN Zimmerzusatz zu "
-                          "ON be.ZimmerzusatzID = zu.ZimmerzusatzID "
-                          "WHERE :sql;");
-            query.bindValue(":sql", sql);
-            queryStatus = query.exec();
-            if(einzelbett && doppelbett) {
-                 qDebug() << "Abfrage mit allen Zimmertypen und mit Ausstattung erfolgreich: " << queryStatus;
-            }else if((einzelbett && !doppelbett) || (!einzelbett && doppelbett)) {
-                qDebug() << "Abfrage mit Ausstattung erfolgreich: " << queryStatus;
-            }else {
-                qDebug() << "Abfrage ohne Zimmertypen mit Ausstattung erfolgreich: " << queryStatus;
-            }
-        }
-        if(!queryStatus) {
-            errormessage error;
-            error.changeTextDBRequestError();
-            error.setModal(true);
-            error.exec();
-        }else{
-            //HIER EIN NEUES GUI FENSTER MIT DER ANZUZEIGENDEN ABFRAGE ÖFFNEN!!!
-        }
+    }else if(whereBedingungExtras && !zimmernummer){
+        query.prepare(select + " WHERE " + whereSqlExtras + ";");
+        queryStatus = query.exec();
+        qDebug() << "Abfrage mit Extras erfolgreich: " << queryStatus;
     }
+
+    if(!queryStatus) {
+        errormessage error;
+        error.changeTextDBRequestError();
+        error.setModal(true);
+        error.exec();
+        return;
+    }
+
+    //HIER EIN NEUES GUI FENSTER MIT DER ANZUZEIGENDEN ABFRAGE ÖFFNEN!!!
 }
 
 bool hotelDatabaseView::lineEditVerification(const int buttontyp) {
