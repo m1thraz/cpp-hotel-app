@@ -175,3 +175,7 @@ void errormessage::changeTextRepairNeeded() {
 void errormessage::changeTextCheckInStatus() {
     ui->labelErrorMessage->setText("<p>Der Kunde wurde noch nicht eingecheckt, oder hat<br>bereits ausgecheckt.</p>");
 }
+
+void errormessage::changeTextCheckInError() {
+    ui->labelErrorMessage->setText("<p>Der Kunde ist bereits eingecheckt, oder hat<br>bereits ausgecheckt.</p>");
+}

@@ -14,6 +14,7 @@ public:
     bool verifyZimmerIDExists(int zimmerID);
     bool verifyBuchungExists(int buchungsID, int kundenID);
     bool verifyKundeIsCheckedIn(int buchungsID);
+    bool verifyKundeIsCheckedOut(int buchungsID);
 };
 
 #endif // VERIFIER_H

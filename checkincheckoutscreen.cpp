@@ -44,6 +44,10 @@ void checkInCheckOutScreen::on_checkInButton_clicked() {
         return;
     }
 
+    if(!verify.verifyKundeIsCheckedOut(this->getBuchungsID())) {
+        return;
+    }
+
     // Einchecken wird eingeleitet
     QSqlQuery query;
 
