@@ -381,9 +381,9 @@ background-color: white;
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
+       <y>130</y>
        <width>321</width>
-       <height>301</height>
+       <height>191</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkOutLayout">
@@ -397,7 +397,7 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="lineEditOutKundenID"/>
         </item>
        </layout>
       </item>
@@ -406,26 +406,12 @@ background-color: white;
         <item>
          <widget class="QLabel" name="roomIDLabelCheckOut">
           <property name="text">
-           <string>ZimmerID</string>
+           <string>BuchungsID</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_2"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="departureCheckOutLayout">
-        <item>
-         <widget class="QLabel" name="departureLabelCheckOut">
-          <property name="text">
-           <string>Abreise Datum</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEdit_3"/>
+         <widget class="QLineEdit" name="lineEditOutBuchungsID"/>
         </item>
        </layout>
       </item>
@@ -441,14 +427,14 @@ background-color: white;
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QCheckBox" name="checkBox">
+           <widget class="QCheckBox" name="checkBoxOutBeschaedigt">
             <property name="text">
              <string>Beschädigte Gegenstände</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_2">
+           <widget class="QCheckBox" name="checkBoxOutReinigung">
             <property name="text">
              <string>Reinigung</string>
             </property>
@@ -464,13 +450,6 @@ background-color: white;
          <widget class="QPushButton" name="checkOutBtn">
           <property name="text">
            <string>Check Out</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="checkOutInvoiceBtn">
-          <property name="text">
-           <string>Check Out &amp; Rechnung</string>
           </property>
          </widget>
         </item>
@@ -495,9 +474,9 @@ background-color: white;
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
+       <y>180</y>
        <width>321</width>
-       <height>291</height>
+       <height>141</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkInLayout">
@@ -511,7 +490,7 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="costumerIDLineEdit"/>
+         <widget class="QLineEdit" name="lineEditInKundenID"/>
         </item>
        </layout>
       </item>
@@ -520,45 +499,17 @@ background-color: white;
         <item>
          <widget class="QLabel" name="roomIDLabel">
           <property name="text">
-           <string>BestandID</string>
+           <string>BuchungsID</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="roomIDLineEdit"/>
+         <widget class="QLineEdit" name="lineEditInBuchungsID"/>
         </item>
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="arrivalLayout">
-        <item>
-         <widget class="QLabel" name="arrivalDateLabel">
-          <property name="text">
-           <string>Anreise Datum</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="arrivalLineEdit"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="departureLayout">
-        <item>
-         <widget class="QLabel" name="departureDateLabel">
-          <property name="text">
-           <string>Abreise Datum</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="departureLineEdit"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QPushButton" name="checkInBtn">
+       <widget class="QPushButton" name="checkInButton">
         <property name="text">
          <string>Check In</string>
         </property>

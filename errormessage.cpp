@@ -140,7 +140,7 @@ void errormessage::changeTextMitarbeiterIDDoesntExist() {
 }
 
 void errormessage::changeTextBestandIDDoesntExist() {
-    ui->labelErrorMessage->setText("<p>Die angegebene BestandID existiert nicht.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p<>");
+    ui->labelErrorMessage->setText("<p>Die angegebene BestandID existiert nicht.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
 }
 
 void errormessage::changeTextRoomIsBooked() {
@@ -157,4 +157,12 @@ void errormessage::changeTextDeleteDataError() {
 
 void errormessage::changeTextCancelBookingError() {
     ui->labelErrorMessage->setText("<p>Die zu stornierende Buchung existiert nicht.</p><p>Bitte versuchen Sie es erneut.</p>");
+}
+
+void errormessage::changeTextBuchungsIDError() {
+     ui->labelErrorMessage->setText("<p>Ihre eingegebene BuchungsID ist fehlerhaft.</p><p>Bitte versuchen Sie es erneut.</p>");
+}
+
+void errormessage::changeTextBuchungDoesntExist() {
+      ui->labelErrorMessage->setText("<p>Die angegebene Buchung existiert nicht.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
 }

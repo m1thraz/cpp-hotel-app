@@ -49,6 +49,8 @@ public:
     void changeTextMissingSpecialService();
     void changeTextDeleteDataError();
     void changeTextCancelBookingError();
+    void changeTextBuchungsIDError();
+    void changeTextBuchungDoesntExist();
 
 private slots:
     void on_closeWindowButton_clicked();

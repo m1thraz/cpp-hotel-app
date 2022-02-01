@@ -156,3 +156,30 @@ bool verifier::verifyZimmerIDExists(int zimmerID) {
         return false;
     }
 }
+
+// Überprüft, ob die Buchung X vom Kunden Y gibt
+bool verifier::verifyBuchungExists(int buchungsID, int kundenID) {
+    errormessage error;
+    QSqlQuery query;
+    query.prepare("SELECT 1 FROM Zimmerbuchungsliste WHERE BuchungsID = :buchung_buchungsID "
+                  "AND KundenID = :buchung_kundenID;");
+    query.bindValue(":buchung_buchungsID", buchungsID);
+    query.bindValue(":buchung_kundenID", kundenID);
+    bool queryStatus = query.exec();
+    qDebug() << "DB-Überprüfung der Buchung erfolgreich: " << queryStatus;
+
+    //Wird nur ausgeführt, wenn es die Buchung tatsächlich gibt, sonst Fehlermeldung
+    if(query.next()) {
+        return true;
+    }else if(!queryStatus) {
+        error.changeTextDBRequestError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }else {
+        error.changeTextBuchungDoesntExist();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }
+}

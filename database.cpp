@@ -156,6 +156,7 @@ void Database::createDatabaseTables() {
      qDebug()<< "Leere Tabelle GebuchteSonderleistungen wurde erstellt: " << creationStatus;
 
      query = "CREATE TABLE Zimmerbuchungsliste ("
+             "BuchungsID INTEGER,"
              "BestandID INT,"
              "MitarbeiterID INT,"
              "KundenID INT,"
@@ -163,7 +164,7 @@ void Database::createDatabaseTables() {
              "Abreisedatum DATE,"
              "BuchungsstatusID INT,"
              "Anmerkungen VARCHAR(250),"
-             "PRIMARY KEY (BestandID, KundenID, MitarbeiterID, Anreisedatum, Abreisedatum),"
+             "PRIMARY KEY (BuchungsID),"
              "FOREIGN KEY (BestandID) REFERENCES Zimmerbestand(BestandID),"
              "FOREIGN KEY (MitarbeiterID) REFERENCES Mitarbeiter(MitarbeiterID),"
              "FOREIGN KEY (KundenID) REFERENCES Kunde(KundenID),"
@@ -221,9 +222,9 @@ void Database::createDatabaseEntries() {
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
     qDebug()<< "Tabelleneinträge für Tabelle Kunde wurden erstellt: " << creationStatus;
 
-    query = "INSERT OR IGNORE INTO Zimmerbuchungsliste (BestandID, MitarbeiterID, KundenID, Anreisedatum, Abreisedatum, "
+    query = "INSERT OR IGNORE INTO Zimmerbuchungsliste (BuchungsID, BestandID, MitarbeiterID, KundenID, Anreisedatum, Abreisedatum, "
             "BuchungsstatusID, Anmerkungen)"
-            "VALUES (1, 12345, 1, '2022-03-14', '2022-03-24', 1, null), (4, 67890, 2, '2022-01-25', '2022-03-01', 2, 'benötigt Reinigung');";
+            "VALUES (10100, 1, 12345, 1, '2022-03-14', '2022-03-24', 1, null), (10101, 4, 67890, 2, '2022-01-25', '2022-03-01', 2, 'benötigt Reinigung');";
     creationStatus = exequery.exec(query);
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
     qDebug()<< "Tabelleneinträge für Tabelle Zimmerbuchungsliste wurden erstellt: " << creationStatus;

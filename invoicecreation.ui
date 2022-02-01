@@ -106,7 +106,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>311</width>
-       <height>280</height>
+       <height>251</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_7">

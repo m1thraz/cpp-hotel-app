@@ -16,9 +16,6 @@ public:
     ~bookroomview();
 
     bool lineEditVerification(const int buttontyp);
-    bool verifyKundenIDExists();
-    bool verifyMitarbeiterIDExists();
-    bool verifyBestandIDExists();
     bool verifyRoomShouldNotBeBooked();
     bool verifyRoomShouldBeBooked();
     bool bookMasageSauna(int sonderleistungsID);

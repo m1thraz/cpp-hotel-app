@@ -199,7 +199,7 @@ bool bookroomview::lineEditVerification(const int buttontyp) {
         return false;
     }
 
-    //Anfängliche Überprüfung aller textuellen Eingaben
+    // Anfängliche Überprüfung aller textuellen Eingaben
     QRegularExpression numbers("[0-9]+$");
     QRegularExpressionMatch match;
     errormessage error;
