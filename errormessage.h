@@ -51,6 +51,8 @@ public:
     void changeTextCancelBookingError();
     void changeTextBuchungsIDError();
     void changeTextBuchungDoesntExist();
+    void changeTextRepairNeeded();
+    void changeTextCheckInStatus();
 
 private slots:
     void on_closeWindowButton_clicked();

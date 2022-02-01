@@ -183,3 +183,29 @@ bool verifier::verifyBuchungExists(int buchungsID, int kundenID) {
         return false;
     }
 }
+
+// Überprüft, ob Kunde X bei Buchung Y bereits eingecheckt ist
+bool verifier::verifyKundeIsCheckedIn(int buchungsID) {
+    errormessage error;
+        QSqlQuery query;
+        query.prepare("SELECT 1 FROM Zimmerbuchungsliste WHERE BuchungsID = :buchung_buchungsID "
+                      "AND BuchungsstatusID = 2;");
+        query.bindValue(":buchung_buchungsID", buchungsID);
+        bool queryStatus = query.exec();
+        qDebug() << "DB-Überprüfung des Buchungsstatus erfolgreich: " << queryStatus;
+
+        //Wird nur ausgeführt, wenn der Kunde bereits eingecheckt ist
+        if(query.next()) {
+            return true;
+        }else if(!queryStatus) {
+            error.changeTextDBRequestError();
+            error.setModal(true);
+            error.exec();
+            return false;
+        }else {
+            error.changeTextCheckInStatus();
+            error.setModal(true);
+            error.exec();
+            return false;
+        }
+}

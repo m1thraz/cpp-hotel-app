@@ -166,3 +166,12 @@ void errormessage::changeTextBuchungsIDError() {
 void errormessage::changeTextBuchungDoesntExist() {
       ui->labelErrorMessage->setText("<p>Die angegebene Buchung existiert nicht.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
 }
+
+void errormessage::changeTextRepairNeeded() {
+    ui->labelErrorMessage->setText("<p>Das gleichzeitige Reparieren und Reinigen ist nicht <br>möglich.</p>"
+                                   "<p>Bitte wählen Sie entweder <em>beschädigte Gegenstände</em><br>oder <em>Reinigung</em> aus.</p>");
+}
+
+void errormessage::changeTextCheckInStatus() {
+    ui->labelErrorMessage->setText("<p>Der Kunde wurde noch nicht eingecheckt, oder hat<br>bereits ausgecheckt.</p>");
+}

@@ -69,6 +69,66 @@ void checkInCheckOutScreen::on_checkOutBtn_clicked() {
     if(!lineEditVerification(2)) {
         return;
     }
+
+    errormessage error;
+    if(!this->getKundenID() || !this->getBuchungsID()) {
+        error.changeTextMissingInputText();
+        error.setModal(true);
+        error.exec();
+        return;
+    }
+
+    verifier verify;
+
+    if(!verify.verifyKundenIDExists(this->getKundenID())) {
+        return;
+    }
+
+    if(!verify.verifyBuchungExists(this->getBuchungsID(), this->getKundenID())) {
+        return;
+    }
+
+    if(!verify.verifyKundeIsCheckedIn(this->getBuchungsID())) {
+        return;
+    }
+
+    bool beschaedigt = ui->checkBoxOutBeschaedigt->isChecked();
+    bool reinigung = ui->checkBoxOutReinigung->isChecked();
+
+    if(beschaedigt && reinigung) {
+        error.changeTextRepairNeeded();
+        error.setModal(true);
+        error.exec();
+        return;
+    }
+
+    // Auschecken wird eingeleitet
+    QString anmerkungen;
+    if(beschaedigt) {
+        anmerkungen = "beschädigte Gegenstände";
+    }else if(reinigung) {
+        anmerkungen = "benötigt Reinigung";
+    }
+
+    QSqlQuery query;
+
+    query.prepare("UPDATE Zimmerbuchungsliste SET Anmerkungen = :buchung_anmerkungen, BuchungsstatusID = 3 "
+          "WHERE BuchungsID = :buchung_buchungsID;");
+    query.bindValue(":buchung_anmerkungen", anmerkungen);
+    query.bindValue(":buchung_buchungsID", this->getBuchungsID());
+    bool queryStatus = query.exec();
+    qDebug() << "Auschecken erfolgreich: " << queryStatus;
+
+    if(!queryStatus) {
+        error.changeTextUpdateError();
+        error.setModal(true);
+        error.exec();
+    }else {
+        infomessage info;
+        info.changeTextModifiziert();
+        info.setModal(true);
+        info.exec();
+    }
 }
 
 bool checkInCheckOutScreen::lineEditVerification(const int buttontyp) {

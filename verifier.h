@@ -13,6 +13,7 @@ public:
     bool verifyZimmernummerDoesntExist(int zimmernummer);
     bool verifyZimmerIDExists(int zimmerID);
     bool verifyBuchungExists(int buchungsID, int kundenID);
+    bool verifyKundeIsCheckedIn(int buchungsID);
 };
 
 #endif // VERIFIER_H
