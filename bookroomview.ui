@@ -104,9 +104,9 @@ background-color: white;
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
+       <y>70</y>
        <width>341</width>
-       <height>281</height>
+       <height>251</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkOutLayout">
@@ -140,6 +140,16 @@ background-color: white;
       </item>
       <item>
        <layout class="QVBoxLayout" name="specialServiceCheckOutLayout">
+        <item>
+         <widget class="QLabel" name="costumerIDLabelCheckOut_3">
+          <property name="text">
+           <string>BuchungsID</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditSonderBuchungsID"/>
+        </item>
         <item>
          <widget class="QLabel" name="specialServiceLabelCheckOut">
           <property name="text">
@@ -208,7 +218,7 @@ background-color: white;
        <x>10</x>
        <y>40</y>
        <width>351</width>
-       <height>284</height>
+       <height>281</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkInLayout">
