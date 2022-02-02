@@ -269,6 +269,20 @@ void Database::createDatabaseEntries() {
             "ORDER BY se.Sonderleistung ASC;";
     creationStatus = exequery.exec(query);
     qDebug()<< "View::Sonderleistungsrechnung wurde erstellt: " << creationStatus;
+
+    query = "CREATE VIEW Zimmerrechnung AS "
+            "SELECT zi.BuchungsID, zim.Zimmertyp, "
+            "julianday(zi.Abreisedatum) - julianday(zi.Anreisedatum) AS Übernachtungstage, "
+            "SUM((julianday(zi.Abreisedatum) - julianday(zi.Anreisedatum)) * zim.Zimmerkosten) "
+            "AS Übernachtungskosten "
+            "FROM Zimmerbuchungsliste zi "
+            "LEFT JOIN Zimmerbestand be "
+            "ON zi.BestandID = be.BestandID "
+            "LEFT JOIN Zimmer zim "
+            "ON be.ZimmerID = zim.ZimmerID "
+            "GROUP BY BuchungsID;";
+    creationStatus = exequery.exec(query);
+    qDebug()<< "View::Zimmerrechnung wurde erstellt: " << creationStatus;
 }
 
 int Database::getBestandID(int zimmernummer) {
