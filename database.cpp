@@ -258,6 +258,17 @@ void Database::createDatabaseEntries() {
             "GROUP BY be.BestandID;";
     creationStatus = exequery.exec(query);
     qDebug()<< "View::Hotelzimmer wurde erstellt: " << creationStatus;
+
+    query = "CREATE VIEW Sonderleistungsrechnung AS "
+            "SELECT ge.BuchungsID, se.Sonderleistung, ge.Buchungsanzahl, "
+            "SUM(ge.Buchungsanzahl*se.Sonderleistungskosten) AS 'Gesamtkosten' "
+            "FROM GebuchteSonderleistungen ge "
+            "LEFT JOIN Sonderleistung se "
+            "ON ge.SonderleistungsID = se.SonderleistungsID "
+            "GROUP BY ge.BuchungsID, ge.SonderleistungsID "
+            "ORDER BY se.Sonderleistung ASC;";
+    creationStatus = exequery.exec(query);
+    qDebug()<< "View::Sonderleistungsrechnung wurde erstellt: " << creationStatus;
 }
 
 int Database::getBestandID(int zimmernummer) {

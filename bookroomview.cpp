@@ -400,7 +400,6 @@ bool bookroomview::bookMasageSauna(int sonderleistungsID) {
     }
 }
 
-
 void bookroomview::setKundenID(int kundenID) {
     this->kundenID = kundenID;
 }
