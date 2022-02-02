@@ -36,15 +36,29 @@ void checkInCheckOutScreen::on_checkInButton_clicked() {
 
     verifier verify;
 
+    // KundenID existiert nicht
     if(!verify.verifyKundenIDExists(this->getKundenID())) {
         return;
     }
 
+    // Die Buchung auf KundenID X existert nicht
     if(!verify.verifyBuchungExists(this->getBuchungsID(), this->getKundenID())) {
         return;
     }
 
-    if(!verify.verifyKundeIsCheckedOut(this->getBuchungsID())) {
+    // Kunde hat bereits eingecheckt
+    if(verify.verifyKundeIsCheckedIn(this->getBuchungsID())) {
+        error.changeTextCheckInStatus();
+        error.setModal(true);
+        error.exec();
+        return;
+    }
+
+    // Kunde hat bereits ausgecheckt
+    if(verify.verifyKundeIsCheckedOut(this->getBuchungsID())) {
+        error.changeTextCheckOutStatus();
+        error.setModal(true);
+        error.exec();
         return;
     }
 
@@ -84,15 +98,29 @@ void checkInCheckOutScreen::on_checkOutBtn_clicked() {
 
     verifier verify;
 
+    // KundenID existiert nicht
     if(!verify.verifyKundenIDExists(this->getKundenID())) {
         return;
     }
 
+    // Buchung auf Kunden X existiert nicht
     if(!verify.verifyBuchungExists(this->getBuchungsID(), this->getKundenID())) {
         return;
     }
 
+    // Der Kunde hat bereits ausgecheckt
+    if(verify.verifyKundeIsCheckedOut(this->getBuchungsID())) {
+        error.changeTextCheckOutStatus();
+        error.setModal(true);
+        error.exec();
+        return;
+    }
+
+    // Der Kunde hat noch nicht eingecheckt
     if(!verify.verifyKundeIsCheckedIn(this->getBuchungsID())) {
+        error.changeTextNotCheckedIn();
+        error.setModal(true);
+        error.exec();
         return;
     }
 

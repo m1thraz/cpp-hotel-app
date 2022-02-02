@@ -92,9 +92,9 @@ background-color: white;
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>50</y>
+      <y>20</y>
       <width>331</width>
-      <height>291</height>
+      <height>331</height>
      </rect>
     </property>
     <property name="title">
@@ -106,7 +106,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>311</width>
-       <height>251</height>
+       <height>291</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -120,36 +120,7 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_4"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <item>
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Geschäftliche Reise?</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QRadioButton" name="radioButton">
-            <property name="text">
-             <string>ja</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="radioButton_2">
-            <property name="text">
-             <string>nein</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QLineEdit" name="lineEditNeuBuchungsID"/>
         </item>
        </layout>
       </item>
@@ -205,20 +176,35 @@ background-color: white;
       <item>
        <layout class="QVBoxLayout" name="createInvoiceBtnLayout">
         <item>
-         <widget class="QPushButton" name="pushButton_5">
+         <widget class="QPushButton" name="pushButtonRechnungErstellen">
           <property name="text">
            <string>Rechnung erstellen</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_6">
-          <property name="text">
-           <string>Rechnung erstellen &amp; ausdrucken</string>
-          </property>
-         </widget>
-        </item>
        </layout>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>310</y>
+       <width>144</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_9">
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>BuchungsID</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_6"/>
       </item>
      </layout>
     </widget>
@@ -227,13 +213,13 @@ background-color: white;
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>170</y>
+      <y>190</y>
       <width>331</width>
-      <height>171</height>
+      <height>161</height>
      </rect>
     </property>
     <property name="title">
-     <string>Rechnung erneut ausstellen</string>
+     <string>Rechnung erneut anzeigen</string>
     </property>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
@@ -241,7 +227,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>311</width>
-       <height>131</height>
+       <height>121</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -250,28 +236,89 @@ background-color: white;
         <item>
          <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>RechnungsID</string>
+           <string>BuchungsID</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_5"/>
+         <widget class="QLineEdit" name="lineEditAbfrBuchungsID"/>
         </item>
        </layout>
       </item>
       <item>
        <layout class="QVBoxLayout" name="showInvoiceLayout">
         <item>
-         <widget class="QPushButton" name="pushButton_7">
+         <widget class="QPushButton" name="pushButtonRechnungAnzeigen">
           <property name="text">
            <string>Rechnung anzeigen</string>
           </property>
          </widget>
         </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>20</y>
+      <width>331</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Rechnungsvermerk ändern</string>
+    </property>
+    <widget class="QWidget" name="layoutWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>311</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_11">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QPushButton" name="pushButton_8">
+         <layout class="QVBoxLayout" name="verticalLayout_12">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>BuchungsID</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEditModBuchungsID"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_13">
+          <item>
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Anmerkung</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEditModAnmerkung"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="showInvoiceLayout_2">
+        <item>
+         <widget class="QPushButton" name="pushButtonModRechnungUpdaten">
           <property name="text">
-           <string>Rechnung anzeigen &amp; ausdrucken</string>
+           <string>Rechnung updaten</string>
           </property>
          </widget>
         </item>

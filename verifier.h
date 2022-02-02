@@ -15,6 +15,8 @@ public:
     bool verifyBuchungExists(int buchungsID, int kundenID);
     bool verifyKundeIsCheckedIn(int buchungsID);
     bool verifyKundeIsCheckedOut(int buchungsID);
+    bool verifyBuchungsIDExists(int buchungsID);
+    bool verifyRechnungExists(int buchungsID);
 };
 
 #endif // VERIFIER_H

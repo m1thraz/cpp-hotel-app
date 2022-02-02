@@ -173,9 +173,21 @@ void errormessage::changeTextRepairNeeded() {
 }
 
 void errormessage::changeTextCheckInStatus() {
-    ui->labelErrorMessage->setText("<p>Der Kunde wurde noch nicht eingecheckt, oder hat<br>bereits ausgecheckt.</p>");
+    ui->labelErrorMessage->setText("<p>Der Kunde hat bereits eingecheckt.</p>");
 }
 
-void errormessage::changeTextCheckInError() {
-    ui->labelErrorMessage->setText("<p>Der Kunde ist bereits eingecheckt, oder hat<br>bereits ausgecheckt.</p>");
+void errormessage::changeTextCheckOutStatus() {
+    ui->labelErrorMessage->setText("<p>Der Kunde hat bereits ausgecheckt.</p>");
+}
+
+void errormessage::changeTextNotCheckedIn() {
+    ui->labelErrorMessage->setText("<p>Der Kunde hat noch nicht eingecheckt.</p>");
+}
+
+void errormessage::changeTextNotCheckedOut() {
+    ui->labelErrorMessage->setText("<p>Der Kunde hat noch nicht ausgecheckt.</p>");
+}
+
+void errormessage::changeTextRechnungExists() {
+    ui->labelErrorMessage->setText("<p>Die Rechnung existiert bereits.</p>");
 }

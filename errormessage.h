@@ -53,7 +53,10 @@ public:
     void changeTextBuchungDoesntExist();
     void changeTextRepairNeeded();
     void changeTextCheckInStatus();
-    void changeTextCheckInError();
+    void changeTextCheckOutStatus();
+    void changeTextNotCheckedIn();
+    void changeTextNotCheckedOut();
+    void changeTextRechnungExists();
 
 private slots:
     void on_closeWindowButton_clicked();

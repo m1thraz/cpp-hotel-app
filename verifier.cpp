@@ -194,7 +194,7 @@ bool verifier::verifyKundeIsCheckedIn(int buchungsID) {
         bool queryStatus = query.exec();
         qDebug() << "DB-Überprüfung des Buchungsstatus erfolgreich: " << queryStatus;
 
-        //Wird nur ausgeführt, wenn der Kunde bereits eingecheckt ist
+        //Kunde hat bereits eingecheckt
         if(query.next()) {
             return true;
         }else if(!queryStatus) {
@@ -203,25 +203,21 @@ bool verifier::verifyKundeIsCheckedIn(int buchungsID) {
             error.exec();
             return false;
         }else {
-            error.changeTextCheckInStatus();
-            error.setModal(true);
-            error.exec();
             return false;
         }
 }
-
 
 // Überprüft, ob Kunde X bei Buchung Y bereits eingecheckt, oder ausgecheckt ist
 bool verifier::verifyKundeIsCheckedOut(int buchungsID) {
     errormessage error;
         QSqlQuery query;
         query.prepare("SELECT 1 FROM Zimmerbuchungsliste WHERE BuchungsID = :buchung_buchungsID "
-                      "AND BuchungsstatusID = 1;");
+                      "AND BuchungsstatusID = 3;");
         query.bindValue(":buchung_buchungsID", buchungsID);
         bool queryStatus = query.exec();
         qDebug() << "DB-Überprüfung des Buchungsstatus erfolgreich: " << queryStatus;
 
-        //Wird nur ausgeführt, wenn der Kunde noch im Reservierungsstatus ist
+        // Kunde hat bereits ausgecheckt
         if(query.next()) {
             return true;
         }else if(!queryStatus) {
@@ -230,9 +226,53 @@ bool verifier::verifyKundeIsCheckedOut(int buchungsID) {
             error.exec();
             return false;
         }else {
-            error.changeTextCheckInError();
-            error.setModal(true);
-            error.exec();
             return false;
         }
+}
+
+// Überprüft, ob die BuchungsID X bereits existiert
+bool verifier::verifyBuchungsIDExists(int buchungsID) {
+    errormessage error;
+    QSqlQuery query;
+    query.prepare("SELECT 1 FROM Zimmerbuchungsliste WHERE BuchungsID = :buchungsID;");
+    query.bindValue(":buchungsID", buchungsID);
+    bool queryStatus = query.exec();
+    qDebug() << "DB-Überprüfung der BuchungsID erfolgreich: " << queryStatus;
+
+    //Wird nur ausgeführt, wenn es die BuchungsID tatsächlich gibt, sonst Fehlermeldung
+    if(query.next()) {
+        return true;
+    }else if(!queryStatus) {
+        error.changeTextDBRequestError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }else {
+        error.changeTextBuchungDoesntExist();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }
+}
+
+// Überprüft, ob es die Rechnung X bereits gibt
+bool verifier::verifyRechnungExists(int buchungsID) {
+    errormessage error;
+    QSqlQuery query;
+    query.prepare("SELECT 1 FROM Rechnung WHERE BuchungsID = :buchungsID;");
+    query.bindValue(":buchungsID", buchungsID);
+    bool queryStatus = query.exec();
+    qDebug() << "DB-Überprüfung der Rechnung erfolgreich: " << queryStatus;
+
+    //Rechnung existiert bereits
+    if(query.next()) {
+        return true;
+    }else if(!queryStatus) {
+        error.changeTextDBRequestError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }else {
+        return false;
+    }
 }
