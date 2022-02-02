@@ -83,7 +83,7 @@ void bookroomview::on_bookExtrasButton_clicked() {
         return;
     }
     errormessage error;
-    if(!this->getKundenID() || !this->getMitarbeiterID()) {
+    if(!this->getKundenID() || !this->getMitarbeiterID() || !this->getBuchungsID()) {
         qDebug() << "Mindestens ein LineEdit Textfeld ist leer";
         error.changeTextMissingInputText();
         error.setModal(true);
@@ -98,6 +98,14 @@ void bookroomview::on_bookExtrasButton_clicked() {
     }
 
     if(!verify.verifyMitarbeiterIDExists(this->getMitarbeiterID())) {
+        return;
+    }
+
+    if(!verify.verifyBuchungExists(this->getBuchungsID(), this->getKundenID())) {
+        return;
+    }
+
+    if(!verify.verifyKundeIsCheckedIn(this->getBuchungsID())) {
         return;
     }
 
@@ -181,6 +189,7 @@ bool bookroomview::lineEditVerification(const int buttontyp) {
     QString tempBestandID;
     QString tempAnreiseDatum;
     QString tempAbreiseDatum;
+    QString tempBuchungsID;
 
     switch(buttontyp) {
     case 1:
@@ -193,6 +202,7 @@ bool bookroomview::lineEditVerification(const int buttontyp) {
     case 2:
         tempKundenID = ui->lineEditSonderKundenID->text();
         tempMitarbeiterID = ui->lineEditSonderMitarbeiterID->text();
+        tempBuchungsID = ui->lineEditSonderBuchungsID->text();
         break;
     default:
         qDebug() << "Fehler beim Verifikationsprozess der lineEdits aufgetreten";
@@ -241,6 +251,19 @@ bool bookroomview::lineEditVerification(const int buttontyp) {
         return false;
     }else {
         this->setBestandID(0);
+    }
+
+    match = numbers.match(tempBuchungsID);
+    if(!tempBuchungsID.isEmpty() && match.hasMatch()) {
+        this->setBuchungsID(std::stoi(tempBuchungsID.toStdString()));
+    }else if(!tempBuchungsID.isEmpty() && !match.hasMatch()) {
+        qDebug() << "Ungültiges BuchungsID-Format";
+        error.changeTextBuchungsIDError();
+        error.setModal(true);
+        error.exec();
+        return false;
+    }else {
+        this->setBuchungsID(0);
     }
 
     // Kein Match für Anreise und Abreise, da Datumsfeld
@@ -326,7 +349,9 @@ bool bookroomview::bookMasageSauna(int sonderleistungsID) {
     QSqlQuery query;
     std::string sql;
     sql = "SELECT 1 FROM GebuchteSonderleistungen WHERE KundenID = " + std::to_string(this->getKundenID())
-            + " AND SonderleistungsID = :sonderleistungsID AND MitarbeiterID = " + std::to_string(this->getMitarbeiterID()) + ";";
+            + " AND SonderleistungsID = :sonderleistungsID AND "
+            + "MitarbeiterID = " + std::to_string(this->getMitarbeiterID())
+            + " AND BuchungsID = " + std::to_string(this->getBuchungsID()) +";";
     QString verify = QString::fromStdString(sql);
     query.prepare(verify);
     query.bindValue(":sonderleistungsID", sonderleistungsID);
@@ -344,7 +369,8 @@ bool bookroomview::bookMasageSauna(int sonderleistungsID) {
     if(query.next()) {
         sql = "UPDATE GebuchteSonderleistungen SET Buchungsanzahl = Buchungsanzahl + 1 "
               "WHERE KundenID = " + std::to_string(this->getKundenID()) + " AND "
-              "SonderleistungsID = :sonderleistungsID AND MitarbeiterID = " + std::to_string(this->getMitarbeiterID()) + ";";
+              "SonderleistungsID = :sonderleistungsID AND MitarbeiterID = " + std::to_string(this->getMitarbeiterID())
+                + " AND BuchungsID = " + std::to_string(this->getBuchungsID()) + ";";
         QString update = QString::fromStdString(sql);
         query.prepare(update);
         query.bindValue(":sonderleistungsID", sonderleistungsID);
@@ -353,10 +379,10 @@ bool bookroomview::bookMasageSauna(int sonderleistungsID) {
 
     // Bucht zum ersten mal Sonderleistungen - Neuer Eintrag muss erzeugt werden
     }else {
-        sql = "INSERT INTO GebuchteSonderleistungen (KundenID, MitarbeiterID, "
+        sql = "INSERT INTO GebuchteSonderleistungen (KundenID, BuchungsID, MitarbeiterID, "
               "SonderleistungsID, Buchungsanzahl) "
-              "VALUES (" + std::to_string(this->getKundenID()) + ", " + std::to_string(this->getMitarbeiterID()) +
-                ", :sonderleistungsID, 1);";
+              "VALUES (" + std::to_string(this->getKundenID()) + ", " + std::to_string(this->getBuchungsID()) + ", "
+                + std::to_string(this->getMitarbeiterID()) + ", :sonderleistungsID, 1);";
         QString insert = QString::fromStdString(sql);
         query.prepare(insert);
         query.bindValue(":sonderleistungsID", sonderleistungsID);
@@ -413,5 +439,13 @@ void bookroomview::setAbreiseDatum(std::string abreisedatum) {
 
 std::string bookroomview::getAbreiseDatum() {
     return this->abreisedatum;
+}
+
+void bookroomview::setBuchungsID(int buchungsID) {
+    this->buchungsID = buchungsID;
+}
+
+int bookroomview::getBuchungsID() {
+    return this->buchungsID;
 }
 

@@ -29,6 +29,8 @@ public:
     std::string getAnreiseDatum();
     void setAbreiseDatum(std::string abreisedatum);
     std::string getAbreiseDatum();
+    void setBuchungsID(int buchungsID);
+    int getBuchungsID();
 
 private slots:
     void on_bookRoomButton_clicked();
@@ -44,6 +46,7 @@ private:
     int bestandID;
     std::string anreisedatum;
     std::string abreisedatum;
+    int buchungsID;
 };
 
 #endif // BOOKROOMVIEW_H
