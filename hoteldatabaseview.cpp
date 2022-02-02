@@ -281,7 +281,7 @@ void hotelDatabaseView::on_suchenButton_clicked() {
 
     verifier verify;
     bool zimmernummer;
-    QString whereSqlZimmer = "zi.Zimmernummer = ";
+    QString whereSqlZimmer = "Zimmernummer = ";
 
     if(this->getZimmernummer() == 0) {
         zimmernummer = false;
@@ -307,10 +307,10 @@ void hotelDatabaseView::on_suchenButton_clicked() {
 
     if(doppelbett && !einzelbett) {
         whereBedingungExtras = true;
-        whereSqlExtras = "zi.ZimmerID = 2";
+        whereSqlExtras = "Zimmertyp = 'Doppelzimmer'";
     }else if(einzelbett && !doppelbett) {
         whereBedingungExtras = true;
-        whereSqlExtras = "zi.ZimmerID = 1";
+        whereSqlExtras = "Zimmertyp = 'Einzelzimmer'";
     }
 
     if(whereBedingungExtras && (aussicht || fahrstuhl || sofa)) {
@@ -320,35 +320,35 @@ void hotelDatabaseView::on_suchenButton_clicked() {
     }
 
     if(!aussicht && !fahrstuhl && sofa) {
-        whereSqlExtras += "zu.ZimmerzusatzID = 3";
+        whereSqlExtras += "Sofa = 'true'";
 
     }else if(!aussicht && fahrstuhl && !sofa) {
-        whereSqlExtras += "zu.ZimmerzusatzID = 2";
+        whereSqlExtras += "Fahrstuhlnähe = 'true'";
     }
 
     else if(!aussicht && fahrstuhl && sofa) {
-        whereSqlExtras += "(zu.ZimmerzusatzID = 2 OR zu.ZimmerzusatzID = 3)";
+        whereSqlExtras += "Fahrstuhlnähe = 'true' AND Sofa = 'true'";
     }
 
     else if(aussicht && !fahrstuhl && !sofa) {
-        whereSqlExtras += "zu.ZimmerzusatzID = 1";
+        whereSqlExtras += "Aussicht = 'true'";
     }
 
     else if(aussicht && !fahrstuhl && sofa) {
-        whereSqlExtras += "(zu.ZimmerzusatzID = 1 OR zu.ZimmerzusatzID = 3)";
+        whereSqlExtras += "Aussicht = 'true' AND Sofa = 'true'";
     }
 
     else if(aussicht && fahrstuhl && !sofa) {
-        whereSqlExtras += "(zu.ZimmerzusatzID = 1 OR zu.ZimmerzusatzID = 2)";
+        whereSqlExtras += "Aussicht = 'true' AND Fahrstuhlnähe = 'true'";
     }
 
     else if(aussicht && fahrstuhl && sofa) {
-        whereSqlExtras += "(zu.ZimmerzusatzID = 1 OR zu.ZimmerzusatzID = 2 OR zu.ZimmerzusatzID = 3)";
+        whereSqlExtras += "Aussicht = 'true' AND Fahrstuhlnähe = 'true' AND Sofa = 'true'";
     }
 
     if(nurVerfuegbare) {
         whereBedingungVerfuegbar = true;
-        std::string tempwhereSqlVerfuegbar = " LEFT JOIN Zimmerbuchungsliste bu ON zi.BestandID = bu.BestandID "
+        std::string tempwhereSqlVerfuegbar = " LEFT JOIN Zimmerbuchungsliste bu ON hot.BestandID = bu.BestandID "
                              "WHERE (bu.Anreisedatum NOT BETWEEN '" + this->getAnreiseDatum() +
                 "' AND '" + this->getAbreiseDatum() +
                 "' OR bu.Abreisedatum NOT BETWEEN '" + this->getAnreiseDatum() +
@@ -361,14 +361,9 @@ void hotelDatabaseView::on_suchenButton_clicked() {
 
     QSqlQuery query;
     bool queryStatus;
-    QString select = "SELECT zi.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, zu.Zimmerzusatz "
-                     "FROM Zimmerbestand zi "
-                     "LEFT JOIN BestandZusatzliste be "
-                     "ON zi.BestandID = be.BestandID "
-                     "LEFT JOIN Zimmer zim "
-                     "ON zi.ZimmerID = zim.ZimmerID "
-                     "LEFT JOIN Zimmerzusatz zu "
-                     "ON be.ZimmerzusatzID = zu.ZimmerzusatzID";
+    QString select = "SELECT hot.BestandID, hot.Zimmernummer, hot.Zimmertyp, hot. Zimmerkosten, "
+                     "hot.Aussicht, hot.Fahrstuhlnähe, hot.Sofa "
+                     "FROM Hotelzimmer hot";
     //Alle Zimmer
     if(!whereBedingungExtras && !zimmernummer && !whereBedingungVerfuegbar) {
         query.prepare(select + ";");
@@ -382,7 +377,6 @@ void hotelDatabaseView::on_suchenButton_clicked() {
 
     }else if(whereBedingungExtras && zimmernummer && !whereBedingungVerfuegbar) {
         query.prepare(select + " WHERE " + whereSqlZimmer + " AND " + whereSqlExtras + ";");
-        qDebug() << select + " WHERE " + whereSqlZimmer + " AND " + whereSqlExtras + ";";
         queryStatus = query.exec();
         qDebug() << "Zimmersuche mit Zimmer und Extras erfolgreich: " << queryStatus;
 
