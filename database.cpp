@@ -176,6 +176,21 @@ void Database::createDatabaseTables() {
      // !Auch false wenn es die Tabelle bereits gibt! Dann bitte neuen Build, wenn nötig
      qDebug()<< "Leere Tabelle Zimmerbuchungsliste wurde erstellt: " << creationStatus;
 
+     query = "CREATE TABLE Rechnung ("
+             "Rechnungsnummer INTEGER,"
+             "BuchungsID INT,"
+             "'Übernachtungskosten gesamt' INT,"
+             "'Sonderleistungskosten gesamt' INT,"
+             "Rabatt INT,"
+             "Gesamtkosten DOUBLE,"
+             "Rechnungsvermerk VARCHAR(250),"
+             "PRIMARY KEY (Rechnungsnummer),"
+             "FOREIGN KEY (BuchungsID) REFERENCES Zimmerbuchungsliste(BuchungsID));";
+
+     creationStatus = exequery.exec(query);
+     // !Auch false wenn es die Tabelle bereits gibt! Dann bitte neuen Build, wenn nötig
+     qDebug()<< "Leere Tabelle Rechnung wurde erstellt: " << creationStatus;
+
     createDatabaseEntries();
 }
 
@@ -283,6 +298,13 @@ void Database::createDatabaseEntries() {
             "GROUP BY BuchungsID;";
     creationStatus = exequery.exec(query);
     qDebug()<< "View::Zimmerrechnung wurde erstellt: " << creationStatus;
+
+    query = "INSERT OR IGNORE INTO Rechnung (Rechnungsnummer, BuchungsID, 'Übernachtungskosten gesamt', "
+            "'Sonderleistungskosten gesamt', Rabatt, Gesamtkosten, Rechnungsvermerk) "
+            "VALUES (500100, 10099, 50, 30, 20, 64, 'offen')";
+    creationStatus = exequery.exec(query);
+    qDebug()<< "Tabelleneinträge für Tabelle Rechnung wurden erstellt: " << creationStatus;
+
 }
 
 int Database::getBestandID(int zimmernummer) {
