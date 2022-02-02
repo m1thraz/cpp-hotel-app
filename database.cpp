@@ -144,13 +144,15 @@ void Database::createDatabaseTables() {
 
      query = "CREATE TABLE GebuchteSonderleistungen ("
              "KundenID INT,"
+             "BuchungsID INT,"
              "MitarbeiterID INT,"
              "SonderleistungsID INT,"
              "Buchungsanzahl INT,"
              "FOREIGN KEY (KundenID) REFERENCES Kunde(KundenID),"
+             "FOREIGN KEY (BuchungsID) REFERENCES Zimmerbuchungsliste(BuchungsID),"
              "FOREIGN KEY (MitarbeiterID) REFERENCES Mitarbeiter(MitarbeiterID),"
              "FOREIGN KEY (SonderleistungsID) REFERENCES Sonderleistung(SonderleistungsID),"
-             "PRIMARY KEY (KundenID, SonderleistungsID, MitarbeiterID));";
+             "PRIMARY KEY (KundenID, BuchungsID, SonderleistungsID, MitarbeiterID));";
      creationStatus = exequery.exec(query);
      // !Auch false wenn es die Tabelle bereits gibt! Dann bitte neuen Build, wenn nötig
      qDebug()<< "Leere Tabelle GebuchteSonderleistungen wurde erstellt: " << creationStatus;
@@ -224,7 +226,9 @@ void Database::createDatabaseEntries() {
 
     query = "INSERT OR IGNORE INTO Zimmerbuchungsliste (BuchungsID, BestandID, MitarbeiterID, KundenID, Anreisedatum, Abreisedatum, "
             "BuchungsstatusID, Anmerkungen)"
-            "VALUES (10100, 1, 12345, 1, '2022-03-14', '2022-03-24', 1, null), (10101, 4, 67890, 2, '2022-01-25', '2022-03-01', 2, 'benötigt Reinigung');";
+            "VALUES (10099, 3, 12345, 1, '2022-01-10', '2022-01-12', 3, null), "
+            "(10100, 1, 12345, 1, '2022-03-14', '2022-03-24', 1, null), "
+            "(10101, 4, 67890, 2, '2022-01-25', '2022-03-01', 2, 'benötigt Reinigung');";
     creationStatus = exequery.exec(query);
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
     qDebug()<< "Tabelleneinträge für Tabelle Zimmerbuchungsliste wurden erstellt: " << creationStatus;
@@ -235,8 +239,8 @@ void Database::createDatabaseEntries() {
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
     qDebug()<< "Tabelleneinträge für Tabelle Sonderleistung wurden erstellt: " << creationStatus;
 
-    query = "INSERT OR IGNORE INTO GebuchteSonderleistungen (SonderleistungsID, MitarbeiterID, KundenID, Buchungsanzahl)"
-            "VALUES (1, 12345, 2, 1), (2, 12345, 2, 4);";
+    query = "INSERT OR IGNORE INTO GebuchteSonderleistungen (SonderleistungsID, BuchungsID, MitarbeiterID, KundenID, Buchungsanzahl)"
+            "VALUES (1, 10101, 12345, 2, 1), (2, 10101, 12345, 2, 4);";
     creationStatus = exequery.exec(query);
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
     qDebug()<< "Tabelleneinträge für Tabelle GebuchteSonderleistungen wurden erstellt: " << creationStatus;
