@@ -241,6 +241,19 @@ void Database::createDatabaseEntries() {
     // !Auch false wenn es die Einträge bereits gibt! Dann bitte neuen Build, wenn nötig
     qDebug()<< "Tabelleneinträge für Tabelle GebuchteSonderleistungen wurden erstellt: " << creationStatus;
 
+    query = "CREATE VIEW Hotelzimmer AS "
+            "SELECT be.BestandID, zi.Zimmernummer, zim.Zimmertyp, zim.Zimmerkosten, "
+            "MAX(CASE WHEN be.ZimmerzusatzID = 1 THEN 'true' ELSE 'false' end) AS Aussicht, "
+            "MAX(CASE WHEN be.ZimmerzusatzID = 2 THEN 'true' ELSE 'false' end) AS Fahrstuhlnähe, "
+            "MAX(CASE WHEN be.ZimmerzusatzID = 3 THEN 'true' ELSE 'false' end) AS Sofa "
+            "FROM BestandZusatzliste be "
+            "LEFT JOIN Zimmerbestand zi "
+            "ON be.BestandID = zi.BestandID "
+            "LEFT JOIN Zimmer zim "
+            "ON zi.ZimmerID = zim.ZimmerID "
+            "GROUP BY be.BestandID;";
+    creationStatus = exequery.exec(query);
+    qDebug()<< "View::Hotelzimmer wurde erstellt: " << creationStatus;
 }
 
 int Database::getBestandID(int zimmernummer) {
