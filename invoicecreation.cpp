@@ -106,9 +106,10 @@ void invoiceCreation::on_pushButtonRechnungErstellen_clicked() {
     }
 
     sql = "UPDATE Rechnung "
-          "SET Gesamtkosten = (100 - Rabatt) * "
-          "(Übernachtungskosten_gesamt + Sonderleistungskosten_gesamt) / 100 "
-          "WHERE BuchungsID = 10101;";
+          "SET Gesamtkosten = (CASE WHEN Sonderleistungskosten_gesamt IS NULL THEN "
+          "((100 - Rabatt) * Übernachtungskosten_gesamt / 100) ELSE ((100 - Rabatt) * "
+          "(Übernachtungskosten_gesamt + Sonderleistungskosten_gesamt) / 100) END) "
+          "WHERE BuchungsID = " + std::to_string(this->getBuchungsID()) + ";";
     insert = QString::fromStdString(sql);
     query.prepare(insert);
     queryStatus = query.exec();
