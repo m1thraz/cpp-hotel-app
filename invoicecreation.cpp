@@ -226,9 +226,11 @@ void invoiceCreation::on_pushButtonRechnungAnzeigen_clicked() {
         error.changeTextDBRequestError();
         error.setModal(true);
         error.exec();
-    }else {
-        //HIER DIE EXTRA GUI ANZEIGE FÜR DIE RECHNUNG ÖFFNEN!!
+        return;
     }
+
+    //HIER DIE EXTRA GUI ANZEIGE FÜR DIE RECHNUNG ÖFFNEN!!
+
 }
 
 bool invoiceCreation::lineEditVerification(const int buttontyp) {

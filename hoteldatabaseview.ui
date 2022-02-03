@@ -394,11 +394,26 @@ background-color: white;
           </layout>
          </item>
          <item>
-          <widget class="QPushButton" name="aktualisierenButton">
-           <property name="text">
-            <string>Aktualisieren</string>
-           </property>
-          </widget>
+          <layout class="QHBoxLayout" name="horizontalLayout_15">
+           <item>
+            <widget class="QPushButton" name="aktualisierenButton">
+             <property name="text">
+              <string>Aktualisieren</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_39">
+             <item>
+              <widget class="QPushButton" name="entfernenButton">
+               <property name="text">
+                <string>Entfernen</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </item>
         </layout>
        </widget>

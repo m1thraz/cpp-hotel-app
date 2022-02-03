@@ -106,7 +106,11 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
             error.changeTextDBRequestError();
             error.setModal(true);
             error.exec();
+            return;
         }
+
+        //HIER DIE EXTRA GUI ANZEIGE FÜR DIE KUNDENDATEN ÖFFNEN!!
+
     }
 }
 

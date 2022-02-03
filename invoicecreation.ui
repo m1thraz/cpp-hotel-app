@@ -219,7 +219,7 @@ background-color: white;
      </rect>
     </property>
     <property name="title">
-     <string>Rechnung erneut anzeigen</string>
+     <string>Rechnung anzeigen</string>
     </property>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
