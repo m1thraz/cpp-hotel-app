@@ -462,12 +462,12 @@ void hotelDatabaseView::removeRoomEquipment() {
         return;
     }
 
-    bool ausstattung[] = {aussicht, fahrstuhl, sofa};
+    bool ausstattung[3] = {aussicht, fahrstuhl, sofa};
     for(int i = 0; i < 3; i++) {
         if(ausstattung[i]) {
             query.prepare("DELETE FROM BestandZusatzliste WHERE "
                           "ZimmerzusatzID = :zusatzID AND BestandID = :bestandID;");
-            query.bindValue("zusatzID", QString::fromStdString(std::to_string(i+1)));
+            query.bindValue(":zusatzID", QString::fromStdString(std::to_string(i+1)));
             query.bindValue(":bestandID", bestandID);
             queryStatus = query.exec();
             qDebug() << "Entfernen der Ausstattung erfolgreich: " << queryStatus;
