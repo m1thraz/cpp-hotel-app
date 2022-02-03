@@ -131,8 +131,7 @@ void invoiceCreation::on_pushButtonModRechnungUpdaten_clicked() {
     if(!lineEditVerification(2)) {
         return;
     }
-    qDebug() << QString::fromStdString(std::to_string(this->getBuchungsID()));
-    qDebug() << QString::fromStdString(this->getAnmerkungen());
+
     errormessage error;
     if(!this->getBuchungsID() || this->getAnmerkungen().empty()) {
         qDebug() << "Mindestens ein LineEdit Textfeld ist leer";

@@ -28,7 +28,7 @@ public:
     std::string getAnreiseDatum();
     void setAbreiseDatum(std::string abreisedatum);
     std::string getAbreiseDatum();
-
+    void removeRoomEquipment();
 
 private slots:
 
@@ -39,6 +39,8 @@ private slots:
     void on_suchenButton_clicked();
 
     void on_radioButtonAbfrVerfuegbar_toggled(bool checked);
+
+    void on_entfernenButton_clicked();
 
 private:
     Ui::hotelDatabaseView *ui;

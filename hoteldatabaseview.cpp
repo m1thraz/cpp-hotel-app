@@ -417,6 +417,77 @@ void hotelDatabaseView::on_suchenButton_clicked() {
     //HIER EIN NEUES GUI FENSTER MIT DER ANZUZEIGENDEN ABFRAGE ÖFFNEN!!!
 }
 
+void hotelDatabaseView::on_entfernenButton_clicked() {
+    if(!lineEditVerification(2)) {
+        return;
+    }
+
+    errormessage error;
+    verifier verify;
+
+    // lineEdit-Eingabefeld (nicht Checkbox) für Zimmernummer ist leer
+    if(this->getZimmernummer() == 0) {
+        error.changeTextMissingInputText();
+        error.setModal(true);
+        error.exec();
+        return;
+    }
+
+    if(!verify.verifyZimmernummerExists(this->getZimmernummer())) {
+        return;
+    }
+
+    //Das Entfernen der Raumausstattung wird eingeleitet
+    removeRoomEquipment();
+}
+
+void hotelDatabaseView::removeRoomEquipment() {
+    Database db;
+    QSqlQuery query;
+    errormessage error;
+    int bestandID = db.getBestandID(this->getZimmernummer());
+
+    // QCheckBox Felder werden ausgewertet
+
+    bool aussicht = ui->checkBoxModAussicht->isChecked();
+    bool fahrstuhl = ui->checkBoxModFahrstuhl->isChecked();
+    bool sofa = ui->checkBoxModSofa->isChecked();
+    bool queryStatus;
+
+    if(!aussicht && !fahrstuhl && !sofa) {
+        qDebug() << "Zu entfernende Sonderausstattung fehlt";
+        error.changeTextMissingModifications();
+        error.setModal(true);
+        error.exec();
+        return;
+    }
+
+    bool ausstattung[] = {aussicht, fahrstuhl, sofa};
+    for(int i = 0; i < 3; i++) {
+        if(ausstattung[i]) {
+            query.prepare("DELETE FROM BestandZusatzliste WHERE "
+                          "ZimmerzusatzID = :zusatzID AND BestandID = :bestandID;");
+            query.bindValue("zusatzID", QString::fromStdString(std::to_string(i+1)));
+            query.bindValue(":bestandID", bestandID);
+            queryStatus = query.exec();
+            qDebug() << "Entfernen der Ausstattung erfolgreich: " << queryStatus;
+
+            if(!queryStatus) {
+                errormessage error;
+                error.changeTextUpdateError();
+                error.setModal(true);
+                error.exec();
+                return;
+             }
+        }
+    }
+
+    infomessage info;
+    info.changeTextModifiziert();
+    info.setModal(true);
+    info.exec();
+}
+
 bool hotelDatabaseView::lineEditVerification(const int buttontyp) {
     QString tempZimmerID;
     QString tempZimmernummer;
