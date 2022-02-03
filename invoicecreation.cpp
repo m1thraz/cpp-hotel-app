@@ -167,7 +167,7 @@ void invoiceCreation::on_pushButtonModRechnungUpdaten_clicked() {
     insert = QString::fromStdString(sql);
     query.prepare(insert);
     queryStatus = query.exec();
-    qDebug() << "Rechnung erfolgreich erstellt: " << queryStatus;
+    qDebug() << "Rechnungsanmerkungen erfolgreich modifiziert: " << queryStatus;
 
     if(!queryStatus) {
         error.changeTextUpdateError();
@@ -200,6 +200,34 @@ void invoiceCreation::on_pushButtonRechnungAnzeigen_clicked() {
     //Buchung existiert nicht
     if(!verify.verifyBuchungsIDExists(this->getBuchungsID())) {
         return;
+    }
+
+    //Rechnung existiert nicht
+    if(!verify.verifyRechnungExists(this->getBuchungsID())) {
+        error.changeTextRechnungDoesntExist();
+        error.setModal(true);
+        error.exec();
+        return;
+    }
+
+    QSqlQuery query;
+    std::string sql;
+    QString select;
+    bool queryStatus;
+
+    sql = "SELECT * FROM Rechnung WHERE BuchungsID = "
+            + std::to_string(this->getBuchungsID()) + ";";
+    select = QString::fromStdString(sql);
+    query.prepare(select);
+    queryStatus = query.exec();
+    qDebug() << "Rechnung erfolgreich abgerufen: " << queryStatus;
+
+    if(!queryStatus) {
+        error.changeTextDBRequestError();
+        error.setModal(true);
+        error.exec();
+    }else {
+        //HIER DIE EXTRA GUI ANZEIGE FÜR DIE RECHNUNG ÖFFNEN!!
     }
 }
 
