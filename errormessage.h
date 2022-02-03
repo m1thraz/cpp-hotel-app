@@ -57,6 +57,7 @@ public:
     void changeTextNotCheckedIn();
     void changeTextNotCheckedOut();
     void changeTextRechnungExists();
+    void changeTextRechnungDoesntExist();
 
 private slots:
     void on_closeWindowButton_clicked();

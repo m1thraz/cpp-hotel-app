@@ -191,3 +191,7 @@ void errormessage::changeTextNotCheckedOut() {
 void errormessage::changeTextRechnungExists() {
     ui->labelErrorMessage->setText("<p>Die Rechnung existiert bereits.</p>");
 }
+
+void errormessage::changeTextRechnungDoesntExist() {
+    ui->labelErrorMessage->setText("<p>Zu dieser Buchung existiert noch keine Rechnung.</p>");
+}

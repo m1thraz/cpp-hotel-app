@@ -131,7 +131,8 @@ void invoiceCreation::on_pushButtonModRechnungUpdaten_clicked() {
     if(!lineEditVerification(2)) {
         return;
     }
-
+    qDebug() << QString::fromStdString(std::to_string(this->getBuchungsID()));
+    qDebug() << QString::fromStdString(this->getAnmerkungen());
     errormessage error;
     if(!this->getBuchungsID() || this->getAnmerkungen().empty()) {
         qDebug() << "Mindestens ein LineEdit Textfeld ist leer";
@@ -148,6 +149,36 @@ void invoiceCreation::on_pushButtonModRechnungUpdaten_clicked() {
         return;
     }
 
+    //Rechnung existiert nicht
+    if(!verify.verifyRechnungExists(this->getBuchungsID())) {
+        error.changeTextRechnungDoesntExist();
+        error.setModal(true);
+        error.exec();
+        return;
+    }
+
+    QSqlQuery query;
+    std::string sql;
+    QString insert;
+    bool queryStatus;
+
+    sql = "UPDATE Rechnung SET Rechnungsvermerk = '" + this->getAnmerkungen() +
+          "' WHERE BuchungsID = " + std::to_string(this->getBuchungsID()) + ";";
+    insert = QString::fromStdString(sql);
+    query.prepare(insert);
+    queryStatus = query.exec();
+    qDebug() << "Rechnung erfolgreich erstellt: " << queryStatus;
+
+    if(!queryStatus) {
+        error.changeTextUpdateError();
+        error.setModal(true);
+        error.exec();
+    }else {
+        infomessage info;
+        info.changeTextModifiziert();
+        info.setModal(true);
+        info.exec();
+    }
 }
 
 void invoiceCreation::on_pushButtonRechnungAnzeigen_clicked() {
@@ -181,8 +212,9 @@ bool invoiceCreation::lineEditVerification(const int buttontyp) {
         tempBuchungsID = ui->lineEditNeuBuchungsID->text();
         break;
     case 2:
-        tempAnmerkungen = ui->lineEditModAnmerkung->text();
         tempBuchungsID = ui->lineEditModBuchungsID->text();
+        tempAnmerkungen = ui->lineEditModAnmerkung->text();
+        break;
     case 3:
         tempBuchungsID = ui->lineEditAbfrBuchungsID->text();
         break;
