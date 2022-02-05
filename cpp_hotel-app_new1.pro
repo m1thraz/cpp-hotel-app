@@ -21,6 +21,8 @@ SOURCES += \
     costumerdatabaseview.cpp \
     database.cpp \
     displaycostumersearch.cpp \
+    displayhotelsearch.cpp \
+    displayinvoice.cpp \
     errormessage.cpp \
     hoteldatabaseview.cpp \
     infomessage.cpp \
@@ -36,6 +38,8 @@ HEADERS += \
     costumerdatabaseview.h \
     database.h \
     displaycostumersearch.h \
+    displayhotelsearch.h \
+    displayinvoice.h \
     errormessage.h \
     hoteldatabaseview.h \
     infomessage.h \
@@ -49,6 +53,8 @@ FORMS += \
     checkincheckoutscreen.ui \
     costumerdatabaseview.ui \
     displaycostumersearch.ui \
+    displayhotelsearch.ui \
+    displayinvoice.ui \
     errormessage.ui \
     hoteldatabaseview.ui \
     infomessage.ui \

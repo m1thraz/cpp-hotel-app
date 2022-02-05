@@ -2,6 +2,7 @@
 #define INVOICECREATION_H
 
 #include <QDialog>
+#include "displayinvoice.h"
 
 namespace Ui {
   class invoiceCreation;
@@ -40,6 +41,16 @@ private:
   Ui::invoiceCreation *ui;
   int buchungsID;
   std::string anmerkungen;
+
+  int rechnungsNrInt;
+  int buchungsNrInt;
+  int gesamtKostenUebernachtungInt;
+  int sonderleistungenInt;
+  int rabattInt;
+  int gesamtKostenInt;
+  std::string vermerkString;
+
+  displayinvoice *invoicedisplay;
 
 };
 

@@ -228,6 +228,19 @@ void invoiceCreation::on_pushButtonRechnungAnzeigen_clicked() {
         return;
     }
 
+    while(query.next()) {
+        int rechnungsNrInt = std::stoi(query.value("Rechnungsnummer").toString().toStdString());
+        int buchungsNrInt = std::stoi(query.value("BuchungsID").toString().toStdString());
+        int gesamtKostenUebernachtungInt = std::stoi(query.value("Übernachtungskosten_gesamt").toString().toStdString());
+        int sonderleistungenInt = std::stoi(query.value("Sonderleistungskosten_gesamt").toString().toStdString());
+        int rabattInt = std::stoi(query.value("Rabatt").toString().toStdString());
+        int gesamtKostenInt = std::stoi(query.value("Gesamtkosten").toString().toStdString());
+        std::string vermerkString = query.value("Vermerk").toString().toStdString();
+    }
+
+    invoicedisplay = new displayinvoice(this);
+    invoicedisplay->show();
+
     //HIER DIE EXTRA GUI ANZEIGE FÜR DIE RECHNUNG ÖFFNEN!!
 
 }

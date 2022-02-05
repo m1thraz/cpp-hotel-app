@@ -2,6 +2,7 @@
 #define HOTELDATABASEVIEW_H
 
 #include <QDialog>
+#include "displayhotelsearch.h"
 
 namespace Ui {
 class hotelDatabaseView;
@@ -50,6 +51,16 @@ private:
     int preis;
     std::string anreisedatum;
     std::string abreisedatum;
+
+    int idBestandInt;
+    int zimmerNummerInt;
+    std::string zimmertypString;
+    int zimmerkostenInt;
+    std::string zimmerAussichtString;
+    std::string fahrstuhlNäheString;
+    std::string schlafsofaString;
+
+    displayhotelsearch *hotelsearch;
 };
 
 #endif // HOTELDATABASEVIEW_H
