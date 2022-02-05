@@ -109,7 +109,24 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
             return;
         }
 
+        while(query.next()) {
+            int idInt = std::stoi(query.value("KundenID").toString().toStdString());
+            std::string vornameString = query.value("Vorname").toString().toStdString();
+            std::string nachnameString = query.value("Nachname").toString().toStdString();
+            std::string strasseString = query.value("Straße").toString().toStdString();
+            int hausnummerInt = std::stoi(query.value("Hausnummer").toString().toStdString());
+            std::string wohnortString = query.value("Wohnort").toString().toStdString();
+            int plzInt = std::stoi(query.value("PLZ").toString().toStdString());
+            int telefonnummerInt = std::stoi(query.value("Telefonnummer").toString().toStdString());
+            std::string emailString = query.value("E-Mail").toString().toStdString();
+
+            bool queryStatusAnswerRequest = query.exec();
+            qDebug() << "Suchergebnis erfolgreich: " << queryStatusAnswerRequest;
+
+        }
         //HIER DIE EXTRA GUI ANZEIGE FÜR DIE KUNDENDATEN ÖFFNEN!!
+        costumersearch = new displaycostumersearch(this);
+        costumersearch -> show();
 
     }
 }

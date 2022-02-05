@@ -2,6 +2,7 @@
 #define COSTUMERDATABASEVIEW_H
 
 #include <QDialog>
+#include "displaycostumersearch.h"
 
 namespace Ui {
 class costumerDatabaseView;
@@ -54,6 +55,8 @@ private:
     int plz;
     int telefonnummer;
     std::string email;
+
+    displaycostumersearch *costumersearch;
 };
 
 #endif // COSTUMERDATABASEVIEW_H
