@@ -2,6 +2,7 @@
 #define DISPLAYCOSTUMERSEARCH_H
 
 #include <QDialog>
+#include "costumerdatabaseview.h"
 
 namespace Ui {
 class displaycostumersearch;

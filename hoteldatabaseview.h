@@ -57,7 +57,7 @@ private:
     std::string zimmertypString;
     int zimmerkostenInt;
     std::string zimmerAussichtString;
-    std::string fahrstuhlNäheString;
+    std::string fahrstuhlNaeheString;
     std::string schlafsofaString;
 
     displayhotelsearch *hotelsearch;

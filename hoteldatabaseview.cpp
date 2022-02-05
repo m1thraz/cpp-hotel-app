@@ -427,9 +427,9 @@ void hotelDatabaseView::on_suchenButton_clicked() {
         }
 
         if(query.value("Fahrstuhlnähe") == true) {
-            std::string fahrstuhlNäheString = "In Fahrstuhlnähe";
+            std::string fahrstuhlNaeheString = "In Fahrstuhlnähe";
         } else {
-            std::string fahrstuhlNäheString = "Nicht in Fahrstuhlnähe";
+            std::string fahrstuhlNaeheString = "Nicht in Fahrstuhlnähe";
         }
 
         if(query.value("Sofa") == true) {
