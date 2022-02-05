@@ -15,6 +15,8 @@ costumerDatabaseView::costumerDatabaseView(QWidget *parent) :
     ui->setupUi(this);
 }
 
+//QObject::connect(myClassPointer, SIGNAL())
+
 costumerDatabaseView::~costumerDatabaseView()
 {
     delete ui;
@@ -127,6 +129,7 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
         //HIER DIE EXTRA GUI ANZEIGE FÜR DIE KUNDENDATEN ÖFFNEN!!
         costumersearch = new displaycostumersearch(this);
         costumersearch -> show();
+//        costumersearch -> ui->displaySearchResultsLabel->setText();
 
     }
 }

@@ -56,6 +56,17 @@ private:
     int telefonnummer;
     std::string email;
 
+protected:
+    int *idInt;
+    std::string vornameString;
+    std::string nachnameString;
+    std::string strasseString;
+    int hausnummerInt;
+    std::string wohnortString;
+    int plzInt;
+    int telefonnummerInt;
+    std::string emailString;
+
     displaycostumersearch *costumersearch;
 };
 

@@ -6,9 +6,21 @@ displaycostumersearch::displaycostumersearch(QWidget *parent) :
     ui(new Ui::displaycostumersearch)
 {
     ui->setupUi(this);
+
+//    public slots:
+//    void
+
 }
 
 displaycostumersearch::~displaycostumersearch()
 {
     delete ui;
 }
+
+//void displaycostumersearch::changeTextCostumerInfo()
+//{
+//    ui->displaySearchResultsLabel->setText("<p>Bei der Suche wurden folgende Ergebnisse erzielt:</p>"
+//                                           "</br>"
+//                                           "<p>KundenID: " << idInt <<
+//                                           );
+//}

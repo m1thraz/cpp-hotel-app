@@ -43,7 +43,7 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
         error.exec();
         return;
 
-    // ZimmerID und Preis angegeben
+        // ZimmerID und Preis angegeben
     }else if(this->getZimmerID() != 0 && this->getPreis() != 0 && this->getZimmernummer() == 0) {
         if(!verify.verifyZimmerIDExists(this->getZimmerID())) {
             return;
@@ -51,7 +51,7 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
         // Preisanpassung wird eingeleitet
         modPreis();
 
-    // Nur Zimmernummer angegeben
+        // Nur Zimmernummer angegeben
     }else if(this->getZimmerID() == 0 && this->getPreis() == 0 && this->getZimmernummer() != 0) {
         if(!verify.verifyZimmernummerExists(this->getZimmernummer())) {
             return;
@@ -59,7 +59,7 @@ void hotelDatabaseView::on_aktualisierenButton_clicked() {
         // Zimmer Modifizierung wird eingeleitet
         modZimmer();
 
-    //Alles angegeben
+        //Alles angegeben
     }else {
         if(!verify.verifyZimmerIDExists(this->getZimmerID())) {
             return;
@@ -135,10 +135,10 @@ void hotelDatabaseView::modZimmer() {
             qDebug() << "Hinzufügen der Ausstattung erfolgreich: " << queryStatus;
 
             if(!queryStatus) {
-                    errormessage error;
-                    error.changeTextDataCreationError();
-                    error.setModal(true);
-                    error.exec();
+                errormessage error;
+                error.changeTextDataCreationError();
+                error.setModal(true);
+                error.exec();
             }
         }
     }
@@ -228,7 +228,7 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
     QSqlQuery query;
     bool queryStatus;
     query.prepare("INSERT INTO Zimmerbestand (Zimmernummer, ZimmerID)"
-            "VALUES (:zimmerbestand_zimmernummer, :zimmerbestand_zimmerID);");
+                  "VALUES (:zimmerbestand_zimmernummer, :zimmerbestand_zimmerID);");
     query.bindValue(":zimmerbestand_zimmernummer", this->getZimmernummer());
     query.bindValue(":zimmerbestand_zimmerID", zimmertyp);
     queryStatus = query.exec();
@@ -258,10 +258,10 @@ void hotelDatabaseView::on_eintragenButton_clicked(){
             qDebug() << "Hinzufügen der Ausstattung erfolgreich: " << queryStatus;
 
             if(!queryStatus) {
-                    errormessage error;
-                    error.changeTextDataCreationError();
-                    error.setModal(true);
-                    error.exec();
+                errormessage error;
+                error.changeTextDataCreationError();
+                error.setModal(true);
+                error.exec();
             }
         }
     }
@@ -349,7 +349,7 @@ void hotelDatabaseView::on_suchenButton_clicked() {
     if(nurVerfuegbare) {
         whereBedingungVerfuegbar = true;
         std::string tempwhereSqlVerfuegbar = " LEFT JOIN Zimmerbuchungsliste bu ON hot.BestandID = bu.BestandID "
-                             "WHERE (bu.Anreisedatum NOT BETWEEN '" + this->getAnreiseDatum() +
+                                             "WHERE (bu.Anreisedatum NOT BETWEEN '" + this->getAnreiseDatum() +
                 "' AND '" + this->getAbreiseDatum() +
                 "' OR bu.Abreisedatum NOT BETWEEN '" + this->getAnreiseDatum() +
                 "' AND '" + this->getAbreiseDatum() +
@@ -413,6 +413,37 @@ void hotelDatabaseView::on_suchenButton_clicked() {
         error.exec();
         return;
     }
+
+    while(query.next()) {
+        int idBestandInt = std::stoi(query.value("BestandID").toString().toStdString());
+        int zimmerNummerInt = std::stoi(query.value("Zimmernummer").toString().toStdString());
+        std::string zimmertypString = query.value("Zimmertyp").toString().toStdString();
+        int zimmerkostenInt = std::stoi(query.value("Zimmerkosten").toString().toStdString());
+
+        if(query.value("Aussicht") == true) {
+            std::string zimmerAussichtString = "Gute Ausssicht";
+        } else {
+            std::string zimmerAussichtString = "Keine gute Aussicht";
+        }
+
+        if(query.value("Fahrstuhlnähe") == true) {
+            std::string fahrstuhlNäheString = "In Fahrstuhlnähe";
+        } else {
+            std::string fahrstuhlNäheString = "Nicht in Fahrstuhlnähe";
+        }
+
+        if(query.value("Sofa") == true) {
+            std::string schlafsofaString = "Hat Schlafsofa";
+        } else {
+            std::string schlafsofaString = "Hat kein Schlafsofa";
+        }
+
+        bool queryStatusAnswerRequest = query.exec();
+        qDebug() << "Suchergebnis erfolgreich: " << queryStatusAnswerRequest;
+
+    }
+    hotelsearch = new displayhotelsearch(this);
+    hotelsearch -> show();
 
     //HIER EIN NEUES GUI FENSTER MIT DER ANZUZEIGENDEN ABFRAGE ÖFFNEN!!!
 }
@@ -478,7 +509,7 @@ void hotelDatabaseView::removeRoomEquipment() {
                 error.setModal(true);
                 error.exec();
                 return;
-             }
+            }
         }
     }
 
