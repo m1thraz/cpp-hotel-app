@@ -16,8 +16,11 @@ public:
     explicit displaycostumersearch(QWidget *parent = nullptr);
     ~displaycostumersearch();
 
+    std::vector<std::string> getCostumerdata(std::vector<std::string> &);
+
 private slots:
     void on_closeWindowBtn_clicked();
+
 
 private:
     Ui::displaycostumersearch *ui;
@@ -32,6 +35,8 @@ private:
     int *plzInt;
     int *telefonnummerInt;
     std::string *emailString;
+
+    std::vector<std::string> costumerdata;
 };
 
 #endif // DISPLAYCOSTUMERSEARCH_H

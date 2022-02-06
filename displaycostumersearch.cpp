@@ -31,3 +31,7 @@ void displaycostumersearch::on_closeWindowBtn_clicked()
 {
     this->hide();
 }
+
+std::vector<std::string> displaycostumersearch::getCostumerdata(std::vector<std::string> &) {
+    return this->costumerdata;
+}

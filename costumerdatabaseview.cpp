@@ -16,8 +16,6 @@ costumerDatabaseView::costumerDatabaseView(QWidget *parent) :
     ui->setupUi(this);
 }
 
-//QObject::connect(myClassPointer, SIGNAL())
-
 costumerDatabaseView::~costumerDatabaseView()
 {
     delete ui;
@@ -130,7 +128,6 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
             costumerdata.push_back(query.value("Telefonnummer").toString().toStdString());
             costumerdata.push_back(query.value("E-Mail").toString().toStdString());
         }
-        //HIER DIE EXTRA GUI ANZEIGE FÜR DIE KUNDENDATEN ÖFFNEN!!
 
 //       std::string checkcostumerInput;
 //       for (auto& s:costumerdata) {
@@ -140,8 +137,13 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
 
 //        costumersearch = new displaycostumersearch(this);
 //        costumersearch -> show();
+
     }
 
+}
+
+std::vector<std::string> costumerDatabaseView::setCostumerdata() {
+    this->costumerdata = costumerdata;
 }
 
 void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {

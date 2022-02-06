@@ -36,6 +36,8 @@ public:
     void setEmail(std::string email);
     std::string getEmail();
 
+    std::vector<std::string> setCostumerdata();
+
 private slots:
     void on_pushButtonSuchen_clicked();
 
@@ -47,7 +49,7 @@ private slots:
 private:
     Ui::costumerDatabaseView *ui;
 
-    displaycostumersearch *costumersearch;
+//    displaycostumersearch *costumersearch;
 
     int kundenID;
     std::string nachname;
@@ -60,15 +62,6 @@ private:
     std::string email;
 
 public:
-//    int *idInt;
-//    std::string vornameString;
-//    std::string nachnameString;
-//    std::string strasseString;
-//    int hausnummerInt;
-//    std::string wohnortString;
-//    int plzInt;
-//    int telefonnummerInt;
-//    std::string emailString;
 
     std::vector<std::string> costumerdata;
 };
