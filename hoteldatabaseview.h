@@ -52,13 +52,13 @@ private:
     std::string anreisedatum;
     std::string abreisedatum;
 
-    int idBestandInt;
-    int zimmerNummerInt;
-    std::string zimmertypString;
-    int zimmerkostenInt;
-    std::string zimmerAussichtString;
-    std::string fahrstuhlNaeheString;
-    std::string schlafsofaString;
+    static int idBestandInt;
+    static int zimmerNummerInt;
+    static std::string zimmertypString;
+    static int zimmerkostenInt;
+    static std::string zimmerAussichtString;
+    static std::string fahrstuhlNaeheString;
+    static std::string schlafsofaString;
 
     displayhotelsearch *hotelsearch;
 };

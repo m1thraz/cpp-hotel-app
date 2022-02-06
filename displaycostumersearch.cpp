@@ -1,5 +1,6 @@
 #include "displaycostumersearch.h"
 #include "ui_displaycostumersearch.h"
+#include "costumerdatabaseview.h"
 
 
 displaycostumersearch::displaycostumersearch(QWidget *parent) :

@@ -18,6 +18,17 @@ public:
 
 private:
     Ui::displaycostumersearch *ui;
+
+private:
+    int *idInt;
+    std::string *vornameString;
+    std::string *nachnameString;
+    std::string *strasseString;
+    int *hausnummerInt;
+    std::string *wohnortString;
+    int *plzInt;
+    int *telefonnummerInt;
+    std::string *emailString;
 };
 
 #endif // DISPLAYCOSTUMERSEARCH_H

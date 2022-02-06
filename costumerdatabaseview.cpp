@@ -28,71 +28,78 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
         std::string sql = "SELECT * FROM Kunde";
         bool firstsearch = true;
 
-        if(!this->getNachname().empty()) {
-            sql += " WHERE Nachname = '" + this->getNachname() + "'";
+        if(this->getKundenID()) {
+            sql += " WHERE KundenID = " + std::to_string(this->getKundenID());
             firstsearch = false;
-        }
+        } else  {
 
-        if(!this->getVorname().empty()) {
-            if(firstsearch) {
-                sql += " WHERE Vorname = '" + this->getVorname() + "'";
+
+            if(!this->getNachname().empty()) {
+                sql += " WHERE Nachname = '" + this->getNachname() + "'";
                 firstsearch = false;
-            }else {
-                sql += " AND Vorname = '" + this->getVorname()+ "'";
             }
-        }
 
-        if(!this->getStrasse().empty()) {
-            if(firstsearch) {
-                sql += " WHERE Straße = '" + this->getStrasse() + "'";
-                firstsearch = false;
-            } else {
-                sql += " AND Straße = '" + this->getStrasse() + "'";
+            if(!this->getVorname().empty()) {
+                if(firstsearch) {
+                    sql += " WHERE Vorname = '" + this->getVorname() + "'";
+                    firstsearch = false;
+                }else {
+                    sql += " AND Vorname = '" + this->getVorname()+ "'";
+                }
             }
-        }
 
-        if(this->getHausnummer()) {
-            if(firstsearch) {
-                sql += " WHERE Hausnummer = " + std::to_string(this->getHausnummer());
-                firstsearch = false;
-            }else {
-                sql += " AND Hausnummer = " + std::to_string(this->getHausnummer());
+            if(!this->getStrasse().empty()) {
+                if(firstsearch) {
+                    sql += " WHERE Straße = '" + this->getStrasse() + "'";
+                    firstsearch = false;
+                } else {
+                    sql += " AND Straße = '" + this->getStrasse() + "'";
+                }
             }
-        }
 
-        if(!this->getWohnort().empty()) {
-            if(firstsearch) {
-                sql += " WHERE Wohnort = '" + this->getWohnort() + "'";
-                firstsearch = false;
-            }else {
-                sql += " AND Wohnort = '" + this->getWohnort() + "'";
+            if(this->getHausnummer()) {
+                if(firstsearch) {
+                    sql += " WHERE Hausnummer = " + std::to_string(this->getHausnummer());
+                    firstsearch = false;
+                }else {
+                    sql += " AND Hausnummer = " + std::to_string(this->getHausnummer());
+                }
             }
-        }
 
-        if(this->getPlz()) {
-            if(firstsearch) {
-                sql += " WHERE PLZ = " +std::to_string(this->getPlz());
-                firstsearch = false;
-            }else {
-                sql += " AND PLZ = " + std::to_string(this->getPlz());
+            if(!this->getWohnort().empty()) {
+                if(firstsearch) {
+                    sql += " WHERE Wohnort = '" + this->getWohnort() + "'";
+                    firstsearch = false;
+                }else {
+                    sql += " AND Wohnort = '" + this->getWohnort() + "'";
+                }
             }
-        }
 
-        if(this->getTelefonnummer()) {
-            if(firstsearch) {
-                sql += " WHERE Telefonnummer = " + std::to_string(this->getTelefonnummer());
-                firstsearch = false;
-            }else {
-                sql += " AND Telefonnummer = " + std::to_string(this->getTelefonnummer());
+            if(this->getPlz()) {
+                if(firstsearch) {
+                    sql += " WHERE PLZ = " +std::to_string(this->getPlz());
+                    firstsearch = false;
+                }else {
+                    sql += " AND PLZ = " + std::to_string(this->getPlz());
+                }
             }
-        }
 
-        if(!this->getEmail().empty()) {
-            if(firstsearch) {
-                sql += " WHERE 'E-Mail' = '" + this->getEmail() + "'";
-                firstsearch = false;
-            }else {
-                sql += " AND 'E-Mail' = '" + this->getEmail() + "'";
+            if(this->getTelefonnummer()) {
+                if(firstsearch) {
+                    sql += " WHERE Telefonnummer = " + std::to_string(this->getTelefonnummer());
+                    firstsearch = false;
+                }else {
+                    sql += " AND Telefonnummer = " + std::to_string(this->getTelefonnummer());
+                }
+            }
+
+            if(!this->getEmail().empty()) {
+                if(firstsearch) {
+                    sql += " WHERE 'E-Mail' = '" + this->getEmail() + "'";
+                    firstsearch = false;
+                }else {
+                    sql += " AND 'E-Mail' = '" + this->getEmail() + "'";
+                }
             }
         }
 
@@ -111,7 +118,9 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
             return;
         }
 
-        while(query.next()) {
+        bool isVal = query.isValid();
+
+        while(isVal == true) {
             int idInt = std::stoi(query.value("KundenID").toString().toStdString());
             std::string vornameString = query.value("Vorname").toString().toStdString();
             std::string nachnameString = query.value("Nachname").toString().toStdString();
@@ -122,16 +131,18 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
             int telefonnummerInt = std::stoi(query.value("Telefonnummer").toString().toStdString());
             std::string emailString = query.value("E-Mail").toString().toStdString();
 
-            bool queryStatusAnswerRequest = query.exec();
-            qDebug() << "Suchergebnis erfolgreich: " << queryStatusAnswerRequest;
+            //            bool queryStatusAnswerRequest = query.exec();
+            //            qDebug() << "Suchergebnis erfolgreich: " << queryStatusAnswerRequest;
 
         }
         //HIER DIE EXTRA GUI ANZEIGE FÜR DIE KUNDENDATEN ÖFFNEN!!
+
+        //       costumersearch -> ui->displaySearchResultsLabel->setText();
+
         costumersearch = new displaycostumersearch(this);
         costumersearch -> show();
-//        costumersearch -> ui->displaySearchResultsLabel->setText();
-
     }
+
 }
 
 void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {
@@ -152,18 +163,18 @@ void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {
         }else {
             Database db;
 
-             //Überprüft, ob es die KundenID X bereits gibt
-             QSqlQuery query;
-             query.prepare("SELECT 1 FROM Kunde WHERE KundenID = :kundenID;");
-             query.bindValue(":kundenID", this->getKundenID());
-             bool queryStatus = query.exec();
-             qDebug() << "DB-Überprüfung der KundenID erfolgreich: " << queryStatus;
-             bool exists = false;
+            //Überprüft, ob es die KundenID X bereits gibt
+            QSqlQuery query;
+            query.prepare("SELECT 1 FROM Kunde WHERE KundenID = :kundenID;");
+            query.bindValue(":kundenID", this->getKundenID());
+            bool queryStatus = query.exec();
+            qDebug() << "DB-Überprüfung der KundenID erfolgreich: " << queryStatus;
+            bool exists = false;
 
-             //Wird nur ausgeführt, wenn es die KundenID tatsächlich gibt, sonst Fehlermeldung
-             while(query.next()) {
+            //Wird nur ausgeführt, wenn es die KundenID tatsächlich gibt, sonst Fehlermeldung
+            while(query.next()) {
                 exists = true;
-             }
+            }
 
             if(!queryStatus) {
                 error.changeTextDBRequestError();
@@ -272,37 +283,37 @@ void costumerDatabaseView::on_pushButtonNeuerEintrag_clicked() {
     if(lineEditVerification(3)) {
         errormessage error;
         if(this->getNachname().empty() || this->getVorname().empty() || this->getStrasse().empty() ||
-                  !this->getHausnummer() || this->getWohnort().empty() || !this->getPlz() ||
-                  !this->getTelefonnummer() || this->getEmail().empty()) {
-             qDebug() << "Mindestens ein LineEdit Textfeld ist leer";
-             error.changeTextMissingInputText();
-             error.setModal(true);
-             error.exec();
-         }else {
-             Database db;
-             std::string sql = "INSERT OR IGNORE INTO Kunde (Nachname, Vorname, Straße, Hausnummer, Wohnort, "
-                               "PLZ, Telefonnummer, 'E-Mail') "
-                               "VALUES ('" + this->getNachname() + "', '" + this->getVorname()
-                                + "', '"  + this->getStrasse() + "', " + std::to_string(this->getHausnummer())
-                                + ", '" + this->getWohnort() + "', " + std::to_string(this->getPlz()) + ", "
-                                + std::to_string(this->getTelefonnummer()) + ", '" + this->getEmail() + "');";
+                !this->getHausnummer() || this->getWohnort().empty() || !this->getPlz() ||
+                !this->getTelefonnummer() || this->getEmail().empty()) {
+            qDebug() << "Mindestens ein LineEdit Textfeld ist leer";
+            error.changeTextMissingInputText();
+            error.setModal(true);
+            error.exec();
+        }else {
+            Database db;
+            std::string sql = "INSERT OR IGNORE INTO Kunde (Nachname, Vorname, Straße, Hausnummer, Wohnort, "
+                              "PLZ, Telefonnummer, 'E-Mail') "
+                              "VALUES ('" + this->getNachname() + "', '" + this->getVorname()
+                    + "', '"  + this->getStrasse() + "', " + std::to_string(this->getHausnummer())
+                    + ", '" + this->getWohnort() + "', " + std::to_string(this->getPlz()) + ", "
+                    + std::to_string(this->getTelefonnummer()) + ", '" + this->getEmail() + "');";
 
-             QString insert = QString::fromStdString(sql);
-             QSqlQuery query;
-             query.prepare(insert);
-             bool queryStatus = query.exec();
-             qDebug() << "Hinzufügen der Kundendaten erfolgreich: " << queryStatus;
+            QString insert = QString::fromStdString(sql);
+            QSqlQuery query;
+            query.prepare(insert);
+            bool queryStatus = query.exec();
+            qDebug() << "Hinzufügen der Kundendaten erfolgreich: " << queryStatus;
 
-             if(!queryStatus) {
-                 error.changeTextDataCreationError();
-                 error.setModal(true);
-                 error.exec();
-             }else {
-                 infomessage info;
-                 info.changeTextNeu();
-                 info.setModal(true);
-                 info.exec();
-             }
+            if(!queryStatus) {
+                error.changeTextDataCreationError();
+                error.setModal(true);
+                error.exec();
+            }else {
+                infomessage info;
+                info.changeTextNeu();
+                info.setModal(true);
+                info.exec();
+            }
         }
     }
 }

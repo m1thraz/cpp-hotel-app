@@ -46,6 +46,9 @@ private slots:
 
 private:
     Ui::costumerDatabaseView *ui;
+
+    displaycostumersearch *costumersearch;
+
     int kundenID;
     std::string nachname;
     std::string vorname;
@@ -56,7 +59,7 @@ private:
     int telefonnummer;
     std::string email;
 
-protected:
+private:
     int *idInt;
     std::string vornameString;
     std::string nachnameString;
@@ -66,8 +69,6 @@ protected:
     int plzInt;
     int telefonnummerInt;
     std::string emailString;
-
-    displaycostumersearch *costumersearch;
 };
 
 #endif // COSTUMERDATABASEVIEW_H
