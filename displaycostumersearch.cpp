@@ -26,3 +26,8 @@ displaycostumersearch::~displaycostumersearch()
 //                                           "<p>KundenID: " << idInt <<
 //                                           );
 //}
+
+void displaycostumersearch::on_closeWindowBtn_clicked()
+{
+    this->hide();
+}

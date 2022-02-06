@@ -16,6 +16,9 @@ public:
     explicit displaycostumersearch(QWidget *parent = nullptr);
     ~displaycostumersearch();
 
+private slots:
+    void on_closeWindowBtn_clicked();
+
 private:
     Ui::displaycostumersearch *ui;
 

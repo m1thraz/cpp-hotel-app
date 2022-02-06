@@ -59,7 +59,7 @@ private:
     int telefonnummer;
     std::string email;
 
-private:
+public:
     int *idInt;
     std::string vornameString;
     std::string nachnameString;

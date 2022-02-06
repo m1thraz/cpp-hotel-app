@@ -131,13 +131,8 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
             int telefonnummerInt = std::stoi(query.value("Telefonnummer").toString().toStdString());
             std::string emailString = query.value("E-Mail").toString().toStdString();
 
-            //            bool queryStatusAnswerRequest = query.exec();
-            //            qDebug() << "Suchergebnis erfolgreich: " << queryStatusAnswerRequest;
-
         }
         //HIER DIE EXTRA GUI ANZEIGE FÜR DIE KUNDENDATEN ÖFFNEN!!
-
-        //       costumersearch -> ui->displaySearchResultsLabel->setText();
 
         costumersearch = new displaycostumersearch(this);
         costumersearch -> show();
