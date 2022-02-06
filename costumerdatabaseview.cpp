@@ -118,24 +118,36 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
             return;
         }
 
-        bool isVal = query.isValid();
 
-        while(isVal == true) {
-            int idInt = std::stoi(query.value("KundenID").toString().toStdString());
-            std::string vornameString = query.value("Vorname").toString().toStdString();
-            std::string nachnameString = query.value("Nachname").toString().toStdString();
-            std::string strasseString = query.value("Straße").toString().toStdString();
-            int hausnummerInt = std::stoi(query.value("Hausnummer").toString().toStdString());
-            std::string wohnortString = query.value("Wohnort").toString().toStdString();
-            int plzInt = std::stoi(query.value("PLZ").toString().toStdString());
-            int telefonnummerInt = std::stoi(query.value("Telefonnummer").toString().toStdString());
-            std::string emailString = query.value("E-Mail").toString().toStdString();
+        while(query.next() == true) {
+            costumerdata.push_back(query.value("KundenID").toString().toStdString());
+            costumerdata.push_back(query.value("Vorname").toString().toStdString());
+            costumerdata.push_back(query.value("Nachname").toString().toStdString());
+            costumerdata.push_back(query.value("Straße").toString().toStdString());
+            costumerdata.push_back(query.value("Hausnummer").toString().toStdString());
+            costumerdata.push_back(query.value("Wohnort").toString().toStdString());
+            costumerdata.push_back(query.value("PLZ").toString().toStdString());
+            costumerdata.push_back(query.value("Telefonnummer").toString().toStdString());
+            costumerdata.push_back(query.value("E-Mail").toString().toStdString());
+
+//            int idInt = std::stoi(query.value("KundenID").toString().toStdString());
+//            std::string vornameString = query.value("Vorname").toString().toStdString();
+//            std::string nachnameString = query.value("Nachname").toString().toStdString();
+//            std::string strasseString = query.value("Straße").toString().toStdString();
+//            int hausnummerInt = std::stoi(query.value("Hausnummer").toString().toStdString());
+//            std::string wohnortString = query.value("Wohnort").toString().toStdString();
+//            int plzInt = std::stoi(query.value("PLZ").toString().toStdString());
+//            int telefonnummerInt = std::stoi(query.value("Telefonnummer").toString().toStdString());
+//            std::string emailString = query.value("E-Mail").toString().toStdString();
 
         }
         //HIER DIE EXTRA GUI ANZEIGE FÜR DIE KUNDENDATEN ÖFFNEN!!
 
-        costumersearch = new displaycostumersearch(this);
-        costumersearch -> show();
+        qDebug() << "Folgende Daten wurden gespeichert: " << for (int = 0; i < costumerdata.size(); i++) {
+            std::cout << costumerdata[i] << "\n";
+        };
+//        costumersearch = new displaycostumersearch(this);
+//        costumersearch -> show();
     }
 
 }
