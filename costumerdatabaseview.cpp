@@ -6,6 +6,7 @@
 #include <QDebug>
 #include "errormessage.h"
 #include "infomessage.h"
+#include <iostream>
 
 
 costumerDatabaseView::costumerDatabaseView(QWidget *parent) :
@@ -118,7 +119,6 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
             return;
         }
 
-
         while(query.next() == true) {
             costumerdata.push_back(query.value("KundenID").toString().toStdString());
             costumerdata.push_back(query.value("Vorname").toString().toStdString());
@@ -129,23 +129,15 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
             costumerdata.push_back(query.value("PLZ").toString().toStdString());
             costumerdata.push_back(query.value("Telefonnummer").toString().toStdString());
             costumerdata.push_back(query.value("E-Mail").toString().toStdString());
-
-//            int idInt = std::stoi(query.value("KundenID").toString().toStdString());
-//            std::string vornameString = query.value("Vorname").toString().toStdString();
-//            std::string nachnameString = query.value("Nachname").toString().toStdString();
-//            std::string strasseString = query.value("Straße").toString().toStdString();
-//            int hausnummerInt = std::stoi(query.value("Hausnummer").toString().toStdString());
-//            std::string wohnortString = query.value("Wohnort").toString().toStdString();
-//            int plzInt = std::stoi(query.value("PLZ").toString().toStdString());
-//            int telefonnummerInt = std::stoi(query.value("Telefonnummer").toString().toStdString());
-//            std::string emailString = query.value("E-Mail").toString().toStdString();
-
         }
         //HIER DIE EXTRA GUI ANZEIGE FÜR DIE KUNDENDATEN ÖFFNEN!!
 
-        qDebug() << "Folgende Daten wurden gespeichert: " << for (int = 0; i < costumerdata.size(); i++) {
-            std::cout << costumerdata[i] << "\n";
-        };
+//       std::string checkcostumerInput;
+//       for (auto& s:costumerdata) {
+//            checkcostumerInput+=s;
+//        }
+//        qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
+
 //        costumersearch = new displaycostumersearch(this);
 //        costumersearch -> show();
     }
