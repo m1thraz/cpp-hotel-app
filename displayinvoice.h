@@ -16,6 +16,8 @@ public:
     explicit displayinvoice(QWidget *parent = nullptr);
     ~displayinvoice();
 
+    void changeTextInvoiceInfo();
+
 private:
     Ui::displayinvoice *ui;
 

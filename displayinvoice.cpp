@@ -12,3 +12,14 @@ displayinvoice::~displayinvoice()
 {
     delete ui;
 }
+
+void displayinvoice::changeTextInvoiceInfo() {
+
+    invoiceCreation invoiceObject = new invoiceCreation();
+
+    std::string checkinvoiceInput;
+    for (auto& s:invoiceObject.invoicedata) {
+         checkinvoiceInput+=s;
+     }
+     qDebug() << "Folgende Daten wurden gespeichert: " << checkinvoiceInput.c_str();
+}

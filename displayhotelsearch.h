@@ -16,6 +16,8 @@ public:
     explicit displayhotelsearch(QWidget *parent = nullptr);
     ~displayhotelsearch();
 
+    void changeTextHotelInfo();
+
 private:
     Ui::displayhotelsearch *ui;
 
