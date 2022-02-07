@@ -22,14 +22,14 @@ displaycostumersearch::~displaycostumersearch()
 void displaycostumersearch::changeTextCostumerInfo()
 {
 
-    QString str = QString::fromUtf8(costumerdata);
+//    QString str = QString::fromUtf8(costumerdata);
 //           std::string checkcostumerInput;
 //           for (auto& s:costumerdata) {
 //                checkcostumerInput+=s;
 //            }
 //            qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
 
-    ui->displaySearchResultsLabel->setText(str);
+//    ui->displaySearchResultsLabel->setText(str);
 }
 
 void displaycostumersearch::on_closeWindowBtn_clicked()

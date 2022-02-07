@@ -414,38 +414,50 @@ void hotelDatabaseView::on_suchenButton_clicked() {
         return;
     }
 
-    while(query.next()) {
-        int idBestandInt = std::stoi(query.value("BestandID").toString().toStdString());
-        int zimmerNummerInt = std::stoi(query.value("Zimmernummer").toString().toStdString());
-        std::string zimmertypString = query.value("Zimmertyp").toString().toStdString();
-        int zimmerkostenInt = std::stoi(query.value("Zimmerkosten").toString().toStdString());
+    while(query.next() == true) {
+        hoteldata.push_back("BestandID: ");
+        hoteldata.push_back(query.value("BestandID").toString().toStdString());
+        hoteldata.push_back(", Zimmernummer: ");
+        hoteldata.push_back(query.value("Zimmernummer").toString().toStdString());
+        hoteldata.push_back(", Zimmertyp: ");
+        hoteldata.push_back(query.value("Zimmertyp").toString().toStdString());
+        hoteldata.push_back(", Zimmerkosten: ");
+        hoteldata.push_back(query.value("Zimmerkosten").toString().toStdString());
+        hoteldata.push_back(", Gute Aussicht: ");
 
         if(query.value("Aussicht") == true) {
-            std::string zimmerAussichtString = "Gute Ausssicht";
+            hoteldata.push_back("Gute Aussicht");
         } else {
-            std::string zimmerAussichtString = "Keine gute Aussicht";
+            hoteldata.push_back("Keine gute Aussicht");
         }
+
+        hoteldata.push_back(", Fahrstuhlnähe: ");
 
         if(query.value("Fahrstuhlnähe") == true) {
-            std::string fahrstuhlNaeheString = "In Fahrstuhlnähe";
+            hoteldata.push_back("In Fahrstuhlnähe");
         } else {
-            std::string fahrstuhlNaeheString = "Nicht in Fahrstuhlnähe";
+            hoteldata.push_back("Nicht in Fahrstuhlnähe");
         }
 
-        if(query.value("Sofa") == true) {
-            std::string schlafsofaString = "Hat Schlafsofa";
+        hoteldata.push_back(", Schlafsofa: ");
+
+        if(query.value("Schlafsofa") == true) {
+            hoteldata.push_back("Schlafsofa verfügbar");
         } else {
-            std::string schlafsofaString = "Hat kein Schlafsofa";
+            hoteldata.push_back("Schlafsofa nicht verfügbar");
         }
-
-        bool queryStatusAnswerRequest = query.exec();
-        qDebug() << "Suchergebnis erfolgreich: " << queryStatusAnswerRequest;
-
     }
-    hotelsearch = new displayhotelsearch(this);
-    hotelsearch -> show();
+
+//    std::string checkcostumerInput;
+//    for (auto& s:hoteldata) {
+//        checkcostumerInput+=s;
+//    }
+//    qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
 
     //HIER EIN NEUES GUI FENSTER MIT DER ANZUZEIGENDEN ABFRAGE ÖFFNEN!!!
+
+    hotelsearch = new displayhotelsearch(this);
+    hotelsearch -> show();
 }
 
 void hotelDatabaseView::on_entfernenButton_clicked() {

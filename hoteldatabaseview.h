@@ -60,6 +60,8 @@ private:
     static std::string fahrstuhlNaeheString;
     static std::string schlafsofaString;
 
+    std::vector<std::string> hoteldata;
+
     displayhotelsearch *hotelsearch;
 };
 
