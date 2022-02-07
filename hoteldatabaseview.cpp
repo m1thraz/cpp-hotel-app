@@ -448,16 +448,16 @@ void hotelDatabaseView::on_suchenButton_clicked() {
         }
     }
 
-//    std::string checkcostumerInput;
-//    for (auto& s:hoteldata) {
-//        checkcostumerInput+=s;
-//    }
-//    qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
+    std::string checkhotelInput;
+    for (auto& s:hoteldata) {
+        checkhotelInput+=s;
+    }
+    qDebug() << "Folgende Daten wurden gespeichert: " << checkhotelInput.c_str();
 
     //HIER EIN NEUES GUI FENSTER MIT DER ANZUZEIGENDEN ABFRAGE ÖFFNEN!!!
 
-    hotelsearch = new displayhotelsearch(this);
-    hotelsearch -> show();
+//    hotelsearch = new displayhotelsearch(this);
+//    hotelsearch -> show();
 }
 
 void hotelDatabaseView::setHoteldata(std::vector<std::string> &) {

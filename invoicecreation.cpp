@@ -232,7 +232,7 @@ void invoiceCreation::on_pushButtonRechnungAnzeigen_clicked() {
         invoicedata.push_back("Rechnungsnummer: ");
         invoicedata.push_back(query.value("Rechnungsnummer").toString().toStdString());
         invoicedata.push_back(", BuchungsID: ");
-        invoicedata.push_back(query.value("BuchnungsID").toString().toStdString());
+        invoicedata.push_back(query.value("BuchungsID").toString().toStdString());
         invoicedata.push_back(", Übernachtungskosten für gesamten Aufenthalt: ");
         invoicedata.push_back(query.value("Übernachtungskosten_gesamt").toString().toStdString());
         invoicedata.push_back(", Sonderleistungskosten gesamt: ");
@@ -241,14 +241,20 @@ void invoiceCreation::on_pushButtonRechnungAnzeigen_clicked() {
         invoicedata.push_back(query.value("Rabatt").toString().toStdString());
         invoicedata.push_back(", Gesamtkosten: ");
         invoicedata.push_back(query.value("Gesamtkosten").toString().toStdString());
-        invoicedata.push_back(", Vermerke: ");
-        invoicedata.push_back(query.value("Vermerk").toString().toStdString());
+        invoicedata.push_back(", Rechnungsstatus: ");
+        invoicedata.push_back(query.value("Rechnungsvermerk").toString().toStdString());
     }
+
+    std::string checkInvoiceInput;
+    for (auto& s:invoicedata) {
+        checkInvoiceInput+=s;
+    }
+    qDebug() << "Folgende Daten wurden gespeichert: " << checkInvoiceInput.c_str();
 
     //HIER DIE EXTRA GUI ANZEIGE FÜR DIE RECHNUNG ÖFFNEN!!
 
-    invoicedisplay = new displayinvoice(this);
-    invoicedisplay->show();
+//    invoicedisplay = new displayinvoice(this);
+//    invoicedisplay->show();
 }
 
 void invoiceCreation::setInvoivedata(std::vector<std::string> &) {

@@ -138,17 +138,17 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
             costumerdata.push_back(query.value("E-Mail").toString().toStdString());
         }
 
-        //       std::string checkcostumerInput;
-        //       for (auto& s:costumerdata) {
-        //            checkcostumerInput+=s;
-        //        }
-        //        qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
+        std::string checkcostumerInput;
+        for (auto& s:costumerdata) {
+            checkcostumerInput+=s;
+        }
+        qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
 
 
 
     }
-    costumersearch = new displaycostumersearch(this);
-    costumersearch -> show();
+//    costumersearch = new displaycostumersearch(this);
+//    costumersearch -> show();
 
 }
 
