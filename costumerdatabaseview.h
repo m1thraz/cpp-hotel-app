@@ -49,7 +49,7 @@ private slots:
 private:
     Ui::costumerDatabaseView *ui;
 
-//    displaycostumersearch *costumersearch;
+    displaycostumersearch *costumersearch;
 
     int kundenID;
     std::string nachname;

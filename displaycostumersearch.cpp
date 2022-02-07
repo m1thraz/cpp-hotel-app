@@ -19,13 +19,18 @@ displaycostumersearch::~displaycostumersearch()
     delete ui;
 }
 
-//void displaycostumersearch::changeTextCostumerInfo()
-//{
-//    ui->displaySearchResultsLabel->setText("<p>Bei der Suche wurden folgende Ergebnisse erzielt:</p>"
-//                                           "</br>"
-//                                           "<p>KundenID: " << idInt <<
-//                                           );
-//}
+void displaycostumersearch::changeTextCostumerInfo()
+{
+
+    QString str = QString::fromUtf8(costumerdata);
+//           std::string checkcostumerInput;
+//           for (auto& s:costumerdata) {
+//                checkcostumerInput+=s;
+//            }
+//            qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
+
+    ui->displaySearchResultsLabel->setText(str);
+}
 
 void displaycostumersearch::on_closeWindowBtn_clicked()
 {

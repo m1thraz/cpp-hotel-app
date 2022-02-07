@@ -17,6 +17,7 @@ public:
     ~displaycostumersearch();
 
     std::vector<std::string> getCostumerdata(std::vector<std::string> &);
+    void changeTextCostumerInfo();
 
 private slots:
     void on_closeWindowBtn_clicked();

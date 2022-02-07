@@ -118,14 +118,23 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
         }
 
         while(query.next() == true) {
+            costumerdata.push_back("KundenID: ");
             costumerdata.push_back(query.value("KundenID").toString().toStdString());
+            costumerdata.push_back(", Vorname: ");
             costumerdata.push_back(query.value("Vorname").toString().toStdString());
+            costumerdata.push_back(", Nachname: ");
             costumerdata.push_back(query.value("Nachname").toString().toStdString());
+            costumerdata.push_back(", Adresse: ");
             costumerdata.push_back(query.value("Straße").toString().toStdString());
+            costumerdata.push_back(" ");
             costumerdata.push_back(query.value("Hausnummer").toString().toStdString());
+            costumerdata.push_back(" ");
             costumerdata.push_back(query.value("Wohnort").toString().toStdString());
+            costumerdata.push_back(" ");
             costumerdata.push_back(query.value("PLZ").toString().toStdString());
+            costumerdata.push_back(", Telefonnummer: ");
             costumerdata.push_back(query.value("Telefonnummer").toString().toStdString());
+            costumerdata.push_back(", E-Mail: ");
             costumerdata.push_back(query.value("E-Mail").toString().toStdString());
         }
 
@@ -135,15 +144,15 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
 //        }
 //        qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
 
-//        costumersearch = new displaycostumersearch(this);
-//        costumersearch -> show();
+        costumersearch = new displaycostumersearch(this);
+        costumersearch -> show();
 
     }
 
 }
 
 std::vector<std::string> costumerDatabaseView::setCostumerdata() {
-    this->costumerdata = costumerdata;
+    return this->costumerdata = costumerdata;
 }
 
 void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {
