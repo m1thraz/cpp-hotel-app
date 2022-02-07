@@ -28,3 +28,8 @@ void displayhotelsearch::changeTextHotelInfo() {
 
     ui->displaySearchResultsLabel->setText(str);
 }
+
+void displayhotelsearch::on_closeWindowBtn_clicked()
+{
+    this->hide();
+}

@@ -47,7 +47,7 @@ public:
 
   std::vector<std::string> invoicedata;
 
-//  displayinvoice *invoicedisplay;
+  displayinvoice *invoicedisplay;
 
 };
 

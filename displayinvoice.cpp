@@ -28,3 +28,8 @@ void displayinvoice::changeTextInvoiceInfo() {
 
     ui->displaySearchResultsLabel->setText(str);
 }
+
+void displayinvoice::on_closeWindowBtn_clicked()
+{
+    this->hide();
+}

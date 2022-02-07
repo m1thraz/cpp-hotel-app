@@ -18,6 +18,9 @@ public:
 
     void changeTextInvoiceInfo();
 
+private slots:
+    void on_closeWindowBtn_clicked();
+
 private:
     Ui::displayinvoice *ui;
 

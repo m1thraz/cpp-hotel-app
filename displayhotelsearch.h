@@ -18,6 +18,9 @@ public:
 
     void changeTextHotelInfo();
 
+private slots:
+    void on_closeWindowBtn_clicked();
+
 private:
     Ui::displayhotelsearch *ui;
 

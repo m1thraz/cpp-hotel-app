@@ -58,7 +58,7 @@ public:
 
     std::vector<std::string> hoteldata;
 
-//    displayhotelsearch *hotelsearch;
+    displayhotelsearch *hotelsearch;
 };
 
 #endif // HOTELDATABASEVIEW_H
