@@ -50,6 +50,8 @@ private:
   int gesamtKostenInt;
   std::string vermerkString;
 
+  std::vector<std::string> invoiceData;
+
   displayinvoice *invoicedisplay;
 
 };

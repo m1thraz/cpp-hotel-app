@@ -20,12 +20,12 @@ invoiceCreation::~invoiceCreation()
 }
 
 void invoiceCreation::on_rabattSlider_sliderMoved(int position) {
-ui->rabattBar->setValue(position);
+    ui->rabattBar->setValue(position);
 }
 
 void invoiceCreation::on_rabattAnRadio_toggled() {
-  ui->rabattSlider->setEnabled(true);
-  ui->rabattSlider->show();
+    ui->rabattSlider->setEnabled(true);
+    ui->rabattSlider->show();
 }
 
 void invoiceCreation::on_rabattAusRadio_toggled() {
@@ -88,11 +88,11 @@ void invoiceCreation::on_pushButtonRechnungErstellen_clicked() {
     sql = "INSERT INTO Rechnung (BuchungsID, Rabatt, Rechnungsvermerk, Übernachtungskosten_gesamt, "
           "Sonderleistungskosten_gesamt) "
           "VALUES (" + std::to_string(this->getBuchungsID()) +
-          ", " + std::to_string(rabatt) + ", 'offen', "
-          "(SELECT Übernachtungskosten FROM Zimmerrechnung WHERE BuchungsID = " +
-           std::to_string(this->getBuchungsID()) + "), "
-          "(SELECT SUM(Gesamtkosten) FROM Sonderleistungsrechnung WHERE BuchungsID = " +
-           std::to_string(this->getBuchungsID()) + "));";
+            ", " + std::to_string(rabatt) + ", 'offen', "
+                                            "(SELECT Übernachtungskosten FROM Zimmerrechnung WHERE BuchungsID = " +
+            std::to_string(this->getBuchungsID()) + "), "
+                                                    "(SELECT SUM(Gesamtkosten) FROM Sonderleistungsrechnung WHERE BuchungsID = " +
+            std::to_string(this->getBuchungsID()) + "));";
     insert = QString::fromStdString(sql);
     query.prepare(insert);
     queryStatus = query.exec();
@@ -162,7 +162,7 @@ void invoiceCreation::on_pushButtonModRechnungUpdaten_clicked() {
     bool queryStatus;
 
     sql = "UPDATE Rechnung SET Rechnungsvermerk = '" + this->getAnmerkungen() +
-          "' WHERE BuchungsID = " + std::to_string(this->getBuchungsID()) + ";";
+            "' WHERE BuchungsID = " + std::to_string(this->getBuchungsID()) + ";";
     insert = QString::fromStdString(sql);
     query.prepare(insert);
     queryStatus = query.exec();
@@ -228,21 +228,27 @@ void invoiceCreation::on_pushButtonRechnungAnzeigen_clicked() {
         return;
     }
 
-    while(query.next()) {
-        int rechnungsNrInt = std::stoi(query.value("Rechnungsnummer").toString().toStdString());
-        int buchungsNrInt = std::stoi(query.value("BuchungsID").toString().toStdString());
-        int gesamtKostenUebernachtungInt = std::stoi(query.value("Übernachtungskosten_gesamt").toString().toStdString());
-        int sonderleistungenInt = std::stoi(query.value("Sonderleistungskosten_gesamt").toString().toStdString());
-        int rabattInt = std::stoi(query.value("Rabatt").toString().toStdString());
-        int gesamtKostenInt = std::stoi(query.value("Gesamtkosten").toString().toStdString());
-        std::string vermerkString = query.value("Vermerk").toString().toStdString();
+    while(query.next() == true) {
+        invoiceData.push_back("Rechnungsnummer: ");
+        invoiceData.push_back(query.value("Rechnungsnummer").toString().toStdString());
+        invoiceData.push_back(", BuchungsID: ");
+        invoiceData.push_back(query.value("BuchnungsID").toString().toStdString());
+        invoiceData.push_back(", Übernachtungskosten für gesamten Aufenthalt: ");
+        invoiceData.push_back(query.value("Übernachtungskosten_gesamt").toString().toStdString());
+        invoiceData.push_back(", Sonderleistungskosten gesamt: ");
+        invoiceData.push_back(query.value("Sonderleistungskosten_gesamt").toString().toStdString());
+        invoiceData.push_back(", Rabatthöhe: ");
+        invoiceData.push_back(query.value("Rabatt").toString().toStdString());
+        invoiceData.push_back(", Gesamtkosten: ");
+        invoiceData.push_back(query.value("Gesamtkosten").toString().toStdString());
+        invoiceData.push_back(", Vermerke: ");
+        invoiceData.push_back(query.value("Vermerk").toString().toStdString());
     }
-
-    invoicedisplay = new displayinvoice(this);
-    invoicedisplay->show();
 
     //HIER DIE EXTRA GUI ANZEIGE FÜR DIE RECHNUNG ÖFFNEN!!
 
+    invoicedisplay = new displayinvoice(this);
+    invoicedisplay->show();
 }
 
 bool invoiceCreation::lineEditVerification(const int buttontyp) {
