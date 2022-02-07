@@ -46,13 +46,26 @@ background-color: white;
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>40</y>
+      <y>80</y>
       <width>791</width>
-      <height>261</height>
+      <height>181</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>40</y>
+      <width>501</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Folgendes Ergebnis wurde bei der Suche in der Datenbank erzielt:</string>
     </property>
    </widget>
   </widget>

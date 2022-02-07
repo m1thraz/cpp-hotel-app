@@ -23,16 +23,23 @@ displaycostumersearch::~displaycostumersearch()
 
 void displaycostumersearch::changeTextCostumerInfo()
 {
-    costumerDatabaseView costumerObject = new costumerDatabaseView();
+    costumerDatabaseView *costumerObject = new costumerDatabaseView();
 
 //    QString str = QString::fromUtf8(costumerdata);
            std::string checkcostumerInput;
-           for (auto& s:costumerObject.costumerdata) {
+           for (auto& s:costumerObject->costumerdata) {
                 checkcostumerInput+=s;
             }
-            qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
+            qDebug() << "Folgende Daten wurden übergeben: " << checkcostumerInput.c_str();
 
-//    ui->displaySearchResultsLabel->setText(str);
+            QString str = QString::fromUtf8(checkcostumerInput.c_str());
+
+//            QString str;
+//            for(auto& s:costumerObject->costumerdata) {
+//                str+=s;
+//            }
+
+    ui->displaySearchResultsLabel->setText(str);
 }
 
 void displaycostumersearch::on_closeWindowBtn_clicked()

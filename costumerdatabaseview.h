@@ -63,7 +63,7 @@ private:
     int telefonnummer;
     std::string email;
 
-private:
+public:
 
     std::vector<std::string> costumerdata;
 };

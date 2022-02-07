@@ -1,5 +1,6 @@
 #include "displayhotelsearch.h"
 #include "ui_displayhotelsearch.h"
+#include <QDebug>
 
 displayhotelsearch::displayhotelsearch(QWidget *parent) :
     QDialog(parent),
@@ -15,11 +16,15 @@ displayhotelsearch::~displayhotelsearch()
 
 void displayhotelsearch::changeTextHotelInfo() {
 
-    hotelDatabaseView hotelObject = new hotelDatabaseView();
+    hotelDatabaseView *hotelObject = new hotelDatabaseView();
 
     std::string checkhotelInput;
-    for (auto& s:hotelObject.hoteldata) {
-         checkhotelInput+=s;
-     }
-     qDebug() << "Folgende Daten wurden gespeichert: " << checkhotelInput.c_str();
+    for (auto& s:hotelObject->hoteldata) {
+        checkhotelInput+=s;
+    }
+    qDebug() << "Folgende Daten wurden gespeichert: " << checkhotelInput.c_str();
+
+    QString str = QString::fromUtf8(checkhotelInput.c_str());
+
+    ui->displaySearchResultsLabel->setText(str);
 }

@@ -149,6 +149,7 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
     }
     costumersearch = new displaycostumersearch(this);
     costumersearch -> show();
+    costumersearch->changeTextCostumerInfo();
 
 }
 

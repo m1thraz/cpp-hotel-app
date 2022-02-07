@@ -1,5 +1,6 @@
 #include "displayinvoice.h"
 #include "ui_displayinvoice.h"
+#include <QDebug>
 
 displayinvoice::displayinvoice(QWidget *parent) :
     QDialog(parent),
@@ -15,11 +16,15 @@ displayinvoice::~displayinvoice()
 
 void displayinvoice::changeTextInvoiceInfo() {
 
-    invoiceCreation invoiceObject = new invoiceCreation();
+    invoiceCreation *invoiceObject = new invoiceCreation();
 
     std::string checkinvoiceInput;
-    for (auto& s:invoiceObject.invoicedata) {
-         checkinvoiceInput+=s;
-     }
-     qDebug() << "Folgende Daten wurden gespeichert: " << checkinvoiceInput.c_str();
+    for (auto& s:invoiceObject->invoicedata) {
+        checkinvoiceInput+=s;
+    }
+    qDebug() << "Folgende Daten wurden gespeichert: " << checkinvoiceInput.c_str();
+
+    QString str = QString::fromUtf8(checkinvoiceInput.c_str());
+
+    ui->displaySearchResultsLabel->setText(str);
 }

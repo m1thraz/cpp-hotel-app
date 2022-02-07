@@ -43,6 +43,8 @@ private:
   int buchungsID;
   std::string anmerkungen;
 
+public:
+
   std::vector<std::string> invoicedata;
 
 //  displayinvoice *invoicedisplay;

@@ -54,6 +54,8 @@ private:
     std::string anreisedatum;
     std::string abreisedatum;
 
+public:
+
     std::vector<std::string> hoteldata;
 
 //    displayhotelsearch *hotelsearch;
