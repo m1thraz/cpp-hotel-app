@@ -12,7 +12,3 @@ displayhotelsearch::~displayhotelsearch()
 {
     delete ui;
 }
-
-std::vector<std::string> displayhotelsearch::getHoteldata() {
-    return this->hoteldata;
-}

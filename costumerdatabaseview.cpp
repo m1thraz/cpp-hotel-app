@@ -147,13 +147,17 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
 
 
     }
-//    costumersearch = new displaycostumersearch(this);
-//    costumersearch -> show();
+    costumersearch = new displaycostumersearch(this);
+    costumersearch -> show();
 
 }
 
-std::vector<std::string> costumerDatabaseView::setCostumerdata() {
-    return this->costumerdata = costumerdata;
+void costumerDatabaseView::setCostumerdata(std::vector<std::string> &) {
+    this->costumerdata = costumerdata;
+}
+
+std::vector<std::string> costumerDatabaseView::getCostumerdata() {
+    return this->costumerdata;
 }
 
 void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {

@@ -1,6 +1,7 @@
 #include "displaycostumersearch.h"
 #include "ui_displaycostumersearch.h"
 #include "costumerdatabaseview.h"
+#include <QDebug>
 
 
 displaycostumersearch::displaycostumersearch(QWidget *parent) :
@@ -19,15 +20,17 @@ displaycostumersearch::~displaycostumersearch()
     delete ui;
 }
 
+
 void displaycostumersearch::changeTextCostumerInfo()
 {
+    costumerDatabaseView costumerObject = new costumerDatabaseView();
 
 //    QString str = QString::fromUtf8(costumerdata);
-//           std::string checkcostumerInput;
-//           for (auto& s:costumerdata) {
-//                checkcostumerInput+=s;
-//            }
-//            qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
+           std::string checkcostumerInput;
+           for (auto& s:costumerObject.costumerdata) {
+                checkcostumerInput+=s;
+            }
+            qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
 
 //    ui->displaySearchResultsLabel->setText(str);
 }
@@ -35,8 +38,4 @@ void displaycostumersearch::changeTextCostumerInfo()
 void displaycostumersearch::on_closeWindowBtn_clicked()
 {
     this->hide();
-}
-
-std::vector<std::string> displaycostumersearch::getCostumerdata(std::vector<std::string> &) {
-    return this->costumerdata;
 }

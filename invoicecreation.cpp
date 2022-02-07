@@ -261,6 +261,10 @@ void invoiceCreation::setInvoivedata(std::vector<std::string> &) {
     this->invoicedata = invoicedata;
 }
 
+std::vector<std::string> invoiceCreation::getInvoicedata() {
+    return this->invoicedata;
+}
+
 bool invoiceCreation::lineEditVerification(const int buttontyp) {
     QString tempBuchungsID;
     QString tempAnmerkungen;

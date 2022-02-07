@@ -22,7 +22,7 @@ public:
   void setAnmerkungen(std::string anmerkungen);
   std::string getAnmerkungen();
   void setInvoivedata(std::vector<std::string> &);
-
+  std::vector<std::string> getInvoicedata();
 
 private slots:
 

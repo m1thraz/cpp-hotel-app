@@ -12,7 +12,3 @@ displayinvoice::~displayinvoice()
 {
     delete ui;
 }
-
-std::vector<std::string> displayinvoice::getInvoicedata() {
-    return this->invoicedata;
-}

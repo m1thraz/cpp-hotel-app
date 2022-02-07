@@ -16,7 +16,6 @@ public:
     explicit displaycostumersearch(QWidget *parent = nullptr);
     ~displaycostumersearch();
 
-    std::vector<std::string> getCostumerdata(std::vector<std::string> &);
     void changeTextCostumerInfo();
 
 private slots:
@@ -26,7 +25,6 @@ private slots:
 private:
     Ui::displaycostumersearch *ui;
 
-    std::vector<std::string> costumerdata;
 };
 
 #endif // DISPLAYCOSTUMERSEARCH_H

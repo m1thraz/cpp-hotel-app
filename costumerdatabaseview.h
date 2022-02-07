@@ -36,7 +36,9 @@ public:
     void setEmail(std::string email);
     std::string getEmail();
 
-    std::vector<std::string> setCostumerdata();
+    void setCostumerdata(std::vector<std::string> &);
+    std::vector<std::string> getCostumerdata();
+
 
 private slots:
     void on_pushButtonSuchen_clicked();
@@ -49,7 +51,7 @@ private slots:
 private:
     Ui::costumerDatabaseView *ui;
 
-//    displaycostumersearch *costumersearch;
+    displaycostumersearch *costumersearch;
 
     int kundenID;
     std::string nachname;

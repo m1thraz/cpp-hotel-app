@@ -464,6 +464,10 @@ void hotelDatabaseView::setHoteldata(std::vector<std::string> &) {
     this->hoteldata = hoteldata;
 }
 
+std::vector<std::string> hotelDatabaseView::getHoteldata() {
+    return this->hoteldata;
+}
+
 void hotelDatabaseView::on_entfernenButton_clicked() {
     if(!lineEditVerification(2)) {
         return;

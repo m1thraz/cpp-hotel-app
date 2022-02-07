@@ -31,6 +31,7 @@ public:
     std::string getAbreiseDatum();
     void removeRoomEquipment();
     void setHoteldata(std::vector<std::string> &);
+    std::vector<std::string> getHoteldata();
 
 private slots:
 
