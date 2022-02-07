@@ -14,9 +14,12 @@ class displayhotelsearch : public QDialog
 public:
     explicit displayhotelsearch(QWidget *parent = nullptr);
     ~displayhotelsearch();
+    std::vector<std::string> getHoteldata();
 
 private:
     Ui::displayhotelsearch *ui;
+
+    std::vector<std::string> hoteldata;
 
 };
 

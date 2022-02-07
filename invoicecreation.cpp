@@ -229,26 +229,30 @@ void invoiceCreation::on_pushButtonRechnungAnzeigen_clicked() {
     }
 
     while(query.next() == true) {
-        invoiceData.push_back("Rechnungsnummer: ");
-        invoiceData.push_back(query.value("Rechnungsnummer").toString().toStdString());
-        invoiceData.push_back(", BuchungsID: ");
-        invoiceData.push_back(query.value("BuchnungsID").toString().toStdString());
-        invoiceData.push_back(", Übernachtungskosten für gesamten Aufenthalt: ");
-        invoiceData.push_back(query.value("Übernachtungskosten_gesamt").toString().toStdString());
-        invoiceData.push_back(", Sonderleistungskosten gesamt: ");
-        invoiceData.push_back(query.value("Sonderleistungskosten_gesamt").toString().toStdString());
-        invoiceData.push_back(", Rabatthöhe: ");
-        invoiceData.push_back(query.value("Rabatt").toString().toStdString());
-        invoiceData.push_back(", Gesamtkosten: ");
-        invoiceData.push_back(query.value("Gesamtkosten").toString().toStdString());
-        invoiceData.push_back(", Vermerke: ");
-        invoiceData.push_back(query.value("Vermerk").toString().toStdString());
+        invoicedata.push_back("Rechnungsnummer: ");
+        invoicedata.push_back(query.value("Rechnungsnummer").toString().toStdString());
+        invoicedata.push_back(", BuchungsID: ");
+        invoicedata.push_back(query.value("BuchnungsID").toString().toStdString());
+        invoicedata.push_back(", Übernachtungskosten für gesamten Aufenthalt: ");
+        invoicedata.push_back(query.value("Übernachtungskosten_gesamt").toString().toStdString());
+        invoicedata.push_back(", Sonderleistungskosten gesamt: ");
+        invoicedata.push_back(query.value("Sonderleistungskosten_gesamt").toString().toStdString());
+        invoicedata.push_back(", Rabatthöhe: ");
+        invoicedata.push_back(query.value("Rabatt").toString().toStdString());
+        invoicedata.push_back(", Gesamtkosten: ");
+        invoicedata.push_back(query.value("Gesamtkosten").toString().toStdString());
+        invoicedata.push_back(", Vermerke: ");
+        invoicedata.push_back(query.value("Vermerk").toString().toStdString());
     }
 
     //HIER DIE EXTRA GUI ANZEIGE FÜR DIE RECHNUNG ÖFFNEN!!
 
     invoicedisplay = new displayinvoice(this);
     invoicedisplay->show();
+}
+
+void invoiceCreation::setInvoivedata(std::vector<std::string> &) {
+    this->invoicedata = invoicedata;
 }
 
 bool invoiceCreation::lineEditVerification(const int buttontyp) {

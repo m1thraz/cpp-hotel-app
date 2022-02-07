@@ -14,9 +14,12 @@ class displayinvoice : public QDialog
 public:
     explicit displayinvoice(QWidget *parent = nullptr);
     ~displayinvoice();
+    std::vector<std::string> getInvoicedata();
 
 private:
     Ui::displayinvoice *ui;
+
+    std::vector<std::string> invoicedata;
 };
 
 #endif // DISPLAYINVOICE_H

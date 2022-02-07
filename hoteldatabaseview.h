@@ -30,6 +30,7 @@ public:
     void setAbreiseDatum(std::string abreisedatum);
     std::string getAbreiseDatum();
     void removeRoomEquipment();
+    void setHoteldata(std::vector<std::string> &);
 
 private slots:
 
@@ -51,14 +52,6 @@ private:
     int preis;
     std::string anreisedatum;
     std::string abreisedatum;
-
-    static int idBestandInt;
-    static int zimmerNummerInt;
-    static std::string zimmertypString;
-    static int zimmerkostenInt;
-    static std::string zimmerAussichtString;
-    static std::string fahrstuhlNaeheString;
-    static std::string schlafsofaString;
 
     std::vector<std::string> hoteldata;
 

@@ -460,6 +460,10 @@ void hotelDatabaseView::on_suchenButton_clicked() {
     hotelsearch -> show();
 }
 
+void hotelDatabaseView::setHoteldata(std::vector<std::string> &) {
+    this->hoteldata = hoteldata;
+}
+
 void hotelDatabaseView::on_entfernenButton_clicked() {
     if(!lineEditVerification(2)) {
         return;

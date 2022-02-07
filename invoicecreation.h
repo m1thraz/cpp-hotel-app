@@ -21,6 +21,7 @@ public:
   int getBuchungsID();
   void setAnmerkungen(std::string anmerkungen);
   std::string getAnmerkungen();
+  void setInvoivedata(std::vector<std::string> &);
 
 
 private slots:
@@ -42,15 +43,7 @@ private:
   int buchungsID;
   std::string anmerkungen;
 
-  int rechnungsNrInt;
-  int buchungsNrInt;
-  int gesamtKostenUebernachtungInt;
-  int sonderleistungenInt;
-  int rabattInt;
-  int gesamtKostenInt;
-  std::string vermerkString;
-
-  std::vector<std::string> invoiceData;
+  std::vector<std::string> invoicedata;
 
   displayinvoice *invoicedisplay;
 
