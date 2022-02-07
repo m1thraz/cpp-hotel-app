@@ -10,8 +10,8 @@ displaycostumersearch::displaycostumersearch(QWidget *parent) :
 {
     ui->setupUi(this);
 
-//    public slots:
-//    void
+    //    public slots:
+    //    void
 
 }
 
@@ -25,19 +25,19 @@ void displaycostumersearch::changeTextCostumerInfo()
 {
     costumerDatabaseView *costumerObject = new costumerDatabaseView();
 
-//    QString str = QString::fromUtf8(costumerdata);
-           std::string checkcostumerInput;
-           for (auto& s:costumerObject->costumerdata) {
-                checkcostumerInput+=s;
-            }
-            qDebug() << "Folgende Daten wurden übergeben: " << checkcostumerInput.c_str();
+    //    QString str = QString::fromUtf8(costumerdata);
+    std::string checkcostumerInput;
+    for (auto& s:costumerObject->costumerdata) {
+        checkcostumerInput+=s;
+    }
+    qDebug() << "Folgende Daten wurden übergeben: " << checkcostumerInput.c_str();
 
-            QString str = QString::fromUtf8(checkcostumerInput.c_str());
+    QString str = QString::fromUtf8(checkcostumerInput.c_str());
 
-//            QString str;
-//            for(auto& s:costumerObject->costumerdata) {
-//                str+=s;
-//            }
+    //            QString str;
+    //            for(auto& s:costumerObject->costumerdata) {
+    //                str+=s;
+    //            }
 
     ui->displaySearchResultsLabel->setText(str);
 }
