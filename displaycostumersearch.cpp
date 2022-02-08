@@ -21,15 +21,15 @@ displaycostumersearch::displaycostumersearch(std::vector<std::string> &data) {
 void displaycostumersearch::changeTextCostumerInfo()
 {
 
-    std::string checkcostumerInput;
+    std::string checkcostumerDelivery;
     for (auto& s:costumerdata) {
-        checkcostumerInput+=s;
+        checkcostumerDelivery+=s;
     }
-    qDebug() << "Folgende Daten wurden übergeben: " << checkcostumerInput.c_str();
+    qDebug() << "Folgende Daten wurden übergeben: " << checkcostumerDelivery.c_str();
 
-    QString str = QString::fromUtf8(checkcostumerInput.c_str());
+//    QString str = QString('Ergebnis: %1').arg(checkcostumerInput.c_str());
 
-    ui->displaySearchResultsLabel->setText(str);
+    ui->labelCostumerResult->setText(checkcostumerDelivery.c_str());
 }
 
 void displaycostumersearch::on_closeWindowBtn_clicked()

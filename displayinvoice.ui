@@ -42,7 +42,7 @@ background-color: white;
      <string>Schließen</string>
     </property>
    </widget>
-   <widget class="QLabel" name="displaySearchResultsLabel">
+   <widget class="QLabel" name="labelInvoiceResult">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -55,7 +55,7 @@ background-color: white;
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="labelDefaultText">
     <property name="geometry">
      <rect>
       <x>50</x>

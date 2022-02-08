@@ -27,9 +27,9 @@ void displayinvoice::changeTextInvoiceInfo()
     }
     qDebug() << "Folgende Daten wurden gespeichert: " << checkinvoiceInput.c_str();
 
-    QString str = QString::fromUtf8(checkinvoiceInput.c_str());
+//    QString str = QString::fromUtf8(checkinvoiceInput.c_str());
 
-    ui->displaySearchResultsLabel->setText(str);
+    ui->labelInvoiceResult->setText(checkinvoiceInput.c_str());
 }
 
 void displayinvoice::on_closeWindowBtn_clicked()

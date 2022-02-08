@@ -27,9 +27,9 @@ void displayhotelsearch::changeTextHotelInfo()
     }
     qDebug() << "Folgende Daten wurden gespeichert: " << checkhotelInput.c_str();
 
-    QString str = QString::fromUtf8(checkhotelInput.c_str());
+//    QString str = QString::fromUtf8(checkhotelInput.c_str());
 
-    ui->displaySearchResultsLabel->setText(str);
+    ui->labelHotelResult->setText(checkhotelInput.c_str());
 }
 
 void displayhotelsearch::on_closeWindowBtn_clicked()
