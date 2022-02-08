@@ -14,12 +14,15 @@ displaycostumersearch::~displaycostumersearch()
     delete ui;
 }
 
+displaycostumersearch::displaycostumersearch(std::vector<std::string> &data) {
+    this->costumerdata=data;
+}
+
 void displaycostumersearch::changeTextCostumerInfo()
 {
-    costumerDatabaseView *costumerObject = new costumerDatabaseView();
 
     std::string checkcostumerInput;
-    for (auto& s:costumerObject->costumerdata) {
+    for (auto& s:costumerdata) {
         checkcostumerInput+=s;
     }
     qDebug() << "Folgende Daten wurden übergeben: " << checkcostumerInput.c_str();

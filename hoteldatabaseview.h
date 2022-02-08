@@ -2,7 +2,7 @@
 #define HOTELDATABASEVIEW_H
 
 #include <QDialog>
-#include "displayhotelsearch.h"
+class displayhotelsearch;
 
 namespace Ui {
 class hotelDatabaseView;

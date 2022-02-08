@@ -7,6 +7,7 @@
 #include "errormessage.h"
 #include "infomessage.h"
 #include <iostream>
+#include "displaycostumersearch.h"
 
 
 costumerDatabaseView::costumerDatabaseView(QWidget *parent) :
@@ -19,6 +20,14 @@ costumerDatabaseView::costumerDatabaseView(QWidget *parent) :
 costumerDatabaseView::~costumerDatabaseView()
 {
     delete ui;
+}
+
+void costumerDatabaseView::setCostumerdata(std::vector<std::string> &) {
+    this->costumerdata = costumerdata;
+}
+
+std::vector<std::string> costumerDatabaseView::getCostumerdata() {
+    return this->costumerdata;
 }
 
 void costumerDatabaseView::on_pushButtonSuchen_clicked() {
@@ -137,28 +146,18 @@ void costumerDatabaseView::on_pushButtonSuchen_clicked() {
             costumerdata.push_back(", E-Mail: ");
             costumerdata.push_back(query.value("E-Mail").toString().toStdString());
         }
-
-        std::string checkcostumerInput;
-        for (auto& s:costumerdata) {
-            checkcostumerInput+=s;
-        }
-        qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
-
-
-
     }
-    costumersearch = new displaycostumersearch(this);
+
+    std::string checkcostumerInput;
+    for (auto& s:costumerdata) {
+        checkcostumerInput+=s;
+    }
+    qDebug() << "Folgende Daten wurden gespeichert: " << checkcostumerInput.c_str();
+
+    costumersearch = new displaycostumersearch(this->costumerdata);
     costumersearch -> show();
     costumersearch->changeTextCostumerInfo();
 
-}
-
-void costumerDatabaseView::setCostumerdata(std::vector<std::string> &) {
-    this->costumerdata = costumerdata;
-}
-
-std::vector<std::string> costumerDatabaseView::getCostumerdata() {
-    return this->costumerdata;
 }
 
 void costumerDatabaseView::on_pushButtonAktualisieren_clicked() {

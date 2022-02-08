@@ -7,6 +7,7 @@
 #include "infomessage.h"
 #include "verifier.h"
 #include "database.h"
+#include "displayhotelsearch.h"
 
 hotelDatabaseView::hotelDatabaseView(QWidget *parent) :
     QDialog(parent),
@@ -454,8 +455,9 @@ void hotelDatabaseView::on_suchenButton_clicked() {
     }
     qDebug() << "Folgende Daten wurden gespeichert: " << checkhotelInput.c_str();
 
-    hotelsearch = new displayhotelsearch(this);
+    hotelsearch = new displayhotelsearch(this->hoteldata);
     hotelsearch -> show();
+    hotelsearch->changeTextHotelInfo();
 }
 
 void hotelDatabaseView::setHoteldata(std::vector<std::string> &) {

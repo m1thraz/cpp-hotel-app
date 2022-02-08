@@ -18,13 +18,16 @@ public:
 
     void changeTextCostumerInfo();
 
+    displaycostumersearch(std::vector<std::string>& data);
+    std::vector<std::string> costumerdata;
+
 private slots:
     void on_closeWindowBtn_clicked();
-
 
 private:
     Ui::displaycostumersearch *ui;
 
+    costumerDatabaseView *costumerObject;
 };
 
 #endif // DISPLAYCOSTUMERSEARCH_H

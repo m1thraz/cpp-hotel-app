@@ -14,12 +14,15 @@ displayhotelsearch::~displayhotelsearch()
     delete ui;
 }
 
-void displayhotelsearch::changeTextHotelInfo() {
+displayhotelsearch::displayhotelsearch(std::vector<std::string> &data) {
+    this->hoteldata=data;
+}
 
-    hotelDatabaseView *hotelObject = new hotelDatabaseView();
+void displayhotelsearch::changeTextHotelInfo()
+{
 
     std::string checkhotelInput;
-    for (auto& s:hotelObject->hoteldata) {
+    for (auto& s:hoteldata) {
         checkhotelInput+=s;
     }
     qDebug() << "Folgende Daten wurden gespeichert: " << checkhotelInput.c_str();

@@ -2,7 +2,7 @@
 #define INVOICECREATION_H
 
 #include <QDialog>
-#include "displayinvoice.h"
+class displayinvoice;
 
 namespace Ui {
   class invoiceCreation;

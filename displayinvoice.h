@@ -18,13 +18,16 @@ public:
 
     void changeTextInvoiceInfo();
 
+    displayinvoice(std::vector<std::string>&data);
+    std::vector<std::string> invoicedata;
+
 private slots:
     void on_closeWindowBtn_clicked();
 
 private:
     Ui::displayinvoice *ui;
 
-    std::vector<std::string> invoicedata;
+    invoiceCreation *invoiceObject;
 };
 
 #endif // DISPLAYINVOICE_H

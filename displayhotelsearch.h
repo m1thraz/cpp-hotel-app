@@ -18,13 +18,16 @@ public:
 
     void changeTextHotelInfo();
 
+    displayhotelsearch(std::vector<std::string>& data);
+    std::vector<std::string> hoteldata;
+
 private slots:
     void on_closeWindowBtn_clicked();
 
 private:
     Ui::displayhotelsearch *ui;
 
-    std::vector<std::string> hoteldata;
+    hotelDatabaseView * hotelObject;
 
 };
 
