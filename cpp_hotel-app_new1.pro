@@ -60,7 +60,8 @@ FORMS += \
     infomessage.ui \
     invoicecreation.ui \
     loggedinscreen.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    workerView.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

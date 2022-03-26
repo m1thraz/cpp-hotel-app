@@ -105,7 +105,7 @@ background-color: white;
       <rect>
        <x>10</x>
        <y>70</y>
-       <width>341</width>
+       <width>349</width>
        <height>251</height>
       </rect>
      </property>
@@ -120,7 +120,20 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEditSonderKundenID"/>
+         <widget class="QLineEdit" name="lineEditSonderKundenID">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>345</width>
+            <height>25</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -134,7 +147,20 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEditSonderMitarbeiterID"/>
+         <widget class="QLineEdit" name="lineEditSonderMitarbeiterID">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>345</width>
+            <height>25</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -148,7 +174,20 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEditSonderBuchungsID"/>
+         <widget class="QLineEdit" name="lineEditSonderBuchungsID">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>345</width>
+            <height>25</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="specialServiceLabelCheckOut">
@@ -218,7 +257,7 @@ background-color: white;
        <x>10</x>
        <y>40</y>
        <width>351</width>
-       <height>281</height>
+       <height>284</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkInLayout">
@@ -234,7 +273,20 @@ background-color: white;
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="LineEditNeuKundenID"/>
+           <widget class="QLineEdit" name="LineEditNeuKundenID">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>345</width>
+              <height>25</height>
+             </size>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -246,7 +298,20 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="LineEditNeuMitarbeiterID"/>
+         <widget class="QLineEdit" name="LineEditNeuMitarbeiterID">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>345</width>
+            <height>25</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="roomIDLabel">
@@ -256,7 +321,20 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="LineEditNeuZimmerID"/>
+         <widget class="QLineEdit" name="LineEditNeuZimmerID">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>345</width>
+            <height>25</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
