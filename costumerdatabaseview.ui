@@ -125,7 +125,7 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>211</width>
-          <height>291</height>
+          <height>319</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -141,7 +141,14 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEditAbfrKundenID"/>
+              <widget class="QLineEdit" name="lineEditAbfrKundenID">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -301,7 +308,7 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>211</width>
-          <height>291</height>
+          <height>319</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_32">
@@ -477,7 +484,7 @@ background-color: white;
           <x>10</x>
           <y>80</y>
           <width>211</width>
-          <height>241</height>
+          <height>271</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_20">

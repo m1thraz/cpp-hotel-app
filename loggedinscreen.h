@@ -26,6 +26,10 @@ public:
 
     MainWindow getMainWindow();
 
+
+
+    void setMID(int MID); // Für die mitarbeiterID
+
 private slots:
   void on_hotelButton_clicked();
 
@@ -48,7 +52,7 @@ private:
     checkInCheckOutScreen *checkIn;
     bookroomview *book;
     MainWindow *mwindow;
-
+   int mID;
 };
 
 #endif // LOGGEDINSCREEN_H

@@ -7,6 +7,7 @@ LoggedInScreen::LoggedInScreen(QWidget *parent) :
     ui(new Ui::LoggedInScreen)
 {
     ui->setupUi(this);
+   // ui->mitarbeiter->setText("<p>Bitte geben Sie für eine Preisanpassung sowohl den<br>Preis, als auch eine ZimmerID ein.</p>");
 }
 
 LoggedInScreen::~LoggedInScreen()
@@ -46,6 +47,10 @@ void LoggedInScreen::on_buchenButton_clicked() {
 
 void LoggedInScreen::setMainWindow(MainWindow *mwindow) {
     this->mwindow = mwindow;
+}
+void LoggedInScreen::setMID(int MID){
+QString s = QString::number(MID);
+  ui->mitarbeiter->setText(s);
 }
 
 

@@ -122,10 +122,10 @@ background-color: white;
        <widget class="QWidget" name="layoutWidget_3">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>243</width>
-          <height>271</height>
+          <x>0</x>
+          <y>80</y>
+          <width>701</width>
+          <height>101</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_20">
@@ -164,9 +164,6 @@ background-color: white;
             </layout>
            </item>
           </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_21"/>
          </item>
          <item>
           <widget class="QPushButton" name="pushButtonNeuerEintrag">

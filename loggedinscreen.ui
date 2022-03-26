@@ -365,6 +365,19 @@ background-color: white;
       <string>Logout</string>
      </property>
     </widget>
+    <widget class="QLabel" name="mitarbeiter">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>280</y>
+       <width>301</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
    </widget>
    <zorder>background</zorder>
    <zorder>header</zorder>
