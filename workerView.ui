@@ -138,7 +138,7 @@ background-color: white;
                <item>
                 <widget class="QLabel" name="label_16">
                  <property name="text">
-                  <string>Nutzername</string>
+                  <string>MitarbeiterID</string>
                  </property>
                 </widget>
                </item>
