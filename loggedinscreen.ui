@@ -133,7 +133,7 @@ background-color: white;
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>360</x>
        <y>10</y>
        <width>171</width>
        <height>41</height>
@@ -192,7 +192,7 @@ background-color: white;
              <bool>true</bool>
             </property>
             <property name="flat">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -220,7 +220,7 @@ background-color: white;
              <string>Kundendatenbank</string>
             </property>
             <property name="flat">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -248,7 +248,7 @@ background-color: white;
              <string>Rechnung erstellen</string>
             </property>
             <property name="flat">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -283,7 +283,7 @@ background-color: white;
              <string>Zimmer buchen</string>
             </property>
             <property name="flat">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -311,7 +311,7 @@ background-color: white;
              <string>Ein- und Auschecken</string>
             </property>
             <property name="flat">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -339,7 +339,7 @@ background-color: white;
              <string>Mitarbeiter erstellen</string>
             </property>
             <property name="flat">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -358,24 +358,53 @@ background-color: white;
        <height>25</height>
       </rect>
      </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
      <property name="text">
       <string>Logout</string>
      </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
     </widget>
     <widget class="QLabel" name="mitarbeiter">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>330</x>
        <y>280</y>
        <width>301</width>
        <height>17</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; font-style:italic; text-decoration: underline; color:#73d216;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>280</y>
+       <width>231</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>MitarbeiterID:</string>
      </property>
     </widget>
    </widget>
