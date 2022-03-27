@@ -400,7 +400,11 @@ background-color: white;
          <widget class="QComboBox" name="comboBox_3"/>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEditOutKundenID"/>
+         <widget class="QLineEdit" name="lineEditOutKundenID">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -417,7 +421,11 @@ background-color: white;
          <widget class="QComboBox" name="comboBox_4"/>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEditOutBuchungsID"/>
+         <widget class="QLineEdit" name="lineEditOutBuchungsID">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -499,7 +507,11 @@ background-color: white;
          <widget class="QComboBox" name="comboBox"/>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEditInKundenID"/>
+         <widget class="QLineEdit" name="lineEditInKundenID">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -516,7 +528,11 @@ background-color: white;
          <widget class="QComboBox" name="comboBox_2"/>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEditInBuchungsID"/>
+         <widget class="QLineEdit" name="lineEditInBuchungsID">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

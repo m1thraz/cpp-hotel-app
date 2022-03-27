@@ -93,8 +93,8 @@ background-color: white;
      <rect>
       <x>450</x>
       <y>20</y>
-      <width>361</width>
-      <height>391</height>
+      <width>401</width>
+      <height>381</height>
      </rect>
     </property>
     <property name="title">
@@ -103,10 +103,10 @@ background-color: white;
     <widget class="QWidget" name="layoutWidget_2">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>10</x>
        <y>20</y>
        <width>349</width>
-       <height>313</height>
+       <height>361</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkOutLayout">
@@ -149,6 +149,9 @@ background-color: white;
             <width>345</width>
             <height>25</height>
            </size>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -245,6 +248,9 @@ background-color: white;
             <height>25</height>
            </size>
           </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -300,9 +306,9 @@ background-color: white;
    <widget class="QGroupBox" name="checkInGroupBox">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>30</x>
       <y>20</y>
-      <width>371</width>
+      <width>421</width>
       <height>401</height>
      </rect>
     </property>
@@ -314,7 +320,7 @@ background-color: white;
       <rect>
        <x>10</x>
        <y>25</y>
-       <width>351</width>
+       <width>401</width>
        <height>361</height>
       </rect>
      </property>
@@ -366,6 +372,9 @@ background-color: white;
             </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -445,6 +454,9 @@ background-color: white;
             <width>345</width>
             <height>25</height>
            </size>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
