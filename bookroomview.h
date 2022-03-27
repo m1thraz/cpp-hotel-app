@@ -39,6 +39,14 @@ private slots:
 
     void on_cancelBookedRoomButton_clicked();
 
+    void on_comboBox_currentIndexChanged(const QString &arg1);
+
+    void on_comboBox_2_currentIndexChanged(const QString &arg1);
+
+    void on_comboBox_3_currentTextChanged(const QString &arg1);
+
+    void on_comboBox_4_currentTextChanged(const QString &arg1);
+
 private:
     Ui::bookroomview *ui;
     int kundenID;

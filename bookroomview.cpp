@@ -448,3 +448,24 @@ int bookroomview::getBuchungsID() {
     return this->buchungsID;
 }
 
+
+void bookroomview::on_comboBox_currentIndexChanged(const QString &arg1)
+{
+    ui->LineEditNeuKundenID->setText(arg1);
+}
+
+
+void bookroomview::on_comboBox_2_currentIndexChanged(const QString &arg1)
+{
+    ui->LineEditNeuZimmerID->setText(arg1);
+}
+
+void bookroomview::on_comboBox_3_currentTextChanged(const QString &arg1)
+{
+    ui->lineEditSonderKundenID->setText(arg1);
+}
+
+void bookroomview::on_comboBox_4_currentTextChanged(const QString &arg1)
+{
+    ui->lineEditSonderBuchungsID->setText(arg1);
+}
