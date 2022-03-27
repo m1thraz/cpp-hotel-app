@@ -120,10 +120,24 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox_3"/>
+         <widget class="QComboBox" name="comboBox_3">
+          <item>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2</string>
+           </property>
+          </item>
+         </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="lineEditSonderKundenID">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
             <horstretch>0</horstretch>
@@ -186,10 +200,39 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox_4"/>
+         <widget class="QComboBox" name="comboBox_4">
+          <item>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>5</string>
+           </property>
+          </item>
+         </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="lineEditSonderBuchungsID">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
             <horstretch>0</horstretch>
@@ -294,28 +337,21 @@ background-color: white;
             </property>
             <item>
              <property name="text">
-              <string>Kunde1</string>
+              <string>1</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Kunde2</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Neues Element</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Neues Element</string>
+              <string>2</string>
              </property>
             </item>
            </widget>
           </item>
           <item>
            <widget class="QLineEdit" name="LineEditNeuKundenID">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -375,10 +411,29 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox_2"/>
+         <widget class="QComboBox" name="comboBox_2">
+          <item>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>4</string>
+           </property>
+          </item>
+         </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="LineEditNeuZimmerID">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
             <horstretch>0</horstretch>
