@@ -32,6 +32,7 @@ public:
     void setBuchungsID(int buchungsID);
     int getBuchungsID();
     void setMID(QString MID);
+    QString  s;
 
 
 private slots:
@@ -52,6 +53,10 @@ private slots:
 
 
 
+    void on_comboBox_activated(int index);
+
+    void on_LineEditNeuMitarbeiterID_cursorPositionChanged(int arg1, int arg2);
+
 private:
     Ui::bookroomview *ui;
     int kundenID;
@@ -60,6 +65,8 @@ private:
     std::string anreisedatum;
     std::string abreisedatum;
     int buchungsID;
+    int mID;
+
 
 };
 

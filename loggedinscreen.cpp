@@ -50,7 +50,7 @@ void LoggedInScreen::setMainWindow(MainWindow *mwindow) {
     this->mwindow = mwindow;
 }
 void LoggedInScreen::setMID(int MID){
-QString s = QString::number(MID);
+s = QString::number(MID);
   ui->mitarbeiter->setText(s);
 }
 

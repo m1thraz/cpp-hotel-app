@@ -13,6 +13,8 @@ bookroomview::bookroomview(QWidget *parent) :
     ui(new Ui::bookroomview)
 {
     ui->setupUi(this);
+    ui->LineEditNeuMitarbeiterID->setText("12345");
+
 }
 
 bookroomview::~bookroomview()
@@ -471,6 +473,24 @@ void bookroomview::on_comboBox_4_currentTextChanged(const QString &arg1)
 }
 
 void bookroomview::setMID(QString MID){
+  s = MID;
 
-  ui->LineEditNeuMitarbeiterID->setText(MID);
+}
+
+void bookroomview::on_comboBox_activated(int index)
+{
+  QSqlQuery query;
+  std::string sql;
+
+
+  sql = "SELECT ALL FROM Kunde";
+  query.bindValue(":kundenID", kundenID);
+  bool queryStatus = query.exec();
+    //QStringList list = NULL;
+    //ui->comboBox->addItems(list);
+}
+
+void bookroomview::on_LineEditNeuMitarbeiterID_cursorPositionChanged(int arg1, int arg2)
+{
+    ui->LineEditNeuMitarbeiterID->setText("123");
 }
