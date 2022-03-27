@@ -103,10 +103,10 @@ background-color: white;
     <widget class="QWidget" name="layoutWidget_2">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>70</y>
+       <x>0</x>
+       <y>20</y>
        <width>349</width>
-       <height>251</height>
+       <height>313</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkOutLayout">
@@ -118,6 +118,9 @@ background-color: white;
            <string>KundenID</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBox_3"/>
         </item>
         <item>
          <widget class="QLineEdit" name="lineEditSonderKundenID">
@@ -178,6 +181,9 @@ background-color: white;
            <string>BuchungsID</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBox_4"/>
         </item>
         <item>
          <widget class="QLineEdit" name="lineEditSonderBuchungsID">
@@ -248,10 +254,10 @@ background-color: white;
    <widget class="QGroupBox" name="checkInGroupBox">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>50</x>
       <y>20</y>
       <width>371</width>
-      <height>331</height>
+      <height>361</height>
      </rect>
     </property>
     <property name="title">
@@ -261,9 +267,9 @@ background-color: white;
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
+       <y>25</y>
        <width>351</width>
-       <height>284</height>
+       <height>361</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkInLayout">
@@ -276,6 +282,33 @@ background-color: white;
             <property name="text">
              <string>KundenID</string>
             </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox">
+            <property name="editable">
+             <bool>true</bool>
+            </property>
+            <item>
+             <property name="text">
+              <string>Kunde1</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Kunde2</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Neues Element</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Neues Element</string>
+             </property>
+            </item>
            </widget>
           </item>
           <item>
@@ -331,6 +364,9 @@ background-color: white;
            <string>BestandID</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBox_2"/>
         </item>
         <item>
          <widget class="QLineEdit" name="LineEditNeuZimmerID">

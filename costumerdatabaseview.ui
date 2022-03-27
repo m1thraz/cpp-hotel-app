@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>881</width>
-    <height>461</height>
+    <width>879</width>
+    <height>470</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -125,7 +125,7 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>211</width>
-          <height>319</height>
+          <height>350</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -139,6 +139,9 @@ background-color: white;
                 <string>KundenID</string>
                </property>
               </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox"/>
              </item>
              <item>
               <widget class="QLineEdit" name="lineEditAbfrKundenID">
@@ -308,7 +311,7 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>211</width>
-          <height>319</height>
+          <height>350</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_32">
@@ -322,6 +325,9 @@ background-color: white;
                 <string>KundenID</string>
                </property>
               </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_2"/>
              </item>
              <item>
               <widget class="QLineEdit" name="lineEditModKundenID"/>

@@ -120,6 +120,9 @@ background-color: white;
          </widget>
         </item>
         <item>
+         <widget class="QComboBox" name="comboBox"/>
+        </item>
+        <item>
          <widget class="QLineEdit" name="lineEditNeuBuchungsID"/>
         </item>
        </layout>
@@ -241,6 +244,9 @@ background-color: white;
          </widget>
         </item>
         <item>
+         <widget class="QComboBox" name="comboBox_3"/>
+        </item>
+        <item>
          <widget class="QLineEdit" name="lineEditAbfrBuchungsID"/>
         </item>
        </layout>
@@ -277,7 +283,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>311</width>
-       <height>101</height>
+       <height>118</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -291,6 +297,9 @@ background-color: white;
              <string>BuchungsID</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_2"/>
           </item>
           <item>
            <widget class="QLineEdit" name="lineEditModBuchungsID"/>
