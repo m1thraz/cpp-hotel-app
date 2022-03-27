@@ -53,6 +53,7 @@ private:
     bookroomview *book;
     MainWindow *mwindow;
    int mID;
+   QString s;
 };
 
 #endif // LOGGEDINSCREEN_H

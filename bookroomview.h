@@ -31,6 +31,8 @@ public:
     std::string getAbreiseDatum();
     void setBuchungsID(int buchungsID);
     int getBuchungsID();
+    void setMID(QString MID);
+
 
 private slots:
     void on_bookRoomButton_clicked();
@@ -38,6 +40,7 @@ private slots:
     void on_bookExtrasButton_clicked();
 
     void on_cancelBookedRoomButton_clicked();
+
 
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
@@ -47,6 +50,8 @@ private slots:
 
     void on_comboBox_4_currentTextChanged(const QString &arg1);
 
+
+
 private:
     Ui::bookroomview *ui;
     int kundenID;
@@ -55,6 +60,7 @@ private:
     std::string anreisedatum;
     std::string abreisedatum;
     int buchungsID;
+
 };
 
 #endif // BOOKROOMVIEW_H

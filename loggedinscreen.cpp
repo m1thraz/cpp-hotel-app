@@ -42,6 +42,7 @@ void LoggedInScreen::on_checkInBtn_clicked() {
 
 void LoggedInScreen::on_buchenButton_clicked() {
     book = new bookroomview(this);
+    book->setMID(s);
     book->show();
 }
 

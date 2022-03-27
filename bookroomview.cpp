@@ -469,3 +469,8 @@ void bookroomview::on_comboBox_4_currentTextChanged(const QString &arg1)
 {
     ui->lineEditSonderBuchungsID->setText(arg1);
 }
+
+void bookroomview::setMID(QString MID){
+
+  ui->LineEditNeuMitarbeiterID->setText(MID);
+}
