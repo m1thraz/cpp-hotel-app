@@ -17,6 +17,14 @@ public:
   explicit workerview(QWidget *parent = nullptr);
   ~workerview();
   void setMID(int mID);
+  int getMID();
+  void setNachname(std::string nachname);
+  std::string getNachname();
+  void setVorname(std::string vorname);
+  std::string getVorname();
+  void setPW(std::string vorname);
+  std::string getPW();
+
 
 
 private slots:
@@ -29,6 +37,14 @@ private:
     Ui::workerview *ui;
 
     int mID;
+    std::string nachname;
+    std::string vorname;
+    std::string pw;
+
+
+public:
+
+    std::vector<std::string> workerdata;
 
 };
 
