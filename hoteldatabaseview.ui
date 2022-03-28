@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>877</width>
-    <height>508</height>
+    <height>579</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -78,7 +78,7 @@ border-image:url(:/images/logo_white.png);
      <x>0</x>
      <y>90</y>
      <width>881</width>
-     <height>421</height>
+     <height>491</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -94,7 +94,7 @@ background-color: white;
       <x>60</x>
       <y>20</y>
       <width>761</width>
-      <height>401</height>
+      <height>451</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -109,7 +109,7 @@ background-color: white;
           <x>10</x>
           <y>30</y>
           <width>231</width>
-          <height>323</height>
+          <height>381</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -492,7 +492,7 @@ background-color: white;
           <x>0</x>
           <y>30</y>
           <width>231</width>
-          <height>255</height>
+          <height>381</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_9">

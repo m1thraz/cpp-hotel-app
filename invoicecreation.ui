@@ -271,7 +271,7 @@ background-color: white;
       <x>470</x>
       <y>20</y>
       <width>331</width>
-      <height>141</height>
+      <height>161</height>
      </rect>
     </property>
     <property name="title">
@@ -283,7 +283,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>311</width>
-       <height>118</height>
+       <height>101</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_11">

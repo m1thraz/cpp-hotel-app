@@ -371,7 +371,7 @@ background-color: white;
       <x>470</x>
       <y>20</y>
       <width>341</width>
-      <height>331</height>
+      <height>341</height>
      </rect>
     </property>
     <property name="title">
@@ -383,7 +383,7 @@ background-color: white;
        <x>10</x>
        <y>30</y>
        <width>321</width>
-       <height>259</height>
+       <height>271</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkOutLayout">
@@ -498,10 +498,10 @@ background-color: white;
    <widget class="QGroupBox" name="checkInGroupBox">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>30</y>
+      <x>100</x>
+      <y>20</y>
       <width>341</width>
-      <height>331</height>
+      <height>341</height>
      </rect>
     </property>
     <property name="title">
@@ -510,10 +510,10 @@ background-color: white;
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>10</x>
        <y>30</y>
        <width>321</width>
-       <height>201</height>
+       <height>271</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="checkInLayout">
