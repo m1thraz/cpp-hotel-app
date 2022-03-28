@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>workerview</class>
+ <widget class="QDialog" name="workerview">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>985</width>
+    <height>740</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="background" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>991</width>
+     <height>631</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#background {
+
+background-color: white;
+}
+</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>80</y>
+      <width>881</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Neuer Datenbankeintrag</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>80</y>
+          <width>781</width>
+          <height>271</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_20">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_21">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_22"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_23">
+               <item>
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string>Nachname</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditNeuNachname"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_19">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_26">
+               <item>
+                <widget class="QLabel" name="label_35">
+                 <property name="text">
+                  <string>Hausnummer</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditNeuHausnummer"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButtonNeuerEintrag">
+           <property name="text">
+            <string>Erstellen</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="header" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-10</y>
+      <width>881</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#header {
+
+background-color: #18191A;
+
+}</string>
+    </property>
+    <widget class="QLabel" name="headerTextLoggedIn">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>20</y>
+       <width>420</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yrsa</family>
+       <pointsize>24</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#headerTextLoggedIn {
+
+color:white;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Hotel Management Office System</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="logoHeader" native="true">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>10</y>
+       <width>71</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#logoHeader {
+
+border-image:url(:/images/logo_white.png);
+}</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

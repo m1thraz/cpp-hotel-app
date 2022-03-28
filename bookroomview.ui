@@ -136,7 +136,7 @@ background-color: white;
         <item>
          <widget class="QLineEdit" name="lineEditSonderKundenID">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -151,6 +151,9 @@ background-color: white;
            </size>
           </property>
           <property name="frame">
+           <bool>false</bool>
+          </property>
+          <property name="readOnly">
            <bool>false</bool>
           </property>
          </widget>
@@ -234,7 +237,7 @@ background-color: white;
         <item>
          <widget class="QLineEdit" name="lineEditSonderBuchungsID">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -249,6 +252,9 @@ background-color: white;
            </size>
           </property>
           <property name="frame">
+           <bool>false</bool>
+          </property>
+          <property name="readOnly">
            <bool>false</bool>
           </property>
          </widget>
@@ -356,7 +362,7 @@ background-color: white;
           <item>
            <widget class="QLineEdit" name="LineEditNeuKundenID">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -374,6 +380,9 @@ background-color: white;
              <string/>
             </property>
             <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
              <bool>false</bool>
             </property>
            </widget>
@@ -441,7 +450,7 @@ background-color: white;
         <item>
          <widget class="QLineEdit" name="LineEditNeuZimmerID">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -456,6 +465,9 @@ background-color: white;
            </size>
           </property>
           <property name="frame">
+           <bool>false</bool>
+          </property>
+          <property name="readOnly">
            <bool>false</bool>
           </property>
          </widget>

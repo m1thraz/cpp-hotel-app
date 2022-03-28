@@ -30,7 +30,8 @@ SOURCES += \
     loggedinscreen.cpp \
     main.cpp \
     mainwindow.cpp \
-    verifier.cpp
+    verifier.cpp \
+    workerview.cpp
 
 HEADERS += \
     bookroomview.h \
@@ -46,7 +47,8 @@ HEADERS += \
     invoicecreation.h \
     loggedinscreen.h \
     mainwindow.h \
-    verifier.h
+    verifier.h \
+    workerview.h
 
 FORMS += \
     bookroomview.ui \
@@ -61,7 +63,7 @@ FORMS += \
     invoicecreation.ui \
     loggedinscreen.ui \
     mainwindow.ui \
-    workerView.ui
+    workerview.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
