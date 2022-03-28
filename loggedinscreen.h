@@ -9,6 +9,7 @@
 #include "invoicecreation.h"
 #include "checkincheckoutscreen.h"
 #include "bookroomview.h"
+#include "workerview.h"
 
 namespace Ui {
 class LoggedInScreen;
@@ -43,6 +44,8 @@ private slots:
 
   void on_buchenButton_clicked();
 
+  void on_RechnungButton_2_clicked();
+
 private:
     Ui::LoggedInScreen *ui;
 
@@ -52,6 +55,7 @@ private:
     checkInCheckOutScreen *checkIn;
     bookroomview *book;
     MainWindow *mwindow;
+    workerview *worker;
    int mID;
    QString s;
 };

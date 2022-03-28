@@ -55,3 +55,9 @@ s = QString::number(MID);
 }
 
 
+
+void LoggedInScreen::on_RechnungButton_2_clicked()
+{
+    worker = new workerview(this);
+    worker->show();
+}
