@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Mitarbeiter hinzufügen</string>
   </property>
   <widget class="QWidget" name="background" native="true">
    <property name="geometry">
@@ -34,7 +34,7 @@ background-color: white;
      <rect>
       <x>0</x>
       <y>80</y>
-      <width>881</width>
+      <width>821</width>
       <height>421</height>
      </rect>
     </property>
@@ -57,7 +57,26 @@ background-color: white;
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_21">
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_22"/>
+            <layout class="QVBoxLayout" name="verticalLayout_22">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_21">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_28">
+                 <item>
+                  <widget class="QLabel" name="label_37">
+                   <property name="text">
+                    <string>Name</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditName"/>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -71,7 +90,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEditNeuNachname"/>
+                <widget class="QLineEdit" name="lineEditMID"/>
                </item>
               </layout>
              </item>
@@ -84,12 +103,12 @@ background-color: white;
                <item>
                 <widget class="QLabel" name="label_35">
                  <property name="text">
-                  <string>Name</string>
+                  <string>Passwort</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEditNeuHausnummer"/>
+                <widget class="QLineEdit" name="lineEditPW"/>
                </item>
               </layout>
              </item>

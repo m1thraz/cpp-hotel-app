@@ -16,15 +16,19 @@ class workerview : public QDialog
 public:
   explicit workerview(QWidget *parent = nullptr);
   ~workerview();
+  void setMID(int mID);
 
 
 private slots:
   void on_pushButtonNeuerEintrag_clicked();
+  bool lineEditVerification(const int button);
 
   void on_buttonBox_accepted();
 
 private:
     Ui::workerview *ui;
+
+    int mID;
 
 };
 
