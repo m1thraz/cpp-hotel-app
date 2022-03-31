@@ -149,7 +149,7 @@ void workerview::on_pushButtonNeuerEintrag_clicked()
   Database db;
   std::string sql ="INSERT OR IGNORE INTO Mitarbeiter(Nachname, Vorname, MitarbeiterID, Passwort)"
                    "VALUES ('" + this->getNachname() + "', '" + this->getVorname()
-         + "', '"  + std::to_string(this->getMID()) + "', " + this->getPW()
+         + "', '"  + std::to_string(this->getMID()) + "', '" + this->getPW()
 
         + "');";
 
@@ -159,16 +159,16 @@ void workerview::on_pushButtonNeuerEintrag_clicked()
   bool queryStatus = query.exec();
    qDebug() << "Hinzufügen der Mitarbeiterdaten erfolgreich: " << queryStatus;
 
-//  if(!queryStatus) {
-//      error.changeTextDataCreationError();
-//      error.setModal(true);
-//      error.exec();
-//    }else {
+  if(!queryStatus) {
+      error.changeTextDataCreationError();
+      error.setModal(true);
+      error.exec();
+    }else {
       infomessage info;
       info.changeTextNeu();
       info.setModal(true);
       info.exec();
-//    }
+    }
   }
 
 }
