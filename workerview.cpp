@@ -57,10 +57,7 @@ std::string workerview::getPW() {
 
 
 
-void workerview::on_buttonBox_accepted()
-{
 
-}
 bool workerview::lineEditVerification(const int buttontyp){
   QString tempMID;
   QString tempPW;
@@ -129,13 +126,26 @@ bool workerview::lineEditVerification(const int buttontyp){
 
 
 
-return true;
+  return true;
 
 
-}
+  }
 void workerview::on_pushButtonNeuerEintrag_clicked()
 {
+  if(!lineEditVerification(1)) {
+
+}
   errormessage error;
+  if(!this->getMID() || this->getNachname().empty() || this->getVorname().empty()) {
+      error.changeTextMissingInputText();
+      error.setModal(true);
+      error.exec();
+      return;
+  } else {
+
+
+
+
   Database db;
   std::string sql ="INSERT OR IGNORE INTO Mitarbeiter(Nachname, Vorname, MitarbeiterID, Passwort)"
                    "VALUES ('" + this->getNachname() + "', '" + this->getVorname()
@@ -147,15 +157,18 @@ void workerview::on_pushButtonNeuerEintrag_clicked()
   QSqlQuery query;
   query.prepare(insert);
   bool queryStatus = query.exec();
+   qDebug() << "Hinzufügen der Mitarbeiterdaten erfolgreich: " << queryStatus;
 
-  if(!queryStatus) {
-      error.changeTextDataCreationError();
-      error.setModal(true);
-      error.exec();
-    }else {
+//  if(!queryStatus) {
+//      error.changeTextDataCreationError();
+//      error.setModal(true);
+//      error.exec();
+//    }else {
       infomessage info;
       info.changeTextNeu();
       info.setModal(true);
       info.exec();
-    }
+//    }
+  }
+
 }

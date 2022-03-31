@@ -24,14 +24,15 @@ public:
   std::string getVorname();
   void setPW(std::string vorname);
   std::string getPW();
+  bool lineEditVerification(const int button);
 
 
 
 private slots:
   void on_pushButtonNeuerEintrag_clicked();
-  bool lineEditVerification(const int button);
 
-  void on_buttonBox_accepted();
+
+
 
 private:
     Ui::workerview *ui;
