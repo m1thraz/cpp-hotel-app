@@ -95,6 +95,11 @@ void errormessage::changeTextVornameWrong() {
     ui->labelErrorMessage->setText("<p>Der eingegebene Vorname ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
 }
 
+void errormessage::changeTextPWWrong() {
+    ui->labelErrorMessage->setText("<p>Der eingegebene Passwort ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
+}
+
+
 void errormessage::changeTextStrasseWrong() {
     ui->labelErrorMessage->setText("<p>Der eingegebene Straßenname ist fehlerhaft.</p><p>Bitte überprüfen Sie Ihre Eingabe.</p>");
 }

@@ -70,7 +70,7 @@ background-color: white;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEditName"/>
+                  <widget class="QLineEdit" name="lineEditVorname"/>
                  </item>
                 </layout>
                </item>
@@ -90,7 +90,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEditMID"/>
+                <widget class="QLineEdit" name="lineEditNachname"/>
                </item>
               </layout>
              </item>
@@ -108,7 +108,7 @@ background-color: white;
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEditPW"/>
+                <widget class="QLineEdit" name="lineEditMID"/>
                </item>
               </layout>
              </item>
@@ -128,7 +128,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEditName_2"/>
+              <widget class="QLineEdit" name="lineEditPW"/>
              </item>
             </layout>
            </item>

@@ -64,9 +64,13 @@ void workerview::on_buttonBox_accepted()
 bool workerview::lineEditVerification(const int buttontyp){
   QString tempMID;
   QString tempPW;
+  QString tempVorname;
+  QString tempNachname;
 
   switch(buttontyp){
     case 1:
+      tempVorname = ui->lineEditVorname->text();
+      tempNachname = ui->lineEditNachname->text();
       tempMID = ui->lineEditMID->text();
       tempPW = ui->lineEditPW->text();
       break;
@@ -84,13 +88,46 @@ bool workerview::lineEditVerification(const int buttontyp){
       this->setMID(std::stoi(tempMID.toStdString()));
   }else if(!tempMID.isEmpty() && !match.hasMatch()) {
       qDebug() << "Ungültiges MitarbeiterID-Format";
-      error.changeTextKundenIDWrong();
+      error.changeTextMitarbeiterIDWrong();
       error.setModal(true);
       error.exec();
       return false;
   }else {
       this->setMID(0);
   }
+  match = letters.match(tempNachname);
+  if(!tempNachname.isEmpty() && match.hasMatch()) {
+      this->setNachname(tempNachname.toStdString());
+  }else if(!tempNachname.isEmpty() && !match.hasMatch()) {
+      qDebug() << "Ungültiges Nachnamen-Format";
+      error.changeTextNachnameWrong();
+      error.setModal(true);
+      error.exec();
+      return false;
+  }
+  match = letters.match(tempVorname);
+  if(!tempVorname.isEmpty() && match.hasMatch()) {
+      this->setVorname(tempVorname.toStdString());
+  }else if(!tempVorname.isEmpty() && !match.hasMatch()) {
+      qDebug() << "Ungültiges Vornamen-Format";
+      error.changeTextVornameWrong();
+      error.setModal(true);
+      error.exec();
+      return false;
+  }
+  match = letters.match(tempPW);
+  if(!tempPW.isEmpty() && match.hasMatch()) {
+      this->setPW(tempPW.toStdString());
+  }else if(!tempPW.isEmpty() && !match.hasMatch()) {
+      qDebug() << "Ungültiges Passwort-Format";
+      error.changeTextPWWrong();
+      error.setModal(true);
+      error.exec();
+      return false;
+  }
+
+
+
 
 return true;
 
@@ -100,7 +137,12 @@ void workerview::on_pushButtonNeuerEintrag_clicked()
 {
   errormessage error;
   Database db;
-  std::string sql ="INSERT OR IGNORE INTO Mitarbeiter";
+  std::string sql ="INSERT OR IGNORE INTO Mitarbeiter(Nachname, Vorname, MitarbeiterID, Passwort)"
+                   "VALUES ('" + this->getNachname() + "', '" + this->getVorname()
+         + "', '"  + std::to_string(this->getMID()) + "', " + this->getPW()
+
+        + "');";
+
   QString insert = QString::fromStdString(sql);
   QSqlQuery query;
   query.prepare(insert);
