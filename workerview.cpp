@@ -27,6 +27,35 @@ void workerview::setMID(int mID) {
     this->mID = mID;
 }
 
+int workerview::getMID(){
+  return this->mID;
+}
+
+void workerview::setNachname(std::string nachname) {
+    this->nachname = nachname;
+}
+
+std::string workerview::getNachname() {
+    return this->nachname;
+}
+
+void workerview::setVorname(std::string vorname) {
+    this->vorname = vorname;
+}
+
+std::string workerview::getVorname() {
+    return this->vorname;
+}
+
+void workerview::setPW(std::string pw) {
+    this->pw = pw;
+}
+
+std::string workerview::getPW() {
+    return this->pw;
+}
+
+
 
 void workerview::on_buttonBox_accepted()
 {
