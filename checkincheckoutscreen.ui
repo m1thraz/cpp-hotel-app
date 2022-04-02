@@ -435,12 +435,17 @@ background-color: white;
          <widget class="QComboBox" name="comboBoxOutBID">
           <item>
            <property name="text">
-            <string>1099</string>
+            <string>10099</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Neues Element</string>
+            <string>10100</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10101</string>
            </property>
           </item>
          </widget>
@@ -573,7 +578,17 @@ background-color: white;
          <widget class="QComboBox" name="comboBoxInBID">
           <item>
            <property name="text">
-            <string>1099</string>
+            <string>10099</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10100</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10101</string>
            </property>
           </item>
          </widget>

@@ -120,7 +120,23 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBoxNeuRID"/>
+         <widget class="QComboBox" name="comboBoxNeuRID">
+          <item>
+           <property name="text">
+            <string>10099</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10100</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10101</string>
+           </property>
+          </item>
+         </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="lineEditNeuBuchungsID"/>
@@ -244,7 +260,23 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBoxAbrfBid"/>
+         <widget class="QComboBox" name="comboBoxAbrfBid">
+          <item>
+           <property name="text">
+            <string>10099</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10100</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10101</string>
+           </property>
+          </item>
+         </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="lineEditAbfrBuchungsID"/>
@@ -299,7 +331,23 @@ background-color: white;
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBoxModBid"/>
+           <widget class="QComboBox" name="comboBoxModBid">
+            <item>
+             <property name="text">
+              <string>10099</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>10100</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>10101</string>
+             </property>
+            </item>
+           </widget>
           </item>
           <item>
            <widget class="QLineEdit" name="lineEditModBuchungsID"/>
