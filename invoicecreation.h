@@ -38,6 +38,12 @@ private slots:
 
   void on_pushButtonRechnungAnzeigen_clicked();
 
+  void on_comboBoxNeuRID_currentIndexChanged(const QString &arg1);
+
+  void on_comboBoxModBid_currentIndexChanged(const QString &arg1);
+
+  void on_comboBoxAbrfBid_currentIndexChanged(const QString &arg1);
+
 private:
   Ui::invoiceCreation *ui;
   int buchungsID;

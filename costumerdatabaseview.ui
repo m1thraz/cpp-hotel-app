@@ -141,7 +141,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox">
+              <widget class="QComboBox" name="comboBoxAbfrKID">
                <item>
                 <property name="text">
                  <string>1</string>
@@ -157,7 +157,7 @@ background-color: white;
              <item>
               <widget class="QLineEdit" name="lineEditAbfrKundenID">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -344,7 +344,7 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_2">
+              <widget class="QComboBox" name="comboBoxMidKID">
                <item>
                 <property name="text">
                  <string>1</string>
@@ -360,7 +360,7 @@ background-color: white;
              <item>
               <widget class="QLineEdit" name="lineEditModKundenID">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
               </widget>
              </item>

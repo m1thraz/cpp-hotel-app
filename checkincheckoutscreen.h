@@ -28,6 +28,14 @@ private slots:
 
     void on_checkOutBtn_clicked();
 
+    void on_comboBox_currentIndexChanged(const QString &arg1);
+
+    void on_comboBoxInBID_currentIndexChanged(const QString &arg1);
+
+    void on_comboBoxOutKID_currentIndexChanged(const QString &arg1);
+
+    void on_comboBoxOutBID_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::checkInCheckOutScreen *ui;
     int kundenID;

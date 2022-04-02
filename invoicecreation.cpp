@@ -327,3 +327,18 @@ void invoiceCreation::setAnmerkungen(std::string anmerkungen) {
 std::string invoiceCreation::getAnmerkungen() {
     return this->anmerkungen;
 }
+
+void invoiceCreation::on_comboBoxNeuRID_currentIndexChanged(const QString &arg1)
+{
+    ui->lineEditNeuBuchungsID->setText(arg1);
+}
+
+void invoiceCreation::on_comboBoxModBid_currentIndexChanged(const QString &arg1)
+{
+    ui->lineEditModBuchungsID->setText(arg1);
+}
+
+void invoiceCreation::on_comboBoxAbrfBid_currentIndexChanged(const QString &arg1)
+{
+    ui->lineEditAbfrBuchungsID->setText(arg1);
+}

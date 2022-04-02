@@ -564,3 +564,13 @@ void costumerDatabaseView::setEmail(std::string email) {
 std::string costumerDatabaseView::getEmail() {
     return this->email;
 }
+
+void costumerDatabaseView::on_comboBoxAbfrKID_currentIndexChanged(const QString &arg1)
+{
+    ui->lineEditAbfrKundenID->setText(arg1);
+}
+
+void costumerDatabaseView::on_comboBoxMidKID_currentIndexChanged(const QString &arg1)
+{
+    ui->lineEditModKundenID->setText(arg1);
+}

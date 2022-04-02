@@ -667,3 +667,13 @@ void hotelDatabaseView::on_radioButtonAbfrVerfuegbar_toggled(bool checked) {
     ui->dateEditAbfrAnreiseDatum->setEnabled(checked);
     ui->dateEditAbfrAbreiseDatum->setEnabled(checked);
 }
+
+void hotelDatabaseView::on_comboBoxAbrfZNr_currentIndexChanged(const QString &arg1)
+{
+    ui->lineEditAbfrZimmernummer->setText(arg1);
+}
+
+void hotelDatabaseView::on_comboBoxModZID_currentIndexChanged(const QString &arg1)
+{
+    ui->lineEditModZimmerID->setText(arg1);
+}

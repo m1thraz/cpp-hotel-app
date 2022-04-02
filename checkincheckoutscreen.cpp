@@ -231,3 +231,23 @@ void checkInCheckOutScreen::setBuchungsID(int buchungsID) {
 int checkInCheckOutScreen::getBuchungsID() {
     return this->buchungsID;
 }
+
+void checkInCheckOutScreen::on_comboBox_currentIndexChanged(const QString &arg1)
+{
+    ui->lineEditInKundenID->setText(arg1);
+}
+
+void checkInCheckOutScreen::on_comboBoxInBID_currentIndexChanged(const QString &arg1)
+{
+    ui->lineEditInBuchungsID->setText(arg1);
+}
+
+void checkInCheckOutScreen::on_comboBoxOutKID_currentIndexChanged(const QString &arg1)
+{
+     ui->lineEditOutKundenID->setText(arg1);
+}
+
+void checkInCheckOutScreen::on_comboBoxOutBID_currentIndexChanged(const QString &arg1)
+{
+    ui->lineEditOutBuchungsID->setText(arg1);
+}

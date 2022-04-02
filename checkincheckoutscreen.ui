@@ -397,7 +397,7 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox_3">
+         <widget class="QComboBox" name="comboBoxOutKID">
           <item>
            <property name="text">
             <string>1</string>
@@ -432,7 +432,7 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox_4">
+         <widget class="QComboBox" name="comboBoxOutBID">
           <item>
            <property name="text">
             <string>????</string>
@@ -527,7 +527,7 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox">
+         <widget class="QComboBox" name="comboBoxInKID">
           <item>
            <property name="text">
             <string>1</string>
@@ -548,6 +548,9 @@ background-color: white;
           <property name="frame">
            <bool>false</bool>
           </property>
+          <property name="clearButtonEnabled">
+           <bool>false</bool>
+          </property>
          </widget>
         </item>
        </layout>
@@ -562,7 +565,7 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox_2">
+         <widget class="QComboBox" name="comboBoxInBID">
           <item>
            <property name="text">
             <string>1099</string>

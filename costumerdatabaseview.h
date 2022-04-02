@@ -48,6 +48,10 @@ private slots:
     void on_pushButtonNeuerEintrag_clicked();
 
 
+    void on_comboBoxAbfrKID_currentIndexChanged(const QString &arg1);
+
+    void on_comboBoxMidKID_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::costumerDatabaseView *ui;
 

@@ -45,6 +45,10 @@ private slots:
 
     void on_entfernenButton_clicked();
 
+    void on_comboBoxAbrfZNr_currentIndexChanged(const QString &arg1);
+
+    void on_comboBoxModZID_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::hotelDatabaseView *ui;
 
