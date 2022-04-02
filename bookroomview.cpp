@@ -176,7 +176,39 @@ void bookroomview::on_cancelBookedRoomButton_clicked() {
     if(!queryStatus) {
         error.changeTextDeleteDataError();
         error.setModal(true);
-        error.exec();
+        error.exec();//  if(!lineEditVerification(2)) {
+
+        // return;
+
+       //}
+       //  errormessage error;
+       //  if(!this->getMID2()) {
+       //      error.changeTextMissingInputText();
+       //      error.setModal(true);
+       //      error.exec();
+       //      return;
+       //  } else {
+       //Database db;
+       //std::string sql ="DELETE FROM Mitarbeiter(MitarbeiterID)"
+       //    "VALUES ('" + std::to_string(this->getMID2()) + "');";
+
+       //QString insert = QString::fromStdString(sql);
+       //QSqlQuery query;
+       //query.prepare(insert);
+       //bool queryStatus = query.exec();
+       // qDebug() << "Löschen der Mitarbeiterdaten erfolgreich: " << queryStatus;
+
+       //if(!queryStatus) {
+       //    error.changeTextDataCreationError();
+       //    error.setModal(true);
+       //    error.exec();
+       //  }else {
+       //    infomessage info;
+       //    info.changeTextNeu();
+       //    info.setModal(true);
+       //    info.exec();
+       //  }
+       //    }
     }else {
         infomessage info;
         info.changeTextDelete();
