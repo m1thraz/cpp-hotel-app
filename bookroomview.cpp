@@ -227,16 +227,16 @@ bool bookroomview::lineEditVerification(const int buttontyp) {
 
     switch(buttontyp) {
     case 1:
-        tempKundenID = ui->LineEditNeuKundenID->text();
+        tempKundenID = ui-> comboBoxKID->currentText();
         tempMitarbeiterID = ui->LineEditNeuMitarbeiterID->text();
-        tempBestandID = ui->LineEditNeuZimmerID->text();
+        tempBestandID = ui->comboBoxBeID->currentText();
         tempAnreiseDatum = ui->dateEditNeuAnreiseDatum->text();
         tempAbreiseDatum = ui->dateEditNeuAbreiseDatum->text();
         break;
     case 2:
-        tempKundenID = ui->lineEditSonderKundenID->text();
+        tempKundenID = ui->comboBoxSondKID->currentText();
         tempMitarbeiterID = ui->lineEditSonderMitarbeiterID->text();
-        tempBuchungsID = ui->lineEditSonderBuchungsID->text();
+        tempBuchungsID = ui->comboBoxSonBID->currentText();
         break;
     default:
         qDebug() << "Fehler beim Verifikationsprozess der lineEdits aufgetreten";
@@ -483,26 +483,7 @@ int bookroomview::getBuchungsID() {
 }
 
 
-void bookroomview::on_comboBox_currentIndexChanged(const QString &arg1)
-{
-    ui->LineEditNeuKundenID->setText(arg1);
-}
 
-
-void bookroomview::on_comboBox_2_currentIndexChanged(const QString &arg1)
-{
-    ui->LineEditNeuZimmerID->setText(arg1);
-}
-
-void bookroomview::on_comboBox_3_currentTextChanged(const QString &arg1)
-{
-    ui->lineEditSonderKundenID->setText(arg1);
-}
-
-void bookroomview::on_comboBox_4_currentTextChanged(const QString &arg1)
-{
-    ui->lineEditSonderBuchungsID->setText(arg1);
-}
 
 void bookroomview::setMID(QString MID){
   s = MID;

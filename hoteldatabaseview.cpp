@@ -548,17 +548,17 @@ bool hotelDatabaseView::lineEditVerification(const int buttontyp) {
 
     switch(buttontyp) {
     case 1:
-        tempZimmernummer = ui->lineEditAbfrZimmernummer->text();
+        tempZimmernummer = ui->comboBoxAbrfZNr->currentText();
         tempAnreiseDatum = ui->dateEditAbfrAnreiseDatum->text();
         tempAbreiseDatum = ui->dateEditAbfrAbreiseDatum->text();
         break;
     case 2:
-        tempZimmerID = ui->lineEditModZimmerID->text();
+        tempZimmerID = ui->comboBoxModZID->currentText();
         tempPreis = ui->lineEditModPreis->text();
-        tempZimmernummer = ui->lineEditModZimmernummer->text();
+        tempZimmernummer = ui->comboBoxModZimmerNr->currentText();
         break;
     case 3:
-        tempZimmernummer = ui->lineEditNeuZimmernummer->text();
+        tempZimmernummer = ui->comboBoxNeuZiNr->currentText();
         break;
     default:
         qDebug() << "Fehler beim Verifikationsprozess der lineEdits aufgetreten";
@@ -668,12 +668,3 @@ void hotelDatabaseView::on_radioButtonAbfrVerfuegbar_toggled(bool checked) {
     ui->dateEditAbfrAbreiseDatum->setEnabled(checked);
 }
 
-void hotelDatabaseView::on_comboBoxAbrfZNr_currentIndexChanged(const QString &arg1)
-{
-    ui->lineEditAbfrZimmernummer->setText(arg1);
-}
-
-void hotelDatabaseView::on_comboBoxModZID_currentIndexChanged(const QString &arg1)
-{
-    ui->lineEditModZimmerID->setText(arg1);
-}

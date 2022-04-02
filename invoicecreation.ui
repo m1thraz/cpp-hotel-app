@@ -121,6 +121,9 @@ background-color: white;
         </item>
         <item>
          <widget class="QComboBox" name="comboBoxNeuRID">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
           <item>
            <property name="text">
             <string>10099</string>
@@ -137,9 +140,6 @@ background-color: white;
            </property>
           </item>
          </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEditNeuBuchungsID"/>
         </item>
        </layout>
       </item>
@@ -261,6 +261,9 @@ background-color: white;
         </item>
         <item>
          <widget class="QComboBox" name="comboBoxAbrfBid">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
           <item>
            <property name="text">
             <string>10099</string>
@@ -277,9 +280,6 @@ background-color: white;
            </property>
           </item>
          </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEditAbfrBuchungsID"/>
         </item>
        </layout>
       </item>
@@ -332,6 +332,9 @@ background-color: white;
           </item>
           <item>
            <widget class="QComboBox" name="comboBoxModBid">
+            <property name="editable">
+             <bool>true</bool>
+            </property>
             <item>
              <property name="text">
               <string>10099</string>
@@ -348,9 +351,6 @@ background-color: white;
              </property>
             </item>
            </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEditModBuchungsID"/>
           </item>
          </layout>
         </item>

@@ -346,7 +346,7 @@ bool costumerDatabaseView::lineEditVerification(const int buttontyp) {
 
     switch(buttontyp) {
     case 1:
-        tempKundenID = ui->lineEditAbfrKundenID->text();
+        tempKundenID = ui->comboBoxAbfrKID->currentText();
         tempNachname = ui->lineEditAbfrNachname->text();
         tempVorname =  ui->lineEditAbfrVorname->text();
         tempStrasse = ui->lineEditAbfrStrasse->text();
@@ -357,7 +357,7 @@ bool costumerDatabaseView::lineEditVerification(const int buttontyp) {
         tempEmail = ui->lineEditAbfrEmail->text();
         break;
     case 2:
-        tempKundenID = ui->lineEditModKundenID->text();
+        tempKundenID = ui->comboBoxMidKID->currentText();
         tempNachname = ui->lineEditModNachname->text();
         tempVorname =  ui->lineEditModVorname->text();
         tempStrasse = ui->lineEditModStrasse->text();
@@ -565,12 +565,4 @@ std::string costumerDatabaseView::getEmail() {
     return this->email;
 }
 
-void costumerDatabaseView::on_comboBoxAbfrKID_currentIndexChanged(const QString &arg1)
-{
-    ui->lineEditAbfrKundenID->setText(arg1);
-}
 
-void costumerDatabaseView::on_comboBoxMidKID_currentIndexChanged(const QString &arg1)
-{
-    ui->lineEditModKundenID->setText(arg1);
-}

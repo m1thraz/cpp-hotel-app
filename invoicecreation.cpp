@@ -271,14 +271,14 @@ bool invoiceCreation::lineEditVerification(const int buttontyp) {
 
     switch(buttontyp) {
     case 1:
-        tempBuchungsID = ui->lineEditNeuBuchungsID->text();
+        tempBuchungsID = ui->comboBoxNeuRID->currentText();
         break;
     case 2:
-        tempBuchungsID = ui->lineEditModBuchungsID->text();
+        tempBuchungsID = ui->comboBoxModBid->currentText();
         tempAnmerkungen = ui->lineEditModAnmerkung->text();
         break;
     case 3:
-        tempBuchungsID = ui->lineEditAbfrBuchungsID->text();
+        tempBuchungsID = ui->comboBoxAbrfBid->currentText();
         break;
     default:
         qDebug() << "Fehler beim Verifikationsprozess der lineEdits aufgetreten";
@@ -328,17 +328,3 @@ std::string invoiceCreation::getAnmerkungen() {
     return this->anmerkungen;
 }
 
-void invoiceCreation::on_comboBoxNeuRID_currentIndexChanged(const QString &arg1)
-{
-    ui->lineEditNeuBuchungsID->setText(arg1);
-}
-
-void invoiceCreation::on_comboBoxModBid_currentIndexChanged(const QString &arg1)
-{
-    ui->lineEditModBuchungsID->setText(arg1);
-}
-
-void invoiceCreation::on_comboBoxAbrfBid_currentIndexChanged(const QString &arg1)
-{
-    ui->lineEditAbfrBuchungsID->setText(arg1);
-}

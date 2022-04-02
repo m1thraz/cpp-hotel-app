@@ -128,6 +128,9 @@ background-color: white;
                </item>
                <item>
                 <widget class="QComboBox" name="comboBoxAbrfZNr">
+                 <property name="editable">
+                  <bool>true</bool>
+                 </property>
                  <item>
                   <property name="text">
                    <string>101</string>
@@ -148,13 +151,6 @@ background-color: white;
                    <string>104</string>
                   </property>
                  </item>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="lineEditAbfrZimmernummer">
-                 <property name="frame">
-                  <bool>true</bool>
-                 </property>
                 </widget>
                </item>
               </layout>
@@ -333,6 +329,9 @@ background-color: white;
                </item>
                <item>
                 <widget class="QComboBox" name="comboBoxModZID">
+                 <property name="editable">
+                  <bool>true</bool>
+                 </property>
                  <item>
                   <property name="text">
                    <string>1</string>
@@ -343,13 +342,6 @@ background-color: white;
                    <string>2</string>
                   </property>
                  </item>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="lineEditModZimmerID">
-                 <property name="frame">
-                  <bool>true</bool>
-                 </property>
                 </widget>
                </item>
               </layout>
@@ -389,7 +381,10 @@ background-color: white;
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox_3">
+            <widget class="QComboBox" name="comboBoxModZimmerNr">
+             <property name="editable">
+              <bool>true</bool>
+             </property>
              <item>
               <property name="text">
                <string>101</string>
@@ -411,9 +406,6 @@ background-color: white;
               </property>
              </item>
             </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditModZimmernummer"/>
            </item>
           </layout>
          </item>
@@ -500,7 +492,7 @@ background-color: white;
           <x>0</x>
           <y>130</y>
           <width>231</width>
-          <height>281</height>
+          <height>286</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -516,7 +508,11 @@ background-color: white;
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEditNeuZimmernummer"/>
+              <widget class="QComboBox" name="comboBoxNeuZiNr">
+               <property name="editable">
+                <bool>true</bool>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>

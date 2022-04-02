@@ -129,7 +129,10 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox_3">
+         <widget class="QComboBox" name="comboBoxSondKID">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
           <item>
            <property name="text">
             <string>1</string>
@@ -140,31 +143,6 @@ background-color: white;
             <string>2</string>
            </property>
           </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEditSonderKundenID">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>345</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="frame">
-           <bool>true</bool>
-          </property>
-          <property name="readOnly">
-           <bool>false</bool>
-          </property>
          </widget>
         </item>
        </layout>
@@ -233,7 +211,10 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox_4">
+         <widget class="QComboBox" name="comboBoxSonBID">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
           <item>
            <property name="text">
             <string>10099</string>
@@ -249,31 +230,6 @@ background-color: white;
             <string>10101</string>
            </property>
           </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEditSonderBuchungsID">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>345</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="frame">
-           <bool>true</bool>
-          </property>
-          <property name="readOnly">
-           <bool>false</bool>
-          </property>
          </widget>
         </item>
         <item>
@@ -363,9 +319,9 @@ background-color: white;
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox">
+           <widget class="QComboBox" name="comboBoxKID">
             <property name="editable">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <item>
              <property name="text">
@@ -377,34 +333,6 @@ background-color: white;
               <string>2</string>
              </property>
             </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="LineEditNeuKundenID">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>345</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="frame">
-             <bool>true</bool>
-            </property>
-            <property name="readOnly">
-             <bool>false</bool>
-            </property>
            </widget>
           </item>
          </layout>
@@ -449,7 +377,10 @@ background-color: white;
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox_2">
+         <widget class="QComboBox" name="comboBoxBeID">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
           <item>
            <property name="text">
             <string>1</string>
@@ -470,31 +401,6 @@ background-color: white;
             <string>4</string>
            </property>
           </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="LineEditNeuZimmerID">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>345</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="frame">
-           <bool>true</bool>
-          </property>
-          <property name="readOnly">
-           <bool>false</bool>
-          </property>
          </widget>
         </item>
        </layout>

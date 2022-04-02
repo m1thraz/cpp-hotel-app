@@ -142,6 +142,9 @@ background-color: white;
              </item>
              <item>
               <widget class="QComboBox" name="comboBoxAbfrKID">
+               <property name="editable">
+                <bool>true</bool>
+               </property>
                <item>
                 <property name="text">
                  <string>1</string>
@@ -152,22 +155,6 @@ background-color: white;
                  <string>2</string>
                 </property>
                </item>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEditAbfrKundenID">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="mouseTracking">
-                <bool>false</bool>
-               </property>
               </widget>
              </item>
             </layout>
@@ -345,6 +332,9 @@ background-color: white;
              </item>
              <item>
               <widget class="QComboBox" name="comboBoxMidKID">
+               <property name="editable">
+                <bool>true</bool>
+               </property>
                <item>
                 <property name="text">
                  <string>1</string>
@@ -355,13 +345,6 @@ background-color: white;
                  <string>2</string>
                 </property>
                </item>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEditModKundenID">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
               </widget>
              </item>
             </layout>

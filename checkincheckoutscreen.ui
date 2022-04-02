@@ -398,6 +398,9 @@ background-color: white;
         </item>
         <item>
          <widget class="QComboBox" name="comboBoxOutKID">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
           <item>
            <property name="text">
             <string>1</string>
@@ -408,16 +411,6 @@ background-color: white;
             <string>2</string>
            </property>
           </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEditOutKundenID">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="frame">
-           <bool>true</bool>
-          </property>
          </widget>
         </item>
        </layout>
@@ -433,6 +426,9 @@ background-color: white;
         </item>
         <item>
          <widget class="QComboBox" name="comboBoxOutBID">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
           <item>
            <property name="text">
             <string>10099</string>
@@ -448,16 +444,6 @@ background-color: white;
             <string>10101</string>
            </property>
           </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEditOutBuchungsID">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="frame">
-           <bool>true</bool>
-          </property>
          </widget>
         </item>
        </layout>
@@ -538,6 +524,9 @@ background-color: white;
         </item>
         <item>
          <widget class="QComboBox" name="comboBoxInKID">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
           <item>
            <property name="text">
             <string>1</string>
@@ -548,19 +537,6 @@ background-color: white;
             <string>2</string>
            </property>
           </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEditInKundenID">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="frame">
-           <bool>true</bool>
-          </property>
-          <property name="clearButtonEnabled">
-           <bool>false</bool>
-          </property>
          </widget>
         </item>
        </layout>
@@ -576,6 +552,9 @@ background-color: white;
         </item>
         <item>
          <widget class="QComboBox" name="comboBoxInBID">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
           <item>
            <property name="text">
             <string>10099</string>
@@ -591,16 +570,6 @@ background-color: white;
             <string>10101</string>
            </property>
           </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEditInBuchungsID">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="frame">
-           <bool>false</bool>
-          </property>
          </widget>
         </item>
        </layout>

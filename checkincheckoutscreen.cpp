@@ -169,12 +169,12 @@ bool checkInCheckOutScreen::lineEditVerification(const int buttontyp) {
 
     switch(buttontyp) {
     case 1:
-        tempKundenID = ui->lineEditInKundenID->text();
-        tempBuchungsID = ui->lineEditInBuchungsID->text();
+        tempKundenID = ui->comboBoxInKID->currentText();
+        tempBuchungsID = ui->comboBoxInBID->currentText();
         break;
     case 2:
-        tempKundenID = ui->lineEditOutKundenID->text();
-        tempBuchungsID = ui->lineEditOutBuchungsID->text();
+        tempKundenID = ui->comboBoxOutKID->currentText();
+        tempBuchungsID = ui->comboBoxOutBID->currentText();
         break;
     default:
         qDebug() << "Fehler beim Verifikationsprozess der lineEdits aufgetreten";
@@ -232,22 +232,4 @@ int checkInCheckOutScreen::getBuchungsID() {
     return this->buchungsID;
 }
 
-void checkInCheckOutScreen::on_comboBox_currentIndexChanged(const QString &arg1)
-{
-    ui->lineEditInKundenID->setText(arg1);
-}
 
-void checkInCheckOutScreen::on_comboBoxInBID_currentIndexChanged(const QString &arg1)
-{
-    ui->lineEditInBuchungsID->setText(arg1);
-}
-
-void checkInCheckOutScreen::on_comboBoxOutKID_currentIndexChanged(const QString &arg1)
-{
-     ui->lineEditOutKundenID->setText(arg1);
-}
-
-void checkInCheckOutScreen::on_comboBoxOutBID_currentIndexChanged(const QString &arg1)
-{
-    ui->lineEditOutBuchungsID->setText(arg1);
-}
