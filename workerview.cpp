@@ -172,3 +172,8 @@ void workerview::on_pushButtonNeuerEintrag_clicked()
   }
 
 }
+
+void workerview::on_pushButtonLoeschen_clicked()
+{
+
+}
