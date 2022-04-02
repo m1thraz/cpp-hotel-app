@@ -24,6 +24,8 @@ public:
   std::string getVorname();
   void setPW(std::string vorname);
   std::string getPW();
+  void setMID2(int mID);
+  int getMID2();
   bool lineEditVerification(const int button);
 
 
@@ -33,6 +35,8 @@ private slots:
 
 
 
+
+  void on_pushButtonLoeschen_clicked();
 
 private:
     Ui::workerview *ui;

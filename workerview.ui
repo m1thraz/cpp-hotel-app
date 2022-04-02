@@ -245,7 +245,11 @@ border-image:url(:/images/logo_white.png);
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEditMID_2"/>
+                <widget class="QLineEdit" name="lineEditMID_2">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>
@@ -255,6 +259,9 @@ border-image:url(:/images/logo_white.png);
          </item>
          <item>
           <widget class="QPushButton" name="pushButtonLoeschen">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Löschen</string>
            </property>

@@ -30,7 +30,13 @@ void workerview::setMID(int mID) {
 int workerview::getMID(){
   return this->mID;
 }
+void workerview::setMID2(int mID) {
+    this->mID = mID;
+}
 
+int workerview::getMID2(){
+  return this->mID;
+}
 void workerview::setNachname(std::string nachname) {
     this->nachname = nachname;
 }
@@ -60,6 +66,7 @@ std::string workerview::getPW() {
 
 bool workerview::lineEditVerification(const int buttontyp){
   QString tempMID;
+  QString tempMIDDel;
   QString tempPW;
   QString tempVorname;
   QString tempNachname;
@@ -71,6 +78,9 @@ bool workerview::lineEditVerification(const int buttontyp){
       tempMID = ui->lineEditMID->text();
       tempPW = ui->lineEditPW->text();
       break;
+//    case 2:
+//      tempMIDDel = ui->lineEditMID_2->text();
+//      break;
     default:
         qDebug() << "Fehler beim Verifikationsprozess der lineEdits aufgetreten";
         return false;
@@ -123,7 +133,18 @@ bool workerview::lineEditVerification(const int buttontyp){
       return false;
   }
 
-
+//  match = numbers.match(tempMIDDel);
+//  if(!tempMIDDel.isEmpty() && match.hasMatch()) {
+//      this->setMID2(std::stoi(tempMIDDel.toStdString()));
+//  }else if(!tempMIDDel.isEmpty() && !match.hasMatch()) {
+//      qDebug() << "Ungültiges MitarbeiterID-Format";
+//      error.changeTextMitarbeiterIDWrong();
+//      error.setModal(true);
+//      error.exec();
+//      return false;
+//  }else {
+//      this->setMID2(0);
+//  }
 
 
   return true;
@@ -133,8 +154,9 @@ bool workerview::lineEditVerification(const int buttontyp){
 void workerview::on_pushButtonNeuerEintrag_clicked()
 {
   if(!lineEditVerification(1)) {
-
+      return;
 }
+
   errormessage error;
   if(!this->getMID() || this->getNachname().empty() || this->getVorname().empty()) {
       error.changeTextMissingInputText();
@@ -170,10 +192,42 @@ void workerview::on_pushButtonNeuerEintrag_clicked()
       info.exec();
     }
   }
-
 }
+
 
 void workerview::on_pushButtonLoeschen_clicked()
 {
+//  if(!lineEditVerification(2)) {
 
+ // return;
+
+//}
+//  errormessage error;
+//  if(!this->getMID2()) {
+//      error.changeTextMissingInputText();
+//      error.setModal(true);
+//      error.exec();
+//      return;
+//  } else {
+//Database db;
+//std::string sql ="DELETE FROM Mitarbeiter(MitarbeiterID)"
+//    "VALUES ('" + std::to_string(this->getMID2()) + "');";
+
+//QString insert = QString::fromStdString(sql);
+//QSqlQuery query;
+//query.prepare(insert);
+//bool queryStatus = query.exec();
+// qDebug() << "Löschen der Mitarbeiterdaten erfolgreich: " << queryStatus;
+
+//if(!queryStatus) {
+//    error.changeTextDataCreationError();
+//    error.setModal(true);
+//    error.exec();
+//  }else {
+//    infomessage info;
+//    info.changeTextNeu();
+//    info.setModal(true);
+//    info.exec();
+//  }
+//    }
 }
