@@ -455,9 +455,9 @@ void hotelDatabaseView::on_suchenButton_clicked() {
     }
     qDebug() << "Folgende Daten wurden gespeichert: " << checkhotelInput.c_str();
 
-    hotelsearch = new displayhotelsearch(this->hoteldata);
-    hotelsearch -> show();
-    hotelsearch->changeTextHotelInfo();
+//    hotelsearch = new displayhotelsearch(this->hoteldata);
+//    hotelsearch -> show();
+//    hotelsearch->changeTextHotelInfo();
 }
 
 void hotelDatabaseView::setHoteldata(std::vector<std::string> &) {

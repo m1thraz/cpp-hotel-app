@@ -288,7 +288,7 @@ background-color: white;
         <item>
          <widget class="QPushButton" name="pushButtonRechnungAnzeigen">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="toolTip">
            <string>Funktion nicht verfügbar</string>

@@ -252,9 +252,9 @@ void invoiceCreation::on_pushButtonRechnungAnzeigen_clicked() {
     }
     qDebug() << "Folgende Daten wurden gespeichert: " << checkInvoiceInput.c_str();
 
-    invoicedisplay = new displayinvoice(this->invoicedata);
-    invoicedisplay->show();
-    invoicedisplay->changeTextInvoiceInfo();
+//    invoicedisplay = new displayinvoice(this->invoicedata);
+//    invoicedisplay->show();
+//    invoicedisplay->changeTextInvoiceInfo();
 }
 
 void invoiceCreation::setInvoivedata(std::vector<std::string> &) {
