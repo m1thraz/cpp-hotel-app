@@ -295,6 +295,15 @@ background-color: white;
          </item>
          <item>
           <widget class="QPushButton" name="pushButtonSuchen">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="toolTip">
+            <string>Funktion nicht verfügbar</string>
+           </property>
+           <property name="whatsThis">
+            <string>Funktion nicht verfügbar</string>
+           </property>
            <property name="text">
             <string>Suchen</string>
            </property>
