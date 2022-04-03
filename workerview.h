@@ -6,12 +6,12 @@
 
 
 namespace Ui {
-class workerview;
+  class workerview;
 }
 
 class workerview : public QDialog
 {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
   explicit workerview(QWidget *parent = nullptr);
@@ -39,17 +39,17 @@ private slots:
   void on_pushButtonLoeschen_clicked();
 
 private:
-    Ui::workerview *ui;
+  Ui::workerview *ui;
 
-    int mID;
-    std::string nachname;
-    std::string vorname;
-    std::string pw;
+  int mID;
+  std::string nachname;
+  std::string vorname;
+  std::string pw;
 
 
 public:
 
-    std::vector<std::string> workerdata;
+  std::vector<std::string> workerdata;
 
 };
 

@@ -13,6 +13,12 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="toolTip">
+   <string>Wird im Terminal angezeigt</string>
+  </property>
+  <property name="whatsThis">
+   <string>Wird im Terminal angezeigt</string>
+  </property>
   <widget class="QWidget" name="background" native="true">
    <property name="geometry">
     <rect>

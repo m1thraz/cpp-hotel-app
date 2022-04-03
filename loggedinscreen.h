@@ -12,24 +12,24 @@
 #include "workerview.h"
 
 namespace Ui {
-class LoggedInScreen;
+  class LoggedInScreen;
 }
 
 class LoggedInScreen : public QDialog
 {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    explicit LoggedInScreen(QWidget *parent = nullptr);
-    ~LoggedInScreen();
+  explicit LoggedInScreen(QWidget *parent = nullptr);
+  ~LoggedInScreen();
 
-    void setMainWindow(MainWindow *mwindow);
+  void setMainWindow(MainWindow *mwindow);
 
-    MainWindow getMainWindow();
+  MainWindow getMainWindow();
 
 
 
-    void setMID(int MID); // Für die mitarbeiterID
+  void setMID(int MID); // Für die mitarbeiterID
 
 private slots:
   void on_hotelButton_clicked();
@@ -47,17 +47,17 @@ private slots:
   void on_RechnungButton_2_clicked();
 
 private:
-    Ui::LoggedInScreen *ui;
+  Ui::LoggedInScreen *ui;
 
-    invoiceCreation *invoice;
-    costumerDatabaseView *costumer;
-    hotelDatabaseView *hotel;
-    checkInCheckOutScreen *checkIn;
-    bookroomview *book;
-    MainWindow *mwindow;
-    workerview *worker;
-   int mID;
-   QString s;
+  invoiceCreation *invoice;
+  costumerDatabaseView *costumer;
+  hotelDatabaseView *hotel;
+  checkInCheckOutScreen *checkIn;
+  bookroomview *book;
+  MainWindow *mwindow;
+  workerview *worker;
+  int mID;
+  QString s;
 };
 
 #endif // LOGGEDINSCREEN_H

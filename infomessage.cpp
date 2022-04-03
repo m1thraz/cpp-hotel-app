@@ -2,29 +2,29 @@
 #include "ui_infomessage.h"
 
 infomessage::infomessage(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::infomessage)
+  QDialog(parent),
+  ui(new Ui::infomessage)
 {
-    ui->setupUi(this);
+  ui->setupUi(this);
 }
 
 infomessage::~infomessage()
 {
-    delete ui;
+  delete ui;
 }
 
 void infomessage::changeTextModifiziert() {
-    ui->labelInfoMessage->setText("<p>Datensatz wurde erfolgreich modifiziert.</p>");
+  ui->labelInfoMessage->setText("<p>Datensatz wurde erfolgreich modifiziert.</p>");
 }
 
 void infomessage::changeTextNeu() {
-    ui->labelInfoMessage->setText("<p>Neuer Eintrag wurde erstellt.</p>");
+  ui->labelInfoMessage->setText("<p>Neuer Eintrag wurde erstellt.</p>");
 }
 
 void infomessage::changeTextDelete() {
-    ui->labelInfoMessage->setText("<p>Eintrag wurde erfolgreich gelöscht.</p>");
+  ui->labelInfoMessage->setText("<p>Eintrag wurde erfolgreich gelöscht.</p>");
 }
 
 void infomessage::on_closeWindowButton_clicked() {
-    this->hide();
+  this->hide();
 }

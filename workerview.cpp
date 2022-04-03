@@ -211,7 +211,7 @@ void workerview::on_pushButtonLoeschen_clicked()
     } else {
       Database db;
       std::string sql ="DELETE FROM Mitarbeiter WHERE MitarbeiterID = "
-                       + std::to_string(this->getMID()) + ";";
+          + std::to_string(this->getMID()) + ";";
 
       QString insert = QString::fromStdString(sql);
       QSqlQuery query;

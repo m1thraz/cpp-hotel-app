@@ -299,10 +299,10 @@ background-color: white;
             <bool>true</bool>
            </property>
            <property name="toolTip">
-            <string>Funktion nicht Wird im Terminal angezeigt</string>
+            <string>Funktion nicht wird im Terminal angezeigt</string>
            </property>
            <property name="whatsThis">
-            <string>Funktion nicht Wird im Terminal angezeigt</string>
+            <string>Funktion nicht wird im Terminal angezeigt</string>
            </property>
            <property name="text">
             <string>Suchen</string>

@@ -3,36 +3,36 @@
 #include <QDebug>
 
 displayinvoice::displayinvoice(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::displayinvoice)
+  QDialog(parent),
+  ui(new Ui::displayinvoice)
 {
-    ui->setupUi(this);
+  ui->setupUi(this);
 }
 
 displayinvoice::~displayinvoice()
 {
-    delete ui;
+  delete ui;
 }
 
 displayinvoice::displayinvoice(std::vector<std::string> &data) {
-    this->invoicedata=data;
+  this->invoicedata=data;
 }
 
 void displayinvoice::changeTextInvoiceInfo()
 {
 
-    std::string checkinvoiceInput;
-    for (auto& s:invoicedata) {
-        checkinvoiceInput+=s;
+  std::string checkinvoiceInput;
+  for (auto& s:invoicedata) {
+      checkinvoiceInput+=s;
     }
-    qDebug() << "Folgende Daten wurden gespeichert: " << checkinvoiceInput.c_str();
+  qDebug() << "Folgende Daten wurden gespeichert: " << checkinvoiceInput.c_str();
 
-//    QString str = QString::fromUtf8(checkinvoiceInput.c_str());
+  //    QString str = QString::fromUtf8(checkinvoiceInput.c_str());
 
-    ui->labelInvoiceResult->setText(checkinvoiceInput.c_str());
+  ui->labelInvoiceResult->setText(checkinvoiceInput.c_str());
 }
 
 void displayinvoice::on_closeWindowBtn_clicked()
 {
-    this->hide();
+  this->hide();
 }

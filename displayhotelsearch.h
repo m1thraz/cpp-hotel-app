@@ -5,29 +5,29 @@
 #include "hoteldatabaseview.h"
 
 namespace Ui {
-class displayhotelsearch;
+  class displayhotelsearch;
 }
 
 class displayhotelsearch : public QDialog
 {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    explicit displayhotelsearch(QWidget *parent = nullptr);
-    ~displayhotelsearch();
+  explicit displayhotelsearch(QWidget *parent = nullptr);
+  ~displayhotelsearch();
 
-    void changeTextHotelInfo();
+  void changeTextHotelInfo();
 
-    displayhotelsearch(std::vector<std::string>& data);
-    std::vector<std::string> hoteldata;
+  displayhotelsearch(std::vector<std::string>& data);
+  std::vector<std::string> hoteldata;
 
 private slots:
-    void on_closeWindowBtn_clicked();
+  void on_closeWindowBtn_clicked();
 
 private:
-    Ui::displayhotelsearch *ui;
+  Ui::displayhotelsearch *ui;
 
-    hotelDatabaseView * hotelObject;
+  hotelDatabaseView * hotelObject;
 
 };
 
