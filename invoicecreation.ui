@@ -287,6 +287,15 @@ background-color: white;
        <layout class="QVBoxLayout" name="showInvoiceLayout">
         <item>
          <widget class="QPushButton" name="pushButtonRechnungAnzeigen">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="toolTip">
+           <string>Funktion nicht verfügbar</string>
+          </property>
+          <property name="whatsThis">
+           <string>Funktion nicht verfügbar</string>
+          </property>
           <property name="text">
            <string>Rechnung anzeigen</string>
           </property>
